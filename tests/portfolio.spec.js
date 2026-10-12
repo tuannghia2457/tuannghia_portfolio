@@ -1,0 +1,67 @@
+import { test, expect } from '@playwright/test'
+test('Focused homepage, navigation, detail pages, and preserved information', async ({ page }) => {
+  const errors = []; page.on('pageerror', error => errors.push(error.message))
+  await page.goto('/')
+  await expect(page.locator('h1')).toHaveCount(1)
+  await expect(page.locator('.curated-card')).toHaveCount(3)
+  await expect(page.locator('#experience')).toHaveCount(0)
+  await expect(page.locator('.site-header nav a')).toHaveCount(5)
+  expect(await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--background').trim())).toBe('#FAF9F6')
+  await page.locator('.curated-card').first().click()
+  await expect(page).toHaveURL(/projects\/pothole-surface-reconstruction/)
+  await expect(page.getByRole('heading', { name: 'My contributions' })).toBeVisible()
+  await page.goBack(); await expect(page.locator('h1')).toContainText('Nghia')
+  await page.goto('/about'); await expect(page.getByText('IELTS', { exact: true })).toBeVisible()
+  await expect(page.locator('.experience-item')).toHaveCount(4)
+  await page.locator('.experience-details').first().locator('summary').click()
+  await expect(page.locator('.experience-details').first()).toContainText('Voronoi')
+  await page.goto('/projects'); await page.getByText('Certificates & supporting evidence', { exact: true }).click()
+  await expect(page.locator('.evidence-card')).toHaveCount(5)
+  for (const link of await page.locator('.evidence-card-body a').evaluateAll(links => links.map(link => link.getAttribute('href')))) expect((await page.request.get(link)).status()).toBe(200)
+  for (const slug of ['aquaguard', 'virtualdouble-ant']) { await page.goto(`/projects/${slug}`); await expect(page.getByRole('heading', { name: 'Technical approach' })).toBeVisible() }
+  await page.goto('/research'); await expect(page.locator('.research-records article')).toHaveCount(3)
+  await expect(page.locator('.publication')).toContainText('CTMIA 2026')
+  await page.goto('/missing'); await expect(page.locator('h1')).toContainText('off the path')
+  expect(errors).toEqual([])
+})
+test('Responsive pages and accessible mobile navigation', async ({ page }) => {
+  const errors = []; page.on('pageerror', error => errors.push(error.message))
+  for (const width of [1440, 768, 390, 320]) {
+    await page.setViewportSize({ width, height: 900 })
+    for (const path of ['/', '/about', '/projects', '/research', '/contact', '/projects/pothole-surface-reconstruction']) {
+      await page.goto(path)
+      await expect(page.locator('h1'), `${width}px ${path}: ${errors.join('; ')}`).toHaveCount(1)
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy()
+    }
+  }
+  await page.goto('/')
+  await page.getByRole('button', { name: 'Open navigation' }).click()
+  await page.getByRole('navigation').getByRole('link', { name: 'About' }).click()
+  await expect(page).toHaveURL(/about/)
+  await expect(page.getByRole('button', { name: 'Open navigation' })).toHaveAttribute('aria-expanded', 'false')
+  await page.getByRole('button', { name: 'Open navigation' }).click(); await page.keyboard.press('Escape')
+  await expect(page.getByRole('button', { name: 'Open navigation' })).toBeFocused()
+})
+test('Camera is optional, denied permission is recoverable, and no model loads before consent', async ({ page }) => {
+  const requests = []; page.on('request', req => { if (/\/models\/|\/mediapipe\//.test(req.url())) requests.push(req.url()) })
+  await page.addInitScript(() => { navigator.mediaDevices.getUserMedia = async () => { throw new DOMException('Denied', 'NotAllowedError') } })
+  await page.goto('/contact')
+  const skip = page.getByRole('link', { name: 'Skip webcam & contact me directly' })
+  await expect(skip).toHaveAttribute('href', /^mailto:.*subject=/)
+  expect(requests).toEqual([])
+  await page.getByRole('button', { name: 'Enable webcam' }).click()
+  await expect(page.getByRole('status')).toContainText('permission wasn’t granted')
+  await expect(page.getByRole('button', { name: 'Retry webcam' })).toBeVisible()
+  expect(requests).toEqual([])
+})
+test('Cancelling pending camera access stops late-arriving streams', async ({ page }) => {
+  await page.addInitScript(() => {
+    window.stoppedTracks = 0
+    navigator.mediaDevices.getUserMedia = () => new Promise(resolve => { window.resolveCamera = () => resolve({ getTracks: () => [{ stop: () => window.stoppedTracks++ }] }) })
+  })
+  await page.goto('/contact'); await page.getByRole('button', { name: 'Enable webcam' }).click()
+  await page.getByRole('button', { name: 'Cancel & stop camera' }).click()
+  await page.evaluate(() => window.resolveCamera())
+  await expect.poll(() => page.evaluate(() => window.stoppedTracks)).toBe(1)
+  await expect(page.getByRole('status')).toContainText('Camera stopped')
+})

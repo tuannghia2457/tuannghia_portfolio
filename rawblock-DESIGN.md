@@ -1,3 +1,5 @@
+> HISTORICAL REFERENCE — superseded for all color/style decisions by [the permanent Warm Ivory design system](docs/DESIGN_SYSTEM.md). Ember Dark and RawBlock palettes are deprecated. Do not implement colors from this document.
+
 # RawBlock Design System
 
 ## Overview

@@ -1,58 +1,53 @@
-# Nghia Tuan Tran — Portfolio
+# Tuan Nghia — Warm Ivory Portfolio
 
-A personal portfolio website built with React and Vite.
+React 18 + Vite portfolio with Home, About, Projects, Research, Contact, dedicated project pages, Mini Tom, and one optional local computer vision demo: **Smile to Collaborate**. Existing projects, experience, skills, awards, certificates, and contact destinations are preserved.
 
-## Requirements
+## Run
 
-- Node.js 18 or newer
-- npm
-
-## Install dependencies
-
-From the project directory:
+Node.js 20.19+ and npm are required.
 
 ```bash
 npm install
-```
-
-## Open the website locally
-
-Start the Vite development server:
-
-```bash
 npm run dev
 ```
 
-Vite will print a local URL in the terminal, usually:
-
-```text
-http://localhost:5173/
-```
-
-Open that URL in your browser. The development server supports hot reload, so changes to the source files will appear automatically.
-
-## Other commands
-
-Create a production build:
+Open the URL printed by Vite, usually http://localhost:5173. Changes update automatically.
 
 ```bash
-npm run build
+npm test                 # Companion and smile helper checks
+npm run test:browser     # Playwright browser and real-model video checks
+npm run build            # Production build
+npm run preview          # Preview the build
 ```
 
-Preview the production build locally:
+The browser tests use Microsoft Edge. Install Edge or adjust the channel in `playwright.config.js` for another Playwright browser.
 
-```bash
-npm run preview
-```
+## Permanent theme
 
-## Project structure
+Read [AGENTS.md](AGENTS.md) and [docs/DESIGN_SYSTEM.md](docs/DESIGN_SYSTEM.md). Warm Ivory × Orange × Charcoal is permanent. Ember Dark is deprecated. `src/theme.css` is the single authored color source. References and outdated prompts do not authorize palette changes.
 
-- `src/App.jsx` — portfolio content and React components
-- `src/styles.css` — website styling
-- `src/main.jsx` — React entry point
-- `public/` — static assets
-- `vite.config.js` — Vite configuration
+## Structure
 
-## Stop the website
+- `src/App.jsx`: shared navigation, React Router routes, page focus, footer, Mini Tom.
+- `src/pages/`: focused page layouts and preserved supporting sections.
+- `src/portfolio-data.js`, `src/project-details.js`: original content and project narratives.
+- `src/theme.css`: permanent palette and semantic color roles.
+- `src/styles.css`, `src/pages.css`: semantic theme tokens, shared layout, responsive pages, reduced motion.
+- `src/components/SmileDemo.jsx`, `src/lib/smile.js`: optional camera lifecycle, local smile scores, mail draft.
+- `src/components/MiniNghia.jsx`: existing interactive pixel companion.
+- `public/mediapipe/`, `public/models/`: locally served MediaPipe 0.10.32 WASM runtime and official face landmarker task.
+- `tests/`: browser navigation, preservation, mobile layout, camera lifecycle, and smile feedback checks.
 
-Press `Ctrl+C` in the terminal running the development server.
+## Privacy and camera behavior
+
+The detector loads only after the visitor enables the webcam and grants permission. Camera frames stay in the browser. The camera stops on completion, cancellation, leaving the page, switching tabs, or after a minute of detection. Direct contact is always available. Email links open pre-filled drafts; they do not send anything automatically.
+
+See [restructure decisions and validation](docs/curated-restructure.md), [original design research](docs/design-research.md), and [Mini Tom](docs/mini-nghia.md).
+
+## Deployment
+
+Serve `dist` over HTTPS. Configure the host to fall back to `index.html` for client-side routes such as `/about` and `/projects/aquaguard`; existing static assets should be served normally. Vite dev/preview handle route fallbacks locally.
+
+The real model and generated video stream are covered by automated browser checks. Physical webcam behavior across devices and lighting should also be tested manually. No lint or TypeScript check is configured.
+
+Press Ctrl+C in the development terminal to stop the website.

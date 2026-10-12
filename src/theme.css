@@ -1,0 +1,29 @@
+/* Permanent Warm Ivory theme. See AGENTS.md and docs/DESIGN_SYSTEM.md.
+   This is the only authored source for color values. */
+:root {
+  color-scheme: light;
+  --background: #FAF9F6;
+  --surface: #FFFFFF;
+  --surface-alt: #F3F0EB;
+  --primary: #FF6B00;
+  --primary-hover: #E65F00;
+  --foreground: #252525;
+  --muted-foreground: #6B6B6B;
+  --border: #E5E2DC;
+
+  /* Semantic roles derive from the permanent palette, never a second theme. */
+  --background-raised: var(--surface);
+  --surface-soft: var(--surface-alt);
+  --border-strong: var(--muted-foreground);
+  --accent-surface: color-mix(in srgb, var(--primary) 10%, var(--surface));
+  --accent-foreground: var(--foreground);
+  --on-primary: var(--foreground);
+  --focus-ring: var(--foreground);
+  --shadow-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --shadow-overlay: 0 8px 28px var(--shadow-color);
+  --disabled-background: var(--surface-alt);
+  --disabled-foreground: var(--muted-foreground);
+  --camera-badge-background: var(--surface);
+  --camera-badge-foreground: var(--foreground);
+  --sprite-skin: color-mix(in srgb, var(--primary) 25%, var(--surface));
+}

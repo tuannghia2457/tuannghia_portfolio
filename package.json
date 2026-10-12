@@ -4,17 +4,24 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "predev": "node scripts/sync-theme-assets.mjs",
     "dev": "vite",
+    "test": "node scripts/check.mjs",
+    "test:browser": "playwright test",
+    "prebuild": "node scripts/sync-theme-assets.mjs",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mediapipe/tasks-vision": "^0.10.32",
+    "lucide-react": "^0.468.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "lucide-react": "^0.468.0"
+    "react-router-dom": "^6.30.6"
   },
   "devDependencies": {
+    "@playwright/test": "^1.64.0",
     "@vitejs/plugin-react": "^4.3.1",
-    "vite": "^5.4.2"
+    "vite": "6.4.4"
   }
 }
