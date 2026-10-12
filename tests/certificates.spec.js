@@ -1,0 +1,16 @@
+import { test, expect } from '@playwright/test'
+test('Online courses have their own Education section with accurate records and no placeholder links', async ({ page }) => {
+  await page.goto('/education#certificates')
+  const section = page.locator('#certificates')
+  await expect(section.getByRole('heading', { name: 'Online course certificates.' })).toBeVisible()
+  await expect(section.locator('.course-certificate-card')).toHaveCount(2)
+  await expect(section).toContainText('Hands-On AI: Introduction to Retrieval-Augmented Generation (RAG)')
+  await expect(section).toContainText('Microsoft Azure AI Essentials Professional Certificate')
+  await expect(section).toContainText('Microsoft and LinkedIn')
+  await expect(section.locator('.course-certificate-topline')).toHaveText(['ISSUED September 2026', 'ISSUED September 2026'])
+  await expect(section).not.toContainText('Dean')
+  await expect(section.getByRole('link', { name: 'View certificate' })).toHaveCount(0)
+  await page.setViewportSize({ width: 320, height: 800 })
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy()
+  await page.goto('/projects'); await expect(page.locator('#certificates')).toHaveCount(0)
+})

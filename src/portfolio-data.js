@@ -151,6 +151,19 @@ export const education = [
   },
 ]
 
+export const courseCertificates = [
+  {
+    id: 'rag-introduction', title: 'Hands-On AI: Introduction to Retrieval-Augmented Generation (RAG)',
+    issuer: 'LinkedIn', issued: 'September 2026',
+    skills: ['Artificial Intelligence', 'Retrieval-Augmented Generation (RAG)'], credentialUrl: null,
+  },
+  {
+    id: 'azure-ai-essentials', title: 'Microsoft Azure AI Essentials Professional Certificate',
+    issuer: 'Microsoft and LinkedIn', issued: 'September 2026',
+    skills: ['Machine Learning', 'Azure AI Studio'], credentialUrl: null,
+  },
+]
+
 export const technicalSkills = [
   { name: 'Python', category: 'Programming', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
   { name: 'C++', category: 'Programming', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg' },
