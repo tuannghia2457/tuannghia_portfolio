@@ -36,3 +36,27 @@
 .academic-recognition > p { font-size: 13px; line-height: 1.7; color: var(--muted-foreground); margin-bottom: 12px; }
 @media (max-width: 650px) { .education-layout { grid-template-columns: 1fr; } .education-record, .language-record, .academic-recognition { padding: 22px; } }
 @media (max-width: 400px) { .school-identity { align-items: start; gap: 13px; } .school-logo { width: 58px; height: 58px; } .school-logo img { width: 48px; height: 48px; } .school-identity h3 { font-size: 19px; } }
+
+/* All school previews share the same hover, focus and disclosure behavior. */
+.education-record.school-card { padding: 0; overflow: clip; transition: border-color 180ms, box-shadow 180ms; }
+.school-card:hover, .school-card:focus-within { border-color: var(--primary-hover); box-shadow: 0 3px 10px var(--shadow-color); }
+.school-card[open] { border-color: var(--primary-hover); }
+.school-card > .school-summary { display: block; padding: 26px; list-style: none; color: var(--foreground); }
+.school-summary::-webkit-details-marker { display: none; }
+.education-record.school-card > .school-summary:hover { color: var(--foreground); text-decoration: none; }
+.school-summary .school-identity { margin-bottom: 18px; }
+.school-summary .school-identity h3 { margin: 0; }
+.school-summary-footer { display: flex; justify-content: space-between; align-items: center; gap: 18px; margin-top: 22px; padding-top: 16px; border-top: var(--line); }
+.school-summary .education-grade { display: flex; align-items: center; gap: 12px; padding: 0; margin: 0; border: 0; }
+.school-summary .education-grade strong { font-size: 20px; }
+.school-expand-label { display: inline-flex; align-items: center; gap: 7px; margin-left: auto; color: var(--muted-foreground); font-size: 12px; }
+.school-expand-label svg { transition: transform 180ms; }
+.school-card[open] .school-expand-label svg { transform: rotate(180deg); }
+.school-details { margin-inline: 26px; padding-block: 22px 26px; border-top: var(--line); }
+.school-details .school-period { margin-bottom: 15px; }
+.school-achievements { margin-top: 26px; }
+.school-achievements h4 { margin: 0 0 14px; font-size: 16px; font-weight: 500; }
+.school-achievements article { padding-block: 15px; border-top: var(--line); }
+.school-achievements h5 { margin: 0; font-size: 14px; line-height: 1.6; font-weight: 500; }
+.school-achievements .text-link { margin-top: 6px; font-size: 12px; }
+@media (max-width: 650px) { .school-card > .school-summary { padding: 22px; } .school-details { margin-inline: 22px; padding-bottom: 22px; } .school-summary-footer { padding-right: 28px; } }

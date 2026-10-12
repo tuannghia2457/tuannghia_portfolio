@@ -115,6 +115,11 @@ export const evidence = [
   },
 ]
 
+export const academicRecognition = {
+  title: 'Dean’s List 2026', institution: 'University of Technology Sydney',
+  certificate: '/images/competitions-certifications/UTS/26227165_TuanNghiaTran_DeanList.pdf',
+}
+export const studentTestimonialUrl = 'https://www.uts.edu.au/about/uts-vision/initiatives/internationalisation/transnational-education/ho-chi-minh-city-university-of-technology'
 export const education = [
   {
     id: 'uts', institution: 'University of Technology Sydney', abbreviation: 'UTS', logo: '/images/schools/uts.jpg',
@@ -122,6 +127,11 @@ export const education = [
     period: 'SEP 2025 — EXPECTED MAY 2028', grade: '6.9 / 7.0',
     summary: 'Studying Artificial Intelligence through the HCMUT–UTS program, with an academic foundation in programming and AI.',
     activities: ['Class Representative'], skills: ['Python', 'Java'],
+    achievements: [
+      { title: academicRecognition.title, href: academicRecognition.certificate, linkLabel: 'View Dean’s List certificate' },
+      { title: 'Featured in UTS/HCMUT Student Testimonial', href: studentTestimonialUrl, linkLabel: 'Read my student story' },
+      { title: 'Class Voted Collaborator' },
+    ],
   },
   {
     id: 'gifted', institution: 'VNU-HCM High School for the Gifted', abbreviation: 'PTNK', logo: '/images/schools/gifted.jpg',
@@ -129,6 +139,7 @@ export const education = [
     period: 'AUG 2022 — JUN 2025', grade: '9.6 / 10',
     summary: 'An advanced physics background that shaped my approach to analytical thinking and technical problem-solving.',
     activities: [], skills: ['Physics', 'Event Management'],
+    achievements: [],
   },
   {
     id: 'hcmut', institution: 'Ho Chi Minh City University of Technology', abbreviation: 'HCMUT', logo: '/images/schools/hcmut.jpg',
@@ -136,13 +147,9 @@ export const education = [
     program: 'HCMUT–UTS transnational partnership', period: null, grade: null,
     summary: 'My transnational education connects learning at HCMUT with the University of Technology Sydney within a shared international program.',
     activities: [], skills: [],
+    achievements: [],
   },
 ]
-export const academicRecognition = {
-  title: 'Dean’s List 2026', institution: 'University of Technology Sydney',
-  certificate: '/images/competitions-certifications/UTS/26227165_TuanNghiaTran_DeanList.pdf',
-}
-export const studentTestimonialUrl = 'https://www.uts.edu.au/about/uts-vision/initiatives/internationalisation/transnational-education/ho-chi-minh-city-university-of-technology'
 
 export const technicalSkills = [
   { name: 'Python', category: 'Programming', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
