@@ -7,7 +7,7 @@ export const projects = [
     role: 'Co-Founder & Product Manager',
     year: '2025—NOW',
     tags: ['PRODUCT', 'IOS', 'WEB', 'DISASTER RESPONSE'],
-    result: '1st Place — OISP Presentation Contest 2025 · First Runner-Up — Bach Khoa Innovation 2026',
+    result: '1st Place — Office for International Study Programs Presentation Contest 2025 · First Runner-Up — Bach Khoa Innovation 2026',
     link: 'https://aquaguard.vn/',
     featured: true,
   },
@@ -19,7 +19,7 @@ export const projects = [
     role: 'Research Collaborator · Speaker',
     year: '2026',
     tags: ['COMPUTER VISION', 'ROBOTICS', 'LIDAR', 'APPLIED ML'],
-    result: 'Presented at CTMIA 2026 · Research connected to autonomous robot navigation',
+    result: 'Presented at Current Topics in Mathematics and Industrial Applications 2026 · Research connected to autonomous robot navigation',
     link: '#research',
     featured: false,
   },
@@ -31,7 +31,7 @@ export const projects = [
     role: 'Backend & AI Developer',
     year: '2026',
     tags: ['BACKEND', 'MEDIAPIPE', 'ON-DEVICE AI', 'ADAPTIVE UX'],
-    result: 'Finalist — ADC Hackathon 2026',
+    result: 'Finalist — Accessibility Design Competition Hackathon 2026',
     link: '#contact',
     featured: false,
   },
@@ -41,7 +41,7 @@ export const experience = [
   {
     period: 'APR 2026 — PRESENT',
     title: 'Computer Vision Research Assistant',
-    organization: 'IVS Joint Stock Company (Individual Systems) · Internship',
+    organization: 'Individual Systems Joint Stock Company · Internship',
     description: 'UAV Localization: Developing a GNSS-denied UAV localization system using computer vision, canopy segmentation, Voronoi diagrams, and geometric matching. Autonomous Robot Navigation: Implementing perception-based path planning and graph construction for autonomous navigation in limited-visibility environments. LiDAR-Based Pothole Detection: Developing and testing pothole detection and autonomous navigation using LiDAR, ROS, Gazebo, and JetTank.',
     stack: 'ROS · C++ · Computer Vision · LiDAR · Gazebo · JetTank',
     location: 'Ho Chi Minh City, Vietnam · On-site',
@@ -65,7 +65,7 @@ export const experience = [
   {
     period: 'JUL 2024 — AUG 2024',
     title: 'Low-Code Application Developer',
-    organization: 'SDE DIGITAL TECHNOLOGY CO., LTD. · Internship',
+    organization: 'SDE Digital Technology Company Limited · Internship',
     description: 'Developed a time-tracking web app and supported automation for footwear quality inspection.',
     stack: 'Mendix · Python · Automation · Web Development',
     location: 'Ho Chi Minh City, Vietnam · On-site',
@@ -74,24 +74,24 @@ export const experience = [
 
 export const awards = [
   ['01', 'First Runner-Up', 'Bach Khoa Innovation', 'AquaGuard'],
-  ['02', '1st Place', 'EPICS Season 8', 'AquaGuard'],
-  ['03', '1st Place', 'OISP Presentation Contest 2025', 'AquaGuard'],
+  ['02', '1st Place', 'Engineering Projects in Community Service Season 8', 'AquaGuard'],
+  ['03', '1st Place', 'Office for International Study Programs Presentation Contest 2025', 'AquaGuard'],
   ['04', 'Finalist', 'InnoStars', 'AquaGuard'],
   ['05', 'Recognition', 'Leave A Nest', 'AquaGuard'],
-  ['06', 'Finalist', 'ADC Hackathon 2026', 'VirtualDouble / ANT'],
+  ['06', 'Finalist', 'Accessibility Design Competition Hackathon 2026', 'VirtualDouble / ANT'],
 ]
 
 export const evidence = [
   {
-    title: 'EPICS Season 8',
+    title: 'Engineering Projects in Community Service Season 8',
     type: 'Award certificate',
-    description: 'AquaGuard recognition from EPICS Season 8.',
+    description: 'AquaGuard recognition from Engineering Projects in Community Service Season 8.',
     preview: '/images/competitions-certifications/EPICS8/HCMUT%20-%20AquaGuard_page-0001.jpg',
     link: '/images/competitions-certifications/EPICS8/HCMUT%20-%20AquaGuard.pdf',
-    linkLabel: 'Open EPICS certificate',
+    linkLabel: 'Open Engineering Projects in Community Service certificate',
   },
   {
-    title: 'EPICS Season 8',
+    title: 'Engineering Projects in Community Service Season 8',
     type: 'Team certificate',
     description: 'Additional AquaGuard certificate naming the project team.',
     preview: '/images/competitions-certifications/EPICS8/HCMUT%20-%20AquaGuard_page-0001.jpg',
@@ -99,17 +99,17 @@ export const evidence = [
     linkLabel: 'Open team certificate',
   },
   {
-    title: 'OISP Presentation Contest 2025',
+    title: 'Office for International Study Programs Presentation Contest 2025',
     type: 'First prize certificate',
-    description: 'AquaGuardian recognition from the OPC 2025 materials.',
+    description: 'AquaGuardian recognition from the Office for International Study Programs Presentation Contest 2025 materials.',
     preview: '/images/competitions-certifications/OPC25/First%20Prize_AquaGuardian_page-0001.jpg',
     link: '/images/competitions-certifications/OPC25/First%20Prize_AquaGuardian.pdf',
-    linkLabel: 'Open OISP certificate',
+    linkLabel: 'Open Office for International Study Programs certificate',
   },
   {
-    title: 'OISP Presentation Contest 2025',
+    title: 'Office for International Study Programs Presentation Contest 2025',
     type: 'Golden Ticket',
-    description: 'A second recognition from the AquaGuardian OPC materials.',
+    description: 'A second recognition from the AquaGuardian Office for International Study Programs Presentation Contest materials.',
     link: '/images/competitions-certifications/OPC25/Golden%20Ticket_AquaGuardian.pdf',
     linkLabel: 'Open Golden Ticket',
   },
@@ -122,19 +122,19 @@ export const academicRecognition = {
 export const studentTestimonialUrl = 'https://www.uts.edu.au/about/uts-vision/initiatives/internationalisation/transnational-education/ho-chi-minh-city-university-of-technology'
 export const education = [
   {
-    id: 'uts', institution: 'University of Technology Sydney', abbreviation: 'UTS', logo: '/images/schools/uts.jpg',
-    degree: 'Bachelor’s degree in Artificial Intelligence', program: 'HCMUT–UTS Transnational Education Program',
+    id: 'uts', institution: 'University of Technology Sydney', logo: '/images/schools/uts.jpg',
+    degree: 'Bachelor’s degree in Artificial Intelligence', program: 'Ho Chi Minh City University of Technology–University of Technology Sydney Transnational Education Program',
     period: 'SEP 2025 — EXPECTED MAY 2028', grade: '6.9 / 7.0',
-    summary: 'Studying Artificial Intelligence through the HCMUT–UTS program, with an academic foundation in programming and AI.',
+    summary: 'Studying Artificial Intelligence through the Ho Chi Minh City University of Technology–University of Technology Sydney program, with an academic foundation in programming and AI.',
     activities: ['Class Representative'], skills: ['Python', 'Java'],
     achievements: [
       { title: academicRecognition.title, href: academicRecognition.certificate, linkLabel: 'View Dean’s List certificate' },
-      { title: 'Featured in UTS/HCMUT Student Testimonial', href: studentTestimonialUrl, linkLabel: 'Read my student story' },
+      { title: 'Featured in University of Technology Sydney / Ho Chi Minh City University of Technology Student Testimonial', href: studentTestimonialUrl, linkLabel: 'Read my student story' },
       { title: 'Class Voted Collaborator' },
     ],
   },
   {
-    id: 'gifted', institution: 'VNU-HCM High School for the Gifted', abbreviation: 'PTNK', logo: '/images/schools/gifted.jpg',
+    id: 'gifted', institution: 'High School for the Gifted, Vietnam National University Ho Chi Minh City', logo: '/images/schools/gifted.jpg',
     degree: 'High School Diploma', program: 'Advanced Physics Program',
     period: 'AUG 2022 — JUN 2025', grade: '9.6 / 10',
     summary: 'An advanced physics background that shaped my approach to analytical thinking and technical problem-solving.',
@@ -142,10 +142,10 @@ export const education = [
     achievements: [],
   },
   {
-    id: 'hcmut', institution: 'Ho Chi Minh City University of Technology', abbreviation: 'HCMUT', logo: '/images/schools/hcmut.jpg',
-    degree: 'International Transnational Bachelor of Engineering Program with UTS',
-    program: 'HCMUT–UTS transnational partnership', period: null, grade: null,
-    summary: 'My transnational education connects learning at HCMUT with the University of Technology Sydney within a shared international program.',
+    id: 'hcmut', institution: 'Ho Chi Minh City University of Technology', logo: '/images/schools/hcmut.jpg',
+    degree: 'International Transnational Bachelor of Engineering Program with the University of Technology Sydney',
+    program: 'Ho Chi Minh City University of Technology–University of Technology Sydney transnational partnership', period: null, grade: null,
+    summary: 'My transnational education connects learning at Ho Chi Minh City University of Technology with the University of Technology Sydney within a shared international program.',
     activities: [], skills: [],
     achievements: [],
   },
@@ -183,17 +183,17 @@ export const testimonials = [
   {
     quote: 'Nghia brings strong technical curiosity and turns complex ideas into clear, practical solutions.',
     name: 'Research & Robotics Collaborator',
-    organization: 'IVS Joint Stock Company (Individual Systems)',
+    organization: 'Individual Systems Joint Stock Company',
   },
   {
     quote: 'He combines ownership, communication, and engineering discipline when building tools for real users.',
     name: 'Project Collaborator',
-    organization: 'Best Start English Center (BSEC)',
+    organization: 'Best Start English Center',
   },
   {
     quote: 'Nghia learns quickly, works thoughtfully, and connects software development with real operational needs.',
     name: 'Technology Team Collaborator',
-    organization: 'SDE Digital Technology Co., Ltd.',
+    organization: 'SDE Digital Technology Company Limited',
   },
 ]
 

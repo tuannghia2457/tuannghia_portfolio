@@ -7,7 +7,7 @@ test('Three real company logos disclose the correct roles and can be closed', as
     await img.scrollIntoViewIfNeeded()
     await expect.poll(() => img.evaluate(el => el.complete && el.naturalWidth > 0)).toBeTruthy()
   }
-  const ivs = page.getByRole('button', { name: 'Explore IVS Joint Stock Company' })
+  const ivs = page.getByRole('button', { name: 'Explore Individual Systems Joint Stock Company' })
   await ivs.click(); await expect(ivs).toHaveAttribute('aria-expanded', 'true')
   await expect(panel).toContainText('Voronoi'); await expect(panel).toContainText('APR 2026')
   const bsec = page.getByRole('button', { name: 'Explore Best Start English Center' })
@@ -15,7 +15,7 @@ test('Three real company logos disclose the correct roles and can be closed', as
   await expect(ivs).toHaveAttribute('aria-expanded', 'false')
   await expect(panel.locator('article')).toHaveCount(2)
   await expect(panel).toContainText('200+'); await expect(panel).toContainText('Teaching Assistant')
-  const sde = page.getByRole('button', { name: 'Explore SDE Digital Technology Co., Ltd.' })
+  const sde = page.getByRole('button', { name: 'Explore SDE Digital Technology Company Limited' })
   await sde.click(); await expect(panel).toContainText('Mendix')
   await expect(panel.locator('article')).toHaveCount(1)
   await page.getByRole('button', { name: 'Close company details' }).click()

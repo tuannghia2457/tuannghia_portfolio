@@ -21,7 +21,7 @@ test('Focused homepage, navigation, detail pages, and preserved information', as
   for (const link of await page.locator('.evidence-card-body a').evaluateAll(links => links.map(link => link.getAttribute('href')))) expect((await page.request.get(link)).status()).toBe(200)
   for (const slug of ['aquaguard', 'virtualdouble-ant']) { await page.goto(`/projects/${slug}`); await expect(page.getByRole('heading', { name: 'Technical approach' })).toBeVisible() }
   await page.goto('/research'); await expect(page.locator('.research-records article')).toHaveCount(3)
-  await expect(page.locator('.publication')).toContainText('CTMIA 2026')
+  await expect(page.locator('.publication')).toContainText('Current Topics in Mathematics and Industrial Applications 2026')
   await page.goto('/missing'); await expect(page.locator('h1')).toContainText('off the path')
   expect(errors).toEqual([])
 })

@@ -36,7 +36,7 @@ test('Academic achievements live under Education while Projects show only extern
   await page.goto('/projects')
   await page.getByText('Awards & recognition', { exact: true }).click()
   await expect(page.locator('.award-item')).toHaveCount(6)
-  await expect(page.locator('.awards-section')).toContainText('ADC Hackathon')
+  await expect(page.locator('.awards-section')).toContainText('Accessibility Design Competition Hackathon')
   await expect(page.locator('.awards-section')).not.toContainText('Dean')
   await page.getByText('Certificates & supporting evidence', { exact: true }).click()
   await expect(page.locator('.evidence-card')).toHaveCount(4)

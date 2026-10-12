@@ -7,7 +7,7 @@ export default function Education() { return <section id="education" className="
   <div className="education-layout">
     <div className="education-records">{education.map(item => <details className="education-record school-card" key={item.institution}>
       <summary className="school-summary">
-        <div className="school-identity"><span className="school-logo">{item.logo ? <img src={item.logo} alt="" width="64" height="64" loading="lazy" /> : <span className="mono">{item.abbreviation}</span>}</span><h3 id={`school-name-${item.id}`}>{item.institution}</h3></div>
+        <div className="school-identity"><span className="school-logo">{item.logo && <img src={item.logo} alt="" width="64" height="64" loading="lazy" />}</span><h3 id={`school-name-${item.id}`}>{item.institution}</h3></div>
         <p className="education-degree">{item.degree}{item.id === 'gifted' && ` · ${item.program}`}</p>
         <div className="school-summary-footer">{item.grade && <div className="education-grade"><span className="mono">GPA</span><strong>{item.grade}</strong></div>}<span className="school-expand-label">Details <ChevronDown size={17} aria-hidden="true" /></span></div>
       </summary>
