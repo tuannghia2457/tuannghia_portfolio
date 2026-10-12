@@ -1,4 +1,21 @@
 import { test, expect } from '@playwright/test'
+
+test('Employment disclosures show separate contributions with readable results and matching company details', async ({ page }) => {
+  await page.goto('/experience')
+  const rows = page.locator('.experience-item')
+  for (const [index, count] of [3, 2, 1, 2].entries()) {
+    await rows.nth(index).locator('summary').click()
+    await expect(rows.nth(index).locator('.role-responsibilities li')).toHaveCount(count)
+  }
+  const webRole = rows.nth(1)
+  await expect(webRole.locator('strong')).toContainText(['IELTS assessment platform', '200+ active students per month', 'Playwright automation tool', '3× faster'])
+  await page.getByRole('button', { name: 'Explore Best Start English Center' }).click()
+  const companyRoles = page.locator('.company-role-list article')
+  await expect(companyRoles.first().locator('.role-responsibilities li')).toHaveText(await webRole.locator('.role-responsibilities li').allTextContents())
+  await page.setViewportSize({ width: 320, height: 800 })
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy()
+})
+
 test('Three real company logos disclose the correct roles and can be closed', async ({ page }) => {
   await page.goto('/experience')
   const buttons = page.locator('.company-logo-button'), panel = page.locator('#company-detail-panel')

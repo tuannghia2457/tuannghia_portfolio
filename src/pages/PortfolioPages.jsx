@@ -34,7 +34,7 @@ export function Home({ children }) { return <>
     </div><HomePortrait /></div>
     <div className="editorial-hero-bottom"><a className="text-link mono" href="#work">SELECTED WORK <ArrowDown size={14} /></a><span className="mono">PERCEPTION / ROBOTICS / APPLIED AI</span></div>
   </section>
-  <section id="work" className="home-work section-pad"><div className="compact-heading"><div><p className="section-kicker mono">02 / SELECTED PROJECTS</p><h2>From perception to impact.</h2></div><Link className="text-link" to="/projects">All projects <ArrowRight size={17} /></Link></div><ProjectCards /></section><Background /><Skills /><section className="supporting-section section-pad"><details><summary>Words from collaborators</summary><Testimonials /></details></section><ContactInfo />{children}
+  <section id="work" className="home-work section-pad"><div className="compact-heading"><div><p className="section-kicker mono">02 / SELECTED PROJECTS</p><h2>From perception to impact.</h2></div><Link className="text-link" to="/projects">All projects <ArrowRight size={17} /></Link></div><ProjectCards /></section><Background /><Skills /><Testimonials /><ContactInfo />{children}
 </> }
 export function ExperiencePage() { return <><PageIntro label="EXPERIENCE / COMPANY WORK" title="Experience">My roles, responsibilities, and technical contributions within the companies I’ve worked with.</PageIntro><Experience /><Companies /><ConnectCTA /></> }
 export function EducationPage() { return <><PageIntro label="EDUCATION / ACADEMIC FOUNDATION" title="A foundation for what’s next">My education, academic achievements, and language skills — the foundation behind my engineering work.</PageIntro><Education /><CourseCertificates /><ConnectCTA /></> }

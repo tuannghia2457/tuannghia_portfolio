@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { ChevronDown, X } from 'lucide-react'
 import { experience } from '../portfolio-data'
+import RoleResponsibilities from './RoleResponsibilities'
 import './company-explorer.css'
 
 const companies = [
@@ -28,7 +29,7 @@ export default function CompanyExplorer() {
         <div className="company-role-list">{company.roles.map(index => {
           const role = experience[index]
           return <article key={role.title}><div className="company-role-heading"><h4>{role.title}</h4><span className="mono">{role.period}</span></div><p className="company-role-location">{role.location}</p>
-            <ul>{role.description.split(/(?<=\.)\s+(?=[A-Z])/).map(item => <li key={item}>{item}</li>)}</ul><div className="tag-list">{role.stack.split(' · ').map(tool => <span className="tag mono" key={tool}>{tool}</span>)}</div>
+            <RoleResponsibilities items={role.responsibilities} /><div className="tag-list">{role.stack.split(' · ').map(tool => <span className="tag mono" key={tool}>{tool}</span>)}</div>
           </article>
         })}</div>
       </div>}

@@ -48,7 +48,23 @@ details > summary:hover { color: var(--accent-foreground); text-decoration: unde
 .toolkit-grid > div { display: flex; flex-direction: column; gap: 9px; padding: 22px 16px 22px 0; border-bottom: var(--line); }
 .toolkit-grid .mono { font-size: 9px; color: var(--muted-foreground); }
 .toolkit-grid strong { font-size: 21px; font-weight: 500; }
-.experience-details p { color: var(--muted-foreground); font-size: 14px; line-height: 1.85; padding-bottom: 20px; }
+.role-responsibilities { padding-left: 21px; margin-block: 12px 20px; }
+.role-responsibilities li { padding-left: 7px; margin-bottom: 14px; color: var(--muted-foreground); font-size: 14px; line-height: 1.85; }
+.role-responsibilities li::marker { color: var(--foreground); }
+.role-responsibilities strong { color: var(--foreground); font-weight: 600; }
+.testimonials-section { padding-block: 64px; border-top: var(--line); border-bottom: var(--line); }
+.testimonials-heading { margin-block: 20px 30px; }
+.testimonials-heading h2 { font: 500 clamp(28px, 3.6vw, 43px)/1.2 var(--display); letter-spacing: -.035em; }
+.testimonials-heading > p { color: var(--muted-foreground); font-size: 15px; line-height: 1.8; margin-top: 14px; }
+.testimonials-pending { display: flex; align-items: center; gap: 28px; padding: clamp(24px, 4vw, 40px); border: var(--line); border-radius: var(--radius); background: var(--surface); }
+.testimonial-pending-mark { color: var(--muted-foreground); font: 500 76px/1 var(--display); }
+.testimonials-pending h3 { font-size: 20px; font-weight: 500; line-height: 1.4; margin-bottom: 10px; }
+.testimonials-pending p { max-width: 580px; color: var(--muted-foreground); font-size: 14px; line-height: 1.8; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 20px; }
+.testimonial-card { margin: 0; padding: 28px; background: var(--surface); border: var(--line); border-radius: var(--radius); }
+.testimonial-card blockquote { margin: 0 0 28px; font-size: 19px; line-height: 1.7; }
+.testimonial-card figcaption { display: grid; gap: 8px; font-size: 14px; line-height: 1.7; }
+.testimonial-card figcaption span { color: var(--muted-foreground); }
 .project-detail { padding-block: 44px 70px; }
 .project-detail > .section-kicker { margin-top: 40px; }
 .detail-lead { max-width: 750px; font-size: 21px; line-height: 1.6; color: var(--muted-foreground); }

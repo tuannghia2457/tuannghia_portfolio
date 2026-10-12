@@ -43,7 +43,29 @@ export const experience = [
     title: 'Computer Vision Research Assistant',
     organization: 'Individual Systems Joint Stock Company · Internship',
     logo: '/images/company-logos/ivs.png',
-    description: 'UAV Localization: Developing a GNSS-denied UAV localization system using computer vision, canopy segmentation, Voronoi diagrams, and geometric matching. Autonomous Robot Navigation: Implementing perception-based path planning and graph construction for autonomous navigation in limited-visibility environments. LiDAR-Based Pothole Detection: Developing and testing pothole detection and autonomous navigation using LiDAR, ROS, Gazebo, and JetTank.',
+    responsibilities: [
+      {
+        "text": "Developing a GNSS-denied UAV localization system using computer vision, canopy segmentation, Voronoi diagrams, and geometric matching.",
+        "highlights": [
+          "GNSS-denied UAV localization",
+          "geometric matching"
+        ]
+      },
+      {
+        "text": "Implementing perception-based path planning and graph construction for autonomous robot navigation in limited-visibility environments.",
+        "highlights": [
+          "perception-based path planning",
+          "graph construction"
+        ]
+      },
+      {
+        "text": "Developing and testing pothole detection and autonomous navigation using LiDAR, ROS, Gazebo, and JetTank.",
+        "highlights": [
+          "pothole detection",
+          "LiDAR, ROS, Gazebo, and JetTank"
+        ]
+      }
+    ],
     stack: 'ROS · C++ · Computer Vision · LiDAR · Gazebo · JetTank',
     location: 'Ho Chi Minh City, Vietnam · On-site',
   },
@@ -52,7 +74,22 @@ export const experience = [
     title: 'Web Developer',
     organization: 'Best Start English Center · Part-time',
     logo: '/images/company-logos/bsec_ielts.jpg',
-    description: 'Co-developed an IELTS assessment platform using Proqyz, HTML, and CSS for 200+ active students per month. Developed a Playwright automation tool that automated IELTS content uploads on the web platform, making the deployment process 3× faster.',
+    responsibilities: [
+      {
+        "text": "Co-developed an IELTS assessment platform using Proqyz, HTML, and CSS for 200+ active students per month.",
+        "highlights": [
+          "IELTS assessment platform",
+          "200+ active students per month"
+        ]
+      },
+      {
+        "text": "Developed a Playwright automation tool for IELTS content uploads, making the deployment process 3× faster.",
+        "highlights": [
+          "Playwright automation tool",
+          "3× faster"
+        ]
+      }
+    ],
     stack: 'Web Application Development · Stakeholder Management · Playwright',
     location: 'Ho Chi Minh City, Vietnam · Remote',
   },
@@ -61,7 +98,15 @@ export const experience = [
     title: 'Teaching Assistant',
     organization: 'Best Start English Center · Part-time',
     logo: '/images/company-logos/bsec_ielts.jpg',
-    description: 'Coached IELTS Writing & Speaking for classes of 8–12 students.',
+    responsibilities: [
+      {
+        "text": "Coached IELTS Writing & Speaking for classes of 8–12 students.",
+        "highlights": [
+          "IELTS Writing & Speaking",
+          "8–12 students"
+        ]
+      }
+    ],
     stack: 'Communication · Assistant Teaching · IELTS',
     location: 'Ho Chi Minh City, Vietnam · On-site',
   },
@@ -70,7 +115,21 @@ export const experience = [
     title: 'Low-Code Application Developer',
     organization: 'SDE Digital Technology Company Limited · Internship',
     logo: '/images/company-logos/logo-sde-tech.webp',
-    description: 'Developed a time-tracking web app and supported automation for footwear quality inspection.',
+    responsibilities: [
+      {
+        "text": "Developed a time-tracking web app.",
+        "highlights": [
+          "time-tracking web app"
+        ]
+      },
+      {
+        "text": "Supported automation for footwear quality inspection.",
+        "highlights": [
+          "automation",
+          "footwear quality inspection"
+        ]
+      }
+    ],
     stack: 'Mendix · Python · Automation · Web Development',
     location: 'Ho Chi Minh City, Vietnam · On-site',
   },
@@ -185,16 +244,19 @@ export const technicalSkills = [
 
 export const testimonials = [
   {
+    published: false, // Draft copy: awaiting the owner’s approved quote and named author.
     quote: 'Nghia brings strong technical curiosity and turns complex ideas into clear, practical solutions.',
     name: 'Research & Robotics Collaborator',
     organization: 'Individual Systems Joint Stock Company',
   },
   {
+    published: false, // Draft copy: awaiting the owner’s approved quote and named author.
     quote: 'He combines ownership, communication, and engineering discipline when building tools for real users.',
     name: 'Project Collaborator',
     organization: 'Best Start English Center',
   },
   {
+    published: false, // Draft copy: awaiting the owner’s approved quote and named author.
     quote: 'Nghia learns quickly, works thoughtfully, and connects software development with real operational needs.',
     name: 'Technology Team Collaborator',
     organization: 'SDE Digital Technology Company Limited',

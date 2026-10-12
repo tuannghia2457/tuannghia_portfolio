@@ -1,5 +1,16 @@
 import { test, expect } from '@playwright/test'
 
+test('Testimonials is visible before contact and waits for the owner’s real recommendations', async ({ page }) => {
+  await page.goto('/#testimonials')
+  const section = page.locator('#testimonials')
+  await expect(section.getByRole('heading', { name: 'Words from collaborators.' })).toBeVisible()
+  await expect(section).toContainText('Recommendations coming soon.')
+  await expect(section.locator('blockquote')).toHaveCount(0)
+  expect(await section.evaluate(el => Boolean(el.compareDocumentPosition(document.querySelector('#contact')) & Node.DOCUMENT_POSITION_FOLLOWING))).toBeTruthy()
+  await page.setViewportSize({ width: 320, height: 800 })
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy()
+})
+
 test('Home holds personal content while Experience holds employment and legacy links redirect', async ({ page }) => {
   await page.goto('/')
   await expect(page.getByRole('navigation').getByRole('link')).toHaveText(['Home', 'Experience', 'Projects', 'Research', 'Education'])

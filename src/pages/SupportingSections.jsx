@@ -1,41 +1,10 @@
-import { useEffect, useState } from 'react'
-import { ArrowLeft, ArrowRight, ArrowUpRight, ExternalLink, FileText, Download, Mail } from 'lucide-react'
+import { ArrowUpRight, ExternalLink, FileText, Download, Mail } from 'lucide-react'
 import { experience, awards, evidence, technicalSkills, testimonials } from '../portfolio-data'
 import { profile } from '../profile'
 import CompanyExplorer from '../components/CompanyExplorer'
+import RoleResponsibilities from '../components/RoleResponsibilities'
 import './recognition.css'
 import { Link } from 'react-router-dom'
-function TestimonialsSlideshow() {
-  const [index, setIndex] = useState(0)
-  const [paused, setPaused] = useState(false)
-  const testimonial = testimonials[index]
-
-  useEffect(() => {
-    if (paused || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
-    const timer = window.setInterval(() => setIndex(current => (current + 1) % testimonials.length), 5000)
-    return () => window.clearInterval(timer)
-  }, [paused])
-
-  const move = (direction) => setIndex(current => (current + direction + testimonials.length) % testimonials.length)
-
-  return (
-    <div className="testimonials-showcase" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocus={() => setPaused(true)} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false) }}>
-      <article className="testimonial-slide" aria-live="polite">
-        <span className="testimonial-mark" aria-hidden="true">“</span>
-        <blockquote>{testimonial.quote}</blockquote>
-        <div className="testimonial-attribution"><strong>{testimonial.name}</strong><span className="mono">{testimonial.organization}</span></div>
-      </article>
-      <div className="testimonials-controls">
-        <span className="mono">{String(index + 1).padStart(2, '0')} <span>/ {String(testimonials.length).padStart(2, '0')}</span></span>
-        <div className="skills-dots" role="group" aria-label="Choose testimonial">
-          {testimonials.map((item, dotIndex) => <button key={item.organization} type="button" className={dotIndex === index ? 'is-active' : ''} aria-label={`Show testimonial from ${item.organization}`} aria-current={dotIndex === index ? 'true' : undefined} onClick={() => setIndex(dotIndex)} />)}
-        </div>
-        <div className="skills-arrows"><button type="button" onClick={() => move(-1)} aria-label="Previous testimonial"><ArrowLeft size={18} /></button><button type="button" onClick={() => move(1)} aria-label="Next testimonial"><ArrowRight size={18} /></button></div>
-      </div>
-    </div>
-  )
-}
-
 export function Background() { return (<section id="about" className="about-section section-pad" aria-labelledby="about-title">
           <div className="section-kicker mono">01 / BACKGROUND</div>
           <div className="about-grid">
@@ -53,7 +22,7 @@ export function Experience() { return (<section id="experience" className="exper
             {experience.map((item) => (
               <article className="experience-item" key={`${item.organization}-${item.title}`}>
                 <div className="experience-meta"><p className="experience-period mono">{item.period}</p><img className="experience-company-logo" src={item.logo} alt={`${item.organization.split(' · ')[0]} logo`} width="220" height="160" loading="lazy" decoding="async" /></div>
-                <div className="experience-main"><h3>{item.title}</h3><p className="experience-org">{item.organization}</p>{item.location && <p className="experience-location mono">{item.location}</p>}<details className="experience-details"><summary>Responsibilities & contributions</summary><p>{item.description}</p></details><div className="experience-stack tag-list" aria-label="Skills and tools">{item.stack.split(' · ').map(skill => <span className="tag mono" key={skill}>{skill}</span>)}</div></div>
+                <div className="experience-main"><h3>{item.title}</h3><p className="experience-org">{item.organization}</p>{item.location && <p className="experience-location mono">{item.location}</p>}<details className="experience-details"><summary>Responsibilities & contributions</summary><RoleResponsibilities items={item.responsibilities} /></details><div className="experience-stack tag-list" aria-label="Skills and tools">{item.stack.split(' · ').map(skill => <span className="tag mono" key={skill}>{skill}</span>)}</div></div>
                 <ArrowUpRight className="experience-icon" size={22} />
               </article>
             ))}
@@ -62,11 +31,14 @@ export function Experience() { return (<section id="experience" className="exper
 
 export function Companies() { return <CompanyExplorer /> }
 
-export function Testimonials() { return (<section id="testimonials" className="testimonials-section section-pad section-inverted" aria-labelledby="testimonials-title">
-          <div className="section-kicker mono">WORDS FROM COLLABORATORS</div>
-          <div className="testimonials-heading"><h2 id="testimonials-title">What working<br /><em>together feels like.</em></h2><p>A few words that reflect the way I collaborate across research, education, and technology teams.</p></div>
-          <TestimonialsSlideshow />
-        </section>) }
+export function Testimonials() {
+  const published = testimonials.filter(item => item.published)
+  return <section id="testimonials" className="testimonials-section section-pad" aria-labelledby="testimonials-title">
+    <p className="section-kicker mono">TESTIMONIALS</p>
+    <div className="testimonials-heading"><h2 id="testimonials-title">Words from collaborators.</h2><p>Perspectives from the people I’ve worked with.</p></div>
+    {published.length ? <div className="testimonials-grid">{published.map(item => <figure className="testimonial-card" key={item.name + item.organization}><blockquote>{item.quote}</blockquote><figcaption><strong>{item.name}</strong><span>{item.organization}</span></figcaption></figure>)}</div> : <div className="testimonials-pending"><span className="testimonial-pending-mark" aria-hidden="true">“</span><div><h3>Recommendations coming soon.</h3><p>This space is reserved for collaborators’ recommendations, with their names and roles.</p></div></div>}
+  </section>
+}
 
 export function Evidence() { return (<section id="evidence" className="evidence-section section-pad" aria-labelledby="evidence-title">
           <div className="section-kicker mono">SUPPORTING EVIDENCE</div>
