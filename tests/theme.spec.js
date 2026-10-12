@@ -26,7 +26,7 @@ async function textContrast(page) {
 }
 test('Every route stays light with accessible text, including expanded content', async ({ page }) => {
   await page.emulateMedia({ colorScheme: 'dark', reducedMotion: 'reduce' })
-  for (const path of ['/', '/about', '/projects', '/research', '/contact', '/projects/aquaguard', '/projects/pothole-surface-reconstruction', '/projects/virtualdouble-ant']) {
+  for (const path of ['/', '/about', '/projects', '/research', '/education', '/contact', '/projects/aquaguard', '/projects/pothole-surface-reconstruction', '/projects/virtualdouble-ant']) {
     await page.goto(path); await expect(page.locator('h1')).toHaveCount(1)
     await page.locator('details').evaluateAll(nodes => nodes.forEach(el => el.open = true))
     expect(await page.evaluate(() => getComputedStyle(document.documentElement).colorScheme)).toBe('light')

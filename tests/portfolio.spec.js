@@ -5,13 +5,14 @@ test('Focused homepage, navigation, detail pages, and preserved information', as
   await expect(page.locator('h1')).toHaveCount(1)
   await expect(page.locator('.curated-card')).toHaveCount(3)
   await expect(page.locator('#experience')).toHaveCount(0)
-  await expect(page.locator('.site-header nav a')).toHaveCount(5)
+  await expect(page.locator('.site-header nav a')).toHaveCount(6)
   expect(await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--background').trim())).toBe('#FAF9F6')
   await page.locator('.curated-card').first().click()
   await expect(page).toHaveURL(/projects\/pothole-surface-reconstruction/)
   await expect(page.getByRole('heading', { name: 'My contributions' })).toBeVisible()
   await page.goBack(); await expect(page.locator('h1')).toContainText('Nghia')
-  await page.goto('/about'); await expect(page.getByText('IELTS', { exact: true })).toBeVisible()
+  await page.goto('/education'); await expect(page.getByText('IELTS', { exact: true })).toBeVisible()
+  await page.goto('/about')
   await expect(page.locator('.experience-item')).toHaveCount(4)
   await page.locator('.experience-details').first().locator('summary').click()
   await expect(page.locator('.experience-details').first()).toContainText('Voronoi')
@@ -28,7 +29,7 @@ test('Responsive pages and accessible mobile navigation', async ({ page }) => {
   const errors = []; page.on('pageerror', error => errors.push(error.message))
   for (const width of [1440, 768, 390, 320]) {
     await page.setViewportSize({ width, height: 900 })
-    for (const path of ['/', '/about', '/projects', '/research', '/contact', '/projects/pothole-surface-reconstruction']) {
+    for (const path of ['/', '/about', '/projects', '/research', '/education', '/contact', '/projects/pothole-surface-reconstruction']) {
       await page.goto(path)
       await expect(page.locator('h1'), `${width}px ${path}: ${errors.join('; ')}`).toHaveCount(1)
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy()

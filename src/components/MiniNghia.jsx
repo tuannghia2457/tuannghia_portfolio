@@ -13,6 +13,7 @@ const SECTION_MESSAGES = {
   experience: ['Research, product, teaching — each experience changes how I build.', 'The toolkit grows with every project.'],
   evidence: ['The certificates tell a small part of the story.', 'Curiosity is good. Evidence makes it stronger.'],
   about: ['Hello from Ho Chi Minh City.', 'Technical curiosity, human problems. That’s the thread.'],
+  education: ['Every useful system starts with something learned.', 'Academic foundations, practical curiosity. Keep learning.'],
   contact: ['Have a research question or a project idea? Say hello.', 'The full-size Tuan Nghia is just an email away.'],
 }
 

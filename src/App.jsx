@@ -3,10 +3,10 @@ import { BrowserRouter, Link, NavLink, Route, Routes, useLocation } from 'react-
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 import MiniNghia from './components/MiniNghia'
 import { profile } from './profile'
-import { Home, About, Projects, ProjectDetail, Research, Contact, NotFound } from './pages/PortfolioPages'
+import { Home, About, Projects, ProjectDetail, Research, EducationPage, Contact, NotFound } from './pages/PortfolioPages'
 
 const SmileDemo = lazy(() => import('./components/SmileDemo'))
-const navigation = [['/', 'Home'], ['/about', 'About'], ['/projects', 'Projects'], ['/research', 'Research'], ['/contact', 'Contact']]
+const navigation = [['/', 'Home'], ['/about', 'About'], ['/projects', 'Projects'], ['/research', 'Research'], ['/education', 'Education'], ['/contact', 'Contact']]
 function Shell() {
   const location = useLocation()
   const [menuOpen, setMenuOpen] = useState(false)
@@ -37,6 +37,7 @@ function Shell() {
       <Route path="/" element={<Home />} /><Route path="/about" element={<About />} />
       <Route path="/projects" element={<Projects />} /><Route path="/projects/:slug" element={<ProjectDetail />} />
       <Route path="/research" element={<Research />} />
+      <Route path="/education" element={<EducationPage />} />
       <Route path="/contact" element={<Contact><Suspense fallback={<div className="section-pad demo-loading" role="status">Loading Smile to Collaborate…</div>}><SmileDemo /></Suspense></Contact>} />
       <Route path="*" element={<NotFound />} />
     </Routes></div></main>

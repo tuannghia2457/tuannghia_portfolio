@@ -1,6 +1,6 @@
 # Tuan Nghia — Warm Ivory Portfolio
 
-React 18 + Vite portfolio with Home, About, Projects, Research, Contact, dedicated project pages, Mini Tom, and one optional local computer vision demo: **Smile to Collaborate**. Existing projects, experience, skills, awards, certificates, and contact destinations are preserved.
+React 18 + Vite portfolio with Home, About, Projects, Research, Education, Contact, dedicated project pages, Mini Nghia, and one optional local computer vision demo: **Smile to Collaborate**. Existing projects, experience, skills, awards, certificates, and contact destinations are preserved.
 
 ## Run
 
