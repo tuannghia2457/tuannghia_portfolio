@@ -53,7 +53,7 @@ export function Experience() { return (<section id="experience" className="exper
             {experience.map((item) => (
               <article className="experience-item" key={`${item.organization}-${item.title}`}>
                 <div className="experience-meta"><p className="experience-period mono">{item.period}</p><img className="experience-company-logo" src={item.logo} alt={`${item.organization.split(' · ')[0]} logo`} width="220" height="160" loading="lazy" decoding="async" /></div>
-                <div className="experience-main"><h3>{item.title}</h3><p className="experience-org">{item.organization}</p>{item.location && <p className="experience-location mono">{item.location}</p>}<details className="experience-details"><summary>Responsibilities & contributions</summary><p>{item.description}</p></details><span className="experience-stack mono">{item.stack}</span></div>
+                <div className="experience-main"><h3>{item.title}</h3><p className="experience-org">{item.organization}</p>{item.location && <p className="experience-location mono">{item.location}</p>}<details className="experience-details"><summary>Responsibilities & contributions</summary><p>{item.description}</p></details><div className="experience-stack tag-list" aria-label="Skills and tools">{item.stack.split(' · ').map(skill => <span className="tag mono" key={skill}>{skill}</span>)}</div></div>
                 <ArrowUpRight className="experience-icon" size={22} />
               </article>
             ))}
