@@ -52,12 +52,8 @@ details > summary:hover { color: var(--accent-foreground); text-decoration: unde
 .role-responsibilities li { padding-left: 7px; margin-bottom: 14px; color: var(--muted-foreground); font-size: 14px; line-height: 1.85; }
 .role-responsibilities li::marker { color: var(--foreground); }
 .role-responsibilities strong { color: var(--foreground); font-weight: 600; }
-.company-milestones { margin-block: 24px; padding: 22px; background: var(--surface-alt); border: var(--line); border-radius: var(--radius); scroll-margin-top: 100px; }
-.company-milestones h4 { font-size: 20px; font-weight: 500; line-height: 1.4; margin-block: 14px 12px; }
-.company-milestones article > p, .company-milestones details > p, .company-milestones li { font-size: 14px; line-height: 1.85; color: var(--muted-foreground); }
-.company-milestones .milestone-result { margin-top: 16px; }
-.milestone-result strong { color: var(--foreground); font-weight: 500; }
-.company-milestones ul { padding-left: 20px; margin-block: 16px; }
+.company-milestones { margin-block: 18px; scroll-margin-top: 100px; }
+.company-milestones > p { color: var(--muted-foreground); font-size: 13px; line-height: 1.8; }
 .testimonials-section { padding-block: 64px; border-top: var(--line); border-bottom: var(--line); }
 .testimonials-heading { margin-block: 20px 30px; }
 .testimonials-heading h2 { font: 500 clamp(28px, 3.6vw, 43px)/1.2 var(--display); letter-spacing: -.035em; }
