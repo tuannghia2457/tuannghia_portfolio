@@ -17,7 +17,7 @@ test('Tom branding uses the preserved pixel asset and the focused hero keeps wor
   await expect(page.locator('h1')).toContainText('Nghia')
   await expect(page.locator('link[rel="icon"]')).toHaveAttribute('href', '/images/personal-images/pixel.png?v=tom')
   await expect(page.locator('.hero-greeting')).toContainText('TUAN NGHIA')
-  await expect(page.locator('.hero-statement')).toContainText('Computer Vision Engineer')
+  await expect(page.locator('.hero-statement')).toHaveText('AI Engineer')
   await expect(page.locator('.editorial-portrait img')).toHaveAttribute('src', '/images/optimized/portrait.jpg')
   await expect(page.getByRole('link', { name: 'Request Resume' })).toHaveAttribute('href', /^mailto:.*Resume/)
   await page.getByRole('link', { name: 'Explore My Work' }).click()

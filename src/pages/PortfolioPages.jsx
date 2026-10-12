@@ -24,7 +24,7 @@ export function Home() { return <>
       <p className="hero-location-label mono"><span className="status-dot" />{profile.location}</p>
       <p className="hero-greeting mono">HELLO, I’M {profile.displayName.toUpperCase()}</p>
       <h1 id="hero-title">Tuan<br />Nghia<span className="period">.</span></h1>
-      <p className="hero-statement">Computer Vision Engineer<br className="hero-role-break" /> & AI Researcher</p>
+      <p className="hero-statement">AI Engineer</p>
       <p className="hero-description">I build intelligent systems that help machines understand the visual world, with a focus on computer vision, robotics, and real-world AI applications.</p>
       <div className="hero-actions"><Link className="button button-primary" to="/projects">Explore My Work <ArrowUpRight size={18} /></Link>
         {profile.resumeUrl ? <a className="button hero-secondary" href={profile.resumeUrl} download>Download Resume <Download size={16} /></a> : <a className="button hero-secondary" href="mailto:trantuannghia2457@gmail.com?subject=Resume%20request&body=Hi%20Tuan%20Nghia%2C%0A%0AI%27d%20love%20to%20learn%20more%20about%20your%20experience.%20Could%20you%20share%20your%20resume%3F">Request Resume <Mail size={16} /></a>}
