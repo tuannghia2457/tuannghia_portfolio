@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import { ArrowRight, ArrowUpRight, ArrowLeft, ArrowDown, Download, Mail } from 'lucide-react'
 import HomePortrait from './HomePortrait'
+import Education from '../components/Education'
 import { Background, Experience, Companies, Testimonials, Awards, Evidence, Skills, ContactInfo } from './SupportingSections'
 import { projects } from '../portfolio-data'
 import { projectDetails, projectOrder } from '../project-details'
@@ -34,7 +35,7 @@ export function Home() { return <>
   </section>
   <section id="work" className="home-work section-pad"><div className="compact-heading"><div><p className="section-kicker mono">02 / SELECTED PROJECTS</p><h2>From perception to impact.</h2></div><Link className="text-link" to="/projects">All projects <ArrowRight size={17} /></Link></div><ProjectCards /></section><ConnectCTA />
 </> }
-export function About() { return <><PageIntro label="ABOUT / THE HUMAN IN THE LOOP" title="Curiosity, with purpose">A background in AI, a focus on perception, and a belief that useful technology starts with people.</PageIntro><Background /><Experience /><Skills /><Companies /><section className="supporting-section section-pad"><details><summary>Words from collaborators</summary><Testimonials /></details><details><summary>Awards & academic recognition</summary><Awards /></details></section><ConnectCTA /></> }
+export function About() { return <><PageIntro label="ABOUT / THE HUMAN IN THE LOOP" title="Curiosity, with purpose">A background in AI, a focus on perception, and a belief that useful technology starts with people.</PageIntro><Background /><Education /><Experience /><Skills /><Companies /><section className="supporting-section section-pad"><details><summary>Words from collaborators</summary><Testimonials /></details></section><ConnectCTA /></> }
 export function Projects() { return <><PageIntro label="PROJECTS / SELECTED WORK" title="Systems for real problems">Computer vision research, human-centered AI, and products with practical impact. Open a project to explore my role, approach, and results.</PageIntro><section id="work" className="project-index section-pad"><ProjectCards /></section><section className="supporting-section section-pad"><details><summary>Awards & recognition</summary><Awards /></details><details><summary>Certificates & supporting evidence</summary><Evidence /></details></section><ConnectCTA /></> }
 export function ProjectDetail() {
   const { slug } = useParams(), detail = projectDetails[slug]

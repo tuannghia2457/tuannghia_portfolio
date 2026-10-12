@@ -38,7 +38,7 @@ export function Background() { return (<section id="about" className="about-sect
           <div className="section-kicker mono">01 / BACKGROUND</div>
           <div className="about-grid">
             <div><h2 id="about-title">Technical<br /><em>by nature.</em><br />Human by choice.</h2></div>
-            <div className="about-copy"><p>Hello, I’m Tuan Nghia — an Artificial Intelligence undergraduate at UTS through the HCMUT–UTS program.</p><p>I’m currently a research assistant at IVS, working on robotics and computer vision. I’m also a co-founder of Odylytics and part of the team building AquaGuard, a flood-response platform in Vietnam.</p><p>Across research, product, teaching, and public speaking, I’m interested in the same question: how can we make technology technically strong and genuinely useful to people?</p><div className="about-details"><div><span className="mono">EDUCATION</span><strong>UTS · Bachelor’s in Artificial Intelligence</strong></div><div><span className="mono">LANGUAGES</span><strong>English · Vietnamese · Japanese</strong></div><div><span className="mono">IELTS</span><strong>8.0</strong></div></div></div>
+            <div className="about-copy"><p>Hello, I’m Tuan Nghia — an Artificial Intelligence undergraduate at UTS through the HCMUT–UTS program.</p><p>I’m currently a research assistant at IVS, working on robotics and computer vision. I’m also a co-founder of Odylytics and part of the team building AquaGuard, a flood-response platform in Vietnam.</p><p>Across research, product, teaching, and public speaking, I’m interested in the same question: how can we make technology technically strong and genuinely useful to people?</p></div>
           </div>
         </section>) }
 
@@ -68,7 +68,7 @@ export function Testimonials() { return (<section id="testimonials" className="t
 
 export function Evidence() { return (<section id="evidence" className="evidence-section section-pad" aria-labelledby="evidence-title">
           <div className="section-kicker mono">SUPPORTING EVIDENCE</div>
-          <div className="evidence-header"><h2 id="evidence-title">The work,<br /><em>documented.</em></h2><p>Certificates and academic recognition behind the projects and milestones.</p></div>
+          <div className="evidence-header"><h2 id="evidence-title">The work,<br /><em>documented.</em></h2><p>Certificates behind the projects and competition milestones.</p></div>
           <div className="evidence-grid">
             {evidence.map((item) => (
               <article className={`evidence-card ${item.preview ? '' : 'evidence-card-document'}`} key={`${item.title}-${item.type}`}>
@@ -100,7 +100,7 @@ export function ContactInfo() { return (<section id="contact" className="contact
         </section>) }
 
 export function Awards() { return (<section className="awards-section section-pad section-accent" aria-labelledby="awards-title">
-          <div className="awards-header"><h2 id="awards-title">Proof,<br /><em>not noise.</em></h2><p>Awards are supporting evidence of the work — never the whole story.</p></div>
+          <div className="awards-header"><h2 id="awards-title">Proof,<br /><em>not noise.</em></h2><p>Recognition earned through projects, competitions, and real-world work.</p></div>
           <div className="awards-list">{awards.map(([number, award, event, project]) => <div className="award-item" key={event}><span className="award-number mono">{number}</span><strong>{award}</strong><span>{event}</span><span className="award-project mono">{project}</span></div>)}</div>
         </section>) }
 

@@ -16,7 +16,7 @@ test('Focused homepage, navigation, detail pages, and preserved information', as
   await page.locator('.experience-details').first().locator('summary').click()
   await expect(page.locator('.experience-details').first()).toContainText('Voronoi')
   await page.goto('/projects'); await page.getByText('Certificates & supporting evidence', { exact: true }).click()
-  await expect(page.locator('.evidence-card')).toHaveCount(5)
+  await expect(page.locator('.evidence-card')).toHaveCount(4)
   for (const link of await page.locator('.evidence-card-body a').evaluateAll(links => links.map(link => link.getAttribute('href')))) expect((await page.request.get(link)).status()).toBe(200)
   for (const slug of ['aquaguard', 'virtualdouble-ant']) { await page.goto(`/projects/${slug}`); await expect(page.getByRole('heading', { name: 'Technical approach' })).toBeVisible() }
   await page.goto('/research'); await expect(page.locator('.research-records article')).toHaveCount(3)

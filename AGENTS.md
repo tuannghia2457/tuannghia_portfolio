@@ -31,6 +31,8 @@ Use charcoal `--on-primary` labels on orange fills. Orange is unsuitable for sma
 
 ## Preserve functionality and content
 
+Keep project recognition separate from academic achievements. Projects/Awards and project certificate sections contain only external project/competition results. Education, grades, IELTS, language proficiency, Dean's List and its certificate belong together under the About page's Education & academic achievements section. Preserve academic information there rather than deleting it or returning it to project awards.
+
 The display name is **Tuan Nghia**. Use **TOM only beside the pixel icon in the top-left header**. Hero, greetings, page titles, footer, portrait labels, and email drafts use Tuan Nghia; the companion retains its original name Mini Nghia. The formal name remains Tran Tuan Nghia. Keep real email/account URLs and certificate filenames intact. `src/profile.js` defines identity and brand assets. The pixel portrait icon and favicon live in `public/images/personal-images/pixel.png`; do not keep their only copy in generated `dist`. The header wordmark may use expressive lettering and brief hover/focus motion, with reduced-motion support.
 
 Retain the five-page navigation, project detail routes, original portfolio facts and evidence, upright portrait, Mini Nghia, and optional Smile to Collaborate demo. Camera frames stay local; email actions open drafts and never send automatically. Do not invent project results or publication links.

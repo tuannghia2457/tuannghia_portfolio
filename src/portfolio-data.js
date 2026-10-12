@@ -78,8 +78,7 @@ export const awards = [
   ['03', '1st Place', 'OISP Presentation Contest 2025', 'AquaGuard'],
   ['04', 'Finalist', 'InnoStars', 'AquaGuard'],
   ['05', 'Recognition', 'Leave A Nest', 'AquaGuard'],
-  ['06', "Dean's List", 'University of Technology Sydney', 'Academic recognition'],
-  ['07', 'Finalist', 'ADC Hackathon 2026', 'VirtualDouble / ANT'],
+  ['06', 'Finalist', 'ADC Hackathon 2026', 'VirtualDouble / ANT'],
 ]
 
 export const evidence = [
@@ -114,14 +113,16 @@ export const evidence = [
     link: '/images/competitions-certifications/OPC25/Golden%20Ticket_AquaGuardian.pdf',
     linkLabel: 'Open Golden Ticket',
   },
-  {
-    title: "Dean's List",
-    type: 'Academic recognition',
-    description: 'University of Technology Sydney academic recognition.',
-    link: '/images/competitions-certifications/UTS/26227165_TuanNghiaTran_DeanList.pdf',
-    linkLabel: "Open Dean's List certificate",
-  },
 ]
+
+export const education = [
+  { institution: 'University of Technology Sydney', degree: 'Bachelor’s degree in Artificial Intelligence', program: 'HCMUT–UTS Transnational Education Program', period: 'SEP 2025 — EXPECTED MAY 2028', grade: '6.9 / 7.0' },
+  { institution: 'VNU-HCM High School for the Gifted', degree: 'High School Diploma', program: 'Advanced Physics Program', period: 'AUG 2022 — JUN 2025', grade: '9.6 / 10' },
+]
+export const academicRecognition = {
+  title: 'Dean’s List', institution: 'University of Technology Sydney',
+  certificate: '/images/competitions-certifications/UTS/26227165_TuanNghiaTran_DeanList.pdf',
+}
 
 export const technicalSkills = [
   { name: 'Python', category: 'Programming', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
