@@ -3,6 +3,8 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, ExternalLink, FileText, Download, 
 import { experience, awards, evidence, technicalSkills, testimonials } from '../portfolio-data'
 import { profile } from '../profile'
 import CompanyExplorer from '../components/CompanyExplorer'
+import './recognition.css'
+import { Link } from 'react-router-dom'
 function TestimonialsSlideshow() {
   const [index, setIndex] = useState(0)
   const [paused, setPaused] = useState(false)
@@ -99,9 +101,13 @@ export function ContactInfo() { return (<section id="contact" className="contact
           </div><ContactCV /></div></div>
         </section>) }
 
-export function Awards() { return (<section className="awards-section section-pad section-accent" aria-labelledby="awards-title">
-          <div className="awards-header"><h2 id="awards-title">Proof,<br /><em>not noise.</em></h2><p>Recognition earned through projects, competitions, and real-world work.</p></div>
-          <div className="awards-list">{awards.map(([number, award, event, project]) => <div className="award-item" key={event}><span className="award-number mono">{number}</span><strong>{award}</strong><span>{event}</span><span className="award-project mono">{project}</span></div>)}</div>
-        </section>) }
+export function Awards() { return <section className="awards-section recognition-panel" aria-labelledby="awards-title">
+  <div className="recognition-heading"><p className="section-kicker mono">AWARDS & RECOGNITION</p><h2 id="awards-title">Project recognition<span className="period">.</span></h2><p>Milestones earned through competitions and work beyond the classroom.</p></div>
+  <div className="recognition-grid">{awards.map(([number, award, event, project]) => <article className="award-item recognition-item" key={event}>
+    <div className="recognition-topline"><span className="recognition-number mono">{number}</span><span className="recognition-result">{award}</span></div>
+    <h3>{event}</h3>
+    <div className="recognition-footer"><span className="mono">PROJECT</span><Link className="recognition-project" to={project === 'AquaGuard' ? '/projects/aquaguard' : '/projects/virtualdouble-ant'}>{project}<ArrowUpRight size={15} /></Link></div>
+  </article>)}</div>
+</section> }
 
 export function Skills() { return <section className="skills-section section-pad"><span className="section-kicker mono">TECHNICAL TOOLKIT</span><h2>Tools I build with.</h2><div className="toolkit-grid">{technicalSkills.map(skill => <div key={skill.name}><span className="mono">{skill.category}</span><strong>{skill.name}</strong></div>)}</div></section> }

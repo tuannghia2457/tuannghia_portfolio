@@ -1,0 +1,19 @@
+/* The user's screenshot is the audit reference: restore padding and readable hierarchy.
+   Use the existing Warm Ivory card system; retain all six external project outcomes. */
+.awards-section.recognition-panel { margin-top: 8px; padding: clamp(22px, 3vw, 36px); border: var(--line); border-radius: var(--radius); background: var(--surface-alt); }
+.recognition-heading { margin-bottom: 28px; }
+.recognition-heading .section-kicker { font-size: 10px; }
+.recognition-heading h2 { font: 500 clamp(28px, 3.5vw, 38px)/1.15 var(--display); letter-spacing: -.04em; margin-block: 13px 14px; }
+.recognition-heading > p:last-child { max-width: 620px; color: var(--muted-foreground); font-size: 14px; line-height: 1.75; }
+.recognition-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.recognition-panel .recognition-item { display: flex; flex-direction: column; align-items: stretch; gap: 0; min-width: 0; padding: 24px; background: var(--surface); border: var(--line); border-radius: var(--radius); }
+.recognition-topline { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 23px; }
+.recognition-number { font-size: 11px; color: var(--muted-foreground); }
+.recognition-result { padding: 7px 11px; color: var(--foreground); background: var(--accent-surface); border-radius: 3px; font-size: 13px; line-height: 1.5; font-weight: 500; }
+.recognition-item h3 { font-size: 21px; font-weight: 500; letter-spacing: -.025em; line-height: 1.4; margin-bottom: 25px; }
+.recognition-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; margin-top: auto; padding-top: 16px; border-top: var(--line); }
+.recognition-footer > .mono { color: var(--muted-foreground); font-size: 9px; }
+.recognition-project { display: inline-flex; align-items: center; gap: 9px; min-height: 36px; color: var(--foreground); font-size: 13px; text-decoration: none; }
+.recognition-project:hover { text-decoration: underline; text-decoration-color: var(--primary-hover); }
+@media (max-width: 650px) { .recognition-grid { grid-template-columns: 1fr; gap: 12px; } .recognition-panel .recognition-item { padding: 21px; } .recognition-item h3 { font-size: 20px; } }
+@media (max-width: 360px) { .awards-section.recognition-panel { padding: 18px; } .recognition-panel .recognition-item { padding: 18px; } .recognition-result { font-size: 12px; padding: 6px 9px; } }
