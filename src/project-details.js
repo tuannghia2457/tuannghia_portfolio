@@ -11,7 +11,7 @@ export const projectDetails = {
     contributions: ['Co-founded AquaGuard and contributed as Product Manager.', 'Shaped a platform around real-time flood alerts, safety guidance, and crowdsourced rescue coordination.', 'Worked with the team across web and iOS product development.'],
     technical: 'A cross-platform flood-response system for Vietnam. Web and iOS experiences bring alerts, safety information, and community rescue coordination into a shared product.',
     technologies: ['Web', 'iOS', 'Real-time alerts', 'Crowdsourced coordination'],
-    result: '1st Place — Engineering Projects in Community Service Season 8; 1st Place — Office for International Study Programs Presentation Contest 2025; First Runner-Up — Bach Khoa Innovation 2026. Additional recognition at InnoStars and Leave A Nest.', status: 'Ongoing · Flood-response platform',
+    result: '1st Place — Engineering Projects in Community Service Season 8; 1st Place — OISP Presentation Contest 2025; First Runner-Up — Bach Khoa Innovation 2026. Additional recognition at InnoStars and Leave A Nest.', status: 'Ongoing · Flood-response platform',
   },
   'virtualdouble-ant': {
     number: '03', summary: 'A focus companion and cognitive body doubler designed to support neurodivergent users during deep work.',
