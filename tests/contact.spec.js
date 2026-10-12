@@ -1,0 +1,14 @@
+import { test, expect } from '@playwright/test'
+test('Contact links use the owner accounts and the highlighted CV stays honest', async ({ page }) => {
+  await page.goto('/contact')
+  await expect(page.getByRole('link', { name: 'GitHub', exact: true })).toHaveAttribute('href', 'https://github.com/tuannghia2457')
+  await expect(page.getByRole('link', { name: 'GitHub', exact: true })).toHaveAttribute('target', '_blank')
+  await expect(page.getByRole('link', { name: 'LinkedIn', exact: true })).toHaveAttribute('href', 'https://www.linkedin.com/in/tuannghia0405')
+  await expect(page.getByRole('link', { name: 'Facebook', exact: true })).toHaveAttribute('href', 'https://www.facebook.com/tuannghia2457/')
+  await expect(page.getByRole('heading', { name: 'Curriculum Vitae' })).toBeVisible()
+  await expect(page.locator('.contact-cv-card')).toContainText('CV COMING SOON')
+  await expect(page.getByRole('link', { name: 'Request CV' })).toHaveAttribute('href', /^mailto:/)
+  await expect(page.getByRole('link', { name: 'Download CV' })).toHaveCount(0)
+  await page.setViewportSize({ width: 320, height: 800 })
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy()
+})

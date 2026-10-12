@@ -2,7 +2,11 @@ import { test, expect } from '@playwright/test'
 async function textContrast(page) {
   return page.evaluate(() => {
     const luminance = rgb => rgb.slice(0, 3).map(v => v / 255).map(v => v <= .04045 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4).reduce((sum, v, i) => sum + v * [.2126, .7152, .0722][i], 0)
-    const parse = color => color.match(/[\d.]+/g)?.map(Number) || []
+    const parse = color => {
+      const channels = color.match(/[\d.]+/g)?.map(Number) || []
+      // CSS color-mix serializes as color(srgb ...) with normalized channels.
+      return color.startsWith('color(srgb ') ? channels.map((value, i) => i < 3 ? value * 255 : value) : channels
+    }
     const ratio = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.min(luminance(a), luminance(b)) + .05)
     const failures = []
     for (const el of document.querySelectorAll('body *')) {

@@ -21,6 +21,16 @@
 .project-index { padding-block: 48px; }
 .social-pending { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; color: var(--muted-foreground); font: 11px var(--mono); letter-spacing: .02em; }
 .social-pending small { font: 9px var(--body); }
+.contact-cv-card { margin-top: 28px; padding: 24px; border: var(--line); border-left: 3px solid var(--primary); border-radius: var(--radius); background: var(--accent-surface); }
+.contact-cv-heading { display: flex; align-items: center; gap: 15px; }
+.contact-cv-icon { display: grid; place-items: center; width: 52px; height: 58px; flex-shrink: 0; border: var(--line); border-radius: var(--radius); background: var(--surface); color: var(--foreground); }
+.contact-cv-heading .mono { color: var(--muted-foreground); font-size: 8px; letter-spacing: .06em; }
+.contact-cv-heading h3 { margin-top: 7px; font-size: 24px; font-weight: 500; letter-spacing: -.035em; }
+.contact-cv-description { margin-top: 18px; font-size: 13px; line-height: 1.75; color: var(--muted-foreground); }
+.contact-cv-footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-top: 24px; padding-top: 20px; border-top: var(--line); }
+.contact-cv-status { font-size: 9px; color: var(--foreground); }
+.contact-cv-footer .button { min-height: 44px; gap: 10px; }
+@media (max-width: 360px) { .contact-cv-card { padding: 20px; } .contact-cv-heading { gap: 12px; } .contact-cv-heading h3 { font-size: 22px; } }
 .about-section, .experience-section, .contact-section { padding-block: clamp(44px, 5vw, 70px); }
 .contact-section .contact-grid { margin-top: 24px; }
 .contact-section .contact-grid h2 { font-size: clamp(27px, 3vw, 40px); }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ArrowLeft, ArrowRight, ArrowUpRight, ExternalLink } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ArrowUpRight, ExternalLink, FileText, Download, Mail } from 'lucide-react'
 import { experience, awards, evidence, technicalSkills, testimonials } from '../portfolio-data'
 import { profile } from '../profile'
 import CompanyExplorer from '../components/CompanyExplorer'
@@ -84,12 +84,19 @@ export function Evidence() { return (<section id="evidence" className="evidence-
           </div>
         </section>) }
 
+function ContactCV() {
+  return <article className="contact-cv-card" aria-labelledby="contact-cv-title">
+    <div className="contact-cv-heading"><span className="contact-cv-icon" aria-hidden="true"><FileText size={26} strokeWidth={1.5} /></span><div><p className="mono">PROFESSIONAL PROFILE</p><h3 id="contact-cv-title">Curriculum Vitae</h3></div></div>
+    <p className="contact-cv-description">My experience, research, and technical work — in one place.</p>
+    <div className="contact-cv-footer">{profile.resumeUrl ? <><span className="contact-cv-status mono">READY TO EXPLORE</span><a className="button button-primary" href={profile.resumeUrl} download>Download CV <Download size={16} /></a></> : <><span className="contact-cv-status mono">CV COMING SOON</span><a className="button button-primary" href="mailto:trantuannghia2457@gmail.com?subject=CV%20request&body=Hi%20Tuan%20Nghia%2C%0A%0ACould%20you%20share%20your%20CV%3F">Request CV <Mail size={16} /></a></>}</div>
+  </article>
+}
 export function ContactInfo() { return (<section id="contact" className="contact-section section-pad" aria-labelledby="contact-title">
           <div className="section-kicker mono">01 / CONTACT</div><div className="contact-grid"><h2 id="contact-title">Let’s make<br /><em>something useful.</em></h2><div className="contact-copy"><p>Whether you want to talk about research, AI, robotics, product ideas, or just say hello — my inbox is open.</p><a className="email-link" href="mailto:trantuannghia2457@gmail.com">trantuannghia2457@gmail.com <ArrowUpRight size={20} /></a><div className="social-links">
             <a href={profile.linkedinUrl} target="_blank" rel="noreferrer">LinkedIn <ExternalLink size={15} /></a>
             {profile.facebookUrl ? <a href={profile.facebookUrl} target="_blank" rel="noreferrer">Facebook <ExternalLink size={15} /></a> : <span className="social-pending" title="Facebook link coming soon">Facebook <small>Coming soon</small></span>}
-            {profile.resumeUrl ? <a href={profile.resumeUrl} target="_blank" rel="noreferrer">CV <ExternalLink size={15} /></a> : <span className="social-pending" title="CV will be available soon">CV <small>Coming soon</small></span>}
-          </div></div></div>
+            <a href={profile.githubUrl} target="_blank" rel="noreferrer">GitHub <ExternalLink size={15} /></a>
+          </div><ContactCV /></div></div>
         </section>) }
 
 export function Awards() { return (<section className="awards-section section-pad section-accent" aria-labelledby="awards-title">
