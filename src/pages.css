@@ -30,6 +30,7 @@
 .contact-cv-footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-top: 24px; padding-top: 20px; border-top: var(--line); }
 .contact-cv-status { font-size: 9px; color: var(--foreground); }
 .contact-cv-footer .button { min-height: 44px; gap: 10px; }
+@media (max-width: 600px) { .contact-cv-footer { flex-direction: column; align-items: flex-start; } }
 @media (max-width: 360px) { .contact-cv-card { padding: 20px; } .contact-cv-heading { gap: 12px; } .contact-cv-heading h3 { font-size: 22px; } }
 .about-section, .experience-section, .contact-section { padding-block: clamp(44px, 5vw, 70px); }
 .contact-section .contact-grid { margin-top: 24px; }

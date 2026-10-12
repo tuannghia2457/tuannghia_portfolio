@@ -11,4 +11,6 @@ test('Contact links use the owner accounts and the highlighted CV stays honest',
   await expect(page.getByRole('link', { name: 'Download CV' })).toHaveCount(0)
   await page.setViewportSize({ width: 320, height: 800 })
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy()
+  const action = await page.getByRole('link', { name: 'Request CV' }).boundingBox()
+  expect(action.x + action.width).toBeLessThan(260)
 })
