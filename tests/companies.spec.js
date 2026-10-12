@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test'
 test('Employment disclosures show separate contributions with readable results and matching company details', async ({ page }) => {
   await page.goto('/experience')
   const rows = page.locator('.experience-item')
-  for (const [index, count] of [3, 2, 1, 2].entries()) {
+  for (const [index, count] of [3, 2, 1, 2, 2].entries()) {
     await rows.nth(index).locator('summary').click()
     await expect(rows.nth(index).locator('.role-responsibilities li')).toHaveCount(count)
   }
@@ -16,10 +16,10 @@ test('Employment disclosures show separate contributions with readable results a
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy()
 })
 
-test('Three real company logos disclose the correct roles and can be closed', async ({ page }) => {
+test('Four real company logos disclose the correct roles and can be closed', async ({ page }) => {
   await page.goto('/experience')
   const buttons = page.locator('.company-logo-button'), panel = page.locator('#company-detail-panel')
-  await expect(buttons).toHaveCount(3); await expect(panel).toBeHidden()
+  await expect(buttons).toHaveCount(4); await expect(panel).toBeHidden()
   for (const img of await buttons.locator('img').all()) {
     await img.scrollIntoViewIfNeeded()
     await expect.poll(() => img.evaluate(el => el.complete && el.naturalWidth > 0)).toBeTruthy()
@@ -38,6 +38,11 @@ test('Three real company logos disclose the correct roles and can be closed', as
   await page.getByRole('button', { name: 'Close company details' }).click()
   await expect(panel).toBeHidden(); await expect(sde).toBeFocused()
   await sde.click(); await sde.click(); await expect(panel).toBeHidden()
+  const odylytics = page.getByRole('button', { name: 'Explore Odylytics' })
+  await odylytics.click()
+  await expect(panel).toContainText('Chief Technology Officer & Computer Vision Engineer')
+  await expect(panel).toContainText('JUL 2026')
+  await expect(panel.locator('article')).toHaveCount(1)
   await page.setViewportSize({ width: 320, height: 800 })
   await ivs.click(); await expect(panel).toBeVisible()
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy()

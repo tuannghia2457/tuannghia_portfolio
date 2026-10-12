@@ -52,8 +52,9 @@ section[id] { scroll-margin-top: 96px; }
 .brand-caption { display: block; margin-top: 3px; font-size: 9px; color: var(--muted-foreground); letter-spacing: .06em; }
 .main-nav { display: flex; align-items: center; gap: clamp(12px, 1.8vw, 25px); }
 .main-nav a { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; position: relative; font-size: 12px; font-weight: 500; text-decoration: none; color: var(--muted-foreground); }
-.main-nav a:hover, .main-nav a[aria-current] { color: var(--accent-foreground); }
-.main-nav a[aria-current]:not(.nav-contact)::after { content: ''; position: absolute; bottom: 3px; left: 0; right: 0; height: 2px; background: var(--primary-hover); }
+.main-nav a:hover, .main-nav a:focus-visible, .main-nav a:active, .main-nav a[aria-current] { color: var(--accent-foreground); }
+.main-nav a::after { content: ''; position: absolute; bottom: 3px; left: 0; right: 0; height: 2px; background: var(--primary-hover); opacity: 0; transition: opacity var(--duration-fast); }
+.main-nav a:hover::after, .main-nav a:focus-visible::after, .main-nav a:active::after, .main-nav a[aria-current]::after { opacity: 1; }
 .main-nav .nav-contact { padding-inline: 13px; border: var(--line); border-radius: var(--radius); color: var(--foreground); }
 .main-nav .nav-contact:hover, .main-nav .nav-contact[aria-current] { border-color: var(--primary-hover); color: var(--accent-foreground); }
 .menu-toggle { display: none; min-width: 44px; min-height: 44px; color: var(--foreground); background: var(--surface); border: var(--line); border-radius: var(--radius); }
@@ -74,7 +75,7 @@ section[id] { scroll-margin-top: 96px; }
 .button-primary:active { background: var(--primary); border-color: var(--primary-hover); color: var(--on-primary); transform: none; }
 .button:disabled, button:disabled { background: var(--disabled-background); color: var(--disabled-foreground); border-color: var(--border); transform: none; }
 .text-link:hover, .back-top:hover { text-decoration: underline; text-decoration-color: var(--primary-hover); }
-.main-nav a:hover:not(.nav-contact) { text-decoration: underline; text-decoration-color: var(--primary-hover); }
+.main-nav a:hover { text-decoration: none; }
 .text-link { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; font-size: 12px; font-weight: 500; text-decoration: none; }
 .text-link svg { transition: transform var(--duration-fast); }
 .text-link:hover svg { transform: translate(2px, -2px); }
@@ -251,7 +252,6 @@ h2 em { font-style: normal; color: var(--muted-foreground); }
   .main-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; align-items: stretch; gap: 0; padding: 12px var(--gutter) 22px; background: var(--surface); border-bottom: var(--line); box-shadow: var(--shadow-overlay); }
   .main-nav.is-open { display: flex; flex-direction: column; }
   .main-nav a { min-height: 48px; font-size: 15px; border-bottom: var(--line); }
-  .main-nav a[aria-current]:not(.nav-contact)::after { display: none; }
   .main-nav .nav-contact { justify-content: space-between; margin-top: 12px; }
   .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(220px, .7fr); gap: 5%; padding-top: 40px; }
   .hero h1 { font-size: clamp(58px, 9vw, 76px); }

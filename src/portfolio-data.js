@@ -135,6 +135,20 @@ export const experience = [
   },
 ]
 
+// Dates and company context come from the owner's original profile; roles were supplied directly.
+experience.push({
+  period: 'JUL 2026 — PRESENT',
+  title: 'Chief Technology Officer & Computer Vision Engineer',
+  organization: 'Odylytics',
+  logo: '/images/company-logos/odylytics-light.png',
+  responsibilities: [
+    { text: 'Co-founder and Chief Technology Officer at Odylytics, the team behind AquaGuard.', highlights: ['Co-founder and Chief Technology Officer', 'AquaGuard'] },
+    { text: 'Contribute as a Computer Vision Engineer at Odylytics.', highlights: ['Computer Vision Engineer'] },
+  ],
+  stack: 'Technical Leadership · Computer Vision · Product Development',
+  location: null,
+})
+
 export const awards = [
   ['01', 'First Runner-Up', 'Bach Khoa Innovation', 'AquaGuard'],
   ['02', '1st Place', 'Engineering Projects in Community Service Season 8', 'AquaGuard'],

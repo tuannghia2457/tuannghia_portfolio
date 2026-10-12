@@ -49,7 +49,7 @@ test('Focused homepage, navigation, detail pages, and preserved information', as
   await page.goBack(); await expect(page.locator('h1')).toContainText('Nghia')
   await page.goto('/education'); await expect(page.getByText('IELTS', { exact: true })).toBeVisible()
   await page.goto('/experience')
-  await expect(page.locator('.experience-item')).toHaveCount(4)
+  await expect(page.locator('.experience-item')).toHaveCount(5)
   await page.locator('.experience-details').first().locator('summary').click()
   await expect(page.locator('.experience-details').first()).toContainText('Voronoi')
   await page.goto('/projects'); await page.getByText('Certificates & supporting evidence', { exact: true }).click()

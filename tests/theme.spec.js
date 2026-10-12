@@ -1,4 +1,26 @@
 import { test, expect } from '@playwright/test'
+
+test('Navigation hover and selected pages use the same underline without shifting text', async ({ page }) => {
+  await page.goto('/')
+  for (const name of ['Experience', 'Projects', 'Research']) {
+    const link = page.getByRole('navigation').getByRole('link', { name, exact: true })
+    await link.hover()
+    await expect.poll(() => link.evaluate(el => getComputedStyle(el, '::after').opacity)).toBe('1')
+    const preview = await link.evaluate(el => {
+      const style = getComputedStyle(el), line = getComputedStyle(el, '::after')
+      return { color: style.color, fontSize: style.fontSize, fontWeight: style.fontWeight, decoration: style.textDecorationLine, bottom: line.bottom, height: line.height, background: line.backgroundColor }
+    })
+    await link.click(); await page.mouse.move(0, 0)
+    await expect(link).toHaveAttribute('aria-current', 'page')
+    const selected = await link.evaluate(el => {
+      const style = getComputedStyle(el), line = getComputedStyle(el, '::after')
+      return { color: style.color, fontSize: style.fontSize, fontWeight: style.fontWeight, decoration: style.textDecorationLine, bottom: line.bottom, height: line.height, background: line.backgroundColor }
+    })
+    expect(selected).toEqual(preview)
+    await expect.poll(() => link.evaluate(el => getComputedStyle(el, '::after').opacity)).toBe('1')
+  }
+})
+
 async function textContrast(page) {
   return page.evaluate(() => {
     const luminance = rgb => rgb.slice(0, 3).map(v => v / 255).map(v => v <= .04045 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4).reduce((sum, v, i) => sum + v * [.2126, .7152, .0722][i], 0)

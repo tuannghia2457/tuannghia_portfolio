@@ -8,6 +8,7 @@ const companies = [
   { id: 'ivs', name: 'Individual Systems Joint Stock Company', shortName: 'Individual Systems Joint Stock Company', subtitle: 'Individual Systems', logo: 'ivs.png', roles: [0], summary: 'My work at Individual Systems Joint Stock Company focuses on computer vision, robotics, and perception systems for real-world navigation.' },
   { id: 'bsec', name: 'Best Start English Center', shortName: 'Best Start English Center', subtitle: 'English education', logo: 'bsec_ielts.jpg', roles: [1, 2], summary: 'At Best Start English Center, I contributed to educational web tools and automation alongside IELTS teaching support.' },
   { id: 'sde', name: 'SDE Digital Technology Company Limited', shortName: 'SDE Digital Technology Company Limited', subtitle: 'Digital technology', logo: 'logo-sde-tech.webp', roles: [3], summary: 'At SDE Digital Technology Company Limited, I worked on low-code application development and automation for practical business workflows.' },
+  { id: 'odylytics', name: 'Odylytics', shortName: 'Odylytics', subtitle: 'Technology leadership & computer vision', logo: 'odylytics-light.png', roles: [4], summary: 'I’m a co-founder of Odylytics, the team behind AquaGuard, and work as Chief Technology Officer and Computer Vision Engineer.' },
 ]
 export default function CompanyExplorer() {
   const [selected, setSelected] = useState(null)
