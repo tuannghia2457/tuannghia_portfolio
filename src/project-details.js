@@ -1,5 +1,6 @@
 export const ivsMilestone = {
     title: 'Pothole Surface Reconstruction',
+    certificate: null,
     number: '02', summary: 'Reconstructing damaged road surfaces with camera imagery, sparse LiDAR, and geometry-informed learning.',
     contributions: ['Research collaboration on geometry-informed reconstruction of damaged road surfaces.', 'Work combining RGB cameras, sparse 2D LiDAR, depth functions, and monotonic neural networks.', 'Presented the research at Current Topics in Mathematics and Industrial Applications 2026.'],
     technical: 'The work brings camera imagery and sparse range measurements together to study road surface geometry. Depth functions and monotonic neural networks support reconstruction, connecting perception research to autonomous robot navigation.',

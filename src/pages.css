@@ -53,7 +53,9 @@ details > summary:hover { color: var(--accent-foreground); text-decoration: unde
 .role-responsibilities li::marker { color: var(--foreground); }
 .role-responsibilities strong { color: var(--foreground); font-weight: 600; }
 .company-milestones { margin-block: 18px; scroll-margin-top: 100px; }
-.company-milestones > p { color: var(--muted-foreground); font-size: 13px; line-height: 1.8; }
+.milestone-note, .milestone-certificate > p { color: var(--muted-foreground); font-size: 13px; line-height: 1.8; }
+.milestone-certificate > summary { font-size: 13px; }
+.milestone-certificate > p { padding-bottom: 12px; }
 .testimonials-section { padding-block: 64px; border-top: var(--line); border-bottom: var(--line); }
 .testimonials-heading { margin-block: 20px 30px; }
 .testimonials-heading h2 { font: 500 clamp(28px, 3.6vw, 43px)/1.2 var(--display); letter-spacing: -.035em; }
