@@ -1,11 +1,13 @@
-export const projectDetails = {
-  'pothole-surface-reconstruction': {
+export const ivsMilestone = {
+    title: 'Pothole Surface Reconstruction',
     number: '02', summary: 'Reconstructing damaged road surfaces with camera imagery, sparse LiDAR, and geometry-informed learning.',
     contributions: ['Research collaboration on geometry-informed reconstruction of damaged road surfaces.', 'Work combining RGB cameras, sparse 2D LiDAR, depth functions, and monotonic neural networks.', 'Presented the research at Current Topics in Mathematics and Industrial Applications 2026.'],
     technical: 'The work brings camera imagery and sparse range measurements together to study road surface geometry. Depth functions and monotonic neural networks support reconstruction, connecting perception research to autonomous robot navigation.',
     technologies: ['RGB cameras', '2D LiDAR', 'Depth functions', 'Monotonic neural networks'],
     result: 'Presented at Current Topics in Mathematics and Industrial Applications 2026. Research connected to autonomous robot navigation.', status: 'Applied research · Conference presentation',
-  },
+}
+
+export const projectDetails = {
   aquaguard: {
     number: '01', summary: 'A flood-response platform connecting real-time alerts, safety guidance, and crowdsourced rescue coordination.',
     contributions: ['Co-founded AquaGuard and contributed as Product Manager.', 'Shaped a platform around real-time flood alerts, safety guidance, and crowdsourced rescue coordination.', 'Worked with the team across web and iOS product development.'],

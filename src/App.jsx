@@ -35,7 +35,7 @@ function Shell() {
     </header>
     <main id="main-content" ref={mainRef} tabIndex={-1}><div key={location.pathname} className="page-transition"><Routes>
       <Route path="/" element={<Home><Suspense fallback={<div className="section-pad demo-loading" role="status">Loading Smile to Collaborate…</div>}><SmileDemo /></Suspense></Home>} /><Route path="/experience" element={<ExperiencePage />} /><Route path="/about" element={<Navigate to="/experience" replace />} />
-      <Route path="/projects" element={<Projects />} /><Route path="/projects/:slug" element={<ProjectDetail />} />
+      <Route path="/projects/pothole-surface-reconstruction" element={<Navigate to="/experience#ivs-pothole-milestone" replace />} /><Route path="/projects" element={<Projects />} /><Route path="/projects/:slug" element={<ProjectDetail />} />
       <Route path="/research" element={<Research />} />
       <Route path="/education" element={<EducationPage />} />
       <Route path="/contact" element={<Navigate to="/#contact" replace />} />

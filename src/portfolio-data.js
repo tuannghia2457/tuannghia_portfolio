@@ -1,3 +1,5 @@
+import { ivsMilestone } from './project-details'
+
 export const projects = [
   {
     number: '01',
@@ -11,18 +13,7 @@ export const projects = [
     link: 'https://aquaguard.vn/',
     featured: true,
   },
-  {
-    number: '02',
-    title: 'Pothole Surface Reconstruction',
-    type: 'Applied research',
-    description: 'Geometry-informed reconstruction of damaged road surfaces using RGB cameras, sparse 2D LiDAR, depth functions, and monotonic neural networks.',
-    role: 'Research Collaborator · Speaker',
-    year: '2026',
-    tags: ['COMPUTER VISION', 'ROBOTICS', 'LIDAR', 'APPLIED ML'],
-    result: 'Presented at Current Topics in Mathematics and Industrial Applications 2026 · Research connected to autonomous robot navigation',
-    link: '#research',
-    featured: false,
-  },
+
   {
     number: '03',
     title: 'VirtualDouble / ANT',
@@ -42,6 +33,7 @@ export const experience = [
     period: 'APR 2026 — PRESENT',
     title: 'Computer Vision Research Assistant',
     organization: 'Individual Systems Joint Stock Company · Internship',
+    milestones: [ivsMilestone],
     logo: '/images/company-logos/ivs.png',
     responsibilities: [
       {

@@ -3,6 +3,7 @@ import { experience, awards, evidence, technicalSkills, testimonials } from '../
 import { profile } from '../profile'
 import CompanyExplorer from '../components/CompanyExplorer'
 import RoleResponsibilities from '../components/RoleResponsibilities'
+import CompanyMilestones from '../components/CompanyMilestones'
 import './recognition.css'
 import { Link } from 'react-router-dom'
 export function Background() { return (<section id="about" className="about-section section-pad" aria-labelledby="about-title">
@@ -22,7 +23,7 @@ export function Experience() { return (<section id="experience" className="exper
             {experience.map((item) => (
               <article className="experience-item" key={`${item.organization}-${item.title}`}>
                 <div className="experience-meta"><p className="experience-period mono">{item.period}</p><img className="experience-company-logo" src={item.logo} alt={`${item.organization.split(' · ')[0]} logo`} width="220" height="160" loading="lazy" decoding="async" /></div>
-                <div className="experience-main"><h3>{item.title}</h3><p className="experience-org">{item.organization}</p>{item.location && <p className="experience-location mono">{item.location}</p>}<details className="experience-details"><summary>Responsibilities & contributions</summary><RoleResponsibilities items={item.responsibilities} /></details><div className="experience-stack tag-list" aria-label="Skills and tools">{item.stack.split(' · ').map(skill => <span className="tag mono" key={skill}>{skill}</span>)}</div></div>
+                <div className="experience-main"><h3>{item.title}</h3><p className="experience-org">{item.organization}</p>{item.location && <p className="experience-location mono">{item.location}</p>}<details className="experience-details"><summary>Responsibilities & contributions</summary><RoleResponsibilities items={item.responsibilities} /></details><CompanyMilestones items={item.milestones} anchor={item.milestones ? "ivs-pothole-milestone" : undefined} /><div className="experience-stack tag-list" aria-label="Skills and tools">{item.stack.split(' · ').map(skill => <span className="tag mono" key={skill}>{skill}</span>)}</div></div>
                 <ArrowUpRight className="experience-icon" size={22} />
               </article>
             ))}

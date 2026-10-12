@@ -4,7 +4,7 @@ test('Employment disclosures show separate contributions with readable results a
   await page.goto('/experience')
   const rows = page.locator('.experience-item')
   for (const [index, count] of [3, 2, 1, 2, 2].entries()) {
-    await rows.nth(index).locator('summary').click()
+    await rows.nth(index).locator('.experience-details > summary').click()
     await expect(rows.nth(index).locator('.role-responsibilities li')).toHaveCount(count)
   }
   const webRole = rows.nth(1)

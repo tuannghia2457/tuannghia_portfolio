@@ -18,7 +18,7 @@
 .company-detail-heading p { max-width: 720px; font-size: 14px; line-height: 1.8; color: var(--muted-foreground); }
 .company-detail-close { display: grid; place-items: center; min-width: 44px; min-height: 44px; border: var(--line); border-radius: var(--radius); background: var(--surface); color: var(--foreground); }
 .company-detail-close:hover { border-color: var(--primary-hover); }
-.company-role-list article { margin-top: 28px; padding-top: 24px; border-top: var(--line); }
+.company-role-list > article { margin-top: 28px; padding-top: 24px; border-top: var(--line); }
 .company-role-heading { display: flex; justify-content: space-between; align-items: start; gap: 20px; }
 .company-role-heading h4 { margin: 0; font-size: 19px; font-weight: 500; }
 .company-role-heading .mono { font-size: 9px; color: var(--muted-foreground); }

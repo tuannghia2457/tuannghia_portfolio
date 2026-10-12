@@ -1,5 +1,22 @@
 import { test, expect } from '@playwright/test'
 
+test('Pothole research is a company milestone rather than a personal project', async ({ page }) => {
+  await page.goto('/projects')
+  await expect(page.locator('.curated-card')).toHaveCount(2)
+  await expect(page.locator('main')).not.toContainText('Pothole Surface Reconstruction')
+  await page.goto('/projects/pothole-surface-reconstruction')
+  await expect(page).toHaveURL(/\/experience#ivs-pothole-milestone$/)
+  const milestone = page.locator('#ivs-pothole-milestone')
+  await expect(milestone.getByRole('heading', { name: 'Pothole Surface Reconstruction' })).toBeVisible()
+  await expect(milestone).toContainText('Current Topics in Mathematics and Industrial Applications 2026')
+  await milestone.locator('summary').click()
+  await expect(milestone).toContainText('monotonic neural networks')
+  await page.getByRole('button', { name: 'Explore Individual Systems Joint Stock Company' }).click()
+  await expect(page.locator('#company-detail-panel .company-milestones')).toContainText('Pothole Surface Reconstruction')
+  await page.setViewportSize({ width: 320, height: 800 })
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy()
+})
+
 test('Testimonials is visible before contact and waits for the owner’s real recommendations', async ({ page }) => {
   await page.goto('/#testimonials')
   const section = page.locator('#testimonials')
@@ -39,12 +56,12 @@ test('Focused homepage, navigation, detail pages, and preserved information', as
   const errors = []; page.on('pageerror', error => errors.push(error.message))
   await page.goto('/')
   await expect(page.locator('h1')).toHaveCount(1)
-  await expect(page.locator('.curated-card')).toHaveCount(3)
+  await expect(page.locator('.curated-card')).toHaveCount(2)
   await expect(page.locator('#experience')).toHaveCount(0)
   await expect(page.locator('.site-header nav a')).toHaveCount(5)
   expect(await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--background').trim())).toBe('#FAF9F6')
   await page.locator('.curated-card').first().click()
-  await expect(page).toHaveURL(/projects\/pothole-surface-reconstruction/)
+  await expect(page).toHaveURL(/projects\/aquaguard/)
   await expect(page.getByRole('heading', { name: 'My contributions' })).toBeVisible()
   await page.goBack(); await expect(page.locator('h1')).toContainText('Nghia')
   await page.goto('/education'); await expect(page.getByText('IELTS', { exact: true })).toBeVisible()
