@@ -19,8 +19,8 @@ export function ProjectCards() {
     </Link>
   })}</div>
 }
-function ConnectCTA() { return <section className="connect-cta section-pad"><div><p className="section-kicker mono">RESEARCH / ENGINEERING / COLLABORATION</p><h2>Let’s build something useful.</h2></div><Link className="button button-primary" to="/contact">Let’s talk <ArrowUpRight size={18} /></Link></section> }
-export function Home() { return <>
+function ConnectCTA() { return <section className="connect-cta section-pad"><div><p className="section-kicker mono">RESEARCH / ENGINEERING / COLLABORATION</p><h2>Let’s build something useful.</h2></div><Link className="button button-primary" to="/#contact">Let’s talk <ArrowUpRight size={18} /></Link></section> }
+export function Home({ children }) { return <>
   <section id="top" className="hero editorial-hero section-pad" aria-labelledby="hero-title">
     <div className="hero-grid"><div className="hero-copy">
       <p className="hero-location-label mono"><span className="status-dot" />{profile.location}</p>
@@ -34,9 +34,9 @@ export function Home() { return <>
     </div><HomePortrait /></div>
     <div className="editorial-hero-bottom"><a className="text-link mono" href="#work">SELECTED WORK <ArrowDown size={14} /></a><span className="mono">PERCEPTION / ROBOTICS / APPLIED AI</span></div>
   </section>
-  <section id="work" className="home-work section-pad"><div className="compact-heading"><div><p className="section-kicker mono">02 / SELECTED PROJECTS</p><h2>From perception to impact.</h2></div><Link className="text-link" to="/projects">All projects <ArrowRight size={17} /></Link></div><ProjectCards /></section><ConnectCTA />
+  <section id="work" className="home-work section-pad"><div className="compact-heading"><div><p className="section-kicker mono">02 / SELECTED PROJECTS</p><h2>From perception to impact.</h2></div><Link className="text-link" to="/projects">All projects <ArrowRight size={17} /></Link></div><ProjectCards /></section><Background /><Skills /><section className="supporting-section section-pad"><details><summary>Words from collaborators</summary><Testimonials /></details></section><ContactInfo />{children}
 </> }
-export function About() { return <><PageIntro label="ABOUT / THE HUMAN IN THE LOOP" title="Curiosity, with purpose">A background in AI, a focus on perception, and a belief that useful technology starts with people.</PageIntro><Background /><Experience /><Skills /><Companies /><section className="supporting-section section-pad"><details><summary>Words from collaborators</summary><Testimonials /></details></section><ConnectCTA /></> }
+export function ExperiencePage() { return <><PageIntro label="EXPERIENCE / COMPANY WORK" title="Experience">My roles, responsibilities, and technical contributions within the companies I’ve worked with.</PageIntro><Experience /><Companies /><ConnectCTA /></> }
 export function EducationPage() { return <><PageIntro label="EDUCATION / ACADEMIC FOUNDATION" title="A foundation for what’s next">My education, academic achievements, and language skills — the foundation behind my engineering work.</PageIntro><Education /><CourseCertificates /><ConnectCTA /></> }
 export function Projects() { return <><PageIntro label="PROJECTS / SELECTED WORK" title="Systems for real problems">Computer vision research, human-centered AI, and products with practical impact. Open a project to explore my role, approach, and results.</PageIntro><section id="work" className="project-index section-pad"><ProjectCards /></section><section className="supporting-section section-pad"><details><summary>Awards & recognition</summary><Awards /></details><details><summary>Certificates & supporting evidence</summary><Evidence /></details></section><ConnectCTA /></> }
 export function ProjectDetail() {
@@ -51,7 +51,7 @@ export function ProjectDetail() {
     <section><h2>Technical approach</h2><p>{detail.technical}</p></section><section><h2>My contributions</h2><ul>{detail.contributions.map(item => <li key={item}>{item}</li>)}</ul></section><section><h2>Technologies</h2><div className="tag-list">{detail.technologies.map(tag => <span className="tag mono" key={tag}>{tag}</span>)}</div></section><section className="detail-result"><span className="section-kicker mono">RESULTS</span><p>{detail.result}</p></section>
     {project.link.startsWith('http') && <a className="button button-primary" href={project.link} target="_blank" rel="noreferrer">Visit {project.title} <ArrowUpRight size={18} /></a>}
     {slug === 'aquaguard' && <details className="project-evidence"><summary>Project certificates</summary><Evidence /></details>}
-    <div className="detail-navigation"><Link to="/projects" className="text-link"><ArrowLeft size={16} /> More projects</Link><Link to="/contact" className="text-link">Discuss this work <ArrowUpRight size={16} /></Link></div>
+    <div className="detail-navigation"><Link to="/projects" className="text-link"><ArrowLeft size={16} /> More projects</Link><Link to="/#contact" className="text-link">Discuss this work <ArrowUpRight size={16} /></Link></div>
   </article>
 }
 export function Research() { return <><PageIntro label="RESEARCH / COMPUTER VISION & ROBOTICS" title="Perception in the real world">I study how machines understand geometry and navigate environments where information is sparse, noisy, or incomplete.</PageIntro>
@@ -64,5 +64,4 @@ export function Research() { return <><PageIntro label="RESEARCH / COMPUTER VISI
     ].map(([title, summary, technical]) => <article key={title}><h3>{title}</h3><p>{summary}</p><details><summary>Explore the approach</summary><p>{technical}</p></details></article>)}</div>
     <div className="compact-heading"><h2>Publications & presentations</h2></div><article className="publication"><span className="section-kicker mono">CONFERENCE PRESENTATION / Current Topics in Mathematics and Industrial Applications 2026</span><h3>Pothole Surface Reconstruction</h3><p>Geometry-informed reconstruction with RGB cameras, sparse 2D LiDAR, depth functions, and monotonic neural networks.</p><p className="publication-note">Presented at Current Topics in Mathematics and Industrial Applications 2026. A paper link and publication citation are not currently listed in this portfolio.</p><Link className="text-link" to="/projects/pothole-surface-reconstruction">Explore the research <ArrowUpRight size={16} /></Link></article>
   </section><ConnectCTA /></> }
-export function Contact({ children }) { return <><PageIntro label="CONTACT / LET’S COLLABORATE" title="A good conversation starts here">Research questions, engineering opportunities, or an idea worth exploring — I’d love to hear from you.</PageIntro><ContactInfo />{children}</> }
 export function NotFound() { return <><PageIntro label="404 / PAGE NOT FOUND" title="A little off the path">This page isn’t available.</PageIntro><div className="section-pad not-found"><Link className="button button-primary" to="/">Back to home <ArrowLeft size={16} /></Link></div></> }

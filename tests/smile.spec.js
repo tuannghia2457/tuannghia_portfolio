@@ -14,7 +14,7 @@ async function cameraFixture(page) {
 }
 test('Real local model runs on a video stream and stops on navigation', async ({ page }) => {
   await cameraFixture(page)
-  await page.goto('/contact'); await page.getByRole('button', { name: 'Enable webcam' }).click()
+  await page.goto('/#contact'); await page.getByRole('button', { name: 'Enable webcam' }).click()
   await expect(page.getByRole('button', { name: 'Stop camera', exact: true })).toBeVisible({ timeout: 30_000 })
   await expect(page.getByRole('status')).toContainText('hold a smile')
   await expect(page.locator('.smile-panel')).toHaveClass(/is-running/)
@@ -34,7 +34,7 @@ test('Sustained smile celebrates once, stops camera, and offers an email draft',
       }) };
     `,
   }))
-  await page.goto('/contact'); await page.getByRole('button', { name: 'Enable webcam' }).click()
+  await page.goto('/#contact'); await page.getByRole('button', { name: 'Enable webcam' }).click()
   const connect = page.getByRole('link', { name: 'Let’s Connect', exact: true })
   await expect(connect).toBeVisible({ timeout: 30_000 })
   await expect(connect).toHaveAttribute('href', /^mailto:.*subject=/)

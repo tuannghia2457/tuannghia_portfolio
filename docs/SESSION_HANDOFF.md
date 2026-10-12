@@ -5,7 +5,7 @@ The owner stopped for the day and requested saved context for the next session. 
 ## Current site
 
 - React/Vite project at `C:/TuanNghia/Personal/tuannghia_portfolio`; dev URL `http://localhost:5173`. Check whether the server is still running before restarting.
-- Six top-level pages: Home, About, Projects, Research, Education, Contact. Projects have individual detail routes.
+- Five top-level pages: Home, Experience, Projects, Research, Education. Legacy `/about` redirects to `/experience`; `/contact` redirects to `/#contact`. Projects have individual detail routes.
 - Permanent Warm Ivory × Orange × Charcoal light theme. Read root `AGENTS.md` and `docs/DESIGN_SYSTEM.md`. Only `src/theme.css` defines authored color values; Ember Dark is deprecated.
 - Display name is **Tuan Nghia**. **TOM appears only beside the top-left pixel icon**, with Dancing Script lettering and short hover/focus motion. The original **Mini Nghia** companion remains interactive.
 - Header and favicon use the childhood pixel artwork stored in `public/images/personal-images/pixel.png`.
@@ -14,14 +14,14 @@ The owner stopped for the day and requested saved context for the next session. 
 
 ## Content and interactions
 
-- About includes professional background, experience, technical skills, company explorer and collaborator comments. IVS, BSEC and SDE logos open inline details; BSEC has two roles. Logos are safely stored in `public/images/company-logos`.
+- Experience contains company employment and company explorer. Home contains professional background, technical skills, collaborator comments, contact details and the optional Smile to Collaborate demo. Experience company logos sit below the employment dates in a 220 × 160 pixel area, with a wider metadata column. IVS, BSEC and SDE logos open inline details; BSEC has two roles. Logos are safely stored in `public/images/company-logos`.
 - Projects show only external project/competition awards and evidence: six awards, four project certificate records. Recognition is a padded two-column card grid on desktop, one column on mobile, with links to projects. Dean's List is excluded here.
 - Education is its own navigation page at `/education`. Three school cards: UTS, VNU-HCM High School for the Gifted, HCMUT. Logos are in `public/images/schools` and match the copies in `dist`. Original local folder was not found initially, so the exact supplied LinkedIn logos were downloaded and preserved locally.
 - School previews show only logo, full institution name, degree/program and available GPA. All cards share hover/focus behavior; click/keyboard opens dates, activities, skills and school-specific achievements. HCMUT dates/GPA were not supplied and are not invented.
 - UTS: AI bachelor's program, September 2025–expected May 2028, grade 6.9/7.0, Class Representative, Python/Java; hidden achievements include Dean's List 2026, publicly linked UTS/HCMUT student testimonial, Class Voted Collaborator. High school: Advanced Physics, August 2022–June 2025, grade 9.6/10. Languages and IELTS 8.0 remain separate within Education.
 - `/education#certificates` has the designed Online course certificates section. Two earned records from the supplied context: Introduction to RAG (LinkedIn) and Microsoft Azure AI Essentials Professional Certificate (Microsoft and LinkedIn), both September 2026. Owner explicitly says files are not saved yet and wants layout first. `credentialUrl` stays null; no fake verification/download links.
-- Contact has LinkedIn, Facebook (`https://www.facebook.com/tuannghia2457/`), GitHub (`https://github.com/tuannghia2457`) and a highlighted CV card. CV is Coming soon with a mailto Request CV action. Identity/contact destinations live in `src/profile.js`.
-- The only CV demo is Smile to Collaborate on Contact, using locally served MediaPipe runtime/model files and local camera inference. No uploads or automatic emails. Camera cleanup is tested. Original detection/segmentation/UAV playground is removed.
+- The Home contact section has LinkedIn, Facebook (`https://www.facebook.com/tuannghia2457/`), GitHub (`https://github.com/tuannghia2457`) and a highlighted CV card. CV is Coming soon with a mailto Request CV action. Identity/contact destinations live in `src/profile.js`.
+- The only CV demo is Smile to Collaborate in the Home contact area, using locally served MediaPipe runtime/model files and local camera inference. No uploads or automatic emails. Camera cleanup is tested. Original detection/segmentation/UAV playground is removed.
 
 ## Pending materials
 

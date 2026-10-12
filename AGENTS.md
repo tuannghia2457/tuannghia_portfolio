@@ -35,7 +35,7 @@ Keep project recognition separate from academic achievements. Projects/Awards an
 
 The display name is **Tuan Nghia**. Use **TOM only beside the pixel icon in the top-left header**. Hero, greetings, page titles, footer, portrait labels, and email drafts use Tuan Nghia; the companion retains its original name Mini Nghia. The formal name remains Tran Tuan Nghia. Keep real email/account URLs and certificate filenames intact. `src/profile.js` defines identity and brand assets. The pixel portrait icon and favicon live in `public/images/personal-images/pixel.png`; do not keep their only copy in generated `dist`. The header wordmark may use expressive lettering and brief hover/focus motion, with reduced-motion support.
 
-Retain the six-page navigation (Home, About, Projects, Research, Education, Contact), project detail routes, original portfolio facts and evidence, upright portrait, Mini Nghia, and optional Smile to Collaborate demo. Camera frames stay local; email actions open drafts and never send automatically. Do not invent project results or publication links.
+Retain the five-page navigation (Home, Experience, Projects, Research, Education). Experience contains company employment and company details. Home contains personal background, technical skills, collaborator comments, contact information, and the optional Smile to Collaborate demo. Redirect legacy `/about` to `/experience` and `/contact` to `/#contact`. Preserve project detail routes, original portfolio facts and evidence, upright portrait, Mini Nghia, and optional Smile to Collaborate demo. Camera frames stay local; email actions open drafts and never send automatically. Do not invent project results or publication links.
 
 ## Validation
 

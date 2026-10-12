@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
 test('Three real company logos disclose the correct roles and can be closed', async ({ page }) => {
-  await page.goto('/about')
+  await page.goto('/experience')
   const buttons = page.locator('.company-logo-button'), panel = page.locator('#company-detail-panel')
   await expect(buttons).toHaveCount(3); await expect(panel).toBeHidden()
   for (const img of await buttons.locator('img').all()) {

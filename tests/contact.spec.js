@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
 test('Contact links use the owner accounts and the highlighted CV stays honest', async ({ page }) => {
-  await page.goto('/contact')
+  await page.goto('/#contact')
   await expect(page.getByRole('link', { name: 'GitHub', exact: true })).toHaveAttribute('href', 'https://github.com/tuannghia2457')
   await expect(page.getByRole('link', { name: 'GitHub', exact: true })).toHaveAttribute('target', '_blank')
   await expect(page.getByRole('link', { name: 'LinkedIn', exact: true })).toHaveAttribute('href', 'https://www.linkedin.com/in/tuannghia0405')

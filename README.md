@@ -1,6 +1,8 @@
 # Tuan Nghia — Warm Ivory Portfolio
 
-React 18 + Vite portfolio with Home, About, Projects, Research, Education, Contact, dedicated project pages, Mini Nghia, and one optional local computer vision demo: **Smile to Collaborate**. Existing projects, experience, skills, awards, certificates, and contact destinations are preserved.
+React 18 + Vite portfolio with Home, Experience, Projects, Research, Education, dedicated project pages, Mini Nghia, and one optional local computer vision demo: **Smile to Collaborate**. Existing projects, experience, skills, awards, certificates, and contact destinations are preserved.
+
+Home includes the personal introduction, skills, collaborator comments, contact information, and optional camera demo. Experience focuses on company employment and company details; Projects showcases personal technical work; Research holds research interests and presentations; Education holds academic achievements and course certificates. Legacy `/about` and `/contact` links redirect to their new locations.
 
 ## Run
 
@@ -46,7 +48,7 @@ See [restructure decisions and validation](docs/curated-restructure.md), [origin
 
 ## Deployment
 
-Serve `dist` over HTTPS. Configure the host to fall back to `index.html` for client-side routes such as `/about` and `/projects/aquaguard`; existing static assets should be served normally. Vite dev/preview handle route fallbacks locally.
+Serve `dist` over HTTPS. Configure the host to fall back to `index.html` for client-side routes such as `/experience` and `/projects/aquaguard`; existing static assets should be served normally. Vite dev/preview handle route fallbacks locally.
 
 The real model and generated video stream are covered by automated browser checks. Physical webcam behavior across devices and lighting should also be tested manually. No lint or TypeScript check is configured.
 

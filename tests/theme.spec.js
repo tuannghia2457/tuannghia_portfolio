@@ -26,7 +26,7 @@ async function textContrast(page) {
 }
 test('Every route stays light with accessible text, including expanded content', async ({ page }) => {
   await page.emulateMedia({ colorScheme: 'dark', reducedMotion: 'reduce' })
-  for (const path of ['/', '/about', '/projects', '/research', '/education', '/contact', '/projects/aquaguard', '/projects/pothole-surface-reconstruction', '/projects/virtualdouble-ant']) {
+  for (const path of ['/', '/experience', '/projects', '/research', '/education', '/#contact', '/projects/aquaguard', '/projects/pothole-surface-reconstruction', '/projects/virtualdouble-ant']) {
     await page.goto(path); await expect(page.locator('h1')).toHaveCount(1)
     await page.locator('details').evaluateAll(nodes => nodes.forEach(el => el.open = true))
     expect(await page.evaluate(() => getComputedStyle(document.documentElement).colorScheme)).toBe('light')
@@ -52,7 +52,7 @@ test('Button, navigation, card and companion interactive states use semantic rol
   await page.getByRole('button', { name: 'Hide', exact: true }).click()
   await page.getByRole('button', { name: 'Show Mini Nghia pixel companion' }).click()
   await expect(character).toBeVisible()
-  await page.goto('/contact'); const enable = page.getByRole('button', { name: 'Enable webcam' })
+  await page.goto('/#contact'); const enable = page.getByRole('button', { name: 'Enable webcam' })
   await enable.evaluate(el => el.disabled = true)
   await expect(enable).toHaveCSS('background-color', 'rgb(243, 240, 235)')
   await expect(enable).toHaveCSS('color', 'rgb(107, 107, 107)')
