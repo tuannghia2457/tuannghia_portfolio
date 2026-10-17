@@ -1,9 +1,7 @@
 import { ArrowUpRight, ExternalLink, FileText, Download, Mail } from 'lucide-react'
-import { experience, awards, evidence, technicalSkills, testimonials } from '../portfolio-data'
+import { awards, evidence, technicalSkills, testimonials } from '../portfolio-data'
 import { profile } from '../profile'
 import CompanyExplorer from '../components/CompanyExplorer'
-import RoleResponsibilities from '../components/RoleResponsibilities'
-import CompanyMilestones from '../components/CompanyMilestones'
 import './recognition.css'
 import { Link } from 'react-router-dom'
 export function Background() { return (<section id="about" className="about-section section-pad" aria-labelledby="about-title">
@@ -11,22 +9,6 @@ export function Background() { return (<section id="about" className="about-sect
           <div className="about-grid">
             <div><h2 id="about-title">Technical<br /><em>by nature.</em><br />Human by choice.</h2></div>
             <div className="about-copy"><p>Hello, I’m Tuan Nghia — an Artificial Intelligence undergraduate at the University of Technology Sydney through the Ho Chi Minh City University of Technology–University of Technology Sydney program.</p><p>I’m currently a research assistant at Individual Systems Joint Stock Company, working on robotics and computer vision. I’m also a co-founder of Odylytics and part of the team building AquaGuard, a flood-response platform in Vietnam.</p><p>Across research, product, teaching, and public speaking, I’m interested in the same question: how can we make technology technically strong and genuinely useful to people?</p></div>
-          </div>
-        </section>) }
-
-export function Experience() { return (<section id="experience" className="experience-section section-pad" aria-labelledby="experience-title">
-          <div className="section-heading experience-heading">
-            <div className="section-kicker mono">02 / EXPERIENCE</div>
-            <h2 id="experience-title">Where I’ve<br /><em>been building.</em></h2>
-          </div>
-          <div className="experience-list">
-            {experience.map((item) => (
-              <article className="experience-item" key={`${item.organization}-${item.title}`}>
-                <div className="experience-meta"><p className="experience-period mono">{item.period}</p><img className="experience-company-logo" src={item.logo} alt={`${item.organization.split(' · ')[0]} logo`} width="220" height="160" loading="lazy" decoding="async" /></div>
-                <div className="experience-main"><h3>{item.title}</h3><p className="experience-org">{item.organization}</p>{item.location && <p className="experience-location mono">{item.location}</p>}<details className="experience-details"><summary>Responsibilities & contributions</summary><RoleResponsibilities items={item.responsibilities} /></details><CompanyMilestones items={item.milestones} anchor={item.milestones ? "ivs-pothole-milestone" : undefined} /><div className="experience-stack tag-list" aria-label="Skills and tools">{item.stack.split(' · ').map(skill => <span className="tag mono" key={skill}>{skill}</span>)}</div></div>
-                <ArrowUpRight className="experience-icon" size={22} />
-              </article>
-            ))}
           </div>
         </section>) }
 

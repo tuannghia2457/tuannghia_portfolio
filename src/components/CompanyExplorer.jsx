@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { ChevronDown, X } from 'lucide-react'
 import { experience } from '../portfolio-data'
 import RoleResponsibilities from './RoleResponsibilities'
@@ -12,7 +13,16 @@ const companies = [
   { id: 'odylytics', name: 'Odylytics', shortName: 'Odylytics', subtitle: 'Technology leadership & computer vision', logo: 'odylytics-light.png', roles: [4], summary: 'I’m a co-founder of Odylytics, the team behind AquaGuard, and work as Chief Technology Officer and Computer Vision Engineer.' },
 ]
 export default function CompanyExplorer() {
-  const [selected, setSelected] = useState(null)
+  const { hash } = useLocation()
+  const [selected, setSelected] = useState(() => hash === '#ivs-pothole-milestone' ? 'ivs' : null)
+  useEffect(() => {
+    if (hash === '#ivs-pothole-milestone') setSelected('ivs')
+  }, [hash])
+  useEffect(() => {
+    if (selected === 'ivs' && hash === '#ivs-pothole-milestone') {
+      document.getElementById('ivs-pothole-milestone')?.scrollIntoView()
+    }
+  }, [selected, hash])
   const company = companies.find(item => item.id === selected)
   function close() { const id = selected; setSelected(null); document.getElementById(`company-button-${id}`)?.focus() }
   return <section id="company" className="company-explorer section-pad" aria-labelledby="company-title">
@@ -30,8 +40,8 @@ export default function CompanyExplorer() {
         <div className="company-detail-heading"><div><span className="section-kicker mono">{company.subtitle}</span><h3>{company.name}</h3><p>{company.summary}</p></div><button type="button" className="company-detail-close" onClick={close} aria-label="Close company details"><X size={19} /></button></div>
         <div className="company-role-list">{company.roles.map(index => {
           const role = experience[index]
-          return <article key={role.title}><div className="company-role-heading"><h4>{role.title}</h4><span className="mono">{role.period}</span></div><p className="company-role-location">{role.location}</p>
-            <RoleResponsibilities items={role.responsibilities} /><CompanyMilestones items={role.milestones} /><div className="tag-list">{role.stack.split(' · ').map(tool => <span className="tag mono" key={tool}>{tool}</span>)}</div>
+          return <article key={role.title}><div className="company-role-heading"><h4>{role.title}</h4><span className="mono">{role.period}</span></div><p className="company-role-location">{role.organization}</p>{role.location && <p className="company-role-location">{role.location}</p>}
+            <RoleResponsibilities items={role.responsibilities} /><CompanyMilestones items={role.milestones} anchor={role.milestones ? "ivs-pothole-milestone" : undefined} /><div className="tag-list">{role.stack.split(' · ').map(tool => <span className="tag mono" key={tool}>{tool}</span>)}</div>
           </article>
         })}</div>
       </div>}

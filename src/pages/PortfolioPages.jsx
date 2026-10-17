@@ -3,7 +3,7 @@ import { ArrowRight, ArrowUpRight, ArrowLeft, ArrowDown, Download, Mail } from '
 import HomePortrait from './HomePortrait'
 import Education from '../components/Education'
 import CourseCertificates from '../components/CourseCertificates'
-import { Background, Experience, Companies, Testimonials, Awards, Evidence, Skills, ContactInfo } from './SupportingSections'
+import { Background, Companies, Testimonials, Awards, Evidence, Skills, ContactInfo } from './SupportingSections'
 import { projects } from '../portfolio-data'
 import { projectDetails, projectOrder } from '../project-details'
 import { profile } from '../profile'
@@ -36,7 +36,7 @@ export function Home({ children }) { return <>
   </section>
   <section id="work" className="home-work section-pad"><div className="compact-heading"><div><p className="section-kicker mono">02 / SELECTED PROJECTS</p><h2>From perception to impact.</h2></div><Link className="text-link" to="/projects">All projects <ArrowRight size={17} /></Link></div><ProjectCards /></section><Background /><Skills /><Testimonials /><ContactInfo />{children}
 </> }
-export function ExperiencePage() { return <><PageIntro label="EXPERIENCE / COMPANY WORK" title="Experience">My roles, responsibilities, and technical contributions within the companies I’ve worked with.</PageIntro><Experience /><Companies /><ConnectCTA /></> }
+export function ExperiencePage() { return <><PageIntro label="EXPERIENCE / COMPANY WORK" title="Experience">My roles, responsibilities, and technical contributions within the companies I’ve worked with.</PageIntro><Companies /><ConnectCTA /></> }
 export function EducationPage() { return <><PageIntro label="EDUCATION / ACADEMIC FOUNDATION" title="A foundation for what’s next">My education, academic achievements, and language skills — the foundation behind my engineering work.</PageIntro><Education /><CourseCertificates /><ConnectCTA /></> }
 export function Projects() { return <><PageIntro label="PROJECTS / SELECTED WORK" title="Systems for real problems">Computer vision research, human-centered AI, and products with practical impact. Open a project to explore my role, approach, and results.</PageIntro><section id="work" className="project-index section-pad"><ProjectCards /></section><section className="supporting-section section-pad"><details><summary>Awards & recognition</summary><Awards /></details><details><summary>Certificates & supporting evidence</summary><Evidence /></details></section><ConnectCTA /></> }
 export function ProjectDetail() {
