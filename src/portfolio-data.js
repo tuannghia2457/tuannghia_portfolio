@@ -191,7 +191,7 @@ export const academicRecognition = {
 export const studentTestimonialUrl = 'https://www.uts.edu.au/about/uts-vision/initiatives/internationalisation/transnational-education/ho-chi-minh-city-university-of-technology'
 export const education = [
   {
-    id: 'uts', institution: 'University of Technology Sydney', logo: '/images/schools/uts.jpg',
+    id: 'uts', institution: 'University of Technology Sydney', logo: '/images/schools/uts.png',
     degree: 'Bachelor’s degree in Artificial Intelligence', program: 'Ho Chi Minh City University of Technology–University of Technology Sydney Transnational Education Program',
     period: 'SEP 2025 — EXPECTED MAY 2028', grade: '6.9 / 7.0',
     summary: 'Studying Artificial Intelligence through the Ho Chi Minh City University of Technology–University of Technology Sydney program, with an academic foundation in programming and AI.',
@@ -234,18 +234,18 @@ export const courseCertificates = [
 ]
 
 export const technicalSkills = [
-  { name: 'Python', category: 'Programming', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
-  { name: 'C++', category: 'Programming', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg' },
-  { name: 'Java', category: 'Programming', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
-  { name: 'JavaScript', category: 'Programming', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-  { name: 'Node.js', category: 'Backend', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-  { name: 'React', category: 'Frontend', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-  { name: 'ROS', category: 'Robotics', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ros/ros-original.svg' },
-  { name: 'OpenCV', category: 'Computer vision', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg' },
-  { name: 'PyTorch', category: 'Machine learning', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg' },
-  { name: 'Docker', category: 'Infrastructure', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
-  { name: 'Git', category: 'Tools', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
-  { name: 'Linux', category: 'Tools', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg' },
+  { name: 'Python', category: 'Programming', logo: '/images/skills/python-original.svg' },
+  { name: 'C++', category: 'Programming', logo: '/images/skills/cplusplus-original.svg' },
+  { name: 'Java', category: 'Programming', logo: '/images/skills/java-original.svg' },
+  { name: 'JavaScript', category: 'Programming', logo: '/images/skills/javascript-original.svg' },
+  { name: 'Node.js', category: 'Backend', logo: '/images/skills/nodejs-original.svg' },
+  { name: 'React', category: 'Frontend', logo: '/images/skills/react-original.svg' },
+  { name: 'ROS', category: 'Robotics', logo: '/images/skills/ros-original.svg' },
+  { name: 'OpenCV', category: 'Computer vision', logo: '/images/skills/opencv-original.svg' },
+  { name: 'PyTorch', category: 'Machine learning', logo: '/images/skills/pytorch-original.svg' },
+  { name: 'Docker', category: 'Infrastructure', logo: '/images/skills/docker-original.svg' },
+  { name: 'Git', category: 'Tools', logo: '/images/skills/git-original.svg' },
+  { name: 'Linux', category: 'Tools', logo: '/images/skills/linux-original.svg' },
 ]
 
 export const testimonials = [
