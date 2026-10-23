@@ -4,7 +4,7 @@ import HomePortrait from './HomePortrait'
 import Education from '../components/Education'
 import CourseCertificates from '../components/CourseCertificates'
 import { Background, Experience, Companies, Testimonials, Awards, Evidence, Skills, ContactInfo } from './SupportingSections'
-import { projects, education, ielts } from '../portfolio-data'
+import { projects, education, ielts, awards } from '../portfolio-data'
 import { projectDetails, projectOrder } from '../project-details'
 import { profile } from '../profile'
 import HeroNameBand from '../components/HeroNameBand'
@@ -61,17 +61,43 @@ export function ExperiencePage() { return <><PageIntro label="Experience / Compa
 // Education carries its own hero-style title, so it skips the shared PageIntro.
 export function EducationPage() { return <><Education /><CourseCertificates /><ConnectCTA /></> }
 export function Projects() { return <><PageIntro label="Projects / Selected work" title="Systems for real problems">Computer vision research, human-centered AI, and products with practical impact. Open a project to explore my role, approach, and results.</PageIntro><section id="work" className="project-index section-pad"><ProjectCards /></section><section className="supporting-section section-pad"><details><summary>Awards & recognition</summary><Awards /></details><details><summary>Certificates & supporting evidence</summary><Evidence /></details></section><ConnectCTA /></> }
+// Every project page shares one layout; a project without a photo shows a matching title panel instead.
+const projectImages = {
+  aquaguard: { src: '/images/optimized/aquaguard-team.jpg', alt: 'AquaGuard team with their Engineering Projects in Community Service first-place award', caption: 'AquaGuard team / Engineering Projects in Community Service Season 8' },
+}
 export function ProjectDetail() {
   const { slug } = useParams(), detail = projectDetails[slug]
   if (!detail) return <NotFound />
-  const project = projects.find(p => p.number === detail.number)
+  const project = projects.find(p => p.number === detail.number), image = projectImages[slug]
+  const recognition = awards.filter(([, , , name]) => name === project.title)
+  const facts = [['My role', project.role], ['Focus', project.type], ['Timeline', project.year]]
   return <article className="project-detail section-pad">
     <Link to="/projects" className="text-link"><ArrowLeft size={16} /> All projects</Link>
-    <p className="section-kicker mono">{detail.status} / {project.year}</p><h1>{project.title}<span className="period">.</span></h1><p className="detail-lead">{detail.summary}</p>
-    <div className="detail-facts"><div><span className="meta-label mono">My role</span><strong>{project.role}</strong></div><div><span className="meta-label mono">Focus</span><strong>{project.type}</strong></div></div>
-    {slug === 'aquaguard' && <figure className="detail-image"><img src="/images/optimized/aquaguard-team.jpg" alt="AquaGuard team with their Engineering Projects in Community Service first-place award" width="960" height="640" /><figcaption className="mono">AquaGuard team / Engineering Projects in Community Service Season 8</figcaption></figure>}
-    <section><h2>Technical approach</h2><p>{detail.technical}</p></section><section><h2>My contributions</h2><ul>{detail.contributions.map(item => <li key={item}>{item}</li>)}</ul></section><section><h2>Technologies</h2><div className="tag-list">{detail.technologies.map(tag => <span className="tag mono" key={tag}>{tag}</span>)}</div></section><section className="detail-result"><span className="section-kicker mono">Results</span><p>{detail.result}</p></section>
-    {project.link.startsWith('http') && <a className="button button-primary" href={project.link} target="_blank" rel="noreferrer">Visit {project.title} <ArrowUpRight size={18} /></a>}
+    <header className="detail-hero">
+      <p className="section-kicker mono">{detail.status}</p><h1>{project.title}<span className="period">.</span></h1><p className="detail-lead">{detail.summary}</p>
+      <div className="detail-actions">
+        {project.link.startsWith('http') && <a className="button button-primary" href={project.link} target="_blank" rel="noreferrer">Visit {project.title} <ArrowUpRight size={18} /></a>}
+        <Link to="/#contact" className="button hero-secondary">Discuss this work <ArrowUpRight size={16} /></Link>
+      </div>
+    </header>
+    <div className="detail-showcase">
+      {image
+        ? <figure className="detail-image"><img src={image.src} alt={image.alt} width="960" height="640" /><figcaption>{image.caption}</figcaption></figure>
+        : <div className="detail-image detail-visual" aria-hidden="true"><span className="detail-visual-title">{project.title}</span><span className="detail-visual-type">{project.type}</span></div>}
+      <dl className="detail-facts">{facts.map(([label, value]) => <div key={label}><dt className="meta-label mono">{label}</dt><dd>{value}</dd></div>)}</dl>
+    </div>
+    <div className="detail-body">
+      <div className="detail-main">
+        <section><h2>Technical approach</h2><p>{detail.technical}</p></section>
+        <section><h2>My contributions</h2><ol className="detail-contributions">{detail.contributions.map((item, index) => <li key={item}><span className="detail-index mono">0{index + 1}</span><p>{item}</p></li>)}</ol></section>
+      </div>
+      <aside className="detail-aside">
+        <section className="detail-panel"><h2>Technologies</h2><div className="tag-list">{detail.technologies.map(tag => <span className="tag mono" key={tag}>{tag}</span>)}</div></section>
+        <section className="detail-panel detail-result"><h2>Results</h2>
+          {recognition.length ? <ul className="detail-awards">{recognition.map(([number, award, event]) => <li key={number}><strong>{award}</strong><span>{event}</span></li>)}</ul> : <p>{detail.result}</p>}
+        </section>
+      </aside>
+    </div>
     {slug === 'aquaguard' && <details className="project-evidence"><summary>Project certificates</summary><Evidence /></details>}
     <div className="detail-navigation"><Link to="/projects" className="text-link"><ArrowLeft size={16} /> More projects</Link><Link to="/#contact" className="text-link">Discuss this work <ArrowUpRight size={16} /></Link></div>
   </article>

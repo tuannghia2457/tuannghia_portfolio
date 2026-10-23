@@ -34,22 +34,21 @@ export function Testimonials() {
   </section>
 }
 
+// Compact certificate list: a small preview or PDF badge, the certificate type and event, and one link.
 export function Evidence() { return (<section id="evidence" className="evidence-section section-pad" aria-labelledby="evidence-title">
-          <div className="section-kicker mono">Supporting evidence</div>
-          <div className="evidence-header"><h2 id="evidence-title">The work,<br /><em>documented.</em></h2><p>Certificates behind the projects and competition milestones.</p></div>
-          <div className="evidence-grid">
+          <div className="evidence-header"><h2 id="evidence-title">Certificates</h2><p>Proof behind the project and competition milestones.</p></div>
+          <ul className="evidence-grid">
             {evidence.map((item) => (
-              <article className={`evidence-card ${item.preview ? '' : 'evidence-card-document'}`} key={`${item.title}-${item.type}`}>
-                {item.preview ? <a className="evidence-preview" href={item.link} target="_blank" rel="noreferrer" aria-label={item.linkLabel}><img src={item.preview.includes('EPICS') ? '/images/optimized/epics-certificate.jpg' : '/images/optimized/oisp-certificate.jpg'} alt={`${item.title} — ${item.type}`} width="720" height="510" loading="lazy" decoding="async" /></a> : <div className="evidence-placeholder mono"><span>PDF</span>Document / {item.type}</div>}
+              <li className="evidence-card" key={`${item.title}-${item.type}`}>
+                {item.preview ? <img className="evidence-thumb" src={item.preview.includes('EPICS') ? '/images/optimized/epics-certificate.jpg' : '/images/optimized/oisp-certificate.jpg'} alt="" width="72" height="51" loading="lazy" decoding="async" /> : <span className="evidence-thumb evidence-thumb-pdf mono" aria-hidden="true"><FileText size={18} strokeWidth={1.6} />PDF</span>}
                 <div className="evidence-card-body">
                   <span className="evidence-type mono">{item.type}</span>
                   <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                  <a href={item.link} target="_blank" rel="noreferrer">{item.linkLabel} <ArrowUpRight size={15} /></a>
+                  <a href={item.link} target="_blank" rel="noreferrer" aria-label={item.linkLabel}>Open <ArrowUpRight size={15} /></a>
                 </div>
-              </article>
+              </li>
             ))}
-          </div>
+          </ul>
         </section>) }
 
 function ContactCV() {
