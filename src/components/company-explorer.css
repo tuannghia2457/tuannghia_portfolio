@@ -18,13 +18,13 @@
 .company-detail-heading p { max-width: 720px; font-size: 14px; line-height: 1.8; color: var(--muted-foreground); }
 .company-detail-close { display: grid; place-items: center; min-width: 44px; min-height: 44px; border: var(--line); border-radius: var(--radius); background: var(--surface); color: var(--foreground); }
 .company-detail-close:hover { border-color: var(--primary); }
-.company-role-list > article { margin-top: 28px; padding-top: 24px; border-top: var(--line); }
+.company-story { max-width: 760px; margin-top: 24px; padding-top: 24px; border-top: var(--line); font-size: 15px; line-height: 1.85; color: var(--foreground); }
+.company-role-list { margin-top: 24px; }
+.company-role-list > article { padding-block: 16px; border-top: var(--line); }
 .company-role-heading { display: flex; justify-content: space-between; align-items: start; gap: 20px; }
-.company-role-heading h4 { margin: 0; font-size: 19px; font-weight: 500; }
+.company-role-heading h4 { margin: 0; font-size: 16px; font-weight: 500; }
 .company-role-heading .mono { font-size: 9px; color: var(--muted-foreground); }
-.company-role-location { margin-top: 12px; font-size: 12px; color: var(--muted-foreground); line-height: 1.6; }
-.company-role-list ul { padding-left: 19px; margin-block: 18px 22px; }
-.company-role-list li { padding-left: 5px; margin-bottom: 9px; color: var(--muted-foreground); font-size: 14px; line-height: 1.85; }
+.company-role-location { margin-top: 6px; font-size: 12px; color: var(--muted-foreground); line-height: 1.6; }
 @keyframes company-details-in { from { opacity: .3; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 @media (max-width: 600px) {
   .company-selector { grid-template-columns: 1fr; gap: 12px; }

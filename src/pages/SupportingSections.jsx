@@ -8,7 +8,7 @@ import SkillsBento from '../components/SkillsBento'
 import './recognition.css'
 import { Link } from 'react-router-dom'
 export function Background() { return (<section id="about" className="about-section section-pad" aria-labelledby="about-title">
-          <div className="section-kicker mono">01 / BACKGROUND</div>
+          <div className="section-kicker mono">02 / BACKGROUND</div>
           <div className="about-grid">
             <div><h2 id="about-title">Technical<br /><em>by nature.</em><br />Human by choice.</h2></div>
             <div className="about-copy"><p>Hello, I’m Tuan Nghia — an Artificial Intelligence undergraduate at the University of Technology Sydney through the Ho Chi Minh City University of Technology–University of Technology Sydney program.</p><p>I’m currently a research assistant at Individual Systems Joint Stock Company, working on robotics and computer vision. I’m also a co-founder of Odylytics and part of the team building AquaGuard, a flood-response platform in Vietnam.</p><p>Across research, product, teaching, and public speaking, I’m interested in the same question: how can we make technology technically strong and genuinely useful to people?</p></div>
@@ -17,7 +17,7 @@ export function Background() { return (<section id="about" className="about-sect
 
 export function Experience() { return (<section id="experience" className="experience-section section-pad" aria-labelledby="experience-title">
           <div className="section-heading experience-heading">
-            <div className="section-kicker mono">02 / EXPERIENCE</div>
+            <div className="section-kicker mono">01 / TIMELINE</div>
             <h2 id="experience-title">Where I’ve<br /><em>been building.</em></h2>
           </div>
           <ExperienceTimeline items={experience} />
@@ -28,7 +28,7 @@ export function Companies() { return <CompanyExplorer /> }
 export function Testimonials() {
   const published = testimonials.filter(item => item.published)
   return <section id="testimonials" className="testimonials-section section-pad" data-tone="alt" aria-labelledby="testimonials-title">
-    <p className="section-kicker mono">TESTIMONIALS</p>
+    <p className="section-kicker mono">04 / TESTIMONIALS</p>
     <div className="testimonials-heading"><h2 id="testimonials-title">Words from collaborators.</h2><p>Perspectives from the people I’ve worked with.</p></div>
     {published.length ? <div className="testimonials-grid">{published.map(item => <figure className="testimonial-card" key={item.name + item.organization}><blockquote>{item.quote}</blockquote><figcaption><strong>{item.name}</strong><span>{item.organization}</span></figcaption></figure>)}</div> : <div className="testimonials-pending"><span className="testimonial-pending-mark" aria-hidden="true">“</span><div><h3>Recommendations coming soon.</h3><p>This space is reserved for collaborators’ recommendations, with their names and roles.</p></div></div>}
   </section>
@@ -60,7 +60,7 @@ function ContactCV() {
   </article>
 }
 export function ContactInfo() { return (<section id="contact" className="contact-section section-pad" aria-labelledby="contact-title">
-          <div className="section-kicker mono">01 / CONTACT</div><div className="contact-grid"><h2 id="contact-title">Let’s make<br /><em>something useful.</em></h2><div className="contact-copy"><p>Whether you want to talk about research, AI, robotics, product ideas, or just say hello — my inbox is open.</p><a className="email-link" href="mailto:trantuannghia2457@gmail.com">trantuannghia2457@gmail.com <ArrowUpRight size={20} /></a><div className="social-links">
+          <div className="section-kicker mono">05 / CONTACT</div><div className="contact-grid"><h2 id="contact-title">Let’s make<br /><em>something useful.</em></h2><div className="contact-copy"><p>Whether you want to talk about research, AI, robotics, product ideas, or just say hello — my inbox is open.</p><a className="email-link" href="mailto:trantuannghia2457@gmail.com">trantuannghia2457@gmail.com <ArrowUpRight size={20} /></a><div className="social-links">
             <a href={profile.linkedinUrl} target="_blank" rel="noreferrer">LinkedIn <ExternalLink size={15} /></a>
             {profile.facebookUrl ? <a href={profile.facebookUrl} target="_blank" rel="noreferrer">Facebook <ExternalLink size={15} /></a> : <span className="social-pending" title="Facebook link coming soon">Facebook <small>Coming soon</small></span>}
             <a href={profile.githubUrl} target="_blank" rel="noreferrer">GitHub <ExternalLink size={15} /></a>

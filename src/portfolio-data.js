@@ -7,7 +7,7 @@ export const projects = [
     type: 'Flood-response platform',
     description: 'A cross-platform system for real-time alerts, safety guidance, and crowdsourced rescue coordination during floods.',
     role: 'Co-Founder & Product Manager',
-    year: '2025—NOW',
+    year: '2025 — NOW',
     tags: ['PRODUCT', 'IOS', 'WEB', 'DISASTER RESPONSE'],
     result: '1st Place — OISP Presentation Contest 2025 · First Runner-Up — Bach Khoa Innovation 2026',
     link: 'https://aquaguard.vn/',
@@ -135,14 +135,14 @@ experience.push({
   logo: '/images/company-logos/odylytics-light.png',
   responsibilities: [
     { text: 'Co-founder and Chief Technology Officer at Odylytics, the team behind AquaGuard.', highlights: ['Co-founder and Chief Technology Officer', 'AquaGuard'] },
-    { text: 'Contribute as a Computer Vision Engineer at Odylytics.', highlights: ['Computer Vision Engineer'] },
+    { text: 'Contributing as a Computer Vision Engineer at Odylytics.', highlights: ['Computer Vision Engineer'] },
   ],
   stack: 'Technical Leadership · Computer Vision · Product Development',
   location: null,
 })
 
 export const awards = [
-  ['01', 'First Runner-Up', 'Bach Khoa Innovation', 'AquaGuard'],
+  ['01', 'First Runner-Up', 'Bach Khoa Innovation 2026', 'AquaGuard'],
   ['02', '1st Place', 'Engineering Projects in Community Service Season 8', 'AquaGuard'],
   ['03', '1st Place', 'OISP Presentation Contest 2025', 'AquaGuard'],
   ['04', 'Finalist', 'InnoStars', 'AquaGuard'],
@@ -153,19 +153,18 @@ export const awards = [
 export const evidence = [
   {
     title: 'EPICS Season 8',
-    type: 'Award certificate',
-    description: 'AquaGuard recognition from EPICS Season 8.',
+    type: 'First prize team certificate',
+    description: 'First Prize Winning Team certificate for Team HCMUT AquaGuard from Arizona State University and Dow Vietnam, May 2026.',
     preview: '/images/competitions-certifications/EPICS8/HCMUT%20-%20AquaGuard_page-0001.jpg',
     link: '/images/competitions-certifications/EPICS8/HCMUT%20-%20AquaGuard.pdf',
     linkLabel: 'Open EPICS certificate',
   },
   {
     title: 'EPICS Season 8',
-    type: 'Team certificate',
-    description: 'Additional AquaGuard certificate naming the project team.',
-    preview: '/images/competitions-certifications/EPICS8/HCMUT%20-%20AquaGuard_page-0001.jpg',
+    type: 'Personal certificate',
+    description: 'Certificate of Achievement awarded to me for my efforts in the EPICS program, May 2026.',
     link: '/images/competitions-certifications/EPICS8/HCMUT%20-%20AquaGuard_Nghia.pdf',
-    linkLabel: 'Open team certificate',
+    linkLabel: 'Open personal certificate',
   },
   {
     title: 'OISP Presentation Contest 2025',

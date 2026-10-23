@@ -46,7 +46,7 @@ function Milestone({ school }) {
 
 export default function Education() { return <section id="education" className="education-section section-pad" aria-labelledby="education-title">
   <header className="education-intro">
-    <p className="section-kicker mono">04 / EDUCATION</p>
+    <p className="section-kicker mono">EDUCATION / ACADEMIC JOURNEY</p>
     <h1 id="education-title">From physics to <em>artificial intelligence.</em></h1>
     <p>My education brings together analytical foundations, AI studies, and an international learning environment.</p>
   </header>

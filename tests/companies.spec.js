@@ -10,29 +10,20 @@ test('All five roles are consolidated under their four companies with complete e
   }
   const webRole = rows.nth(2)
   await expect(webRole.locator('strong')).toContainText(['IELTS assessment platform', '200+ active students per month', 'Playwright automation tool', '3× faster'])
-  await page.getByRole('button', { name: 'Explore Best Start English Center' }).click()
-  const companyRoles = page.locator('.company-role-list article')
-  await expect(companyRoles.first().locator('.role-responsibilities li')).toHaveText(await webRole.locator('.role-responsibilities li').allTextContents())
+  // Company panels tell the story instead of repeating the timeline's task lists.
   const panel = page.locator('#company-detail-panel')
-  for (const [name, counts, employment] of [
-    ['Individual Systems Joint Stock Company', [3], 'Internship'],
-    ['Best Start English Center', [2, 1], 'Part-time'],
-    ['SDE Digital Technology Company Limited', [2], 'Internship'],
-    ['Odylytics', [2], 'Odylytics'],
+  for (const [name, count, employment] of [
+    ['Individual Systems Joint Stock Company', 1, 'Internship'],
+    ['Best Start English Center', 2, 'Part-time'],
+    ['SDE Digital Technology Company Limited', 1, 'Internship'],
+    ['Odylytics', 1, 'Odylytics'],
   ]) {
     await page.getByRole('button', { name: `Explore ${name}` }).click()
+    await expect(panel.locator('.company-story')).not.toBeEmpty()
+    await expect(panel.locator('.role-responsibilities, .tag-list')).toHaveCount(0)
     const roles = panel.locator('.company-role-list article')
-    await expect(roles).toHaveCount(counts.length)
-    for (const [index, count] of counts.entries()) {
-      await expect(roles.nth(index).locator('.role-responsibilities li')).toHaveCount(count)
-      await expect(roles.nth(index)).toContainText(employment)
-      await expect(roles.nth(index).locator('.tag-list .tag').first()).toBeVisible()
-    }
-    if (name === 'Best Start English Center') {
-      await expect(roles.first().locator('strong')).toContainText(['IELTS assessment platform', '200+ active students per month', 'Playwright automation tool', '3\u00d7 faster'])
-      await expect(roles.first()).toContainText('Remote')
-      await expect(roles.nth(1)).toContainText('On-site')
-    }
+    await expect(roles).toHaveCount(count)
+    for (let index = 0; index < count; index++) await expect(roles.nth(index)).toContainText(employment)
   }
   await page.setViewportSize({ width: 320, height: 800 })
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy()
@@ -48,12 +39,12 @@ test('Four real company logos disclose the correct roles and can be closed', asy
   }
   const ivs = page.getByRole('button', { name: 'Explore Individual Systems Joint Stock Company' })
   await ivs.click(); await expect(ivs).toHaveAttribute('aria-expanded', 'true')
-  await expect(panel).toContainText('Voronoi'); await expect(panel).toContainText('APR 2026')
+  await expect(panel).toContainText('satellite positioning'); await expect(panel).toContainText('APR 2026')
   const bsec = page.getByRole('button', { name: 'Explore Best Start English Center' })
   await bsec.focus(); await page.keyboard.press('Enter')
   await expect(ivs).toHaveAttribute('aria-expanded', 'false')
   await expect(panel.locator('article')).toHaveCount(2)
-  await expect(panel).toContainText('200+'); await expect(panel).toContainText('Teaching Assistant')
+  await expect(panel).toContainText('assessment platform'); await expect(panel).toContainText('Teaching Assistant')
   const sde = page.getByRole('button', { name: 'Explore SDE Digital Technology Company Limited' })
   await sde.click(); await expect(panel).toContainText('Mendix')
   await expect(panel.locator('article')).toHaveCount(1)

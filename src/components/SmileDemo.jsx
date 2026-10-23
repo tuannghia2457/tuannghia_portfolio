@@ -88,7 +88,7 @@ export default function SmileDemo() {
   }
   const busy = phase === 'loading' || phase === 'running'
   return <section id="smile" className="smile-section section-pad" aria-labelledby="smile-title">
-    <div className="smile-heading"><p className="section-kicker mono">02 / A LITTLE COMPUTER VISION</p><h2 id="smile-title">Smile to Collaborate<span className="period">.</span></h2><p>Smile if you think we should work together :)</p></div>
+    <div className="smile-heading"><p className="section-kicker mono">06 / A LITTLE COMPUTER VISION</p><h2 id="smile-title">Smile to Collaborate<span className="period">.</span></h2><p>Smile if you think we should work together :)</p></div>
     <div className={`smile-panel is-${phase}`}>
       <div className="camera-stage">
         <video ref={videoRef} autoPlay muted playsInline aria-label="Your local webcam preview" className={busy ? 'is-visible' : ''} />
