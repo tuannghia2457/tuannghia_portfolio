@@ -3,11 +3,12 @@ import { test, expect } from '@playwright/test'
 test('Employment disclosures show separate contributions with readable results and matching company details', async ({ page }) => {
   await page.goto('/experience')
   const rows = page.locator('.experience-item')
-  for (const [index, count] of [3, 2, 1, 2, 2].entries()) {
+  // Timeline order is newest start first: Odylytics, IVS, BSEC web, BSEC teaching, SDE.
+  for (const [index, count] of [2, 3, 2, 1, 2].entries()) {
     await rows.nth(index).locator('.experience-details > summary').click()
     await expect(rows.nth(index).locator('.role-responsibilities li')).toHaveCount(count)
   }
-  const webRole = rows.nth(1)
+  const webRole = rows.nth(2)
   await expect(webRole.locator('strong')).toContainText(['IELTS assessment platform', '200+ active students per month', 'Playwright automation tool', '3× faster'])
   await page.getByRole('button', { name: 'Explore Best Start English Center' }).click()
   const companyRoles = page.locator('.company-role-list article')

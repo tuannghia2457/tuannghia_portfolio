@@ -37,15 +37,15 @@ test('Home holds personal content while Experience holds employment and legacy l
   await expect(page).toHaveURL(/\/experience$/)
   await expect(page.getByRole('navigation').getByRole('link', { name: 'Experience' })).toHaveAttribute('aria-current', 'page')
   await expect(page.locator('#about, .skills-section, #contact, #testimonials')).toHaveCount(0)
-  for (const row of await page.locator('.experience-item').all()) {
-    const logo = row.locator('.experience-company-logo')
-    await logo.scrollIntoViewIfNeeded()
-    await expect.poll(() => logo.evaluate(img => img.complete && img.naturalWidth > 0)).toBeTruthy()
-    const dateBox = await row.locator('.experience-period').boundingBox(), logoBox = await logo.boundingBox()
-    expect(logoBox.y).toBeGreaterThanOrEqual(dateBox.y + dateBox.height)
-    expect(logoBox.width).toBe(220)
-    expect(logoBox.height).toBe(160)
+  // Experience is a logo-free work timeline: an overview bar per role plus a dated list.
+  await expect(page.locator('#experience .experience-company-logo, #experience img')).toHaveCount(0)
+  const bars = page.locator('.timeline-bar'), rows = page.locator('.timeline-item')
+  await expect(bars).toHaveCount(await rows.count())
+  for (const [index, row] of (await rows.all()).entries()) {
+    await expect(row.locator('.experience-period')).toHaveText(/^[A-Z]{3} \d{4} — ([A-Z]{3} \d{4}|PRESENT)$/)
+    await expect(bars.nth(index)).toHaveAttribute('href', `#${await row.getAttribute('id')}`)
   }
+  await expect(rows.first().locator('.timeline-now')).toHaveText('NOW')
   await page.goto('/contact')
   await expect(page).toHaveURL(/\/#contact$/)
   await expect(page.getByRole('heading', { name: 'Curriculum Vitae' })).toBeVisible()

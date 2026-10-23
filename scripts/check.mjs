@@ -6,6 +6,7 @@ for (const args of [
   ['--test', 'src/theme.test.js'],
   ['--test', 'src/components/mini-nghia.helpers.test.js'],
   ['--test', 'src/lib/smile.test.js'],
+  ['--test', 'src/lib/timeline.test.js'],
 ]) {
   const result = spawnSync(process.execPath, args, { cwd: root, stdio: 'inherit' })
   if (result.error) throw result.error
