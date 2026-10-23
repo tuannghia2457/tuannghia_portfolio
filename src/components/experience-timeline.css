@@ -33,7 +33,7 @@
 .timeline-item.is-current .timeline-node { border-color: var(--primary); background: var(--primary); box-shadow: 0 0 0 5px var(--accent-surface); animation: timeline-pulse 2.4s ease-in-out infinite; }
 @keyframes timeline-pulse { 50% { box-shadow: 0 0 0 9px transparent; } }
 .timeline-item .experience-main { padding: 0 0 4px; }
-.timeline-item:target .experience-main h3 { text-decoration: underline; text-decoration-color: var(--primary-hover); text-underline-offset: 6px; }
+.timeline-item:target .experience-main h3 { text-decoration: underline; text-decoration-color: var(--primary); text-underline-offset: 6px; }
 
 @media (max-width: 900px) {
   .timeline-overview { --lane-label: 260px; padding-inline: 20px; }

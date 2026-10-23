@@ -19,7 +19,7 @@
 .editorial-hero .hero-description { max-width: 470px; font-size: 16px; line-height: 1.8; margin-bottom: 32px; color: var(--muted-foreground); }
 .editorial-hero .hero-actions { gap: 12px; }
 .hero-secondary { background: var(--surface); color: var(--foreground); }
-.hero-secondary:hover { border-color: var(--primary-hover); color: var(--foreground); transform: translateY(-2px); }
+.hero-secondary:hover { border-color: var(--primary); color: var(--foreground); transform: translateY(-2px); }
 
 /* Moving name behind the portrait */
 .hero-name-band { position: absolute; inset: 22% 0 auto; z-index: 0; pointer-events: none; user-select: none; }
@@ -36,7 +36,7 @@
 /* Terminal card */
 .hero-terminal { position: absolute; right: max(16px, calc((100vw - 1440px) / 2 + 24px)); top: 50%; z-index: 4; width: 300px; padding: 14px 18px 18px; border: var(--line); border-radius: 12px; background: color-mix(in srgb, var(--surface) 82%, transparent); backdrop-filter: blur(10px); box-shadow: var(--shadow-overlay); font-size: 12px; text-transform: none; letter-spacing: .02em; }
 .hero-terminal-bar { display: flex; align-items: center; gap: 6px; margin-bottom: 14px; }
-.hero-terminal-bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--primary-hover); }
+.hero-terminal-bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--muted-foreground); }
 .hero-terminal-bar i:nth-child(2) { background: var(--accent-secondary); }
 .hero-terminal-bar i:nth-child(3) { background: var(--primary); }
 .hero-terminal-bar span { margin-left: 12px; color: var(--muted-foreground); font-size: 10px; }

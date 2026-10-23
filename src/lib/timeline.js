@@ -11,12 +11,14 @@ function parseMonth(text) {
 export const monthIndex = date => date.getFullYear() * 12 + date.getMonth()
 export const monthLabel = index => `${MONTHS[index % 12]} ${Math.floor(index / 12)}`
 
-// Parses "APR 2026 — PRESENT" into inclusive month indices; PRESENT ends at `today`.
+// Parses "APR 2026 — PRESENT" or "SEP 2025 — EXPECTED MAY 2028" into inclusive month indices.
+// PRESENT ends at `today`; an expected end still in the future also counts as current.
 export function parsePeriod(period, today = new Date()) {
   const [from, to] = period.split(/\s*[—–-]\s*/)
-  const current = /present/i.test(to)
-  const start = parseMonth(from), end = current ? monthIndex(today) : parseMonth(to)
-  return { start, end, current, months: end - start + 1 }
+  const present = /present/i.test(to), expected = /^expected\s+/i.test(to)
+  const start = parseMonth(from), end = present ? monthIndex(today) : parseMonth(to.replace(/^expected\s+/i, ''))
+  const current = present || (expected && end >= monthIndex(today))
+  return expected ? { start, end, current, months: end - start + 1, expected } : { start, end, current, months: end - start + 1 }
 }
 
 export function formatDuration(months) {

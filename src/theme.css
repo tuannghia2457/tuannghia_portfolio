@@ -1,4 +1,4 @@
-/* Neon Dark theme, requested by Nghia on 23 October 2026. See AGENTS.md and
+/* Neon Dark theme, requested by Nghia on 23 October 2026; pink retired the same day. See AGENTS.md and
    docs/DESIGN_SYSTEM.md. This is the only authored source for color values. */
 :root {
   color-scheme: dark;
@@ -6,13 +6,14 @@
   --foreground: #FFFFFF;
   --primary: #00FF85;
   --accent-secondary: #1E90FF;
-  --primary-hover: #FF0099;
 
-  /* Neutral steps derive from the five palette colors. */
+  /* Neutral steps derive from the four palette colors. */
   --surface: color-mix(in srgb, var(--foreground) 5%, var(--background));
   --surface-alt: color-mix(in srgb, var(--foreground) 9%, var(--background));
   --muted-foreground: color-mix(in srgb, var(--foreground) 68%, var(--background));
   --border: color-mix(in srgb, var(--foreground) 16%, var(--background));
+  /* Hover fill for green buttons: a lighter mint from the same green, never a second accent. */
+  --primary-hover: color-mix(in srgb, var(--primary) 72%, var(--foreground));
 
   /* Semantic roles derive from the palette, never a second theme. */
   --background-raised: var(--surface);
@@ -28,7 +29,7 @@
   --disabled-foreground: var(--muted-foreground);
   --camera-badge-background: var(--surface);
   --camera-badge-foreground: var(--foreground);
-  --sprite-skin: color-mix(in srgb, var(--primary-hover) 22%, var(--foreground));
+  --sprite-skin: color-mix(in srgb, var(--foreground) 86%, var(--background));
   --sprite-ink: var(--background);
   /* Company, school and tool logos are artwork made for white; they sit on a white plate. */
   --logo-plate: var(--foreground);

@@ -84,7 +84,7 @@
 .mini-nghia-controls { display: flex; flex-wrap: wrap; gap: 6px; }
 .mini-nghia-controls button { min-height: 36px; padding: 7px 10px; border: 1px solid var(--border); background: var(--background); color: var(--foreground); font: inherit; font-size: 10px; cursor: pointer; transition: border-color 120ms ease-out, color 120ms ease-out; }
 .mini-nghia-controls button:hover,
-.mini-nghia-bubble .mini-nghia-close:hover { border-color: var(--primary-hover); color: var(--accent-foreground); }
+.mini-nghia-bubble .mini-nghia-close:hover { border-color: var(--primary); color: var(--accent-foreground); }
 .mini-nghia-hint { display: block; margin-top: 12px; color: var(--muted-foreground); font-size: 9px; line-height: 1.6; }
 
 .mini-nghia.is-compact { width: 44px; }
@@ -93,7 +93,7 @@
 .mini-nghia.is-compact .mini-nghia-sprite * { animation: none; }
 .mini-nghia-restore { position: fixed; right: 20px; bottom: max(16px, env(safe-area-inset-bottom)); z-index: 35; min-height: 36px; padding: 7px 10px; border: 1px solid var(--border); background: var(--surface); color: var(--muted-foreground); font-family: var(--font-mono, ui-monospace, monospace); font-size: 10px; cursor: pointer; }
 .mini-nghia-restore span { margin-left: 6px; color: var(--accent-foreground); }
-.mini-nghia-restore:hover { color: var(--foreground); border-color: var(--primary-hover); }
+.mini-nghia-restore:hover { color: var(--foreground); border-color: var(--primary); }
 
 @keyframes mini-nghia-breathe { 0%, 47%, 54%, 100% { transform: translateY(0); } 48%, 53% { transform: translateY(-1px); } }
 @keyframes mini-nghia-blink { 0%, 92%, 95%, 100% { opacity: 1; } 93%, 94% { opacity: 0; } }

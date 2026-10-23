@@ -6,7 +6,7 @@ The user requests automatic commits after each meaningful completed change and a
 
 ## Permanent color system — applies to every task
 
-The established theme is **Neon Dark** (near-black × neon green × electric blue × vivid pink), requested explicitly by Nghia on 23 October 2026. It replaces Warm Ivory × Orange × Charcoal. Ember Dark, Warm Ivory and the RawBlock palette are obsolete and must not be restored.
+The established theme is **Neon Dark** (near-black × neon green × electric blue), requested explicitly by Nghia on 23 October 2026. It replaces Warm Ivory × Orange × Charcoal. Nghia retired the vivid pink accent (#FF0099) the same day: do not reintroduce it. Ember Dark, Warm Ivory and the RawBlock palette are obsolete and must not be restored.
 
 Read [docs/DESIGN_SYSTEM.md](docs/DESIGN_SYSTEM.md) before styling. The single authored source of color values is [src/theme.css](src/theme.css). All pages, components, navigation, footer, cards, controls, overlays, Mini Nghia, and demo UI must use its semantic CSS variables.
 
@@ -16,14 +16,14 @@ Read [docs/DESIGN_SYSTEM.md](docs/DESIGN_SYSTEM.md) before styling. The single a
 | `--foreground` | `#FFFFFF` |
 | `--primary` | `#00FF85` (neon green, accent 1) |
 | `--accent-secondary` | `#1E90FF` (electric blue, accent 2) |
-| `--primary-hover` | `#FF0099` (vivid pink, hover effects) |
+| `--primary-hover` | green mixed 72% with white (mint hover fill for green buttons) |
 | `--surface` / `--surface-alt` | white mixed 5% / 9% into the background |
 | `--muted-foreground` | white mixed 68% into the background |
 | `--border` | white mixed 16% into the background |
 
 Do not change the palette unless Nghia explicitly requests a change to the established project color system. Reference screenshots, inspiration websites, agent suggestions and new features do not authorize a theme change; interpret them as layout, typography, spacing, motion, and interaction guidance. An explicit user request to change the established color system is the only override.
 
-The site is dark everywhere (`color-scheme: dark`); there is no light mode or automatic theme switching. Hover effects use pink: borders, underlines and button fills. Button labels on green or pink fills use `--on-primary` (the near-black background); white on pink fails contrast. Green is the accent text color (`--accent-foreground`). Focus uses the blue `--focus-ring`. Never add hardcoded component colors or color fallbacks. Camera footage and existing photographs are content, not theme colors.
+The site is dark everywhere (`color-scheme: dark`); there is no light mode or automatic theme switching. Hover indicators (borders, underlines, menu underline) use the main green `--primary`; green buttons brighten to the mint `--primary-hover` fill. Button labels on green or mint fills use `--on-primary` (the near-black background). Green is the accent text color (`--accent-foreground`). Focus uses the blue `--focus-ring`. Never add hardcoded component colors or color fallbacks. Camera footage and existing photographs are content, not theme colors.
 
 `scripts/sync-theme-assets.mjs` derives browser theme metadata from the tokens. The favicon and header icon use the owner's unchanged childhood pixel artwork at `public/images/personal-images/pixel.png`. Artwork colors are content, not theme overrides.
 

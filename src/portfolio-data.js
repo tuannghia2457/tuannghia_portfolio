@@ -213,7 +213,8 @@ export const education = [
     achievements: [],
   },
   {
-    id: 'hcmut', institution: 'Ho Chi Minh City University of Technology', logo: '/images/schools/hcmut.jpg',
+    // Same program and years as UTS (transnational education), so it is shown as UTS's partner, not its own milestone.
+    id: 'hcmut', institution: 'Ho Chi Minh City University of Technology', shortName: 'HCMUT', partnerOf: 'uts', url: 'https://hcmut.edu.vn', logo: '/images/schools/hcmut.jpg',
     degree: 'International Transnational Bachelor of Engineering Program with the University of Technology Sydney',
     program: 'Ho Chi Minh City University of Technology–University of Technology Sydney transnational partnership', period: null, grade: null,
     summary: 'My transnational education connects learning at Ho Chi Minh City University of Technology with the University of Technology Sydney within a shared international program.',

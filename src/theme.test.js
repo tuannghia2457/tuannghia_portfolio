@@ -2,17 +2,19 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile, readdir } from 'node:fs/promises'
 const css = await readFile(new URL('./theme.css', import.meta.url), 'utf8')
-const palette = { background: '#0D0D0D', foreground: '#FFFFFF', primary: '#00FF85', 'accent-secondary': '#1E90FF', 'primary-hover': '#FF0099' }
+const palette = { background: '#0D0D0D', foreground: '#FFFFFF', primary: '#00FF85', 'accent-secondary': '#1E90FF' }
 // Mirrors theme.css color-mix(in srgb, foreground N%, background) for the derived neutrals.
 const mix = (a, b, weight) => '#' + [1, 3, 5].map(i => Math.round(parseInt(a.slice(i, i + 2), 16) * weight + parseInt(b.slice(i, i + 2), 16) * (1 - weight)).toString(16).padStart(2, '0')).join('')
 const derived = { surface: .05, 'surface-alt': .09, 'muted-foreground': .68, border: .16 }
-const colors = { ...palette, ...Object.fromEntries(Object.entries(derived).map(([name, weight]) => [name, mix(palette.foreground, palette.background, weight)])) }
+const colors = { ...palette, ...Object.fromEntries(Object.entries(derived).map(([name, weight]) => [name, mix(palette.foreground, palette.background, weight)])), 'primary-hover': mix(palette.primary, palette.foreground, .72) }
 function luminance(hex) { const channels = hex.slice(1).match(/../g).map(v => parseInt(v, 16) / 255).map(v => v <= .04045 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4); return channels[0] * .2126 + channels[1] * .7152 + channels[2] * .0722 }
 function contrast(a, b) { const [high, low] = [luminance(a), luminance(b)].sort((a, b) => b - a); return (high + .05) / (low + .05) }
-test('The Neon Dark palette has exactly five authored color values', () => {
+test('The Neon Dark palette has exactly four authored color values and no pink', () => {
   for (const [name, value] of Object.entries(palette)) assert.ok(css.includes(`--${name}: ${value};`), name)
   for (const [name, weight] of Object.entries(derived)) assert.ok(css.includes(`--${name}: color-mix(in srgb, var(--foreground) ${weight * 100}%, var(--background));`), name)
-  assert.equal((css.match(/#[\da-f]{3,8}\b/gi) || []).length, 5)
+  assert.ok(css.includes('--primary-hover: color-mix(in srgb, var(--primary) 72%, var(--foreground));'))
+  assert.doesNotMatch(css, /#FF0099/i)
+  assert.equal((css.match(/#[\da-f]{3,8}\b/gi) || []).length, 4)
   assert.ok(css.includes('color-scheme: dark'))
 })
 test('Components use semantic tokens without literal colors or alternate themes', async () => {
@@ -36,7 +38,7 @@ test('Text and button contrast meets 4.5:1 across official surfaces and states',
   for (const bg of ['background', 'surface', 'surface-alt']) for (const fg of ['foreground', 'muted-foreground', 'primary']) assert.ok(contrast(colors[fg], colors[bg]) >= 4.5, `${fg} on ${bg}`)
   // Buttons use the near-black background as label color on green and on pink hover.
   for (const fill of ['primary', 'primary-hover']) assert.ok(contrast(colors.background, colors[fill]) >= 4.5, `background on ${fill}`)
-  // White on pink falls below 4.5:1, so pink fills never carry white labels.
+  // White on the mint hover fill falls below 4.5:1, so it never carries white labels.
   assert.ok(contrast(colors.foreground, colors['primary-hover']) < 4.5)
   // Blue focus ring stays visible on every surface (3:1 for non-text).
   for (const bg of ['background', 'surface', 'surface-alt']) assert.ok(contrast(colors['accent-secondary'], colors[bg]) >= 3, `focus on ${bg}`)

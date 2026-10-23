@@ -20,6 +20,6 @@
 .recognition-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; margin-top: auto; padding-top: 16px; border-top: var(--line); }
 .recognition-footer > .mono { color: var(--muted-foreground); font-size: 9px; }
 .recognition-project { display: inline-flex; align-items: center; gap: 9px; min-height: 36px; color: var(--foreground); font-size: 13px; text-decoration: none; }
-.recognition-project:hover { text-decoration: underline; text-decoration-color: var(--primary-hover); }
+.recognition-project:hover { text-decoration: underline; text-decoration-color: var(--primary); }
 @media (max-width: 650px) { .recognition-grid { grid-template-columns: 1fr; gap: 12px; } .recognition-panel .recognition-item { padding: 21px; } .recognition-item h3 { font-size: 20px; } }
 @media (max-width: 360px) { .awards-section.recognition-panel { padding: 18px; } .recognition-panel .recognition-item { padding: 18px; } .recognition-result { font-size: 12px; padding: 6px 9px; } }

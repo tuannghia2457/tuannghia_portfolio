@@ -11,6 +11,11 @@ test('periods parse inclusively and PRESENT ends in the current month', () => {
   assert.equal(current.months, 7)
   assert.equal(monthLabel(current.end), 'OCT 2026')
   assert.throws(() => parsePeriod('Spring 2024 — PRESENT', today))
+  const degree = parsePeriod('SEP 2025 — EXPECTED MAY 2028', today)
+  assert.equal(degree.current, true)
+  assert.equal(degree.expected, true)
+  assert.equal(monthLabel(degree.end), 'MAY 2028')
+  assert.equal(parsePeriod('SEP 2020 — EXPECTED MAY 2024', today).current, false)
 })
 
 test('durations read naturally', () => {

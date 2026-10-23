@@ -10,7 +10,7 @@
 .compact-heading h2, .connect-cta h2 { font-size: clamp(28px, 3.6vw, 43px); line-height: 1.15; letter-spacing: -.045em; margin-top: 16px; font-weight: 500; }
 .curated-projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .curated-card { display: flex; flex-direction: column; text-decoration: none; background: var(--surface); border: var(--line); padding: 26px; transition: border-color 180ms, transform 180ms; }
-.curated-card:hover { color: var(--foreground); border-color: var(--primary-hover); transform: translateY(-4px); }
+.curated-card:hover { color: var(--foreground); border-color: var(--primary); transform: translateY(-4px); }
 .card-topline { display: flex; align-items: start; justify-content: space-between; gap: 12px; font-size: 9px; color: var(--muted-foreground); }
 .card-topline svg { color: var(--accent-foreground); }
 .curated-card h3 { font-size: 28px; font-weight: 500; line-height: 1.2; letter-spacing: -.035em; margin-top: 36px; }
