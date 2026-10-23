@@ -24,11 +24,9 @@ export default function WarpTransition() {
   const speed = useTransform(scrollYProgress, [0, 1], [1, 3.5])
   const opacity = useTransform(scrollYProgress, [0.8, 1], [1, 0])
 
-  return <section ref={section} className="warp-transition" data-tone="alt" aria-label="Transition to selected projects">
+  return <section ref={section} className="warp-transition" data-tone="alt" aria-hidden="true">
     <motion.div className="warp-transition-sticky" style={{ opacity }}>
-      <WarpBackground className="warp-transition-field" speed={speed} paused={Boolean(reduceMotion)} beamsPerSide={compact ? 2 : 3} beamSize={compact ? 8 : 5} perspective={compact ? 80 : 100}>
-        <p className="warp-transition-label mono">PERCEPTION / ROBOTICS / APPLIED AI</p>
-      </WarpBackground>
+      <WarpBackground className="warp-transition-field" speed={speed} paused={Boolean(reduceMotion)} beamsPerSide={compact ? 2 : 3} beamSize={compact ? 8 : 5} perspective={compact ? 80 : 100} />
     </motion.div>
   </section>
 }

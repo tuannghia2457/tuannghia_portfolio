@@ -103,8 +103,6 @@ details > summary:hover { color: var(--accent-foreground); text-decoration: unde
 .publication h3 { margin-top: 22px; }
 .publication .publication-note { font-size: 12px; margin-block: 16px; }
 .not-found, .demo-loading { padding-block: 40px 90px; }
-.page-transition { animation: page-arrive 220ms ease-out both; }
-@keyframes page-arrive { from { opacity: .2; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 @media (max-width: 900px) { .curated-projects { grid-template-columns: 1fr; } .curated-card { padding: 28px; } .curated-card h3 { margin-top: 22px; } .curated-card > p { max-width: 650px; } }
 @media (max-width: 600px) {
   .page-description { font-size: 15px; } .compact-heading, .connect-cta { align-items: start; flex-direction: column; gap: 18px; }
