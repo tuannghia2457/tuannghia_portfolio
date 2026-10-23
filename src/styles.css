@@ -13,7 +13,8 @@
   --duration-default: 240ms;
   font-family: var(--body);
   color: var(--foreground);
-  background: var(--background);
+  background: var(--page-tone);
+  transition: background-color 600ms ease;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -21,7 +22,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 96px; }
-body { margin: 0; min-width: 320px; background: var(--background); }
+body { margin: 0; min-width: 320px; background: var(--page-tone); transition: background-color 600ms ease; }
 button, input, select, textarea { font: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }
 button { cursor: pointer; }

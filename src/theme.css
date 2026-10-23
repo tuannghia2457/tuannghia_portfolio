@@ -26,4 +26,38 @@
   --camera-badge-background: var(--surface);
   --camera-badge-foreground: var(--foreground);
   --sprite-skin: color-mix(in srgb, var(--primary) 25%, var(--surface));
+
+  /* Home scroll tone: shifts between ivory and surface-alt only, never dark. */
+  --page-tone: var(--background);
+
+  /* shadcn/ui role names, mapped onto the same palette. */
+  --card: var(--surface);
+  --card-foreground: var(--foreground);
+  --popover: var(--surface);
+  --popover-foreground: var(--foreground);
+  --primary-foreground: var(--on-primary);
+  --secondary: var(--surface-alt);
+  --secondary-foreground: var(--foreground);
+  --muted: var(--surface-alt);
+  --accent: var(--accent-surface);
+  --destructive: var(--foreground);
+  --input: var(--border);
+  --ring: var(--focus-ring);
+  --chart-1: var(--primary);
+  --chart-2: var(--foreground);
+  --chart-3: var(--muted-foreground);
+  --chart-4: var(--primary-hover);
+  --chart-5: var(--border);
+  --sidebar: var(--surface);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--on-primary);
+  --sidebar-accent: var(--accent-surface);
+  --sidebar-accent-foreground: var(--foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--focus-ring);
+}
+
+:root[data-page-tone="alt"] {
+  --page-tone: var(--surface-alt);
 }

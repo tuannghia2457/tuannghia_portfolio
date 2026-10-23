@@ -7,6 +7,9 @@ import { Background, Experience, Companies, Testimonials, Awards, Evidence, Skil
 import { projects } from '../portfolio-data'
 import { projectDetails, projectOrder } from '../project-details'
 import { profile } from '../profile'
+import WarpTransition from '../components/WarpTransition'
+import HeroNameMarquee from '../components/HeroNameMarquee'
+import { useScrollTone } from '../lib/useScrollTone'
 
 function PageIntro({ label, title, children }) { return <header className="page-intro section-pad"><p className="section-kicker mono">{label}</p><h1>{title}<span className="period">.</span></h1><p className="page-description">{children}</p></header> }
 export function ProjectCards() {
@@ -20,8 +23,9 @@ export function ProjectCards() {
   })}</div>
 }
 function ConnectCTA() { return <section className="connect-cta section-pad"><div><p className="section-kicker mono">RESEARCH / ENGINEERING / COLLABORATION</p><h2>Let’s build something useful.</h2></div><Link className="button button-primary" to="/#contact">Let’s talk <ArrowUpRight size={18} /></Link></section> }
-export function Home({ children }) { return <>
+export function Home({ children }) { useScrollTone(); return <>
   <section id="top" className="hero editorial-hero section-pad" aria-labelledby="hero-title">
+    <HeroNameMarquee />
     <div className="hero-grid"><div className="hero-copy">
       <p className="hero-location-label mono"><span className="status-dot" />{profile.location}</p>
       <p className="hero-greeting mono">HELLO, I’M {profile.displayName.toUpperCase()}</p>
@@ -34,7 +38,8 @@ export function Home({ children }) { return <>
     </div><HomePortrait /></div>
     <div className="editorial-hero-bottom"><a className="text-link mono" href="#work">SELECTED WORK <ArrowDown size={14} /></a><span className="mono">PERCEPTION / ROBOTICS / APPLIED AI</span></div>
   </section>
-  <section id="work" className="home-work section-pad"><div className="compact-heading"><div><p className="section-kicker mono">02 / SELECTED PROJECTS</p><h2>From perception to impact.</h2></div><Link className="text-link" to="/projects">All projects <ArrowRight size={17} /></Link></div><ProjectCards /></section><Background /><Skills /><Testimonials /><ContactInfo />{children}
+  <WarpTransition />
+  <section id="work" className="home-work section-pad" data-tone="alt"><div className="compact-heading"><div><p className="section-kicker mono">02 / SELECTED PROJECTS</p><h2>From perception to impact.</h2></div><Link className="text-link" to="/projects">All projects <ArrowRight size={17} /></Link></div><ProjectCards /></section><Background /><Skills /><Testimonials /><ContactInfo />{children}
 </> }
 export function ExperiencePage() { return <><PageIntro label="EXPERIENCE / COMPANY WORK" title="Experience">My roles, responsibilities, and technical contributions within the companies I’ve worked with.</PageIntro><Experience /><Companies /><ConnectCTA /></> }
 export function EducationPage() { return <><PageIntro label="EDUCATION / ACADEMIC FOUNDATION" title="A foundation for what’s next">My education, academic achievements, and language skills — the foundation behind my engineering work.</PageIntro><Education /><CourseCertificates /><ConnectCTA /></> }

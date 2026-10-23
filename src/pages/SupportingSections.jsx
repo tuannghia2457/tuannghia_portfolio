@@ -34,7 +34,7 @@ export function Companies() { return <CompanyExplorer /> }
 
 export function Testimonials() {
   const published = testimonials.filter(item => item.published)
-  return <section id="testimonials" className="testimonials-section section-pad" aria-labelledby="testimonials-title">
+  return <section id="testimonials" className="testimonials-section section-pad" data-tone="alt" aria-labelledby="testimonials-title">
     <p className="section-kicker mono">TESTIMONIALS</p>
     <div className="testimonials-heading"><h2 id="testimonials-title">Words from collaborators.</h2><p>Perspectives from the people I’ve worked with.</p></div>
     {published.length ? <div className="testimonials-grid">{published.map(item => <figure className="testimonial-card" key={item.name + item.organization}><blockquote>{item.quote}</blockquote><figcaption><strong>{item.name}</strong><span>{item.organization}</span></figcaption></figure>)}</div> : <div className="testimonials-pending"><span className="testimonial-pending-mark" aria-hidden="true">“</span><div><h3>Recommendations coming soon.</h3><p>This space is reserved for collaborators’ recommendations, with their names and roles.</p></div></div>}
