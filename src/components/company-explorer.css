@@ -8,6 +8,8 @@
 .company-logo-button[aria-expanded="true"] { border-color: var(--primary); box-shadow: inset 0 -3px var(--primary); }
 .company-logo-stage { display: grid; place-items: center; height: 150px; padding: 10px; background: var(--logo-plate); border-radius: var(--radius); margin-bottom: 20px; }
 .company-logo-stage img { width: 100%; max-width: 200px; height: 140px; object-fit: contain; }
+/* Compensate for the transparent space inside the IVS artwork. */
+#company-button-ivs .company-logo-stage img { transform: scale(1.25); }
 .company-selector-name { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: var(--text-lg); font-weight: var(--weight-medium); }
 .company-selector-name svg { transition: transform 180ms; }
 .company-logo-button[aria-expanded="true"] svg { transform: rotate(180deg); }
