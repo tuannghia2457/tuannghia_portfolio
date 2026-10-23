@@ -1,0 +1,6 @@
+/* Tailwind v4 entry. Preflight is intentionally omitted so the existing
+   hand-authored styles keep their current rendering; layered output also
+   loses to the unlayered portfolio CSS. */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
