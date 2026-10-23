@@ -8,9 +8,10 @@
 .timeline-lane { display: grid; grid-template-columns: var(--lane-label) 1fr; align-items: center; min-height: 48px; }
 .timeline-lane + .timeline-lane { border-top: 1px dashed var(--border); }
 /* Company and role sit in two aligned columns. */
-.timeline-lane-label { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); align-items: baseline; padding-right: 24px; font-size: var(--text-sm); line-height: var(--leading-snug); white-space: nowrap; color: var(--muted-foreground); }
-.timeline-lane-label strong { color: var(--foreground); font-size: var(--text-base); font-weight: var(--weight-medium); }
-.timeline-lane-label > span { overflow: hidden; text-overflow: ellipsis; }
+.timeline-lane-label { display: grid; grid-template-columns: 6.25rem minmax(0, 1fr); align-items: baseline; padding-right: 24px; font-size: var(--text-sm); line-height: var(--leading-snug); white-space: nowrap; color: var(--muted-foreground); }
+.timeline-lane-label strong { color: var(--foreground); font-size: var(--text-base); font-weight: var(--weight-bold); }
+/* The role reads clearly beside the company: bright, not muted. */
+.timeline-lane-label > span { overflow: hidden; text-overflow: ellipsis; color: var(--foreground); font-weight: var(--weight-medium); }
 .timeline-track { position: relative; height: 48px; }
 .timeline-gridline { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--border); }
 .timeline-overview .timeline-bar-dates { position: absolute; top: 50%; font-size: var(--text-xs); color: var(--muted-foreground); letter-spacing: var(--tracking-small); white-space: nowrap; transform: translateY(-50%); }

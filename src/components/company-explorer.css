@@ -23,7 +23,7 @@
 .company-role-list { margin-top: 24px; }
 .company-role-list > article { padding-block: 16px; border-top: var(--line); }
 .company-role-heading { display: flex; justify-content: space-between; align-items: start; gap: 20px; }
-.company-role-heading h4 { margin: 0; font-size: var(--text-base); font-weight: var(--weight-medium); }
+.company-role-heading h4 { margin: 0; font-size: var(--text-md); font-weight: var(--weight-semibold); }
 .company-role-heading .mono { font-size: var(--text-xs); color: var(--muted-foreground); }
 .company-role-location { margin-top: 6px; font-size: var(--text-xs); color: var(--muted-foreground); line-height: var(--leading-body); }
 @keyframes company-details-in { from { opacity: .3; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
