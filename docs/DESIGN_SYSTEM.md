@@ -36,7 +36,7 @@ Normal text must meet 4.5:1; large text and meaningful non-text indicators requi
 
 Warm, bright, minimalist and editorial. Preserve Space Grotesk headings, DM Mono labels, generous whitespace, subtle thin borders, existing responsive layouts, small corner radii, and restrained orange emphasis. No dark-themed sections without an explicitly justified functional requirement. Preserve optional interactions and reduced-motion support.
 
-The Home scroll tone shift (`useScrollTone`, `--page-tone`) only alternates `--background` and `--surface-alt` while `[data-tone="alt"]` sections cross the viewport middle; it never introduces a dark tone. The Home warp transition uses `--border` for its grid and charcoal/orange (`--foreground`/`--primary`) beams, and freezes under reduced motion along with the hero name marquee.
+The Home scroll tone shift (`useScrollTone`, `--page-tone`) only alternates `--background` and `--surface-alt` while `[data-tone="alt"]` sections cross the viewport middle; it never introduces a dark tone. The Home warp transition uses `--border` for its grid and charcoal/orange (`--foreground`/`--primary`) beams and freezes under reduced motion.
 
 ## Static assets
 

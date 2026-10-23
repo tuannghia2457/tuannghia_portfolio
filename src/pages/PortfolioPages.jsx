@@ -8,7 +8,6 @@ import { projects } from '../portfolio-data'
 import { projectDetails, projectOrder } from '../project-details'
 import { profile } from '../profile'
 import WarpTransition from '../components/WarpTransition'
-import HeroNameMarquee from '../components/HeroNameMarquee'
 import { useScrollTone } from '../lib/useScrollTone'
 
 function PageIntro({ label, title, children }) { return <header className="page-intro section-pad"><p className="section-kicker mono">{label}</p><h1>{title}<span className="period">.</span></h1><p className="page-description">{children}</p></header> }
@@ -25,7 +24,6 @@ export function ProjectCards() {
 function ConnectCTA() { return <section className="connect-cta section-pad"><div><p className="section-kicker mono">RESEARCH / ENGINEERING / COLLABORATION</p><h2>Let’s build something useful.</h2></div><Link className="button button-primary" to="/#contact">Let’s talk <ArrowUpRight size={18} /></Link></section> }
 export function Home({ children }) { useScrollTone(); return <>
   <section id="top" className="hero editorial-hero section-pad" aria-labelledby="hero-title">
-    <HeroNameMarquee />
     <div className="hero-grid"><div className="hero-copy">
       <p className="hero-location-label mono"><span className="status-dot" />{profile.location}</p>
       <p className="hero-greeting mono">HELLO, I’M {profile.displayName.toUpperCase()}</p>
