@@ -1,6 +1,6 @@
 /* Overview: year axis with one bar per role. Wider than the text column, one compact line per role. */
 .timeline-overview { --lane-label: 400px; position: relative; left: 50%; width: min(1360px, calc(100vw - 2 * var(--gutter))); margin-bottom: 64px; padding: 24px 32px 18px; border: var(--line); border-radius: var(--radius); background: var(--surface); transform: translateX(-50%); }
-.timeline-chart { position: relative; }
+.timeline-chart { --sweep: var(--today); position: relative; }
 .timeline-axis { position: relative; height: 22px; margin-left: var(--lane-label); color: var(--muted-foreground); letter-spacing: var(--tracking-small); }
 .timeline-axis span { position: absolute; top: 0; font-size: var(--text-sm); transform: translateX(-50%); }
 .timeline-axis span:first-child { transform: none; }
@@ -14,13 +14,16 @@
 .timeline-lane-label > span { overflow: hidden; text-overflow: ellipsis; color: var(--foreground); font-weight: var(--weight-medium); }
 .timeline-track { position: relative; height: 48px; }
 .timeline-gridline { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--border); }
-.timeline-overview .timeline-bar-dates { position: absolute; top: 50%; font-size: var(--text-xs); color: var(--muted-foreground); letter-spacing: var(--tracking-small); white-space: nowrap; transform: translateY(-50%); }
-.timeline-bar { position: absolute; top: 50%; height: 14px; min-width: 14px; border-radius: 999px; background: var(--accent-secondary); transform: translateY(-50%); transition: height var(--duration-fast), background var(--duration-fast); }
+.timeline-overview .timeline-bar-dates { position: absolute; top: 50%; font-size: var(--text-xs); color: var(--muted-foreground); letter-spacing: var(--tracking-small); white-space: nowrap; transform: translateY(-50%); opacity: clamp(0, (var(--sweep) - var(--start)) * 30, 1); }
+/* Bars are revealed up to the sweep marker; --start and --end are positions along the axis (0–1). */
+.timeline-bar { position: absolute; top: 50%; width: max(0%, min((var(--end) - var(--start)) * 100%, (var(--sweep) - var(--start)) * 100%)); height: 14px; border-radius: 999px; background: var(--accent-secondary); transform: translateY(-50%); transition: height var(--duration-fast), background var(--duration-fast); }
+.timeline-chart.is-complete .timeline-bar { min-width: 14px; }
 .timeline-bar.is-current { background: linear-gradient(90deg, var(--primary) 88%, transparent); }
 .timeline-bar:hover, .timeline-bar:focus-visible { height: 20px; background: var(--primary-hover); }
 .timeline-bar:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
-.timeline-today { position: absolute; top: 0; bottom: 0; left: calc(var(--lane-label) + (100% - var(--lane-label)) * var(--today)); width: 0; border-left: 1px dashed var(--primary); pointer-events: none; }
-.timeline-overview .timeline-today > span { position: absolute; top: 0; left: 8px; font-size: var(--text-xs); color: var(--accent-foreground); letter-spacing: var(--tracking-small); }
+.timeline-today { position: absolute; top: 0; bottom: 0; left: calc(var(--lane-label) + (100% - var(--lane-label)) * var(--sweep)); width: 0; border-left: 1px dashed var(--primary); pointer-events: none; }
+.timeline-overview .timeline-today > span { position: absolute; top: 0; left: 8px; font-size: var(--text-xs); color: var(--accent-foreground); letter-spacing: var(--tracking-small); opacity: 0; transition: opacity var(--duration-default); }
+.timeline-chart.is-complete .timeline-today > span { opacity: 1; }
 
 /* Vertical timeline: date | rail | details */
 .timeline-list { margin: 0; padding: 0; list-style: none; }

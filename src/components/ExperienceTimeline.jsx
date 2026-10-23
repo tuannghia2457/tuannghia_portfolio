@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useLayoutEffect, useMemo, useRef, useState } from 'react'
 import RoleResponsibilities from './RoleResponsibilities'
 import CompanyMilestones from './CompanyMilestones'
 import { buildTimeline, formatDuration, monthIndex, monthLabel } from '../lib/timeline'
@@ -13,8 +13,33 @@ function TimelineOverview({ roles, today }) {
   const position = month => `${ratio(month) * 100}%`
   const years = Array.from({ length: (last - first) / 12 }, (_, i) => first / 12 + i)
   const now = monthIndex(today) + today.getDate() / 31
+  const chart = useRef(null)
 
-  return <div className="timeline-overview"><div className="timeline-chart" style={{ '--today': ratio(now) }}>
+  // Scrolling through the chart sweeps a marker from the start of the axis to today;
+  // each bar grows from its start date as the marker passes it.
+  useLayoutEffect(() => {
+    const node = chart.current, end = ratio(now)
+    const set = progress => {
+      node.style.setProperty('--sweep', progress * end)
+      node.classList.toggle('is-complete', progress >= 1)
+    }
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { set(1); return }
+    let frame = 0
+    const update = () => {
+      frame = 0
+      const { top } = node.getBoundingClientRect(), height = innerHeight
+      // Starts where the chart first shows (at most 90% down the viewport, so it begins at 0 even when
+      // visible on load) and completes once the chart rises to just below the header.
+      const start = Math.min(height * .9, top + scrollY), finish = Math.min(height * .2, start - 240)
+      set(Math.min(1, Math.max(0, (start - top) / (start - finish))))
+    }
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update) }
+    update()
+    addEventListener('scroll', schedule, { passive: true }); addEventListener('resize', schedule)
+    return () => { cancelAnimationFrame(frame); removeEventListener('scroll', schedule); removeEventListener('resize', schedule) }
+  }, [now])
+
+  return <div className="timeline-overview"><div className="timeline-chart" ref={chart} style={{ '--today': ratio(now) }}>
     <div className="timeline-axis mono" aria-hidden="true">
       {years.map(year => <span key={year} style={{ left: position(year * 12) }}>{year}</span>)}
     </div>
@@ -24,9 +49,9 @@ function TimelineOverview({ roles, today }) {
         <span className="timeline-track">
           {years.map(year => <span key={year} className="timeline-gridline" style={{ left: position(year * 12) }} aria-hidden="true" />)}
           {/* The date sits beside its bar: after it for early roles, before it for late ones. */}
-          <span className="timeline-bar-dates mono" aria-hidden="true" style={ratio(role.start) > .45 ? { right: `calc(100% - ${position(role.start)} + 12px)` } : { left: `calc(${position(role.current ? now : role.end + 1)} + 12px)` }}>{monthLabel(role.start)} — {role.current ? 'Now' : monthLabel(role.end)}</span>
+          <span className="timeline-bar-dates mono" aria-hidden="true" style={{ '--start': ratio(role.start), ...(ratio(role.start) > .45 ? { right: `calc(100% - ${position(role.start)} + 12px)` } : { left: `calc(${position(role.current ? now : role.end + 1)} + 12px)` }) }}>{monthLabel(role.start)} — {role.current ? 'Now' : monthLabel(role.end)}</span>
           <a className={`timeline-bar${role.current ? ' is-current' : ''}`} href={`#${role.id}`}
-            style={{ left: position(role.start), width: `calc(${position(role.current ? now : role.end + 1)} - ${position(role.start)})` }}
+            style={{ left: position(role.start), '--start': ratio(role.start), '--end': ratio(role.current ? now : role.end + 1) }}
             aria-label={`${role.title} at ${role.company}, ${monthLabel(role.start)} to ${role.current ? 'present' : monthLabel(role.end)}`} />
         </span>
       </li>)}
