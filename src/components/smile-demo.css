@@ -1,20 +1,20 @@
 .smile-section { padding-block: 30px 100px; }
 .smile-heading { margin-bottom: 32px; }
-.smile-heading h2 { font-size: clamp(32px, 4.5vw, 54px); margin: 16px 0; }
-.smile-heading > p:last-child { font-size: clamp(17px, 2vw, 23px); color: var(--muted-foreground); }
+.smile-heading h2 { font-size: var(--text-3xl); margin: 16px 0; }
+.smile-heading > p:last-child { font-size: var(--text-xl); color: var(--muted-foreground); }
 .smile-panel { display: grid; grid-template-columns: 1.1fr 1fr; border: var(--line); background: var(--surface); }
 .camera-stage { position: relative; min-height: 340px; background: var(--surface-alt); overflow: hidden; display: grid; place-items: center; }
 .camera-stage video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); visibility: hidden; }
 .camera-stage video.is-visible { visibility: visible; }
 .camera-placeholder { display: flex; align-items: center; flex-direction: column; gap: 25px; padding: 32px; text-align: center; }
 .camera-placeholder svg { color: var(--primary); }
-.camera-placeholder strong { font-size: 22px; font-weight: 500; }
-.camera-placeholder > span { color: var(--muted-foreground); font-size: 9px; }
-.camera-badge { position: absolute; bottom: 18px; left: 18px; padding: 8px 12px; background: var(--camera-badge-background); color: var(--camera-badge-foreground); border: var(--line); box-shadow: var(--shadow-overlay); font-size: 9px; }
+.camera-placeholder strong { font-size: var(--text-lg); font-weight: var(--weight-medium); }
+.camera-placeholder > span { color: var(--muted-foreground); font-size: var(--text-xs); }
+.camera-badge { position: absolute; bottom: 18px; left: 18px; padding: 8px 12px; background: var(--camera-badge-background); color: var(--camera-badge-foreground); border: var(--line); box-shadow: var(--shadow-overlay); font-size: var(--text-xs); }
 .smile-controls { display: flex; flex-direction: column; align-items: flex-start; padding: clamp(24px, 3vw, 40px); gap: 18px; }
-.smile-controls > p:first-child { min-height: 65px; font-size: 19px; line-height: 1.5; }
-.smile-controls .text-link { font-size: 13px; line-height: 1.6; }
-.smile-controls .camera-privacy { color: var(--muted-foreground); font-size: 12px; line-height: 1.7; }
+.smile-controls > p:first-child { min-height: 65px; font-size: var(--text-md); line-height: 1.5; }
+.smile-controls .text-link { font-size: var(--text-sm); line-height: var(--leading-body); }
+.smile-controls .camera-privacy { color: var(--muted-foreground); font-size: var(--text-xs); line-height: var(--leading-body); }
 .smile-celebration { position: relative; animation: smile-bounce 650ms ease-out both; }
 .smile-celebration span { position: absolute; color: var(--primary); animation: smile-spark 900ms ease-out both; }
 .smile-celebration span:nth-child(2) { left: -34px; top: 8px; }

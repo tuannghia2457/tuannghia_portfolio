@@ -1,5 +1,5 @@
 .skills-bento-section { padding-block: 56px; }
-.skills-bento-section h2 { margin-bottom: 24px; font: 400 clamp(32px, 3.4vw, 48px)/1.05 Georgia, 'Times New Roman', serif; letter-spacing: -.035em; }
+.skills-bento-section h2 { margin-bottom: 24px; font-family: var(--font-sans); font-size: var(--text-3xl); font-weight: var(--weight-bold); line-height: var(--leading-heading); letter-spacing: var(--tracking-heading); }
 .skills-bento-section h2 em { color: var(--muted-foreground); }
 
 /* 12-column bento in two rows: the primary block is widest, then a row of three equal blocks. */
@@ -11,9 +11,9 @@
 
 .bento-block { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 20px 22px; border: var(--line); border-radius: 14px; background: var(--surface); outline: none; }
 .bento-pos-1 .bento-block { padding: 26px 28px; }
-.bento-label { margin: 0; font-size: 10px; letter-spacing: .14em; color: var(--accent-foreground); }
-.bento-block h3 { margin: 0; font: 400 clamp(20px, 1.8vw, 26px)/1.15 Georgia, 'Times New Roman', serif; letter-spacing: -.02em; }
-.bento-pos-1 .bento-block h3 { font-size: clamp(26px, 2.5vw, 36px); }
+.bento-label { margin: 0; font-size: var(--text-xs); letter-spacing: var(--tracking-small); color: var(--accent-foreground); }
+.bento-block h3 { margin: 0; font-family: var(--font-sans); font-size: var(--text-xl); font-weight: var(--weight-semibold); line-height: var(--leading-heading); letter-spacing: var(--tracking-heading); }
+.bento-pos-1 .bento-block h3 { font-size: var(--text-xl); }
 .tool-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: auto 0 0; padding: 14px 0 0; list-style: none; }
 
 /* Viewfinder corners, as in the hero: hidden until the block is hovered or focused. */
@@ -25,7 +25,7 @@
 .bento-block:hover .bento-corners i, .bento-block:focus-within .bento-corners i { opacity: 1; transform: none; }
 
 .tool-chip { display: inline-flex; align-items: center; gap: 7px; padding: 5px 10px; border: var(--line); border-radius: 999px; background: var(--background); transition: transform 180ms ease-out; }
-.tool-chip .mono { font-size: 10.5px; letter-spacing: .04em; text-transform: none; color: var(--foreground); }
+.tool-chip .mono { font-size: var(--text-xs); letter-spacing: var(--tracking-small); text-transform: none; color: var(--foreground); }
 .tool-chip-icon { position: relative; display: grid; width: 16px; height: 16px; }
 .tool-chip-icon > * { grid-area: 1 / 1; width: 16px; height: 16px; }
 .tool-chip-icon img.is-muted { filter: grayscale(1) brightness(1.6); opacity: .7; }

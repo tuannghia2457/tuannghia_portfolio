@@ -61,7 +61,7 @@ test('Academic achievements live under Education while Projects show only extern
 test('Education milestones share hover styles and keep school achievements inside accessible disclosures', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/education')
-  await expect(page.locator('.education-intro h1')).toHaveCSS('font-family', /Georgia/)
+  await expect(page.locator('.education-intro h1')).toHaveCSS('font-family', /Be Vietnam Pro/)
   const cards = page.locator('.school-card')
   await expect(cards).toHaveCount(2)
   for (const card of await cards.all()) {

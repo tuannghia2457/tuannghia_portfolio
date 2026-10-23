@@ -4,7 +4,7 @@ test('Tom branding uses the preserved pixel asset and the focused hero keeps wor
   await page.goto('/')
   await expect(page.getByRole('link', { name: 'Tom — home' })).toBeVisible()
   const wordmark = page.locator('.brand-wordmark')
-  await expect(wordmark).toHaveCSS('font-size', '38px')
+  await expect(wordmark).toHaveCSS('font-size', '36px')
   await page.getByRole('link', { name: 'Tom — home' }).hover()
   await expect(wordmark.locator('span').first()).toHaveCSS('animation-name', 'none')
   await page.emulateMedia({ reducedMotion: 'no-preference' })
