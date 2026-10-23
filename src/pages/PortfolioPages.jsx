@@ -4,7 +4,7 @@ import HomePortrait from './HomePortrait'
 import Education from '../components/Education'
 import CourseCertificates from '../components/CourseCertificates'
 import { Background, Experience, Companies, Testimonials, Awards, Evidence, Skills, ContactInfo } from './SupportingSections'
-import { projects, education, ielts, awards } from '../portfolio-data'
+import { projects, ielts, awards } from '../portfolio-data'
 import { projectDetails, projectOrder } from '../project-details'
 import { profile } from '../profile'
 import HeroNameBand from '../components/HeroNameBand'
@@ -23,17 +23,16 @@ export function ProjectCards() {
   })}</div>
 }
 function ConnectCTA() { return <section className="connect-cta section-pad"><div><p className="section-kicker mono">Research / Engineering / Collaboration</p><h2>Let’s build something useful.</h2></div><Link className="button button-primary" to="/#contact">Let’s talk <ArrowUpRight size={18} /></Link></section> }
-// Personal facts come from profile.js and portfolio-data, never typed in twice.
-const [university, highSchool] = ['uts', 'gifted'].map(id => education.find(school => school.id === id))
-const [birthCity, birthCountry] = profile.birthplace.split(', ')
-const [homeCity, homeCountry] = profile.location.split(', ')
+// Personal facts come from profile.js and portfolio-data, never typed in twice. Each card is one label and one value.
+const [birthCity] = profile.birthplace.split(', ')
+const [homeCity] = profile.location.split(', ')
 const heroFacts = [
-  { Icon: MapPin, label: 'Born in', value: birthCity, detail: birthCountry },
-  { Icon: House, label: 'Based in', value: homeCity, detail: homeCountry },
-  { Icon: GraduationCap, label: 'University', value: 'UTS · HCMUT', detail: `${university.degree.replace('Bachelor’s degree in ', 'B. ')} · ${university.period.replace('Expected ', 'exp. ')}` },
+  { Icon: MapPin, label: 'Born in', value: birthCity },
+  { Icon: House, label: 'Based in', value: homeCity },
+  { Icon: GraduationCap, label: 'University', value: 'UTS · HCMUT' },
   // PTNK (Phổ thông Năng khiếu) is the common name of the High School for the Gifted, VNU-HCM.
-  { Icon: School, label: 'High school', value: 'PTNK', detail: `VNU-HCM · ${highSchool.program.replace(' Program', '')} · ${highSchool.grade}` },
-  { Icon: Languages, label: 'English', value: `IELTS ${ielts.overall}`, detail: 'Overall band score' },
+  { Icon: School, label: 'High school', value: 'PTNK' },
+  { Icon: Languages, label: 'English', value: `IELTS ${ielts.overall}` },
 ]
 
 export function Home({ children }) { useScrollTone(); return <>
@@ -52,7 +51,7 @@ export function Home({ children }) { useScrollTone(); return <>
         {profile.resumeUrl ? <a className="button hero-secondary" href={profile.resumeUrl} download>Download Resume <Download size={16} /></a> : <a className="button hero-secondary" href="mailto:trantuannghia2457@gmail.com?subject=Resume%20request&body=Hi%20Tuan%20Nghia%2C%0A%0AI%27d%20love%20to%20learn%20more%20about%20your%20experience.%20Could%20you%20share%20your%20resume%3F">Request Resume <Mail size={16} /></a>}
       </div>
     </div></div>
-    <dl className="hero-stats hero-facts">{heroFacts.map(({ Icon, label, value, detail }) => <div key={label}><Icon className="hero-fact-icon" size={20} aria-hidden="true" /><dt className="mono">{label}</dt><dd><strong>{value}</strong><span>{detail}</span></dd></div>)}</dl>
+    <dl className="hero-stats hero-facts">{heroFacts.map(({ Icon, label, value }) => <div key={label}><Icon className="hero-fact-icon" size={20} aria-hidden="true" /><dt className="mono">{label}</dt><dd>{value}</dd></div>)}</dl>
     <div className="editorial-hero-bottom"><a className="text-link mono" href="#work">Selected work <ArrowDown size={14} /></a><span className="mono">Perception / Robotics / Applied AI</span></div>
   </section>
   <Background /><section id="work" className="home-work section-pad" data-tone="alt"><div className="compact-heading"><div><p className="section-kicker mono">02 / Selected projects</p><h2>From perception to impact.</h2></div><Link className="text-link" to="/projects">All projects <ArrowRight size={17} /></Link></div><ProjectCards /></section><Skills /><Testimonials /><ContactInfo />{children}

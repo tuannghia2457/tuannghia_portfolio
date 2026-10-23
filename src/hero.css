@@ -52,9 +52,7 @@
 .hero-stats > div + div { border-left: var(--line); }
 .hero-fact-icon { margin-bottom: 8px; color: var(--accent-foreground); }
 .hero-stats dt.mono { font-size: var(--text-xs); letter-spacing: var(--tracking-small); color: var(--muted-foreground); }
-.hero-stats dd { display: flex; flex-direction: column; gap: 5px; margin: 0; }
-.hero-stats dd strong { font-family: var(--font-sans); font-size: var(--text-xl); font-weight: var(--weight-semibold); line-height: var(--leading-heading); color: var(--foreground); font-variant-numeric: tabular-nums; }
-.hero-stats dd span { font-size: var(--text-xs); line-height: 1.5; color: var(--muted-foreground); }
+.hero-stats dd { margin: 0; overflow: hidden; font-size: var(--text-lg); font-weight: var(--weight-semibold); line-height: var(--leading-heading); color: var(--foreground); white-space: nowrap; text-overflow: ellipsis; font-variant-numeric: tabular-nums; }
 
 .editorial-hero-bottom { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 15px; border-top: var(--line); }
 .editorial-hero-bottom .mono { font-size: var(--text-xs); color: var(--muted-foreground); letter-spacing: var(--tracking-small); }
@@ -86,8 +84,7 @@
   .hero-stats > div:nth-child(even) { border-left: var(--line); }
   .hero-stats > div:nth-child(n+3) { border-top: var(--line); }
   .hero-stats > div:last-child { grid-column: 1 / -1; }
-  .hero-stats dd strong { font-size: var(--text-lg); }
-  .editorial-hero-bottom > span { max-width: 135px; text-align: right; font-size: var(--text-xs); }
+    .editorial-hero-bottom > span { max-width: 135px; text-align: right; font-size: var(--text-xs); }
   .site-footer > span { max-width: 195px; line-height: var(--leading-body); }
 }
 @media (prefers-reduced-motion: reduce) {
