@@ -29,7 +29,6 @@ export default function SkillsBento() {
           <span className="bento-corners" aria-hidden="true"><i /><i /><i /><i /></span>
           <p className="bento-label mono">{area.label}</p>
           <h3 id={`skill-${area.id}`}>{area.title}</h3>
-          <p className="bento-summary">{area.summary}</p>
           <ul className="tool-chips" aria-label={`${area.title} tools`}>{area.tools.map(tool => <ToolChip key={tool} name={tool} />)}</ul>
         </article>
       </RevealItem>)}

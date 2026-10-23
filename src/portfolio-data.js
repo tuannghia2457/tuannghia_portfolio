@@ -257,24 +257,18 @@ export const companyShortNames = {
   'SDE Digital Technology Company Limited': 'SDE',
 }
 
-// Skills bento: the first area gets the large block. Every summary is drawn from facts elsewhere
-// in this file, project-details.js and courseCertificates; edit them together.
+// Skills bento: the first area gets the large block.
 // Tool names match technicalSkills (devicon logos) or the generic icons in SkillsBento.jsx.
 export const skillAreas = [
   { id: 'ai', label: 'Primary focus', title: 'Machine Learning & AI',
-    summary: 'Built the backend and on-device AI for VirtualDouble / ANT, a MediaPipe focus companion for neurodivergent users and Accessibility Design Competition Hackathon 2026 finalist. In research, I use monotonic neural networks to reconstruct damaged road surfaces from camera images and sparse 2D LiDAR, presented at CTMIA 2026.',
     tools: ['Python', 'PyTorch', 'MediaPipe', 'On-device AI', 'RAG', 'Azure AI'] },
   { id: 'vision', label: 'Perception', title: 'Computer Vision & Robotics',
-    summary: 'GNSS-denied UAV localization and perception-based path planning at Individual Systems, with LiDAR pothole detection tested on a JetTank in ROS and Gazebo.',
     tools: ['OpenCV', 'ROS', 'C++', 'LiDAR', 'Gazebo', 'JetTank'] },
   { id: 'product', label: 'Product', title: 'Web & Product',
-    summary: 'Co-founded AquaGuard, a web and iOS flood-response platform; at Best Start, built an IELTS platform for 200+ students a month and a Playwright tool that made deployment 3× faster.',
     tools: ['React', 'JavaScript', 'Node.js', 'Playwright'] },
   { id: 'languages', label: 'Languages', title: 'Programming',
-    summary: 'Python for ML and automation, C++ for ROS, Java at UTS, JavaScript for the web.',
     tools: ['Python', 'C++', 'Java', 'JavaScript'] },
   { id: 'tooling', label: 'Tooling', title: 'Tools & Infrastructure',
-    summary: 'Mendix and Python at SDE for a time-tracking app and inspection automation; Git, Docker and Linux every day.',
     tools: ['Mendix', 'Git', 'Docker', 'Linux'] },
 ]
 

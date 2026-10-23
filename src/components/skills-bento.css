@@ -11,12 +11,10 @@
 
 .bento-block { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 20px 22px; border: var(--line); border-radius: 14px; background: var(--surface); outline: none; }
 .bento-pos-1 .bento-block { padding: 26px 28px; }
-.bento-pos-1 .bento-summary { font-size: 14px; }
 .bento-label { margin: 0; font-size: 10px; letter-spacing: .14em; color: var(--accent-foreground); }
 .bento-block h3 { margin: 0; font: 400 clamp(20px, 1.8vw, 26px)/1.15 Georgia, 'Times New Roman', serif; letter-spacing: -.02em; }
 .bento-pos-1 .bento-block h3 { font-size: clamp(26px, 2.5vw, 36px); }
-.bento-summary { max-width: 620px; margin: 0; font-size: 13px; line-height: 1.6; color: var(--muted-foreground); }
-.tool-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: auto 0 0; padding: 8px 0 0; list-style: none; }
+.tool-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: auto 0 0; padding: 14px 0 0; list-style: none; }
 
 /* Viewfinder corners, as in the hero: hidden until the block is hovered or focused. */
 .bento-corners i { position: absolute; width: 18px; height: 18px; border: 0 solid var(--primary); opacity: 0; transition: opacity 200ms ease-out, transform 200ms ease-out; }
