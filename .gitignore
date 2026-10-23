@@ -6,3 +6,7 @@ test-results/
 .env
 .env.*
 !.env.example
+
+# Per-machine Claude Code and Playwright MCP files
+.claude/settings.local.json
+.playwright-mcp/
