@@ -22,6 +22,8 @@ function TimelineOverview({ roles, today }) {
         <span className="timeline-lane-label"><strong>{role.company}</strong> {role.title}</span>
         <span className="timeline-track">
           {years.map(year => <span key={year} className="timeline-gridline" style={{ left: position(year * 12) }} aria-hidden="true" />)}
+          {/* Late-starting bars anchor their date to the bar's end so it stays inside the chart. */}
+          <span className="timeline-bar-dates mono" aria-hidden="true" style={ratio(role.start) > .6 ? { right: `calc(100% - ${position(role.current ? now : role.end + 1)})` } : { left: position(role.start) }}>{monthLabel(role.start)} — {role.current ? 'NOW' : monthLabel(role.end)}</span>
           <a className={`timeline-bar${role.current ? ' is-current' : ''}`} href={`#${role.id}`}
             style={{ left: position(role.start), width: `calc(${position(role.current ? now : role.end + 1)} - ${position(role.start)})` }}
             aria-label={`${role.title} at ${role.company}, ${monthLabel(role.start)} to ${role.current ? 'present' : monthLabel(role.end)}`} />
