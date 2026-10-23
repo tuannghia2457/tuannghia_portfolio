@@ -1,6 +1,6 @@
 .page-curtain { position: fixed; inset: 0; z-index: 90; display: grid; place-items: center; background: var(--surface-alt); color: var(--foreground); pointer-events: none; }
 .page-curtain.is-revealing { pointer-events: auto; }
-.page-curtain-title { display: flex; gap: .9em; margin: 0; font-family: var(--font-sans); font-size: var(--text-2xl); font-weight: var(--weight-black); letter-spacing: var(--tracking-small); white-space: nowrap; }
+.page-curtain-title { display: flex; gap: .9em; margin: 0; font-family: var(--font-sans); font-size: calc(var(--text-2xl) * 1.8); font-weight: var(--weight-black); letter-spacing: var(--tracking-small); white-space: nowrap; }
 .page-curtain-progress { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--primary); transform-origin: 0 50%; }
 
 @media (max-width: 640px) {
