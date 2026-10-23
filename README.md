@@ -1,6 +1,6 @@
 # Tuan Nghia — Warm Ivory Portfolio
 
-React 18 + Vite portfolio with Home, Experience, Projects, Research, Education, dedicated project pages, Mini Nghia, and one optional local computer vision demo: **Smile to Collaborate**. Existing projects, experience, skills, awards, certificates, and contact destinations are preserved.
+React 18 + Vite portfolio with Home, Experience, Projects, Research, Education, dedicated project pages, and one optional local computer vision demo: **Smile to Collaborate**. Existing projects, experience, skills, awards, certificates, and contact destinations are preserved.
 
 Home includes the personal introduction, skills, collaborator comments, contact information, and optional camera demo. Experience focuses on company employment and company details; Projects showcases personal technical work; Research holds research interests and presentations; Education holds academic achievements and course certificates. Legacy `/about` and `/contact` links redirect to their new locations.
 
@@ -30,13 +30,12 @@ Read [AGENTS.md](AGENTS.md) and [docs/DESIGN_SYSTEM.md](docs/DESIGN_SYSTEM.md). 
 
 ## Structure
 
-- `src/App.jsx`: shared navigation, React Router routes, page focus, footer, Mini Tom.
+- `src/App.jsx`: shared navigation, React Router routes, page focus, footer.
 - `src/pages/`: focused page layouts and preserved supporting sections.
 - `src/portfolio-data.js`, `src/project-details.js`: original content and project narratives.
 - `src/theme.css`: permanent palette and semantic color roles.
 - `src/styles.css`, `src/pages.css`: semantic theme tokens, shared layout, responsive pages, reduced motion.
 - `src/components/SmileDemo.jsx`, `src/lib/smile.js`: optional camera lifecycle, local smile scores, mail draft.
-- `src/components/MiniNghia.jsx`: existing interactive pixel companion.
 - `public/mediapipe/`, `public/models/`: locally served MediaPipe 0.10.32 WASM runtime and official face landmarker task.
 - `tests/`: browser navigation, preservation, mobile layout, camera lifecycle, and smile feedback checks.
 
@@ -44,7 +43,7 @@ Read [AGENTS.md](AGENTS.md) and [docs/DESIGN_SYSTEM.md](docs/DESIGN_SYSTEM.md). 
 
 The detector loads only after the visitor enables the webcam and grants permission. Camera frames stay in the browser. The camera stops on completion, cancellation, leaving the page, switching tabs, or after a minute of detection. Direct contact is always available. Email links open pre-filled drafts; they do not send anything automatically.
 
-See [restructure decisions and validation](docs/curated-restructure.md), [original design research](docs/design-research.md), and [Mini Tom](docs/mini-nghia.md).
+See [restructure decisions and validation](docs/curated-restructure.md), and [original design research](docs/design-research.md).
 
 ## Deployment
 

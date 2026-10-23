@@ -2,7 +2,6 @@ import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { AnimatePresence } from 'motion/react'
 import { BrowserRouter, Link, NavLink, Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
-import MiniNghia from './components/MiniNghia'
 import PageTransition from './components/PageTransition'
 import { profile } from './profile'
 import { Home, ExperiencePage, Projects, ProjectDetail, Research, EducationPage, NotFound } from './pages/PortfolioPages'
@@ -62,7 +61,6 @@ function Shell() {
       <Route path="*" element={<NotFound />} />
     </Routes></PageTransition></AnimatePresence></main>
     <footer className="site-footer section-pad"><span className="mono">{profile.displayName.toUpperCase()} © 2026</span><span className="mono">BUILT WITH CURIOSITY / HO CHI MINH CITY</span><a href="#main-content" className="back-top">BACK TO TOP <ArrowUpRight size={15} /></a></footer>
-    <MiniNghia />
   </div>
 }
 export default function App() { return <BrowserRouter><Shell /></BrowserRouter> }

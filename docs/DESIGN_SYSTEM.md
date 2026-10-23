@@ -31,7 +31,6 @@ Normal text must meet 4.5:1; large text and meaningful non-text indicators requi
 - `--accent-surface` is a subtle green tint for selection and small highlighted surfaces, never a full-page fill.
 - `--shadow-color` derives from the background with transparency. Use `--shadow-overlay` for navigation and popovers.
 - The camera badge uses `--surface` with white text, readable over arbitrary footage.
-- Mini Nghia's sprite uses a white outline, near-black `--sprite-ink` hair and trousers, a light neutral `--sprite-skin`, a green jacket and green code on its laptop.
 
 ## Visual identity
 

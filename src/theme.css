@@ -29,8 +29,6 @@
   --disabled-foreground: var(--muted-foreground);
   --camera-badge-background: var(--surface);
   --camera-badge-foreground: var(--foreground);
-  --sprite-skin: color-mix(in srgb, var(--foreground) 86%, var(--background));
-  --sprite-ink: var(--background);
   /* Company, school and tool logos are artwork made for white; they sit on a white plate. */
   --logo-plate: var(--foreground);
 

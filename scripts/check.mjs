@@ -4,7 +4,6 @@ import { fileURLToPath } from 'node:url'
 const root = fileURLToPath(new URL('../', import.meta.url))
 for (const args of [
   ['--test', 'src/theme.test.js'],
-  ['--test', 'src/components/mini-nghia.helpers.test.js'],
   ['--test', 'src/lib/smile.test.js'],
   ['--test', 'src/lib/timeline.test.js'],
 ]) {
