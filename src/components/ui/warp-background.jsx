@@ -5,7 +5,7 @@ import { motion, useAnimationFrame, useMotionValue, useTransform } from "motion/
 
 import { cn } from "@/lib/utils"
 
-const BEAM_TONES = ["var(--foreground)", "var(--primary)"]
+const BEAM_TONES = ["var(--primary)", "var(--accent-secondary)"]
 
 const Beam = ({ width, x, delay, duration, aspect, tone, phase }) => {
   const y = useTransform(phase, (value) => {

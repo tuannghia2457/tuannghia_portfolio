@@ -81,7 +81,7 @@ function usePortfolioSection() {
   return section
 }
 
-/** Original 24 × 26 pixel artwork; all color roles come from Ember tokens. */
+/** Original 24 × 26 pixel artwork; all color roles come from theme tokens. */
 function PixelNghia({ state, facing }) {
   return (
     <svg className={`mini-nghia-sprite is-${state} faces-${facing}`} viewBox="0 0 24 26" aria-hidden="true" focusable="false" shapeRendering="crispEdges">

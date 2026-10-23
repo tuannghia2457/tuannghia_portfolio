@@ -21,12 +21,12 @@ export default function WarpTransition() {
   const reduceMotion = useReducedMotion()
   const { scrollYProgress } = useScroll({ target: section, offset: ['start start', 'end end'] })
   // Deeper scroll drives the beams faster; the last fifth fades into the projects.
-  const speed = useTransform(scrollYProgress, [0, 1], [1, 3.5])
+  const speed = useTransform(scrollYProgress, [0, 1], [2, 8])
   const opacity = useTransform(scrollYProgress, [0.8, 1], [1, 0])
 
   return <section ref={section} className="warp-transition" data-tone="alt" aria-hidden="true">
     <motion.div className="warp-transition-sticky" style={{ opacity }}>
-      <WarpBackground className="warp-transition-field" speed={speed} paused={Boolean(reduceMotion)} beamsPerSide={compact ? 2 : 3} beamSize={compact ? 8 : 5} perspective={compact ? 80 : 100} />
+      <WarpBackground className="warp-transition-field" speed={speed} paused={Boolean(reduceMotion)} beamsPerSide={compact ? 2 : 3} beamSize={compact ? 8 : 5} beamDuration={2} perspective={compact ? 80 : 100} />
     </motion.div>
   </section>
 }

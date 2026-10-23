@@ -1,42 +1,43 @@
-# Permanent design system: Warm Ivory × Orange × Charcoal
+# Permanent design system: Neon Dark
 
-Established by Nghia on 12 October 2026. **LIGHT theme only. Ember Dark is deprecated.** This document and root `AGENTS.md` supersede all previous palette guidance, including historical design research and RawBlock.
+Requested explicitly by Nghia on 23 October 2026, replacing Warm Ivory × Orange × Charcoal (12 October 2026). **Dark theme only.** Warm Ivory, Ember Dark and RawBlock are obsolete. This document and root `AGENTS.md` supersede all previous palette guidance.
 
 ## Authority and enforcement
 
-Only an explicit request from Nghia to change the established project color system authorizes a theme change. Screenshots, inspiration portfolios, references with other palettes, prompts mentioning dark/black/blue styles, agent suggestions, new features, and accidentally repeated Ember Dark instructions do not authorize it. Use them for layout, typography, whitespace, motion, or interactions. Preserve this theme when instructions conflict and clarify if necessary.
+Only an explicit request from Nghia to change the established project color system authorizes a theme change. Screenshots, inspiration portfolios, references with other palettes, agent suggestions and new features do not authorize it. Use them for layout, typography, whitespace, motion, or interactions. Preserve this theme when instructions conflict and clarify if necessary.
 
-All authored color values live in [`src/theme.css`](../src/theme.css). Components consume semantic variables without hardcoded hex/RGB/HSL values or fallback colors. Additional semantic roles may derive from the official palette using `var()` or `color-mix()`; they must not introduce a separate palette. Keep `color-scheme: light` for native browser controls. Do not add automatic dark mode or per-page theme overrides.
+All authored color values live in [`src/theme.css`](../src/theme.css): exactly five hex values. Every other role derives from them with `var()` or `color-mix()`. Components consume semantic variables without hardcoded hex/RGB/HSL values or fallback colors. Keep `color-scheme: dark` for native browser controls. Do not add a light mode, automatic theme switching, or per-page theme overrides.
 
 | Token | Value | Role |
 | --- | --- | --- |
-| `--background` | `#FAF9F6` | Warm Ivory canvas |
-| `--surface` | `#FFFFFF` | Cards, navigation, dialogs, popovers |
-| `--surface-alt` | `#F3F0EB` | Secondary backgrounds, camera placeholder |
-| `--primary` | `#FF6B00` | Orange buttons, decorative accents, link indicators |
-| `--primary-hover` | `#E65F00` | Orange fill/border hover and active indicators |
-| `--foreground` | `#252525` | Charcoal headings and text |
-| `--muted-foreground` | `#6B6B6B` | Supporting copy and metadata |
-| `--border` | `#E5E2DC` | Subtle separators and outlines |
+| `--background` | `#0D0D0D` | Near-black canvas; also the label color on green/pink fills |
+| `--foreground` | `#FFFFFF` | Headings and body text |
+| `--primary` | `#00FF85` | Neon green: buttons, accent text, decorative accents |
+| `--accent-secondary` | `#1E90FF` | Electric blue: focus ring, secondary accents |
+| `--primary-hover` | `#FF0099` | Vivid pink: hover fills, borders and underlines |
+| `--surface` | white 5% into background | Cards, navigation, dialogs, popovers |
+| `--surface-alt` | white 9% into background | Secondary backgrounds, scroll tone, curtain |
+| `--muted-foreground` | white 68% into background | Supporting copy and metadata |
+| `--border` | white 16% into background | Separators and outlines |
 
 ## Accessible color roles
 
 Normal text must meet 4.5:1; large text and meaningful non-text indicators require 3:1 where applicable, following [WCAG 2.2](https://www.w3.org/TR/WCAG22/). Do not claim full WCAG conformance from color checks alone.
 
-- Primary buttons use `--on-primary` (charcoal) on `--primary`, including hover/active. White or ivory button labels fail contrast. The specified hover orange with charcoal also falls below 4.5:1, so `--primary-hover` changes borders/indicators while button fills stay `--primary`.
-- Small text in signature orange also fails contrast on white/ivory. Use `--accent-foreground` (charcoal) for labels and links, with orange underlines, edges, dots, or other decorative accents. Avoid inventing a darker orange beyond the official palette.
-- `--focus-ring` is charcoal for a clear keyboard outline on light surfaces; orange remains a decorative interaction accent.
+- Primary buttons use `--on-primary` (near-black) on green (14.5:1) and on the pink hover fill (5.3:1). White on pink is only 3.7:1, so pink fills never carry white labels.
+- Green is the accent text color (`--accent-foreground`): at least 11.7:1 on every surface. Pink is for hover fills, borders and underlines, not small text on `--surface-alt` (4.3:1).
+- `--focus-ring` is electric blue: at least 4.8:1 on every surface.
 - Disabled controls use `--disabled-background`/`--disabled-foreground` without reducing all text opacity. Native disabled controls remain non-interactive.
-- `--accent-surface` is a subtle orange/white mix for selection and small highlighted surfaces. It must not become a full-page orange fill.
-- `--shadow-color` derives from charcoal with low opacity. Use `--shadow-overlay` for navigation and popovers.
-- The camera badge uses a solid white background and charcoal text, readable over arbitrary footage. The preview itself is camera content, not a dark theme exception.
-- Mini Nghia's UI uses the same surface, foreground, muted, border, and focus roles. Its small original sprite uses the palette plus a derived skin tone; no legacy dark fallbacks.
+- `--accent-surface` is a subtle green tint for selection and small highlighted surfaces, never a full-page fill.
+- `--shadow-color` derives from the background with transparency. Use `--shadow-overlay` for navigation and popovers.
+- The camera badge uses `--surface` with white text, readable over arbitrary footage.
+- Mini Nghia's sprite uses a white outline, near-black `--sprite-ink` hair and trousers, a pink-tinted `--sprite-skin`, a green jacket and green code on its laptop.
 
 ## Visual identity
 
-Warm, bright, minimalist and editorial. Preserve Space Grotesk headings, DM Mono labels, generous whitespace, subtle thin borders, existing responsive layouts, small corner radii, and restrained orange emphasis. No dark-themed sections without an explicitly justified functional requirement. Preserve optional interactions and reduced-motion support.
+Dark, futuristic and editorial. Preserve Space Grotesk headings, DM Mono labels, generous whitespace, subtle thin borders, existing responsive layouts and small corner radii. Neon accents stay deliberate: green for primary actions and accent text, blue for focus and secondary accents, pink for hover. Preserve optional interactions and reduced-motion support.
 
-The Home scroll tone shift (`useScrollTone`, `--page-tone`) only alternates `--background` and `--surface-alt` while `[data-tone="alt"]` sections cross the viewport middle; it never introduces a dark tone. The Home warp transition uses `--border` for its grid and charcoal/orange (`--foreground`/`--primary`) beams and freezes under reduced motion. The route-change curtain (`PageTransition`) uses `--surface-alt` with charcoal mono text and a thin `--primary` progress bar; under reduced motion it only fades and skips the decrypt.
+The Home scroll tone shift (`useScrollTone`, `--page-tone`) alternates `--background` and `--surface-alt` while `[data-tone="alt"]` sections cross the viewport middle. The Home warp transition uses `--border` for its grid and green/blue (`--primary`/`--accent-secondary`) beams, and freezes under reduced motion. The route-change curtain (`PageTransition`) uses `--surface-alt` with white mono text and a thin `--primary` progress bar; under reduced motion it only fades and skips the decrypt.
 
 ## Static assets
 

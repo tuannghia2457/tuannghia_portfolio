@@ -63,8 +63,8 @@ test('School previews share hover styles and keep school achievements inside acc
     await expect(summary.locator('.education-degree')).toBeVisible()
     await expect(card.locator('.school-details')).toBeHidden()
     await summary.hover()
-    await expect(card).toHaveCSS('border-color', 'rgb(230, 95, 0)')
-    await expect(summary).toHaveCSS('color', 'rgb(37, 37, 37)')
+    await expect(card).toHaveCSS('border-color', 'rgb(255, 0, 153)')
+    await expect(summary).toHaveCSS('color', 'rgb(255, 255, 255)')
     await expect(summary).toHaveCSS('text-decoration-line', 'none')
   }
   await expect(page.getByRole('heading', { name: 'Dean’s List 2026' })).toBeHidden()

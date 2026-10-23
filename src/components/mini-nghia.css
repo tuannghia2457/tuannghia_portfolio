@@ -38,15 +38,16 @@
 .mini-nghia-sprite { display: block; width: 48px; height: 52px; overflow: visible; image-rendering: pixelated; }
 .mini-nghia-sprite.faces-left { transform: scaleX(-1); }
 .mini-pixel-outline, .mini-pixel-shoe { fill: var(--foreground); }
-.mini-pixel-hair, .mini-pixel-eyes, .mini-pixel-closed-eyes { fill: var(--foreground); }
-.mini-pixel-shirt, .mini-pixel-laptop-screen { fill: var(--surface); }
+.mini-pixel-hair, .mini-pixel-eyes, .mini-pixel-closed-eyes { fill: var(--sprite-ink); }
+.mini-pixel-shirt { fill: var(--foreground); }
+.mini-pixel-laptop-screen { fill: var(--surface); }
 .mini-pixel-skin { fill: var(--sprite-skin); }
 .mini-pixel-jacket, .mini-pixel-laptop-frame { fill: var(--primary); }
-.mini-pixel-trousers { fill: var(--foreground); }
+.mini-pixel-trousers { fill: var(--sprite-ink); }
 .mini-pixel-shadow { fill: var(--border); }
-.mini-pixel-mouth { fill: var(--foreground); }
-.mini-pixel-zip { fill: var(--surface); }
-.mini-pixel-code { fill: var(--foreground); }
+.mini-pixel-mouth { fill: var(--sprite-ink); }
+.mini-pixel-zip { fill: var(--sprite-ink); }
+.mini-pixel-code { fill: var(--primary); }
 .mini-pixel-sleep { fill: var(--muted-foreground); }
 .mini-pixel-laptop, .mini-pixel-sleep, .mini-pixel-closed-eyes { display: none; }
 .mini-nghia-sprite.is-idle .mini-pixel-person { animation: mini-nghia-breathe 7s steps(1, end) infinite; }

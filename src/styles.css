@@ -72,8 +72,8 @@ section[id] { scroll-margin-top: 96px; }
 .hero-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
 .button { display: inline-flex; justify-content: center; align-items: center; gap: 20px; min-height: 48px; padding: 13px 18px; border: 1px solid var(--border); border-radius: var(--radius); font: 500 11px/1.5 var(--mono); letter-spacing: .025em; text-decoration: none; }
 .button-primary { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
-.button-primary:hover { background: var(--primary); border-color: var(--primary-hover); color: var(--on-primary); transform: translateY(-2px); box-shadow: 0 3px 8px var(--shadow-color); }
-.button-primary:active { background: var(--primary); border-color: var(--primary-hover); color: var(--on-primary); transform: none; }
+.button-primary:hover { background: var(--primary-hover); border-color: var(--primary-hover); color: var(--on-primary); transform: translateY(-2px); box-shadow: 0 3px 8px var(--shadow-color); }
+.button-primary:active { background: var(--primary-hover); border-color: var(--primary-hover); color: var(--on-primary); transform: none; }
 .button:disabled, button:disabled { background: var(--disabled-background); color: var(--disabled-foreground); border-color: var(--border); transform: none; }
 .text-link:hover, .back-top:hover { text-decoration: underline; text-decoration-color: var(--primary-hover); }
 .main-nav a:hover { text-decoration: none; }
@@ -130,7 +130,7 @@ h2 em { font-style: normal; color: var(--muted-foreground); }
 .project-title-wrap { display: flex; justify-content: space-between; align-items: start; gap: 24px; }
 .project-title-wrap h3 { font: 500 clamp(27px, 3vw, 40px)/1.12 var(--display); letter-spacing: -.045em; }
 .project-arrow { display: grid; place-items: center; width: 44px; height: 44px; flex-shrink: 0; border: var(--line); border-radius: var(--radius); background: var(--background); color: var(--foreground); text-decoration: none; }
-.project-arrow:hover { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
+.project-arrow:hover { background: var(--primary-hover); color: var(--on-primary); border-color: var(--primary-hover); }
 .project-arrow svg { width: 23px; }
 .project-photo { float: right; width: min(38%, 360px); margin: 24px 0 20px 30px; }
 .project-photo img { display: block; width: 100%; height: auto; aspect-ratio: 3/2; object-fit: cover; filter: saturate(.5); border-radius: 2px; }
@@ -159,7 +159,7 @@ h2 em { font-style: normal; color: var(--muted-foreground); }
 .experience-item:hover, .experience-item:focus-within { background: var(--surface); }
 .experience-meta { min-width: 0; padding-top: 7px; }
 .experience-period { color: var(--foreground); font-size: 13px; font-weight: 500; line-height: 1.7; }
-.experience-company-logo { display: block; width: 220px; max-width: 100%; height: 160px; margin-top: 24px; object-fit: contain; object-position: left center; mix-blend-mode: multiply; }
+.experience-company-logo { display: block; width: 220px; max-width: 100%; height: 140px; margin-top: 24px; padding: 16px 20px; object-fit: contain; background: var(--logo-plate); border-radius: var(--radius); }
 .experience-main { min-width: 0; }
 .experience-main h3 { margin-bottom: 12px; font-size: 26px; line-height: 1.3; font-weight: 500; letter-spacing: -.025em; }
 .experience-org { margin-bottom: 14px; color: var(--accent-foreground); font: 400 14px/1.7 var(--body); }
@@ -205,7 +205,7 @@ h2 em { font-style: normal; color: var(--muted-foreground); }
 .skills-slideshow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; padding-block: 18px; }
 .skill-slide { min-height: 190px; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; padding: 20px; border: var(--line); background: var(--background); transition: border-color var(--duration-fast), transform var(--duration-default), background var(--duration-fast); }
 .skill-slide:hover { border-color: var(--primary-hover); background: var(--surface-soft); transform: translateY(-4px); }
-.skill-slide img { width: 48px; height: 48px; object-fit: contain; margin-bottom: auto; }
+.skill-slide img { width: 48px; height: 48px; padding: 6px; object-fit: contain; margin-bottom: auto; background: var(--logo-plate); border-radius: var(--radius); }
 .skill-category { color: var(--accent-foreground); font-size: 9px; }
 .skill-slide h3 { margin-top: 8px; font-size: 20px; font-weight: 500; letter-spacing: -.035em; }
 .skills-controls { display: flex; align-items: center; gap: 20px; min-height: 56px; border-top: var(--line); }
@@ -213,7 +213,8 @@ h2 em { font-style: normal; color: var(--muted-foreground); }
 .skills-counter span { color: var(--muted-foreground); }
 .skills-dots { display: flex; flex: 1; gap: 6px; }
 .skills-dots button { width: 22px; height: 3px; padding: 0; border: 0; background: var(--muted-foreground); transition: background var(--duration-fast), width var(--duration-fast); }
-.skills-dots button:hover, .skills-dots button.is-active { background: var(--primary); }
+.skills-dots button.is-active { background: var(--primary); }
+.skills-dots button:hover { background: var(--primary-hover); }
 .skills-dots button.is-active { width: 34px; }
 .skills-arrows { display: flex; gap: 6px; }
 .skills-arrows button { display: grid; place-items: center; width: 38px; height: 38px; border: var(--line); border-radius: 3px; color: var(--foreground); background: transparent; }

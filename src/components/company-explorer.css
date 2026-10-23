@@ -6,7 +6,7 @@
 .company-logo-button { display: flex; flex-direction: column; align-items: stretch; padding: 20px; text-align: left; border: var(--line); border-radius: var(--radius); background: var(--surface); color: var(--foreground); transition: border-color 180ms, box-shadow 180ms; }
 .company-logo-button:hover { border-color: var(--primary-hover); box-shadow: 0 3px 10px var(--shadow-color); }
 .company-logo-button[aria-expanded="true"] { border-color: var(--primary-hover); box-shadow: inset 0 -3px var(--primary); }
-.company-logo-stage { display: grid; place-items: center; height: 150px; background: var(--surface); margin-bottom: 20px; }
+.company-logo-stage { display: grid; place-items: center; height: 150px; padding: 10px; background: var(--logo-plate); border-radius: var(--radius); margin-bottom: 20px; }
 .company-logo-stage img { width: 100%; max-width: 200px; height: 140px; object-fit: contain; }
 .company-selector-name { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 20px; font-weight: 500; }
 .company-selector-name svg { transition: transform 180ms; }

@@ -14,8 +14,11 @@ export default function DecryptText({ from, to, duration, delay = 0, instant = f
     const controls = animate(0, 1, {
       duration, delay, ease: 'linear',
       onUpdate: progress => {
+        // Motion reports 0 while the delay runs; keep the original word readable until then.
+        if (progress <= 0) return
         const length = Math.round(from.length + (to.length - from.length) * progress)
-        const resolved = Math.floor(progress * (to.length + 1))
+        // The last letter resolves only when the effect ends, so it fills its whole duration.
+        const resolved = Math.floor(progress * to.length)
         setText(Array.from({ length }, (_, i) => i < resolved && i < to.length ? to[i] : glyph()).join(''))
       },
       onComplete: () => setText(to),
