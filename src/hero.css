@@ -34,7 +34,7 @@
 .hero-figure img { display: block; height: 100%; width: auto; max-width: none; filter: grayscale(1) contrast(1.06); -webkit-mask-image: linear-gradient(to bottom, var(--background) 72%, transparent 98%); mask-image: linear-gradient(to bottom, var(--background) 72%, transparent 98%); }
 
 /* Terminal card */
-.hero-terminal { position: absolute; right: max(16px, calc((100vw - 1440px) / 2 + 24px)); top: 50%; z-index: 4; width: 300px; padding: 14px 18px 18px; border: var(--line); border-radius: 12px; background: color-mix(in srgb, var(--surface) 82%, transparent); backdrop-filter: blur(10px); box-shadow: var(--shadow-overlay); font-family: var(--font-mono); font-size: var(--text-sm); line-height: var(--leading-code); letter-spacing: 0; }
+.hero-terminal { position: absolute; right: max(16px, calc((100vw - 1440px) / 2 + 24px)); top: 40%; z-index: 4; width: 300px; padding: 14px 18px 18px; border: var(--line); border-radius: 12px; background: color-mix(in srgb, var(--surface) 82%, transparent); backdrop-filter: blur(10px); box-shadow: var(--shadow-overlay); font-family: var(--font-mono); font-size: var(--text-sm); line-height: var(--leading-code); letter-spacing: 0; }
 .hero-terminal-bar { display: flex; align-items: center; gap: 6px; margin-bottom: 14px; }
 .hero-terminal-bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--muted-foreground); }
 .hero-terminal-bar i:nth-child(2) { background: var(--accent-secondary); }
