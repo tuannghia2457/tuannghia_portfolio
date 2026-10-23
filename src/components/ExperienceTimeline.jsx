@@ -29,9 +29,9 @@ function TimelineOverview({ roles, today }) {
       frame = 0
       const { top } = node.getBoundingClientRect(), height = innerHeight
       // Starts where the chart first shows (at most 90% down the viewport, so it begins at 0 even when
-      // visible on load) and completes once the chart rises to just below the header.
-      const start = Math.min(height * .9, top + scrollY), finish = Math.min(height * .2, start - 240)
-      set(Math.min(1, Math.max(0, (start - top) / (start - finish))))
+      // visible on load) and completes halfway from there to the header, so a short scroll fills it.
+      const start = Math.min(height * .9, top + scrollY), distance = Math.max(160, (start - height * .2) / 2)
+      set(Math.min(1, Math.max(0, (start - top) / distance)))
     }
     const schedule = () => { if (!frame) frame = requestAnimationFrame(update) }
     update()
