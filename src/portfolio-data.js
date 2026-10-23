@@ -189,6 +189,8 @@ export const academicRecognition = {
   certificate: '/images/competitions-certifications/UTS/26227165_TuanNghiaTran_DeanList.pdf',
 }
 export const studentTestimonialUrl = 'https://www.uts.edu.au/about/uts-vision/initiatives/internationalisation/transnational-education/ho-chi-minh-city-university-of-technology'
+export const ielts = { overall: '8.0' }
+
 export const education = [
   {
     id: 'uts', institution: 'University of Technology Sydney', logo: '/images/schools/uts.jpg',

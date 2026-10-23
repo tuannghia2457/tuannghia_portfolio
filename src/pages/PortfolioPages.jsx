@@ -1,10 +1,10 @@
 import { Link, useParams } from 'react-router-dom'
-import { ArrowRight, ArrowUpRight, ArrowLeft, ArrowDown, Download, Mail } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, ArrowLeft, ArrowDown, Download, Mail, MapPin, House, GraduationCap, School, Languages } from 'lucide-react'
 import HomePortrait from './HomePortrait'
 import Education from '../components/Education'
 import CourseCertificates from '../components/CourseCertificates'
 import { Background, Experience, Companies, Testimonials, Awards, Evidence, Skills, ContactInfo } from './SupportingSections'
-import { projects, awards, experience, courseCertificates } from '../portfolio-data'
+import { projects, education, ielts } from '../portfolio-data'
 import { projectDetails, projectOrder } from '../project-details'
 import { profile } from '../profile'
 import HeroNameBand from '../components/HeroNameBand'
@@ -23,13 +23,17 @@ export function ProjectCards() {
   })}</div>
 }
 function ConnectCTA() { return <section className="connect-cta section-pad"><div><p className="section-kicker mono">RESEARCH / ENGINEERING / COLLABORATION</p><h2>Let’s build something useful.</h2></div><Link className="button button-primary" to="/#contact">Let’s talk <ArrowUpRight size={18} /></Link></section> }
-// Every figure is counted from portfolio-data, so the strip stays true as entries change.
-const unique = values => [...new Set(values)]
-const heroStats = [
-  { value: awards.length, label: 'Awards & recognition', detail: `${awards.filter(award => award[1] === '1st Place').length}× 1st place · ${awards.filter(award => award[1] === 'Finalist').length}× finalist` },
-  { value: projects.length, label: 'Selected projects', detail: projects.map(project => project.title).join(' · ') },
-  { value: experience.length, label: 'Roles', detail: `${unique(experience.map(role => role.organization.split(' · ')[0])).length} organizations · ${experience.filter(role => /present/i.test(role.period)).length} current` },
-  { value: courseCertificates.length, label: 'Course certificates', detail: unique(courseCertificates.map(course => course.issuer)).join(' · ') },
+// Personal facts come from profile.js and portfolio-data, never typed in twice.
+const [university, highSchool] = ['uts', 'gifted'].map(id => education.find(school => school.id === id))
+const [birthCity, birthCountry] = profile.birthplace.split(', ')
+const [homeCity, homeCountry] = profile.location.split(', ')
+const heroFacts = [
+  { Icon: MapPin, label: 'Born in', value: birthCity, detail: birthCountry },
+  { Icon: House, label: 'Based in', value: homeCity, detail: homeCountry },
+  { Icon: GraduationCap, label: 'University', value: 'UTS · HCMUT', detail: `${university.degree.replace('Bachelor’s degree in ', 'B. ')} · ${university.period.replace('EXPECTED ', 'exp. ')}` },
+  // PTNK (Phổ thông Năng khiếu) is the common name of the High School for the Gifted, VNU-HCM.
+  { Icon: School, label: 'High school', value: 'PTNK', detail: `VNU-HCM · ${highSchool.program.replace(' Program', '')} · ${highSchool.grade}` },
+  { Icon: Languages, label: 'English', value: `IELTS ${ielts.overall}`, detail: 'Overall band score' },
 ]
 
 export function Home({ children }) { useScrollTone(); return <>
@@ -48,7 +52,7 @@ export function Home({ children }) { useScrollTone(); return <>
         {profile.resumeUrl ? <a className="button hero-secondary" href={profile.resumeUrl} download>Download Resume <Download size={16} /></a> : <a className="button hero-secondary" href="mailto:trantuannghia2457@gmail.com?subject=Resume%20request&body=Hi%20Tuan%20Nghia%2C%0A%0AI%27d%20love%20to%20learn%20more%20about%20your%20experience.%20Could%20you%20share%20your%20resume%3F">Request Resume <Mail size={16} /></a>}
       </div>
     </div></div>
-    <dl className="hero-stats">{heroStats.map(stat => <div key={stat.label}><dt><span className="hero-stat-value">{stat.value}</span>{stat.label}</dt><dd>{stat.detail}</dd></div>)}</dl>
+    <dl className="hero-stats hero-facts">{heroFacts.map(({ Icon, label, value, detail }) => <div key={label}><Icon className="hero-fact-icon" size={20} aria-hidden="true" /><dt className="mono">{label}</dt><dd><strong>{value}</strong><span>{detail}</span></dd></div>)}</dl>
     <div className="editorial-hero-bottom"><a className="text-link mono" href="#work">SELECTED WORK <ArrowDown size={14} /></a><span className="mono">PERCEPTION / ROBOTICS / APPLIED AI</span></div>
   </section>
   <section id="work" className="home-work section-pad" data-tone="alt"><div className="compact-heading"><div><p className="section-kicker mono">02 / SELECTED PROJECTS</p><h2>From perception to impact.</h2></div><Link className="text-link" to="/projects">All projects <ArrowRight size={17} /></Link></div><ProjectCards /></section><Background /><Skills /><Testimonials /><ContactInfo />{children}

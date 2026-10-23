@@ -3,6 +3,8 @@ export const profile = {
   displayName: 'Tuan Nghia',
   fullName: 'Tran Tuan Nghia',
   location: 'Ho Chi Minh City, Vietnam',
+  // Supplied by the owner on 23 October 2026.
+  birthplace: 'Hanoi, Vietnam',
   brandImage: '/images/personal-images/pixel.png',
   linkedinUrl: 'https://www.linkedin.com/in/tuannghia0405',
   facebookUrl: 'https://www.facebook.com/tuannghia2457/',

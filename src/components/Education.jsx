@@ -1,5 +1,5 @@
 import { ArrowUpRight, ChevronDown } from 'lucide-react'
-import { education } from '../portfolio-data'
+import { education, ielts } from '../portfolio-data'
 import './education.css'
 
 export default function Education() { return <section id="education" className="education-section section-pad" aria-labelledby="education-title">
@@ -22,7 +22,7 @@ export default function Education() { return <section id="education" className="
     <div className="education-capabilities">
       <article className="language-record"><h3>Languages & communication</h3>
         <div className="academic-language"><strong>English</strong><span>Full professional proficiency</span></div>
-        <div className="ielts-record"><span className="mono">IELTS</span><strong>8.0</strong><span>Overall band score</span></div>
+        <div className="ielts-record"><span className="mono">IELTS</span><strong>{ielts.overall}</strong><span>Overall band score</span></div>
         <div className="academic-language"><strong>Japanese</strong><span>Elementary proficiency</span></div>
         <div className="academic-language"><strong>Vietnamese</strong></div>
       </article>
