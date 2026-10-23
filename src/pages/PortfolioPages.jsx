@@ -4,10 +4,11 @@ import HomePortrait from './HomePortrait'
 import Education from '../components/Education'
 import CourseCertificates from '../components/CourseCertificates'
 import { Background, Experience, Companies, Testimonials, Awards, Evidence, Skills, ContactInfo } from './SupportingSections'
-import { projects } from '../portfolio-data'
+import { projects, awards, experience, courseCertificates } from '../portfolio-data'
 import { projectDetails, projectOrder } from '../project-details'
 import { profile } from '../profile'
-import WarpTransition from '../components/WarpTransition'
+import HeroNameBand from '../components/HeroNameBand'
+import HeroTerminal from '../components/HeroTerminal'
 import { useScrollTone } from '../lib/useScrollTone'
 
 function PageIntro({ label, title, children }) { return <header className="page-intro section-pad"><p className="section-kicker mono">{label}</p><h1>{title}<span className="period">.</span></h1><p className="page-description">{children}</p></header> }
@@ -22,21 +23,34 @@ export function ProjectCards() {
   })}</div>
 }
 function ConnectCTA() { return <section className="connect-cta section-pad"><div><p className="section-kicker mono">RESEARCH / ENGINEERING / COLLABORATION</p><h2>Let’s build something useful.</h2></div><Link className="button button-primary" to="/#contact">Let’s talk <ArrowUpRight size={18} /></Link></section> }
+// Every figure is counted from portfolio-data, so the strip stays true as entries change.
+const unique = values => [...new Set(values)]
+const heroStats = [
+  { value: awards.length, label: 'Awards & recognition', detail: `${awards.filter(award => award[1] === '1st Place').length}× 1st place · ${awards.filter(award => award[1] === 'Finalist').length}× finalist` },
+  { value: projects.length, label: 'Selected projects', detail: projects.map(project => project.title).join(' · ') },
+  { value: experience.length, label: 'Roles', detail: `${unique(experience.map(role => role.organization.split(' · ')[0])).length} organizations · ${experience.filter(role => /present/i.test(role.period)).length} current` },
+  { value: courseCertificates.length, label: 'Course certificates', detail: unique(courseCertificates.map(course => course.issuer)).join(' · ') },
+]
+
 export function Home({ children }) { useScrollTone(); return <>
-  <section id="top" className="hero editorial-hero section-pad" aria-labelledby="hero-title">
+  <section id="top" className="hero editorial-hero hero-stage section-pad" aria-labelledby="hero-title">
+    <HeroNameBand />
+    <HomePortrait />
+    <HeroTerminal />
     <div className="hero-grid"><div className="hero-copy">
       <p className="hero-location-label mono"><span className="status-dot" />{profile.location}</p>
       <p className="hero-greeting mono">HELLO, I’M {profile.displayName.toUpperCase()}</p>
       <h1 id="hero-title">Tuan<br />Nghia<span className="period">.</span></h1>
       <p className="hero-statement">AI Engineer</p>
+      <span className="hero-rule" aria-hidden="true"><i /><i /><i /></span>
       <p className="hero-description">I build intelligent systems that help machines understand the visual world, with a focus on computer vision, robotics, and real-world AI applications.</p>
       <div className="hero-actions"><Link className="button button-primary" to="/projects">Explore My Work <ArrowUpRight size={18} /></Link>
         {profile.resumeUrl ? <a className="button hero-secondary" href={profile.resumeUrl} download>Download Resume <Download size={16} /></a> : <a className="button hero-secondary" href="mailto:trantuannghia2457@gmail.com?subject=Resume%20request&body=Hi%20Tuan%20Nghia%2C%0A%0AI%27d%20love%20to%20learn%20more%20about%20your%20experience.%20Could%20you%20share%20your%20resume%3F">Request Resume <Mail size={16} /></a>}
       </div>
-    </div><HomePortrait /></div>
+    </div></div>
+    <dl className="hero-stats">{heroStats.map(stat => <div key={stat.label}><dt><span className="hero-stat-value">{stat.value}</span>{stat.label}</dt><dd>{stat.detail}</dd></div>)}</dl>
     <div className="editorial-hero-bottom"><a className="text-link mono" href="#work">SELECTED WORK <ArrowDown size={14} /></a><span className="mono">PERCEPTION / ROBOTICS / APPLIED AI</span></div>
   </section>
-  <WarpTransition />
   <section id="work" className="home-work section-pad" data-tone="alt"><div className="compact-heading"><div><p className="section-kicker mono">02 / SELECTED PROJECTS</p><h2>From perception to impact.</h2></div><Link className="text-link" to="/projects">All projects <ArrowRight size={17} /></Link></div><ProjectCards /></section><Background /><Skills /><Testimonials /><ContactInfo />{children}
 </> }
 export function ExperiencePage() { return <><PageIntro label="EXPERIENCE / COMPANY WORK" title="Experience">My roles, responsibilities, and technical contributions within the companies I’ve worked with.</PageIntro><Experience /><Companies /><ConnectCTA /></> }

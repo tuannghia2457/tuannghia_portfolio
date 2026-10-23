@@ -37,7 +37,7 @@ Normal text must meet 4.5:1; large text and meaningful non-text indicators requi
 
 Dark, futuristic and editorial. Preserve Space Grotesk headings, DM Mono labels, generous whitespace, subtle thin borders, existing responsive layouts and small corner radii. Neon accents stay deliberate: green for primary actions and accent text, blue for focus and secondary accents, pink for hover. Preserve optional interactions and reduced-motion support.
 
-The Home scroll tone shift (`useScrollTone`, `--page-tone`) alternates `--background` and `--surface-alt` while `[data-tone="alt"]` sections cross the viewport middle. The Home warp transition uses `--border` for its grid and green/blue (`--primary`/`--accent-secondary`) beams, and freezes under reduced motion. The route-change curtain (`PageTransition`) uses `--surface-alt` with white mono text and a thin `--primary` progress bar; under reduced motion it only fades and skips the decrypt.
+The Home scroll tone shift (`useScrollTone`, `--page-tone`) alternates `--background` and `--surface-alt` while `[data-tone="alt"]` sections cross the viewport middle. The Home hero layers a slowly drifting outlined name behind a background-removed grayscale portrait, with a typed terminal card and a stats strip counted from portfolio data; the name loop, cursor and typing stop under reduced motion. The route-change curtain (`PageTransition`) uses `--surface-alt` with white mono text and a thin `--primary` progress bar; under reduced motion it only fades and skips the decrypt.
 
 ## Static assets
 
