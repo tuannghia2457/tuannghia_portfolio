@@ -1,6 +1,50 @@
-/* Tailwind v4 entry. Preflight is intentionally omitted so the existing
-   hand-authored styles keep their current rendering; layered output also
-   loses to the unlayered portfolio CSS. */
-@layer theme, base, components, utilities;
-@import "tailwindcss/theme.css" layer(theme);
-@import "tailwindcss/utilities.css" layer(utilities);
+@import "tailwindcss";
+
+/* Legacy compatibility: Preflight resets several browser defaults that the
+   hand-authored portfolio CSS relied on. Restoring them in the base layer keeps
+   the current pages unchanged while Tailwind utilities still take precedence.
+   Remove rules here as pages move to the redesign. */
+@layer base {
+  html,
+  :host {
+    line-height: normal;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  b,
+  strong {
+    font-weight: bolder;
+  }
+
+  a {
+    text-decoration: revert;
+  }
+
+  ul,
+  ol,
+  menu {
+    list-style: revert;
+  }
+
+  img,
+  svg,
+  video,
+  canvas,
+  audio,
+  iframe,
+  embed,
+  object {
+    display: revert;
+    vertical-align: revert;
+    max-width: revert;
+  }
+
+  button {
+    padding: revert;
+  }
+}
