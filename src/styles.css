@@ -192,30 +192,7 @@ h2 em { font-style: normal; color: var(--muted-foreground); }
 .about-details span { color: var(--muted-foreground); font-size: 9px; }
 .about-details strong { font-size: 12px; line-height: 1.6; font-weight: 500; }
  .skills-section { padding-block: 70px; border-bottom: var(--line); }
-.skills-heading { display: grid; grid-template-columns: 1fr .72fr; gap: 8%; align-items: end; margin-block: 28px 38px; }
-.skills-section h2 { font-size: clamp(38px, 4.4vw, 62px); line-height: 1.06; font-weight: 500; letter-spacing: -.055em; }
-.skills-heading > p { max-width: 360px; color: var(--muted-foreground); font-size: 14px; line-height: 1.8; }
-.skills-showcase { overflow: hidden; border-top: var(--line); }
-.skills-slideshow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; padding-block: 18px; }
-.skill-slide { min-height: 190px; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; padding: 20px; border: var(--line); background: var(--background); transition: border-color var(--duration-fast), transform var(--duration-default), background var(--duration-fast); }
-.skill-slide:hover { border-color: var(--primary-hover); background: var(--surface-soft); transform: translateY(-4px); }
-.skill-slide img { width: 48px; height: 48px; padding: 6px; object-fit: contain; margin-bottom: auto; background: var(--logo-plate); border-radius: var(--radius); }
-.skill-category { color: var(--accent-foreground); font-size: 9px; }
-.skill-slide h3 { margin-top: 8px; font-size: 20px; font-weight: 500; letter-spacing: -.035em; }
-.skills-controls { display: flex; align-items: center; gap: 20px; min-height: 56px; border-top: var(--line); }
-.skills-counter { color: var(--foreground); font-size: 11px; }
-.skills-counter span { color: var(--muted-foreground); }
-.skills-dots { display: flex; flex: 1; gap: 6px; }
-.skills-dots button { width: 22px; height: 3px; padding: 0; border: 0; background: var(--muted-foreground); transition: background var(--duration-fast), width var(--duration-fast); }
-.skills-dots button.is-active { background: var(--primary); }
-.skills-dots button:hover { background: var(--primary-hover); }
-.skills-dots button.is-active { width: 34px; }
-.skills-arrows { display: flex; gap: 6px; }
-.skills-arrows button { display: grid; place-items: center; width: 38px; height: 38px; border: var(--line); border-radius: 3px; color: var(--foreground); background: transparent; }
-.skills-arrows button:hover { border-color: var(--primary-hover); color: var(--accent-foreground); }
 
- .skills-list { display: flex; flex-wrap: wrap; gap: 8px; }
-.skills-list span { padding: 10px 13px; border: var(--line); border-radius: 3px; color: var(--muted-foreground); font-size: 12px; }
 .contact-grid { grid-template-columns: 1.1fr .9fr; gap: 8%; }
 .email-link { display: inline-flex; align-items: center; gap: 12px; max-width: 100%; margin-top: 12px; font-size: clamp(16px, 1.6vw, 22px); letter-spacing: -.035em; overflow-wrap: anywhere; }
 .social-links { display: flex; flex-wrap: wrap; gap: 22px; padding-top: 18px; margin-top: 32px; border-top: var(--line); }
@@ -298,13 +275,6 @@ h2 em { font-style: normal; color: var(--muted-foreground); }
   .hero-footer { gap: 12px; font-size: 8px; }
   .scroll-line { display: none; }
   .hero-footer > span:last-child { max-width: 130px; font-size: 7px; text-align: right; }
-  .skills-heading { grid-template-columns: 1fr; gap: 22px; margin-bottom: 30px; }
-  .skills-heading > p { max-width: 430px; font-size: 13px; }
-  .skills-slideshow { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-  .skill-slide { min-height: 160px; padding: 16px; }
-  .skill-slide img { width: 40px; height: 40px; }
-  .skills-dots button { width: 12px; }
-  .skills-dots button.is-active { width: 24px; }
 
   .section-heading > p { max-width: 350px; font-size: 13px; }
   .project-card { grid-template-columns: 1fr; }
@@ -337,11 +307,6 @@ h2 em { font-style: normal; color: var(--muted-foreground); }
   .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 30px; margin-top: 35px; }
   .about-copy > p, .contact-copy > p { font-size: 14px; }
   .skills-section { padding-block: 55px; }
-  .skills-section h2 { font-size: 32px; }
-  .skills-slideshow { grid-template-columns: 1fr 1fr; }
-  .skills-controls { gap: 12px; }
-  .skills-counter { font-size: 9px; }
-  .skills-arrows button { width: 34px; height: 34px; }
   .email-link { font-size: 17px; }
   .site-footer { gap: 15px; min-height: 105px; padding-bottom: 10px; }
   .site-footer > span { font-size: 8px; }

@@ -1,8 +1,10 @@
 import { ArrowUpRight, ExternalLink, FileText, Download, Mail } from 'lucide-react'
-import { experience, awards, evidence, technicalSkills, testimonials } from '../portfolio-data'
+import { experience, awards, evidence, testimonials } from '../portfolio-data'
 import { profile } from '../profile'
 import CompanyExplorer from '../components/CompanyExplorer'
 import ExperienceTimeline from '../components/ExperienceTimeline'
+import { RevealItem } from '../components/Reveal'
+import SkillsBento from '../components/SkillsBento'
 import './recognition.css'
 import { Link } from 'react-router-dom'
 export function Background() { return (<section id="about" className="about-section section-pad" aria-labelledby="about-title">
@@ -67,11 +69,11 @@ export function ContactInfo() { return (<section id="contact" className="contact
 
 export function Awards() { return <section className="awards-section recognition-panel" aria-labelledby="awards-title">
   <div className="recognition-heading"><p className="section-kicker mono">AWARDS & RECOGNITION</p><h2 id="awards-title">Project recognition<span className="period">.</span></h2><p>Milestones earned through competitions and work beyond the classroom.</p></div>
-  <div className="recognition-grid">{awards.map(([number, award, event, project]) => <article className="award-item recognition-item" key={event}>
+  <div className="recognition-grid">{awards.map(([number, award, event, project]) => <RevealItem key={event}><article className="award-item recognition-item">
     <div className="recognition-topline"><span className="recognition-number mono">{number}</span><span className="recognition-result">{award}</span></div>
     <h3>{event}</h3>
     <div className="recognition-footer"><span className="mono">PROJECT</span><Link className="recognition-project" to={project === 'AquaGuard' ? '/projects/aquaguard' : '/projects/virtualdouble-ant'}>{project}<ArrowUpRight size={15} /></Link></div>
-  </article>)}</div>
+  </article></RevealItem>)}</div>
 </section> }
 
-export function Skills() { return <section className="skills-section section-pad"><span className="section-kicker mono">TECHNICAL TOOLKIT</span><h2>Tools I build with.</h2><div className="toolkit-grid">{technicalSkills.map(skill => <div key={skill.name}><span className="mono">{skill.category}</span><strong>{skill.name}</strong></div>)}</div></section> }
+export function Skills() { return <SkillsBento /> }

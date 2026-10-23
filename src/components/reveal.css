@@ -1,0 +1,3 @@
+/* The wrapper is the grid item; its child fills it so card heights stay even. */
+.reveal-item { display: grid; min-width: 0; }
+.reveal-item > * { min-width: 0; }

@@ -44,10 +44,6 @@ details > summary:hover { color: var(--accent-foreground); text-decoration: unde
 .supporting-section details > .section-pad, .project-evidence > .section-pad { padding: 22px 0 45px; }
 .supporting-section h2, .project-evidence h2 { font-size: clamp(28px, 4vw, 43px); }
 .supporting-section .company-list { grid-template-columns: 1fr; }
-.toolkit-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 36px; border-top: var(--line); }
-.toolkit-grid > div { display: flex; flex-direction: column; gap: 9px; padding: 22px 16px 22px 0; border-bottom: var(--line); }
-.toolkit-grid .mono { font-size: 9px; color: var(--muted-foreground); }
-.toolkit-grid strong { font-size: 21px; font-weight: 500; }
 .role-responsibilities { padding-left: 21px; margin-block: 12px 20px; }
 .role-responsibilities li { padding-left: 7px; margin-bottom: 14px; color: var(--muted-foreground); font-size: 14px; line-height: 1.85; }
 .role-responsibilities li::marker { color: var(--foreground); }
@@ -106,7 +102,7 @@ details > summary:hover { color: var(--accent-foreground); text-decoration: unde
 @media (max-width: 900px) { .curated-projects { grid-template-columns: 1fr; } .curated-card { padding: 28px; } .curated-card h3 { margin-top: 22px; } .curated-card > p { max-width: 650px; } }
 @media (max-width: 600px) {
   .page-description { font-size: 15px; } .compact-heading, .connect-cta { align-items: start; flex-direction: column; gap: 18px; }
-  .toolkit-grid { grid-template-columns: 1fr 1fr; } .detail-facts, .interest-list { grid-template-columns: 1fr; }
+  .detail-facts, .interest-list { grid-template-columns: 1fr; }
   .curated-card { padding: 22px; } .curated-card h3 { font-size: 26px; } .detail-lead { font-size: 18px; }
   .publication { padding: 22px; } .hero-portrait .portrait-photo img { aspect-ratio: auto; } .hero-aside { align-items: center; }
   .hero-aside .aside-location { margin-top: 12px; grid-column: 2; } .hero-aside > .aside-home { font-size: 9px; }
