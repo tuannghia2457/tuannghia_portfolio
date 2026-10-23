@@ -55,7 +55,7 @@ export function Home({ children }) { useScrollTone(); return <>
     <dl className="hero-stats hero-facts">{heroFacts.map(({ Icon, label, value, detail }) => <div key={label}><Icon className="hero-fact-icon" size={20} aria-hidden="true" /><dt className="mono">{label}</dt><dd><strong>{value}</strong><span>{detail}</span></dd></div>)}</dl>
     <div className="editorial-hero-bottom"><a className="text-link mono" href="#work">Selected work <ArrowDown size={14} /></a><span className="mono">Perception / Robotics / Applied AI</span></div>
   </section>
-  <section id="work" className="home-work section-pad" data-tone="alt"><div className="compact-heading"><div><p className="section-kicker mono">01 / Selected projects</p><h2>From perception to impact.</h2></div><Link className="text-link" to="/projects">All projects <ArrowRight size={17} /></Link></div><ProjectCards /></section><Background /><Skills /><Testimonials /><ContactInfo />{children}
+  <Background /><section id="work" className="home-work section-pad" data-tone="alt"><div className="compact-heading"><div><p className="section-kicker mono">02 / Selected projects</p><h2>From perception to impact.</h2></div><Link className="text-link" to="/projects">All projects <ArrowRight size={17} /></Link></div><ProjectCards /></section><Skills /><Testimonials /><ContactInfo />{children}
 </> }
 export function ExperiencePage() { return <><PageIntro label="Experience / Company work" title="Experience">My roles, responsibilities, and technical contributions within the companies I’ve worked with.</PageIntro><Experience /><Companies /><ConnectCTA /></> }
 // Education carries its own hero-style title, so it skips the shared PageIntro.
