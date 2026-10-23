@@ -11,7 +11,7 @@ export function Background() { return (<section id="about" className="about-sect
           <div className="section-kicker mono">01 / Background</div>
           <div className="about-grid">
             <div><h2 id="about-title">Technical<br /><em>by nature.</em><br />Human by choice.</h2></div>
-            <div className="about-copy"><p>Hello, I’m Tuan Nghia — an Artificial Intelligence undergraduate at the University of Technology Sydney through the Ho Chi Minh City University of Technology–University of Technology Sydney program.</p><p>I’m currently a research assistant at Individual Systems Joint Stock Company, working on robotics and computer vision. I’m also a co-founder of Odylytics and part of the team building AquaGuard, a flood-response platform in Vietnam.</p><p>Across research, product, teaching, and public speaking, I’m interested in the same question: how can we make technology technically strong and genuinely useful to people?</p></div>
+            <div className="about-copy"><p>Hello, I’m Tuan Nghia — an Artificial Intelligence undergraduate at the University of Technology Sydney through the Ho Chi Minh City University of Technology–University of Technology Sydney program.</p><p>I’m currently a computer vision intern at Individual Systems Joint Stock Company, working on robotics and computer vision. I’m also a co-founder of Odylytics and part of the team building AquaGuard, a flood-response platform in Vietnam.</p><p>Across research, product, teaching, and public speaking, I’m interested in the same question: how can we make technology technically strong and genuinely useful to people?</p></div>
           </div>
         </section>) }
 

@@ -4,7 +4,7 @@ test('All five roles are consolidated under their four companies with complete e
   await page.goto('/experience')
   const rows = page.locator('.experience-item')
   // Timeline order is newest start first: Odylytics, IVS, BSEC web, BSEC teaching, SDE.
-  for (const [index, count] of [2, 3, 2, 1, 2].entries()) {
+  for (const [index, count] of [1, 3, 2, 1, 2].entries()) {
     await rows.nth(index).locator('.experience-details > summary').click()
     await expect(rows.nth(index).locator('.role-responsibilities li')).toHaveCount(count)
   }
@@ -53,7 +53,7 @@ test('Four real company logos disclose the correct roles and can be closed', asy
   await sde.click(); await sde.click(); await expect(panel).toBeHidden()
   const odylytics = page.getByRole('button', { name: 'Explore Odylytics' })
   await odylytics.click()
-  await expect(panel).toContainText('Chief Technology Officer & Computer Vision Engineer')
+  await expect(panel).toContainText('Chief Technology Officer')
   await expect(panel).toContainText('Jul 2026')
   await expect(panel.locator('article')).toHaveCount(1)
   await page.setViewportSize({ width: 320, height: 800 })

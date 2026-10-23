@@ -31,7 +31,7 @@ export const projects = [
 export const experience = [
   {
     period: 'Apr 2026 — Present',
-    title: 'Computer Vision Research Assistant',
+    title: 'Computer Vision Intern',
     organization: 'Individual Systems Joint Stock Company · Internship',
     milestones: [ivsMilestone],
     logo: '/images/company-logos/ivs.png',
@@ -130,12 +130,11 @@ export const experience = [
 // Dates and company context come from the owner's original profile; roles were supplied directly.
 experience.push({
   period: 'Jul 2026 — Present',
-  title: 'Chief Technology Officer & Computer Vision Engineer',
+  title: 'Chief Technology Officer',
   organization: 'Odylytics',
   logo: '/images/company-logos/odylytics-light.png',
   responsibilities: [
     { text: 'Co-founder and Chief Technology Officer at Odylytics, the team behind AquaGuard.', highlights: ['Co-founder and Chief Technology Officer', 'AquaGuard'] },
-    { text: 'Contributing as a Computer Vision Engineer at Odylytics.', highlights: ['Computer Vision Engineer'] },
   ],
   stack: 'Technical Leadership · Computer Vision · Product Development',
   location: null,
