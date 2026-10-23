@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test'
 test('Recognition cards have readable padding, preserved outcomes and working project links', async ({ page }) => {
   await page.goto('/projects')
-  await page.getByText('Awards & recognition', { exact: true }).click()
+  await page.locator('summary').getByText('Awards & recognition', { exact: true }).click()
   const panel = page.locator('.recognition-panel'), cards = panel.locator('.recognition-item')
   await expect(cards).toHaveCount(6)
   await expect(panel).not.toContainText('Dean')
@@ -12,7 +12,7 @@ test('Recognition cards have readable padding, preserved outcomes and working pr
   await cards.first().getByRole('link', { name: 'AquaGuard' }).click()
   await expect(page).toHaveURL(/\/projects\/aquaguard$/)
   await page.goto('/projects'); await page.setViewportSize({ width: 320, height: 800 })
-  await page.getByText('Awards & recognition', { exact: true }).click()
+  await page.locator('summary').getByText('Awards & recognition', { exact: true }).click()
   await expect(cards.last().getByRole('link', { name: 'VirtualDouble / ANT' })).toBeVisible()
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy()
   expect(await panel.evaluate(el => parseFloat(getComputedStyle(el).paddingLeft))).toBeGreaterThanOrEqual(18)

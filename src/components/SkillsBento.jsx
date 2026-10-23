@@ -21,7 +21,7 @@ function ToolChip({ name }) {
 
 export default function SkillsBento() {
   return <section className="skills-section skills-bento-section section-pad" aria-labelledby="skills-title">
-    <p className="section-kicker mono">03 / TOOLKIT</p>
+    <p className="section-kicker mono">03 / Toolkit</p>
     <h2 id="skills-title">Tools I’ve put <em>to work.</em></h2>
     <div className="skills-bento">
       {skillAreas.map((area, index) => <RevealItem key={area.id} className={`bento-cell bento-pos-${index + 1}`}>

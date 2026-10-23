@@ -24,14 +24,14 @@ function TimelineOverview({ roles, today }) {
         <span className="timeline-track">
           {years.map(year => <span key={year} className="timeline-gridline" style={{ left: position(year * 12) }} aria-hidden="true" />)}
           {/* The date sits beside its bar: after it for early roles, before it for late ones. */}
-          <span className="timeline-bar-dates mono" aria-hidden="true" style={ratio(role.start) > .45 ? { right: `calc(100% - ${position(role.start)} + 12px)` } : { left: `calc(${position(role.current ? now : role.end + 1)} + 12px)` }}>{monthLabel(role.start)} — {role.current ? 'NOW' : monthLabel(role.end)}</span>
+          <span className="timeline-bar-dates mono" aria-hidden="true" style={ratio(role.start) > .45 ? { right: `calc(100% - ${position(role.start)} + 12px)` } : { left: `calc(${position(role.current ? now : role.end + 1)} + 12px)` }}>{monthLabel(role.start)} — {role.current ? 'Now' : monthLabel(role.end)}</span>
           <a className={`timeline-bar${role.current ? ' is-current' : ''}`} href={`#${role.id}`}
             style={{ left: position(role.start), width: `calc(${position(role.current ? now : role.end + 1)} - ${position(role.start)})` }}
             aria-label={`${role.title} at ${role.company}, ${monthLabel(role.start)} to ${role.current ? 'present' : monthLabel(role.end)}`} />
         </span>
       </li>)}
     </ol>
-    <span className="timeline-today mono" aria-hidden="true"><span>TODAY</span></span>
+    <span className="timeline-today mono" aria-hidden="true"><span>Today</span></span>
   </div></div>
 }
 
@@ -44,7 +44,7 @@ export default function ExperienceTimeline({ items, today: todayProp }) {
       {roles.map(role => <li className={`timeline-item experience-item${role.current ? ' is-current' : ''}`} id={role.id} key={role.id}>
         <div className="timeline-when">
           <p className="experience-period mono">{role.period}</p>
-          <p className="timeline-duration mono">{formatDuration(role.months)}{role.current && <span className="timeline-now">NOW</span>}</p>
+          <p className="timeline-duration mono">{formatDuration(role.months)}{role.current && <span className="timeline-now">Now</span>}</p>
         </div>
         <div className="timeline-rail" aria-hidden="true"><span className="timeline-node" /></div>
         <div className="experience-main">

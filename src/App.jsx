@@ -48,7 +48,7 @@ function Shell() {
   return <div className="site-shell">
     <a className="skip-link" href="#main-content">Skip to content</a>
     <header className="site-header">
-      <Link className="brand" to="/" aria-label={`${profile.nickname} — home`} onClick={() => setMenuOpen(false)}><img className="brand-avatar" src={profile.brandImage} alt="" width="44" height="44" /><span className="brand-name"><span className="brand-wordmark" aria-hidden="true">{profile.nickname.toUpperCase().split('').map((letter, index) => <span key={index} style={{ '--letter-index': index }}>{letter}</span>)}</span><span className="brand-caption">COMPUTER VISION & AI</span></span></Link>
+      <Link className="brand" to="/" aria-label={`${profile.nickname} — home`} onClick={() => setMenuOpen(false)}><img className="brand-avatar" src={profile.brandImage} alt="" width="44" height="44" /><span className="brand-name"><span className="brand-wordmark" aria-hidden="true">{profile.nickname.toUpperCase().split('').map((letter, index) => <span key={index} style={{ '--letter-index': index }}>{letter}</span>)}</span><span className="brand-caption">Computer vision & AI</span></span></Link>
       <button ref={menuRef} className="menu-toggle" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen} aria-controls="main-navigation" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X size={22} /> : <Menu size={22} />}</button>
       <nav id="main-navigation" className={`main-nav ${menuOpen ? 'is-open' : ''}`} aria-label="Main navigation">{navigation.map(([path, label]) => <NavLink key={path} to={path} end={path === '/'} onClick={() => setMenuOpen(false)}>{label}</NavLink>)}</nav>
     </header>
@@ -60,7 +60,7 @@ function Shell() {
       <Route path="/contact" element={<Navigate to="/#contact" replace />} />
       <Route path="*" element={<NotFound />} />
     </Routes></PageTransition></AnimatePresence></main>
-    <footer className="site-footer section-pad"><span className="mono">{profile.displayName.toUpperCase()} © 2026</span><span className="mono">BUILT WITH CURIOSITY / HO CHI MINH CITY</span><a href="#main-content" className="back-top">BACK TO TOP <ArrowUpRight size={15} /></a></footer>
+    <footer className="site-footer section-pad"><span className="mono">{profile.displayName} © 2026</span><span className="mono">Built with curiosity / Ho Chi Minh City</span><a href="#main-content" className="back-top">Back to top <ArrowUpRight size={15} /></a></footer>
   </div>
 }
 export default function App() { return <BrowserRouter><Shell /></BrowserRouter> }

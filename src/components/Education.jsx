@@ -5,7 +5,6 @@ import { monthLabel, parsePeriod } from '../lib/timeline'
 import './education.css'
 
 const yearOf = month => Math.floor(month / 12)
-const titleMonth = label => label.charAt(0) + label.slice(1, 3).toLowerCase() + label.slice(3)
 // Partner schools (HCMUT) share a milestone with the school they partner, so only main schools get nodes.
 const partners = Object.fromEntries(education.filter(school => school.partnerOf).map(school => [school.partnerOf, school]))
 const milestones = education.filter(school => !school.partnerOf)
@@ -19,9 +18,9 @@ function Milestone({ school }) {
   const partner = partners[school.id]
   return <article className="education-record school-card" aria-labelledby={`school-name-${school.id}`}>
     <p className="milestone-years mono">
-      {yearOf(school.start)} — {school.current ? 'NOW' : yearOf(school.end)}
-      {school.current && <span className="milestone-badge">CURRENT</span>}
-      {school.expected && <span className="milestone-expected">Expected {titleMonth(monthLabel(school.end))}</span>}
+      {yearOf(school.start)} — {school.current ? 'Now' : yearOf(school.end)}
+      {school.current && <span className="milestone-badge">Current</span>}
+      {school.expected && <span className="milestone-expected">Expected {monthLabel(school.end)}</span>}
     </p>
     <div className="school-identity"><span className="school-logo"><img src={school.logo} alt="" width="64" height="64" loading="lazy" /></span><h3 id={`school-name-${school.id}`}>{school.institution}</h3></div>
     <p className="education-degree">{school.degree}</p>
@@ -36,8 +35,8 @@ function Milestone({ school }) {
         <p className="school-period mono">{school.period}</p>
         <p className="education-program">{school.program}</p><p className="education-summary">{school.summary}</p>
         {partner && <p className="education-summary">{partner.summary}</p>}
-        {school.activities.length > 0 && <div className="school-activities"><span className="mono">ACTIVITIES & SOCIETIES</span><ul>{school.activities.map(activity => <li key={activity}>{activity}</li>)}</ul></div>}
-        {school.skills.length > 0 && <div className="school-skills"><span className="mono">RELATED SKILLS</span><div className="tag-list">{school.skills.map(skill => <span className="tag mono" key={skill}>{skill}</span>)}</div></div>}
+        {school.activities.length > 0 && <div className="school-activities"><span className="mono">Activities & societies</span><ul>{school.activities.map(activity => <li key={activity}>{activity}</li>)}</ul></div>}
+        {school.skills.length > 0 && <div className="school-skills"><span className="mono">Related skills</span><div className="tag-list">{school.skills.map(skill => <span className="tag mono" key={skill}>{skill}</span>)}</div></div>}
         {school.achievements.length > 0 && <div className="school-achievements"><h4>Achievements & recognition</h4>{school.achievements.map(achievement => <article key={achievement.title}><h5>{achievement.title}</h5>{achievement.href && <a className="text-link" href={achievement.href} target="_blank" rel="noreferrer">{achievement.linkLabel} <ArrowUpRight size={15} /></a>}</article>)}</div>}
       </div>
     </details>
@@ -46,7 +45,7 @@ function Milestone({ school }) {
 
 export default function Education() { return <section id="education" className="education-section section-pad" aria-labelledby="education-title">
   <header className="education-intro">
-    <p className="section-kicker mono">EDUCATION / ACADEMIC JOURNEY</p>
+    <p className="section-kicker mono">Education / Academic journey</p>
     <h1 id="education-title">From physics to <em>artificial intelligence.</em></h1>
     <p>My education brings together analytical foundations, AI studies, and an international learning environment.</p>
   </header>

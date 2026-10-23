@@ -7,7 +7,7 @@ export const projects = [
     type: 'Flood-response platform',
     description: 'A cross-platform system for real-time alerts, safety guidance, and crowdsourced rescue coordination during floods.',
     role: 'Co-Founder & Product Manager',
-    year: '2025 — NOW',
+    year: '2025 — Now',
     tags: ['PRODUCT', 'IOS', 'WEB', 'DISASTER RESPONSE'],
     result: '1st Place — OISP Presentation Contest 2025 · First Runner-Up — Bach Khoa Innovation 2026',
     link: 'https://aquaguard.vn/',
@@ -30,7 +30,7 @@ export const projects = [
 
 export const experience = [
   {
-    period: 'APR 2026 — PRESENT',
+    period: 'Apr 2026 — Present',
     title: 'Computer Vision Research Assistant',
     organization: 'Individual Systems Joint Stock Company · Internship',
     milestones: [ivsMilestone],
@@ -62,7 +62,7 @@ export const experience = [
     location: 'Ho Chi Minh City, Vietnam · On-site',
   },
   {
-    period: 'SEP 2025 — JUL 2026',
+    period: 'Sep 2025 — Jul 2026',
     title: 'Web Developer',
     organization: 'Best Start English Center · Part-time',
     logo: '/images/company-logos/bsec_ielts.jpg',
@@ -86,7 +86,7 @@ export const experience = [
     location: 'Ho Chi Minh City, Vietnam · Remote',
   },
   {
-    period: 'JUN 2025 — MAR 2026',
+    period: 'Jun 2025 — Mar 2026',
     title: 'Teaching Assistant',
     organization: 'Best Start English Center · Part-time',
     logo: '/images/company-logos/bsec_ielts.jpg',
@@ -103,7 +103,7 @@ export const experience = [
     location: 'Ho Chi Minh City, Vietnam · On-site',
   },
   {
-    period: 'JUL 2024 — AUG 2024',
+    period: 'Jul 2024 — Aug 2024',
     title: 'Low-Code Application Developer',
     organization: 'SDE Digital Technology Company Limited · Internship',
     logo: '/images/company-logos/logo-sde-tech.webp',
@@ -129,7 +129,7 @@ export const experience = [
 
 // Dates and company context come from the owner's original profile; roles were supplied directly.
 experience.push({
-  period: 'JUL 2026 — PRESENT',
+  period: 'Jul 2026 — Present',
   title: 'Chief Technology Officer & Computer Vision Engineer',
   organization: 'Odylytics',
   logo: '/images/company-logos/odylytics-light.png',
@@ -194,7 +194,7 @@ export const education = [
   {
     id: 'uts', institution: 'University of Technology Sydney', logo: '/images/schools/uts.png',
     degree: 'Bachelor’s degree in Artificial Intelligence', program: 'Ho Chi Minh City University of Technology–University of Technology Sydney Transnational Education Program',
-    period: 'SEP 2025 — EXPECTED MAY 2028', grade: '6.9 / 7.0',
+    period: 'Sep 2025 — Expected May 2028', grade: '6.9 / 7.0',
     summary: 'Studying Artificial Intelligence through the Ho Chi Minh City University of Technology–University of Technology Sydney program, with an academic foundation in programming and AI.',
     activities: ['Class Representative'], skills: ['Python', 'Java'],
     achievements: [
@@ -206,7 +206,7 @@ export const education = [
   {
     id: 'gifted', institution: 'High School for the Gifted, Vietnam National University Ho Chi Minh City', logo: '/images/schools/gifted.jpg',
     degree: 'High School Diploma', program: 'Advanced Physics Program',
-    period: 'AUG 2022 — JUN 2025', grade: '9.6 / 10',
+    period: 'Aug 2022 — Jun 2025', grade: '9.6 / 10',
     summary: 'An advanced physics background that shaped my approach to analytical thinking and technical problem-solving.',
     activities: [], skills: ['Physics', 'Event Management'],
     achievements: [],

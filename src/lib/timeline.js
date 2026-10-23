@@ -1,6 +1,6 @@
 const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
 
-// "APR 2026" → month index since year 0, so spans are simple subtraction.
+// "Apr 2026" (any case) → month index since year 0, so spans are simple subtraction.
 function parseMonth(text) {
   const [month, year] = text.trim().toUpperCase().split(/\s+/)
   const index = MONTHS.indexOf(month)
@@ -9,9 +9,9 @@ function parseMonth(text) {
 }
 
 export const monthIndex = date => date.getFullYear() * 12 + date.getMonth()
-export const monthLabel = index => `${MONTHS[index % 12]} ${Math.floor(index / 12)}`
+export const monthLabel = index => `${MONTHS[index % 12][0]}${MONTHS[index % 12].slice(1).toLowerCase()} ${Math.floor(index / 12)}`
 
-// Parses "APR 2026 — PRESENT" or "SEP 2025 — EXPECTED MAY 2028" into inclusive month indices.
+// Parses "Apr 2026 — Present" or "Sep 2025 — Expected May 2028" into inclusive month indices.
 // PRESENT ends at `today`; an expected end still in the future also counts as current.
 export function parsePeriod(period, today = new Date()) {
   const [from, to] = period.split(/\s*[—–-]\s*/)

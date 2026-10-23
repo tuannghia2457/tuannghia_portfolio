@@ -88,12 +88,12 @@ export default function SmileDemo() {
   }
   const busy = phase === 'loading' || phase === 'running'
   return <section id="smile" className="smile-section section-pad" aria-labelledby="smile-title">
-    <div className="smile-heading"><p className="section-kicker mono">06 / A LITTLE COMPUTER VISION</p><h2 id="smile-title">Smile to Collaborate<span className="period">.</span></h2><p>Smile if you think we should work together :)</p></div>
+    <div className="smile-heading"><p className="section-kicker mono">06 / A little computer vision</p><h2 id="smile-title">Smile to Collaborate<span className="period">.</span></h2><p>Smile if you think we should work together :)</p></div>
     <div className={`smile-panel is-${phase}`}>
       <div className="camera-stage">
         <video ref={videoRef} autoPlay muted playsInline aria-label="Your local webcam preview" className={busy ? 'is-visible' : ''} />
-        {!busy && <div className="camera-placeholder">{phase === 'success' ? <><div className="smile-celebration" aria-hidden="true"><Smile size={78} strokeWidth={1.3} /><span>✦</span><span>✦</span><span>✦</span></div><strong>Nice to meet your smile!</strong><span className="mono">CAMERA OFF / GOOD VIBES ON</span></> : <><Smile size={72} strokeWidth={1.2} aria-hidden="true" /><span className="mono">A HUMAN CONNECTION, FIRST</span></>}</div>}
-        {busy && <span className="camera-badge mono">{phase === 'loading' ? 'PREPARING' : 'CAMERA ON / LOCAL ONLY'}</span>}
+        {!busy && <div className="camera-placeholder">{phase === 'success' ? <><div className="smile-celebration" aria-hidden="true"><Smile size={78} strokeWidth={1.3} /><span>✦</span><span>✦</span><span>✦</span></div><strong>Nice to meet your smile!</strong><span className="mono">Camera off / good vibes on</span></> : <><Smile size={72} strokeWidth={1.2} aria-hidden="true" /><span className="mono">A human connection, first</span></>}</div>}
+        {busy && <span className="camera-badge mono">{phase === 'loading' ? 'Preparing' : 'Camera on / local only'}</span>}
       </div>
       <div className="smile-controls"><p role="status" aria-live="polite">{message}</p>
         {phase === 'success' && <a className="button button-primary" href={collaborationEmail}>Let’s Connect <ArrowUpRight size={18} /></a>}

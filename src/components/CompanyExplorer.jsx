@@ -42,7 +42,7 @@ export default function CompanyExplorer() {
   const company = companies.find(item => item.id === selected)
   function close() { const id = selected; setSelected(null); document.getElementById(`company-button-${id}`)?.focus() }
   return <section id="company" className="company-explorer section-pad" aria-labelledby="company-title">
-    <p className="section-kicker mono">02 / COMPANIES & COLLABORATORS</p>
+    <p className="section-kicker mono">02 / Companies & collaborators</p>
     <div className="company-explorer-heading"><h2 id="company-title">The teams I’ve worked with.</h2><p>Select a company to explore my role and contributions.</p></div>
     <div className="company-selector" aria-label="Choose a company">
       {companies.map(item => <button key={item.id} id={`company-button-${item.id}`} type="button" className="company-logo-button" aria-label={`Explore ${item.name}`} aria-expanded={selected === item.id} aria-controls="company-detail-panel" onClick={() => choose(item.id)}>

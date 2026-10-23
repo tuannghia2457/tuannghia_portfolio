@@ -39,7 +39,7 @@ test('Four real company logos disclose the correct roles and can be closed', asy
   }
   const ivs = page.getByRole('button', { name: 'Explore Individual Systems Joint Stock Company' })
   await ivs.click(); await expect(ivs).toHaveAttribute('aria-expanded', 'true')
-  await expect(panel).toContainText('satellite positioning'); await expect(panel).toContainText('APR 2026')
+  await expect(panel).toContainText('satellite positioning'); await expect(panel).toContainText('Apr 2026')
   const bsec = page.getByRole('button', { name: 'Explore Best Start English Center' })
   await bsec.focus(); await page.keyboard.press('Enter')
   await expect(ivs).toHaveAttribute('aria-expanded', 'false')
@@ -54,7 +54,7 @@ test('Four real company logos disclose the correct roles and can be closed', asy
   const odylytics = page.getByRole('button', { name: 'Explore Odylytics' })
   await odylytics.click()
   await expect(panel).toContainText('Chief Technology Officer & Computer Vision Engineer')
-  await expect(panel).toContainText('JUL 2026')
+  await expect(panel).toContainText('Jul 2026')
   await expect(panel.locator('article')).toHaveCount(1)
   await page.setViewportSize({ width: 320, height: 800 })
   await ivs.click(); await expect(panel).toBeVisible()

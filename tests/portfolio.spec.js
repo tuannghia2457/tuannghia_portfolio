@@ -42,10 +42,10 @@ test('Home holds personal content while Experience holds employment and legacy l
   const bars = page.locator('.timeline-bar'), rows = page.locator('.timeline-item')
   await expect(bars).toHaveCount(await rows.count())
   for (const [index, row] of (await rows.all()).entries()) {
-    await expect(row.locator('.experience-period')).toHaveText(/^[A-Z]{3} \d{4} — ([A-Z]{3} \d{4}|PRESENT)$/)
+    await expect(row.locator('.experience-period')).toHaveText(/^[A-Z][a-z]{2} \d{4} — ([A-Z][a-z]{2} \d{4}|Present)$/)
     await expect(bars.nth(index)).toHaveAttribute('href', `#${await row.getAttribute('id')}`)
   }
-  await expect(rows.first().locator('.timeline-now')).toHaveText('NOW')
+  await expect(rows.first().locator('.timeline-now')).toHaveText('Now')
   await expect(page.locator('.company-logo-button')).toHaveCount(4)
   await page.goto('/contact')
   await expect(page).toHaveURL(/\/#contact$/)
