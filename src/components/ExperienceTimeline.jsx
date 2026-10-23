@@ -52,7 +52,8 @@ export default function ExperienceTimeline({ items, today: todayProp }) {
           <p className="experience-org">{role.organization}</p>
           {role.location && <p className="experience-location mono">{role.location}</p>}
           <details className="experience-details"><summary>Responsibilities & contributions</summary><RoleResponsibilities items={role.responsibilities} /></details>
-          <CompanyMilestones items={role.milestones} anchor={role.milestones ? 'ivs-pothole-milestone' : undefined} />
+          {/* The #ivs-pothole-milestone anchor lives in the IVS company panel, which opens for that hash. */}
+          <CompanyMilestones items={role.milestones} />
           <div className="experience-stack tag-list" aria-label="Skills and tools">{role.stack.split(' · ').map(skill => <span className="tag mono" key={skill}>{skill}</span>)}</div>
         </div>
       </li>)}
