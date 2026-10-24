@@ -1,13 +1,13 @@
 /* Compact project recognition: one row per competition, showing only its name and result.
    Each row still links to the project it recognises. */
-.awards-section.recognition-panel { margin-top: 8px; padding: clamp(18px, 2.4vw, 28px); border: var(--line); border-radius: var(--radius); background: var(--surface-alt); }
-.recognition-heading { margin-bottom: 16px; }
+.awards-section.recognition-panel { margin-top: 8px; padding: clamp(20px, 2.8vw, 32px); border: var(--line); border-radius: var(--radius); background: var(--surface-alt); }
+.recognition-heading { margin-bottom: 20px; }
 .recognition-heading .section-kicker { font-size: var(--text-xs); }
-.recognition-panel .recognition-heading h2 { font-family: var(--font-sans); font-size: var(--text-xl); font-weight: var(--weight-bold); line-height: var(--leading-heading); letter-spacing: var(--tracking-heading); margin-top: 6px; }
-.recognition-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
-.recognition-panel .recognition-item { display: flex; align-items: center; justify-content: space-between; gap: 14px; height: 100%; min-width: 0; padding: 12px 16px; color: var(--foreground); text-decoration: none; background: var(--surface); border: var(--line); border-radius: var(--radius); transition: border-color 180ms ease-out; }
+.recognition-panel .recognition-heading h2 { font-family: var(--font-sans); font-size: var(--text-2xl); font-weight: var(--weight-bold); line-height: var(--leading-heading); letter-spacing: var(--tracking-heading); margin-top: 8px; }
+.recognition-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+.recognition-panel .recognition-item { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 100%; min-width: 0; padding: 18px 22px; color: var(--foreground); text-decoration: none; background: var(--surface); border: var(--line); border-radius: var(--radius); transition: border-color 180ms ease-out; }
 .recognition-panel .recognition-item:hover { border-color: var(--primary); }
-.recognition-item h3 { min-width: 0; font-size: var(--text-base); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-heading); line-height: var(--leading-snug); }
-.recognition-result { flex-shrink: 0; padding: 4px 9px; color: var(--foreground); background: var(--accent-surface); border-radius: 3px; font-size: var(--text-xs); line-height: 1.5; font-weight: var(--weight-medium); white-space: nowrap; }
+.recognition-item h3 { min-width: 0; font-size: var(--text-lg); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-heading); line-height: var(--leading-snug); }
+.recognition-result { flex-shrink: 0; padding: 6px 11px; color: var(--foreground); background: var(--accent-surface); border-radius: 3px; font-size: var(--text-sm); line-height: 1.5; font-weight: var(--weight-medium); white-space: nowrap; }
 @media (max-width: 650px) { .recognition-grid { grid-template-columns: 1fr; gap: 8px; } }
-@media (max-width: 360px) { .awards-section.recognition-panel { padding: 14px; } .recognition-panel .recognition-item { padding: 10px 12px; } }
+@media (max-width: 360px) { .awards-section.recognition-panel { padding: 14px; } .recognition-panel .recognition-item { padding: 14px; } .recognition-result { font-size: var(--text-xs); } }

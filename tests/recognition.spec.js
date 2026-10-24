@@ -7,7 +7,7 @@ test('Recognition rows stay compact, show only name and result, and link to thei
   await expect(panel).not.toContainText('Dean')
   await expect(panel.getByRole('heading', { name: 'Bach Khoa Innovation' })).toBeVisible()
   await expect(cards.first()).toHaveText(/Bach Khoa Innovation 2026\s*First Runner-Up/)
-  expect(await cards.first().evaluate(el => el.getBoundingClientRect().height)).toBeLessThan(90)
+  expect(await cards.first().evaluate(el => el.getBoundingClientRect().height)).toBeLessThan(110)
   expect(await panel.evaluate(el => parseFloat(getComputedStyle(el).paddingLeft))).toBeGreaterThanOrEqual(14)
   await cards.first().click()
   await expect(page).toHaveURL(/\/projects\/aquaguard$/)
