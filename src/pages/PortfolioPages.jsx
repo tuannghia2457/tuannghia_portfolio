@@ -6,6 +6,7 @@ import CourseCertificates from '../components/CourseCertificates'
 import { Background, Experience, Companies, Testimonials, Awards, Evidence, Skills, ContactInfo } from './SupportingSections'
 import { projects, ielts, awards } from '../portfolio-data'
 import { projectDetails, projectOrder } from '../project-details'
+import { research } from '../research'
 import { profile } from '../profile'
 import HeroNameBand from '../components/HeroNameBand'
 import HeroTerminal from '../components/HeroTerminal'
@@ -101,14 +102,39 @@ export function ProjectDetail() {
     <div className="detail-navigation"><Link to="/projects" className="text-link"><ArrowLeft size={16} /> More projects</Link><Link to="/#contact" className="text-link">Discuss this work <ArrowUpRight size={16} /></Link></div>
   </article>
 }
-export function Research() { return <><PageIntro label="Research / Computer vision & robotics" title="Perception in the real world">I study how machines understand geometry and navigate environments where information is sparse, noisy, or incomplete.</PageIntro>
+export function Research() { return <><PageIntro label="Research / Vision & language" title="Perception in the real world">I study how machines make sense of incomplete information, from locating drones without GPS to answering legal questions from verifiable sources.</PageIntro>
   <section id="research" className="research-page section-pad"><h2>Research interests</h2><div className="interest-list">{['Natural Language Processing', 'Computer Vision', 'Robotics', 'Artificial Intelligence'].map((topic, index) => <div key={topic}><span className="mono">0{index + 1}</span><h3>{topic}</h3></div>)}</div>
-    <div className="compact-heading"><h2>Ongoing work</h2><span className="mono">At Individual Systems Joint Stock Company / Apr 2026 — Present</span></div>
-    <div className="research-records">{[
-      ['GNSS-denied UAV localization', 'Perception and geometric matching for localization without satellite positioning.', 'Computer vision, canopy segmentation, Voronoi diagrams, and geometric matching.'],
-      ['Autonomous robot navigation', 'Perception-based path planning in environments with limited visibility.', 'Path planning and graph construction for autonomous navigation.'],
-      ['LiDAR-based pothole detection', 'Detecting damaged road surfaces and testing autonomous navigation.', 'LiDAR, ROS, Gazebo, and JetTank for development and testing.'],
-    ].map(([title, summary, technical]) => <article key={title}><h3>{title}</h3><p>{summary}</p><details><summary>Explore the approach</summary><p>{technical}</p></details></article>)}</div>
+    <div className="compact-heading"><h2>Ongoing research</h2></div>
+    <div className="research-cards">{research.map(item => <Link className="research-card" to={`/research/${item.slug}`} key={item.slug}>
+      <div className="research-card-topline"><span className="mono">{item.lab}</span><span className="research-stage mono">{item.stage}</span></div>
+      <h3>{item.title}</h3><p>{item.summary}</p>
+      <div className="tag-list">{item.fields.map(field => <span className="tag mono" key={field}>{field}</span>)}</div>
+      <span className="card-read">Read the research <ArrowRight size={16} /></span>
+    </Link>)}</div>
     <div className="compact-heading"><h2>Publications & presentations</h2></div><article className="publication"><span className="section-kicker mono">Conference presentation / Current Topics in Mathematics and Industrial Applications 2026</span><h3>Pothole Surface Reconstruction</h3><p>Geometry-informed reconstruction with RGB cameras, sparse 2D LiDAR, depth functions, and monotonic neural networks.</p><p className="publication-note">Presented at Current Topics in Mathematics and Industrial Applications 2026. A paper link and publication citation are not currently listed in this portfolio.</p><Link className="text-link" to="/experience#ivs-pothole-milestone">Explore the research <ArrowUpRight size={16} /></Link></article>
   </section><ConnectCTA /></> }
+// Research detail pages share the project page layout: title, key facts, focus areas, and a goal/status panel.
+export function ResearchDetail() {
+  const { slug } = useParams(), item = research.find(entry => entry.slug === slug)
+  if (!item) return <NotFound />
+  const facts = [['Lab', item.lab], ['Field', item.fields.slice(0, 2).join(' · ')], ['Stage', item.stage]]
+  return <article className="project-detail section-pad">
+    <Link to="/research" className="text-link"><ArrowLeft size={16} /> All research</Link>
+    <header className="detail-hero">
+      <p className="section-kicker mono">Ongoing research / {item.lab}</p><h1>{item.title}<span className="period">.</span></h1><p className="detail-lead">{item.summary}</p>
+    </header>
+    <dl className="detail-facts detail-facts-row">{facts.map(([label, value]) => <div key={label}><dt className="meta-label mono">{label}</dt><dd>{value}</dd></div>)}</dl>
+    <div className="detail-body">
+      <div className="detail-main">
+        <section><h2>Research focus</h2><ol className="detail-contributions">{item.focus.map((entry, index) => <li key={entry}><span className="detail-index mono">0{index + 1}</span><p>{entry}</p></li>)}</ol></section>
+      </div>
+      <aside className="detail-aside">
+        <section className="detail-panel"><h2>Fields</h2><div className="tag-list">{item.fields.map(field => <span className="tag mono" key={field}>{field}</span>)}</div></section>
+        <section className="detail-panel detail-result"><h2>Goal</h2><p>{item.goal}</p></section>
+        <section className="detail-panel"><h2>Status</h2><p className="detail-status">{item.status}</p></section>
+      </aside>
+    </div>
+    <div className="detail-navigation"><Link to="/research" className="text-link"><ArrowLeft size={16} /> More research</Link><Link to="/#contact" className="text-link">Discuss this research <ArrowUpRight size={16} /></Link></div>
+  </article>
+}
 export function NotFound() { return <><PageIntro label="404 / Page not found" title="A little off the path">This page isn’t available.</PageIntro><div className="section-pad not-found"><Link className="button button-primary" to="/">Back to home <ArrowLeft size={16} /></Link></div></> }

@@ -4,7 +4,7 @@ import { BrowserRouter, Link, NavLink, Navigate, Route, Routes, useLocation } fr
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 import PageTransition from './components/PageTransition'
 import { profile } from './profile'
-import { Home, ExperiencePage, Projects, ProjectDetail, Research, EducationPage, NotFound } from './pages/PortfolioPages'
+import { Home, ExperiencePage, Projects, ProjectDetail, Research, ResearchDetail, EducationPage, NotFound } from './pages/PortfolioPages'
 
 const SmileDemo = lazy(() => import('./components/SmileDemo'))
 // Redirect sources share their target's key so a redirect never plays a second curtain.
@@ -55,7 +55,7 @@ function Shell() {
     <main id="main-content" ref={mainRef} tabIndex={-1}><AnimatePresence mode="wait" onExitComplete={onExitComplete}><PageTransition key={pageKey} variant={initial.current ? firstVariant : 'nav'}><Routes location={location}>
       <Route path="/" element={<Home><Suspense fallback={<div className="section-pad demo-loading" role="status">Loading Smile to Collaborate…</div>}><SmileDemo /></Suspense></Home>} /><Route path="/experience" element={<ExperiencePage />} /><Route path="/about" element={<Navigate to="/experience" replace />} />
       <Route path="/projects/pothole-surface-reconstruction" element={<Navigate to="/experience#ivs-pothole-milestone" replace />} /><Route path="/projects" element={<Projects />} /><Route path="/projects/:slug" element={<ProjectDetail />} />
-      <Route path="/research" element={<Research />} />
+      <Route path="/research" element={<Research />} /><Route path="/research/:slug" element={<ResearchDetail />} />
       <Route path="/education" element={<EducationPage />} />
       <Route path="/contact" element={<Navigate to="/#contact" replace />} />
       <Route path="*" element={<NotFound />} />
