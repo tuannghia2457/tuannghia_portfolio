@@ -24,17 +24,29 @@ function TimelineOverview({ roles, today }) {
       node.classList.toggle('is-complete', progress >= 1)
     }
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) { set(1); return }
-    let frame = 0
-    const update = () => {
-      frame = 0
+    let frame = 0, shown = 0, target = 0
+    const measure = () => {
       const { top } = node.getBoundingClientRect(), height = innerHeight
       // Starts where the chart first shows (at most 90% down the viewport, so it begins at 0 even when
       // visible on load) and completes halfway from there to the header, so a short scroll fills it.
       const start = Math.min(height * .9, top + scrollY), distance = Math.max(160, (start - height * .2) / 2)
-      set(Math.min(1, Math.max(0, (start - top) / distance)))
+      target = Math.min(1, Math.max(0, (start - top) / distance))
+    }
+    // Scrolling sets the target; the drawn sweep glides toward it over time (~0.7s to fill, whatever the
+    // screen's refresh rate), so a quick flick still shows the bars growing.
+    let last = 0
+    const update = time => {
+      measure()
+      const step = last ? Math.min(time - last, 100) : 16
+      last = time
+      shown += (target - shown) * (1 - Math.exp(-step / 220))
+      if (Math.abs(target - shown) < .002) shown = target
+      set(shown)
+      frame = shown === target ? 0 : requestAnimationFrame(update)
+      if (!frame) last = 0
     }
     const schedule = () => { if (!frame) frame = requestAnimationFrame(update) }
-    update()
+    measure(); shown = target; set(shown)
     addEventListener('scroll', schedule, { passive: true }); addEventListener('resize', schedule)
     return () => { cancelAnimationFrame(frame); removeEventListener('scroll', schedule); removeEventListener('resize', schedule) }
   }, [now])
