@@ -68,7 +68,7 @@ test('Focused homepage, navigation, detail pages, and preserved information', as
   await expect(page.locator('.experience-item')).toHaveCount(5)
   await page.getByRole('button', { name: 'Explore Individual Systems Joint Stock Company' }).click()
   await expect(page.locator('#company-detail-panel')).toContainText('satellite positioning')
-  await page.goto('/projects'); await page.getByText('Certificates & supporting evidence', { exact: true }).click()
+  await page.goto('/projects'); await page.locator('summary').getByText('Awards & certificates', { exact: true }).click()
   await expect(page.locator('.evidence-card')).toHaveCount(4)
   for (const link of await page.locator('.evidence-card-body a').evaluateAll(links => links.map(link => link.getAttribute('href')))) expect((await page.request.get(link)).status()).toBe(200)
   for (const slug of ['aquaguard', 'virtualdouble-ant']) { await page.goto(`/projects/${slug}`); await expect(page.getByRole('heading', { name: 'Technical approach' })).toBeVisible() }
