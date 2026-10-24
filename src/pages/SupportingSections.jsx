@@ -3,7 +3,6 @@ import { experience, awards, evidence, testimonials } from '../portfolio-data'
 import { profile } from '../profile'
 import CompanyExplorer from '../components/CompanyExplorer'
 import ExperienceTimeline from '../components/ExperienceTimeline'
-import { RevealItem } from '../components/Reveal'
 import SkillsBento from '../components/SkillsBento'
 import './recognition.css'
 import { Link } from 'react-router-dom'
@@ -67,12 +66,10 @@ export function ContactInfo() { return (<section id="contact" className="contact
         </section>) }
 
 export function Awards() { return <section className="awards-section recognition-panel" aria-labelledby="awards-title">
-  <div className="recognition-heading"><p className="section-kicker mono">Awards & recognition</p><h2 id="awards-title">Project recognition<span className="period">.</span></h2><p>Milestones earned through competitions and work beyond the classroom.</p></div>
-  <div className="recognition-grid">{awards.map(([number, award, event, project]) => <RevealItem key={event}><article className="award-item recognition-item">
-    <div className="recognition-topline"><span className="recognition-number mono">{number}</span><span className="recognition-result">{award}</span></div>
-    <h3>{event}</h3>
-    <div className="recognition-footer"><span className="mono">Project</span><Link className="recognition-project" to={project === 'AquaGuard' ? '/projects/aquaguard' : '/projects/virtualdouble-ant'}>{project}<ArrowUpRight size={15} /></Link></div>
-  </article></RevealItem>)}</div>
+  <div className="recognition-heading"><p className="section-kicker mono">Awards & recognition</p><h2 id="awards-title">Project recognition<span className="period">.</span></h2></div>
+  <ul className="recognition-grid">{awards.map(([, award, event, project]) => <li key={event}><Link className="award-item recognition-item" to={project === 'AquaGuard' ? '/projects/aquaguard' : '/projects/virtualdouble-ant'}>
+    <h3>{event}</h3><span className="recognition-result">{award}</span>
+  </Link></li>)}</ul>
 </section> }
 
 export function Skills() { return <SkillsBento /> }
