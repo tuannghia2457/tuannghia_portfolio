@@ -71,6 +71,8 @@ test('Focused homepage, navigation, detail pages, and preserved information', as
   await page.goto('/projects'); await page.locator('summary').getByText('Awards & certificates', { exact: true }).click()
   await expect(page.locator('.evidence-card')).toHaveCount(4)
   for (const link of await page.locator('.evidence-card-body a').evaluateAll(links => links.map(link => link.getAttribute('href')))) expect((await page.request.get(link)).status()).toBe(200)
+  await expect(page.locator('.evidence-card img.evidence-thumb')).toHaveCount(4)
+  for (const src of await page.locator('.evidence-card img.evidence-thumb').evaluateAll(images => images.map(image => image.getAttribute('src')))) expect((await page.request.get(src)).status()).toBe(200)
   for (const slug of ['aquaguard', 'virtualdouble-ant']) { await page.goto(`/projects/${slug}`); await expect(page.getByRole('heading', { name: 'Technical approach' })).toBeVisible() }
   await page.goto('/research'); await expect(page.locator('.research-card')).toHaveCount(2)
   await expect(page.locator('.publication')).toContainText('Current Topics in Mathematics and Industrial Applications 2026')

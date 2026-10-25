@@ -39,7 +39,7 @@ export function Evidence() { return (<section id="evidence" className="evidence-
           <ul className="evidence-grid">
             {evidence.map((item) => (
               <li className="evidence-card" key={`${item.title}-${item.type}`}>
-                {item.preview ? <img className="evidence-thumb" src={item.preview.includes('EPICS') ? '/images/optimized/epics-certificate.jpg' : '/images/optimized/oisp-certificate.jpg'} alt="" width="72" height="51" loading="lazy" decoding="async" /> : <span className="evidence-thumb evidence-thumb-pdf mono" aria-hidden="true"><FileText size={18} strokeWidth={1.6} />PDF</span>}
+                {item.thumb ? <img className="evidence-thumb" src={item.thumb} alt="" width="72" height="51" loading="lazy" decoding="async" /> : <span className="evidence-thumb evidence-thumb-pdf mono" aria-hidden="true"><FileText size={18} strokeWidth={1.6} />PDF</span>}
                 <div className="evidence-card-body">
                   <span className="evidence-type mono">{item.type}</span>
                   <h3>{item.title}</h3>

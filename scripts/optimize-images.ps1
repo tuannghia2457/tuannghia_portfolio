@@ -7,7 +7,9 @@ $assets = @(
   @{ Source = 'public/images/personal-images/personal_image.JPG'; Name = 'portrait.jpg'; Width = 640 },
   @{ Source = 'public/images/competitions-certifications/EPICS8/689475088_122127824871169933_4345988501750093972_n.jpg'; Name = 'aquaguard-team.jpg'; Width = 960 },
   @{ Source = 'public/images/competitions-certifications/EPICS8/HCMUT - AquaGuard_page-0001.jpg'; Name = 'epics-certificate.jpg'; Width = 720 },
-  @{ Source = 'public/images/competitions-certifications/OPC25/First Prize_AquaGuardian_page-0001.jpg'; Name = 'oisp-certificate.jpg'; Width = 720 }
+  @{ Source = 'public/images/competitions-certifications/OPC25/First Prize_AquaGuardian_page-0001.jpg'; Name = 'oisp-certificate.jpg'; Width = 720 },
+  @{ Source = 'public/images/competitions-certifications/EPICS8/HCMUT - AquaGuard_Nghia_page-0001.png'; Name = 'epics-personal-certificate.jpg'; Width = 720 },
+  @{ Source = 'public/images/competitions-certifications/OPC25/Golden Ticket_AquaGuardian_page-0001.png'; Name = 'oisp-golden-ticket.jpg'; Width = 720 }
 )
 $encoder = [System.Drawing.Imaging.ImageCodecInfo]::GetImageEncoders() | Where-Object MimeType -eq 'image/jpeg'
 foreach ($asset in $assets) {
