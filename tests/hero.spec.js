@@ -23,7 +23,7 @@ test('Tom branding uses the preserved pixel asset and the focused hero keeps wor
   await expect(page.locator('.hero-facts dt')).toHaveText(['Location', 'Education', 'Research', 'Dream job', 'English'])
   await expect(page.locator('.hero-facts')).toContainText('CV & Robotics')
   await expect(page.locator('.hero-facts')).toContainText('IELTS 8.0')
-  await expect(page.locator('.hero-terminal')).toHaveAttribute('aria-label', /whoami. Tuan Nghia 2007.*Engineering Intern @ IVS. AI Student @ UTS x HCMUT. Building AI for real-world problems/)
+  await expect(page.locator('.hero-terminal')).toHaveAttribute('aria-label', /whoami. Tuan Nghia 2007.*Engineering Intern @ IVS. AI Student @ UTS x HCMUT$/)
   await expect(page.getByRole('link', { name: 'Request Resume' })).toHaveAttribute('href', /^mailto:.*Resume/)
   await page.getByRole('link', { name: 'Explore My Work' }).click()
   await expect(page).toHaveURL(/\/projects$/)

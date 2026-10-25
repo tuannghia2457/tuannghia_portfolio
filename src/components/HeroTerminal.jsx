@@ -9,7 +9,6 @@ const LINES = [
   { command: true, text: 'cat currently.log' },
   { text: 'Engineering Intern @ IVS' },
   { text: 'AI Student @ UTS x HCMUT' },
-  { text: 'Building AI for real-world problems' },
 ]
 const TOTAL = LINES.reduce((sum, line) => sum + line.text.length, 0)
 // Starts once the page-change curtain has lifted (~2.2s), then types ~32 characters a second.
@@ -43,7 +42,6 @@ export default function HeroTerminal() {
     <div className="hero-terminal-bar" aria-hidden="true"><i /><i /><i /><span>shell — zsh</span></div>
     <div className="hero-terminal-body" aria-hidden="true">
       {visible.filter(line => line.reached).map(line => <p key={line.text} className={line.command ? 'is-command' : 'is-output'}>{line.command ? '$ ' : '> '}{line.shown}{line.typing && cursor}</p>)}
-      {done && <p className="is-command">$ {cursor}</p>}
     </div>
   </div>
 }
