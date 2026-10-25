@@ -1,12 +1,12 @@
 # Permanent design system: Neon Dark
 
-Requested explicitly by Nghia on 23 October 2026, replacing Warm Ivory × Orange × Charcoal (12 October 2026). **Dark theme only.** Warm Ivory, Ember Dark and RawBlock are obsolete. This document and root `AGENTS.md` supersede all previous palette guidance.
+Requested explicitly by Nghia on 23 October 2026, replacing Warm Ivory × Orange × Charcoal (12 October 2026). **Neon Dark is the default; Neon Light is an opt-in mode** added at Nghia's explicit request on 25 October 2026 (see below). Warm Ivory, Ember Dark and RawBlock are obsolete. This document and root `AGENTS.md` supersede all previous palette guidance.
 
 ## Authority and enforcement
 
 Only an explicit request from Nghia to change the established project color system authorizes a theme change. Screenshots, inspiration portfolios, references with other palettes, agent suggestions and new features do not authorize it. Use them for layout, typography, whitespace, motion, or interactions. Preserve this theme when instructions conflict and clarify if necessary.
 
-All authored color values live in [`src/theme.css`](../src/theme.css): exactly four hex values (pink #FF0099 was retired on 23 October 2026). Every other role derives from them with `var()` or `color-mix()`. Components consume semantic variables without hardcoded hex/RGB/HSL values or fallback colors. Keep `color-scheme: dark` for native browser controls. Do not add a light mode, automatic theme switching, or per-page theme overrides.
+All authored color values live in [`src/theme.css`](../src/theme.css): four Neon Dark hex values, four Neon Light hex values and the white logo plate (pink #FF0099 was retired on 23 October 2026). Every other role derives from them with `var()` or `color-mix()`. Components consume semantic variables without hardcoded hex/RGB/HSL values or fallback colors. Each mode sets `color-scheme` for native browser controls. Do not add automatic theme switching from the OS preference or per-page theme overrides.
 
 | Token | Value | Role |
 | --- | --- | --- |
@@ -19,6 +19,23 @@ All authored color values live in [`src/theme.css`](../src/theme.css): exactly f
 | `--surface-alt` | white 9% into background | Secondary backgrounds, scroll tone, curtain |
 | `--muted-foreground` | white 68% into background | Supporting copy and metadata |
 | `--border` | white 16% into background | Separators and outlines |
+
+## Neon Light (opt-in)
+
+The header toggle sets `data-theme="light"` on `<html>`, saves the choice in `localStorage` under `tn-theme`, and updates `theme-color`; an inline script in `index.html` reapplies a saved choice before first paint. Only the `:root[data-theme="light"]` block in `src/theme.css` defines light values. Neutrals re-derive from the light background and foreground with the same mix weights.
+
+| Token | Light value | Role |
+| --- | --- | --- |
+| `--background` | `#F7F8F4` | Warm off-white canvas with a faint green tint |
+| `--foreground` | `#0D0D0D` | Text; the Neon Dark canvas reused, so both modes share one ink |
+| `--primary` | `#00C96B` | Green toned down for paper: button fills, hover borders, decorative accents |
+| `--accent-secondary` | `#0B63C9` | Deeper electric blue for focus, at least 4.5:1 on every light surface |
+| `--accent-foreground` | green 45% into foreground | Deep green accent text, at least 5.8:1 on every light surface |
+| `--primary-hover` | green 72% into background | Lighter mint hover fill |
+| `--on-primary` | foreground | Near-black labels on green and mint (8.9:1 and above) |
+| `--logo-plate` | `#FFFFFF` | Logos are artwork made for white |
+
+No bright green reaches 4.5:1 as text on light surfaces, so Neon Light separates the button green from the accent-text green. Both derive from one hue.
 
 ## Accessible color roles
 
@@ -44,6 +61,6 @@ The Home scroll tone shift (`useScrollTone`, `--page-tone`) alternates `--backgr
 
 ## Validation and future additions
 
-`npm test` checks exact tokens, the number of authored literal colors, semantic component usage, static asset synchronization, core contrast pairs, companion geometry, and smile helpers. `npm run test:browser` checks routes and mobile layouts, visible text contrast across pages and expanded content, interactive states, companion popovers, and the camera flow. `npm run build` generates static assets and builds production files. This JavaScript repository has no lint or type-check script.
+`npm test` checks exact tokens for both modes, the number of authored literal colors, semantic component usage, static asset synchronization, core contrast pairs, companion geometry, and smile helpers. `npm run test:browser` checks routes and mobile layouts, visible text contrast across pages and expanded content in both modes, the theme toggle and its saved choice, interactive states, companion popovers, and the camera flow. `npm run build` generates static assets and builds production files. This JavaScript repository has no lint or type-check script.
 
 For a new component: inherit these tokens, test text/focus contrast, retain responsive and reduced-motion behavior, and verify it cannot introduce new component colors. Theme guard failures must not be bypassed to implement a reference palette. Update the documented palette and guards only after an explicit authorized theme change.

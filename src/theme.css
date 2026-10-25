@@ -63,6 +63,25 @@
   --sidebar-ring: var(--focus-ring);
 }
 
+/* Neon Light, requested by Nghia on 25 October 2026 as an opt-in alternative to Neon Dark (still the
+   default). Same roles on an off-white page: the neon green is toned down so near-black labels read
+   on it, and accent text uses a deep green from the same hue because no bright green reaches 4.5:1
+   on light surfaces. Neutrals above re-derive from these four values automatically. */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --background: #F7F8F4;
+  --foreground: #0D0D0D;
+  --primary: #00C96B;
+  --accent-secondary: #0B63C9;
+  /* Mint hover lightens toward the page, mirroring the dark theme's lift toward white. */
+  --primary-hover: color-mix(in srgb, var(--primary) 72%, var(--background));
+  --accent-foreground: color-mix(in srgb, var(--primary) 45%, var(--foreground));
+  --on-primary: var(--foreground);
+  --shadow-color: color-mix(in srgb, var(--foreground) 14%, transparent);
+  /* Logos are artwork made for white, so their plate stays white. */
+  --logo-plate: #FFFFFF;
+}
+
 :root[data-page-tone="alt"] {
   --page-tone: var(--surface-alt);
 }

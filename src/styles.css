@@ -101,6 +101,10 @@ section[id] { scroll-margin-top: 96px; }
 .main-nav a:hover::after, .main-nav a:focus-visible::after, .main-nav a:active::after, .main-nav a[aria-current]::after { opacity: 1; }
 .main-nav .nav-contact { padding-inline: 13px; border: var(--line); border-radius: var(--radius); color: var(--foreground); }
 .main-nav .nav-contact:hover, .main-nav .nav-contact[aria-current] { border-color: var(--primary); color: var(--accent-foreground); }
+.header-actions { display: flex; align-items: center; gap: clamp(12px, 1.8vw, 25px); }
+/* Neon Dark / Neon Light switch: same footprint as the menu button so the header never shifts. */
+.theme-toggle { display: grid; place-items: center; min-width: 44px; min-height: 44px; color: var(--foreground); background: var(--surface); border: var(--line); border-radius: var(--radius); cursor: pointer; transition: border-color var(--duration-fast), color var(--duration-fast); }
+.theme-toggle:hover, .theme-toggle:focus-visible { border-color: var(--primary); color: var(--accent-foreground); }
 .menu-toggle { display: none; min-width: 44px; min-height: 44px; color: var(--foreground); background: var(--surface); border: var(--line); border-radius: var(--radius); }
 
 .hero { position: relative; isolation: isolate; overflow: hidden; padding-top: 37px; padding-bottom: 27px; border-bottom: var(--line); }
@@ -262,6 +266,7 @@ h2 em { font-style: normal; color: var(--muted-foreground); }
   .site-header { min-height: 72px; }
   .brand-name { max-width: none; }
   .brand-caption { display: block; }
+  .header-actions { gap: 10px; }
   .menu-toggle { display: grid; place-items: center; }
   .main-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; align-items: stretch; gap: 0; padding: 12px var(--gutter) 22px; background: var(--surface); border-bottom: var(--line); box-shadow: var(--shadow-overlay); }
   .main-nav.is-open { display: flex; flex-direction: column; }

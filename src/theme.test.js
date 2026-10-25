@@ -9,13 +9,24 @@ const derived = { surface: .05, 'surface-alt': .09, 'muted-foreground': .68, bor
 const colors = { ...palette, ...Object.fromEntries(Object.entries(derived).map(([name, weight]) => [name, mix(palette.foreground, palette.background, weight)])), 'primary-hover': mix(palette.primary, palette.foreground, .72) }
 function luminance(hex) { const channels = hex.slice(1).match(/../g).map(v => parseInt(v, 16) / 255).map(v => v <= .04045 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4); return channels[0] * .2126 + channels[1] * .7152 + channels[2] * .0722 }
 function contrast(a, b) { const [high, low] = [luminance(a), luminance(b)].sort((a, b) => b - a); return (high + .05) / (low + .05) }
-test('The Neon Dark palette has exactly four authored color values and no pink', () => {
+// Neon Light (opt-in, 25 October 2026): the same derived neutrals on an off-white page, a toned-down
+// green fill with near-black labels, and deep green accent text from the same hue.
+const lightPalette = { background: '#F7F8F4', foreground: '#0D0D0D', primary: '#00C96B', 'accent-secondary': '#0B63C9' }
+const lightBlock = css.match(/:root\[data-theme="light"\]\s*\{([^}]*)\}/)?.[1] || ''
+const light = { ...lightPalette, ...Object.fromEntries(Object.entries(derived).map(([name, weight]) => [name, mix(lightPalette.foreground, lightPalette.background, weight)])), 'primary-hover': mix(lightPalette.primary, lightPalette.background, .72), 'accent-foreground': mix(lightPalette.primary, lightPalette.foreground, .45) }
+test('Neon Dark and Neon Light each author four palette colors, plus the white logo plate, and no pink', () => {
   for (const [name, value] of Object.entries(palette)) assert.ok(css.includes(`--${name}: ${value};`), name)
   for (const [name, weight] of Object.entries(derived)) assert.ok(css.includes(`--${name}: color-mix(in srgb, var(--foreground) ${weight * 100}%, var(--background));`), name)
   assert.ok(css.includes('--primary-hover: color-mix(in srgb, var(--primary) 72%, var(--foreground));'))
+  for (const [name, value] of Object.entries(lightPalette)) assert.ok(lightBlock.includes(`--${name}: ${value};`), `light ${name}`)
+  assert.ok(lightBlock.includes('--primary-hover: color-mix(in srgb, var(--primary) 72%, var(--background));'))
+  assert.ok(lightBlock.includes('--accent-foreground: color-mix(in srgb, var(--primary) 45%, var(--foreground));'))
+  assert.ok(lightBlock.includes('--on-primary: var(--foreground);'))
+  assert.ok(lightBlock.includes('--logo-plate: #FFFFFF;'))
   assert.doesNotMatch(css, /#FF0099/i)
-  assert.equal((css.match(/#[\da-f]{3,8}\b/gi) || []).length, 4)
+  assert.equal((css.match(/#[\da-f]{3,8}\b/gi) || []).length, 9)
   assert.ok(css.includes('color-scheme: dark'))
+  assert.ok(lightBlock.includes('color-scheme: light'))
 })
 test('Components use semantic tokens without literal colors or alternate themes', async () => {
   const paths = await readdir(new URL('./', import.meta.url), { recursive: true })
@@ -42,12 +53,18 @@ test('Text and button contrast meets 4.5:1 across official surfaces and states',
   assert.ok(contrast(colors.foreground, colors['primary-hover']) < 4.5)
   // Blue focus ring stays visible on every surface (3:1 for non-text).
   for (const bg of ['background', 'surface', 'surface-alt']) assert.ok(contrast(colors['accent-secondary'], colors[bg]) >= 3, `focus on ${bg}`)
+  // Neon Light: near-black text, muted copy and deep green accent text on every light surface.
+  for (const bg of ['background', 'surface', 'surface-alt']) for (const fg of ['foreground', 'muted-foreground', 'accent-foreground']) assert.ok(contrast(light[fg], light[bg]) >= 4.5, `light ${fg} on ${bg}`)
+  // Light buttons carry near-black labels on the green fill and the lighter mint hover.
+  for (const fill of ['primary', 'primary-hover']) assert.ok(contrast(light.foreground, light[fill]) >= 4.5, `light foreground on ${fill}`)
+  for (const bg of ['background', 'surface', 'surface-alt']) assert.ok(contrast(light['accent-secondary'], light[bg]) >= 3, `light focus on ${bg}`)
   console.log('Button contrast:', Object.fromEntries(['primary', 'primary-hover'].map(bg => [bg, contrast(colors.background, colors[bg]).toFixed(2)])))
 })
 test('Browser metadata follows the palette and favicon uses the personal pixel artwork', async () => {
   const html = await readFile(new URL('../index.html', import.meta.url), 'utf8')
   const icon = await readFile(new URL('../public/images/personal-images/pixel.png', import.meta.url))
   assert.ok(html.includes(`name="theme-color" content="${palette.background}"`))
+  assert.ok(html.includes(`.content = '${lightPalette.background}'`), 'pre-paint script uses the Neon Light background')
   assert.ok(html.includes('type="image/png" href="/images/personal-images/pixel.png?v=tom"'))
   assert.equal(icon.subarray(1, 4).toString(), 'PNG')
 })
