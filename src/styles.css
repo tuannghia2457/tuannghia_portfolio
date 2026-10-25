@@ -232,6 +232,9 @@ h2 em { font-style: normal; color: var(--muted-foreground); }
 .evidence-card-body a:hover { border-color: var(--primary); }
 .about-grid, .contact-grid { display: grid; grid-template-columns: 1fr .85fr; gap: 10%; margin-top: 45px; }
 .about-copy > p, .contact-copy > p { margin-bottom: 18px; color: var(--muted-foreground); font-size: var(--text-sm); line-height: var(--leading-body); }
+/* Background is a short read, so it gets a larger, easier size than the contact notes. */
+.about-copy > p { margin-bottom: 22px; font-size: var(--text-lg); color: var(--foreground); }
+.about-copy > p + p { color: var(--muted-foreground); }
 .about-details { margin-top: 32px; border-top: var(--line); }
 .about-details > div { display: grid; grid-template-columns: .7fr 1.3fr; gap: 12px; padding-block: 15px; border-bottom: var(--line); }
 .about-details span { color: var(--muted-foreground); font-size: var(--text-xs); }
@@ -351,6 +354,7 @@ h2 em { font-style: normal; color: var(--muted-foreground); }
   .evidence-grid { grid-template-columns: 1fr; }
   .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 30px; margin-top: 35px; }
   .about-copy > p, .contact-copy > p { font-size: var(--text-sm); }
+  .about-copy > p { font-size: var(--text-md); }
   .skills-section { padding-block: 55px; }
   .email-link { font-size: var(--text-base); }
   .site-footer { gap: 15px; min-height: 105px; padding-bottom: 10px; }
