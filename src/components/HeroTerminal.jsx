@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react'
 import { useReducedMotion } from 'motion/react'
 import { profile } from '../profile'
 
-// Facts from the portfolio itself: UTS AI degree via the HCMUT program, and the hero focus areas.
+// Wording supplied by Nghia: name and birth year, then current roles and focus.
 const LINES = [
   { command: true, text: 'whoami' },
-  { text: `${profile.displayName} _ AI_UTS_HCMUT` },
-  { command: true, text: 'cat focus.log' },
-  { text: 'Computer vision · robotics · real-world AI' },
+  { text: `${profile.displayName} 2007` },
+  { command: true, text: 'cat currently.log' },
+  { text: 'Engineering Intern @ IVS' },
+  { text: 'AI Student @ UTS x HCMUT' },
+  { text: 'Building AI for real-world problems' },
 ]
 const TOTAL = LINES.reduce((sum, line) => sum + line.text.length, 0)
 // Starts once the page-change curtain has lifted (~2.2s), then types ~32 characters a second.
