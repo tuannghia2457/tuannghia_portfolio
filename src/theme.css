@@ -1,40 +1,39 @@
 /* Two modes of one palette. See AGENTS.md and docs/DESIGN_SYSTEM.md. This is the only authored source
-   for color values. Neon Light is the default since 25 October 2026 (Nghia's request); Neon Dark
-   (23 October 2026, pink retired the same day) is opt-in through the header toggle. */
+   for color values. Neon Dark (23 October 2026, pink retired the same day) is the default; Nghia moved
+   it back to default on 25 October 2026 because light felt too bright. Neon Light is opt-in through
+   the header toggle. */
 :root {
-  color-scheme: light;
-  /* Neon Light: an off-white page, the neon green toned down so near-black labels read on it, and a
-     deeper electric blue. */
-  --background: #F7F8F4;
-  --foreground: #0D0D0D;
-  --primary: #00C96B;
-  --accent-secondary: #0B63C9;
+  color-scheme: dark;
+  /* Neon Dark: near-black × neon green × electric blue. */
+  --background: #0D0D0D;
+  --foreground: #FFFFFF;
+  --primary: #00FF85;
+  --accent-secondary: #1E90FF;
 
   /* Neutral steps derive from the four palette colors, in either mode. */
   --surface: color-mix(in srgb, var(--foreground) 5%, var(--background));
   --surface-alt: color-mix(in srgb, var(--foreground) 9%, var(--background));
   --muted-foreground: color-mix(in srgb, var(--foreground) 68%, var(--background));
   --border: color-mix(in srgb, var(--foreground) 16%, var(--background));
-  /* Hover fill for green buttons: a lighter mint toward the page, never a second accent. */
-  --primary-hover: color-mix(in srgb, var(--primary) 72%, var(--background));
+  /* Hover fill for green buttons: a lighter mint from the same green, never a second accent. */
+  --primary-hover: color-mix(in srgb, var(--primary) 72%, var(--foreground));
 
   /* Semantic roles derive from the palette, never a second theme. */
   --background-raised: var(--surface);
   --surface-soft: var(--surface-alt);
   --border-strong: var(--muted-foreground);
   --accent-surface: color-mix(in srgb, var(--primary) 12%, var(--surface));
-  /* No bright green reaches 4.5:1 as text on light surfaces, so accent text is a deep green of the same hue. */
-  --accent-foreground: color-mix(in srgb, var(--primary) 45%, var(--foreground));
-  --on-primary: var(--foreground);
+  --accent-foreground: var(--primary);
+  --on-primary: var(--background);
   --focus-ring: var(--accent-secondary);
-  --shadow-color: color-mix(in srgb, var(--foreground) 14%, transparent);
+  --shadow-color: color-mix(in srgb, var(--background) 70%, transparent);
   --shadow-overlay: 0 8px 28px var(--shadow-color);
   --disabled-background: var(--surface-alt);
   --disabled-foreground: var(--muted-foreground);
   --camera-badge-background: var(--surface);
   --camera-badge-foreground: var(--foreground);
   /* Company, school and tool logos are artwork made for white; they sit on a white plate. */
-  --logo-plate: #FFFFFF;
+  --logo-plate: var(--foreground);
 
   /* shadcn/ui role names, mapped onto the same palette. */
   --card: var(--surface);
@@ -64,17 +63,20 @@
   --sidebar-ring: var(--focus-ring);
 }
 
-/* Neon Dark: near-black × neon green × electric blue. Neutrals above re-derive automatically. */
-:root[data-theme="dark"] {
-  color-scheme: dark;
-  --background: #0D0D0D;
-  --foreground: #FFFFFF;
-  --primary: #00FF85;
-  --accent-secondary: #1E90FF;
-  /* Mint hover lifts toward white; green itself is the accent text color. */
-  --primary-hover: color-mix(in srgb, var(--primary) 72%, var(--foreground));
-  --accent-foreground: var(--primary);
-  --on-primary: var(--background);
-  --shadow-color: color-mix(in srgb, var(--background) 70%, transparent);
-  --logo-plate: var(--foreground);
+/* Neon Light: an off-white page, the neon green toned down so near-black labels read on it, and a
+   deeper electric blue. Neutrals above re-derive automatically. */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --background: #F7F8F4;
+  --foreground: #0D0D0D;
+  --primary: #00C96B;
+  --accent-secondary: #0B63C9;
+  /* Mint hover lightens toward the page, mirroring the dark theme's lift toward white. */
+  --primary-hover: color-mix(in srgb, var(--primary) 72%, var(--background));
+  /* No bright green reaches 4.5:1 as text on light surfaces, so accent text is a deep green of the same hue. */
+  --accent-foreground: color-mix(in srgb, var(--primary) 45%, var(--foreground));
+  --on-primary: var(--foreground);
+  --shadow-color: color-mix(in srgb, var(--foreground) 14%, transparent);
+  /* Logos are artwork made for white, so their plate stays white. */
+  --logo-plate: #FFFFFF;
 }

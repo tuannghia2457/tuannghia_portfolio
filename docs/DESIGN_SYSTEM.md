@@ -1,6 +1,6 @@
-# Permanent design system: Neon Light (default) and Neon Dark
+# Permanent design system: Neon Dark (default) and Neon Light
 
-Requested explicitly by Nghia on 23 October 2026, replacing Warm Ivory × Orange × Charcoal (12 October 2026). On 25 October 2026 Nghia explicitly asked for a light counterpart and then made it the default: **Neon Light is the default; Neon Dark is opt-in** through the header toggle (see below). Warm Ivory, Ember Dark and RawBlock are obsolete. This document and root `AGENTS.md` supersede all previous palette guidance.
+Requested explicitly by Nghia on 23 October 2026, replacing Warm Ivory × Orange × Charcoal (12 October 2026). On 25 October 2026 Nghia explicitly asked for a light counterpart. **Neon Dark is the default; Neon Light is opt-in** through the header toggle (see below). Light was briefly the default that day and was moved back because it felt too bright. Warm Ivory, Ember Dark and RawBlock are obsolete. This document and root `AGENTS.md` supersede all previous palette guidance.
 
 ## Authority and enforcement
 
@@ -20,9 +20,9 @@ All authored color values live in [`src/theme.css`](../src/theme.css): four Neon
 | `--muted-foreground` | white 68% into background | Supporting copy and metadata |
 | `--border` | white 16% into background | Separators and outlines |
 
-## Neon Light (default)
+## Neon Light (opt-in)
 
-Every visit opens in Neon Light, regardless of the OS preference. The header toggle sets `data-theme="dark"` on `<html>` for Neon Dark, saves the choice in `localStorage` under `tn-theme`, and updates `theme-color`; an inline script in `index.html` reapplies a saved dark choice before first paint. `:root` in `src/theme.css` defines the light values and `:root[data-theme="dark"]` the dark values in the table above. Neutrals re-derive from the light background and foreground with the same mix weights.
+Every visit opens in Neon Dark, regardless of the OS preference. The header toggle sets `data-theme="light"` on `<html>` for Neon Light, saves the choice in `localStorage` under `tn-theme`, and updates `theme-color`; an inline script in `index.html` reapplies a saved light choice before first paint. `:root` in `src/theme.css` defines the dark values in the table above and `:root[data-theme="light"]` the light values below. Neutrals re-derive from the light background and foreground with the same mix weights.
 
 | Token | Light value | Role |
 | --- | --- | --- |

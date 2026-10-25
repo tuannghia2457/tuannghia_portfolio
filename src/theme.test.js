@@ -9,15 +9,15 @@ const derived = { surface: .05, 'surface-alt': .09, 'muted-foreground': .68, bor
 const colors = { ...palette, ...Object.fromEntries(Object.entries(derived).map(([name, weight]) => [name, mix(palette.foreground, palette.background, weight)])), 'primary-hover': mix(palette.primary, palette.foreground, .72) }
 function luminance(hex) { const channels = hex.slice(1).match(/../g).map(v => parseInt(v, 16) / 255).map(v => v <= .04045 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4); return channels[0] * .2126 + channels[1] * .7152 + channels[2] * .0722 }
 function contrast(a, b) { const [high, low] = [luminance(a), luminance(b)].sort((a, b) => b - a); return (high + .05) / (low + .05) }
-// Neon Light (the default since 25 October 2026): the same derived neutrals on an off-white page, a
-// toned-down green fill with near-black labels, and deep green accent text from the same hue.
+// Neon Light (opt-in): the same derived neutrals on an off-white page, a toned-down green fill with
+// near-black labels, and deep green accent text from the same hue. Neon Dark is the default.
 const lightPalette = { background: '#F7F8F4', foreground: '#0D0D0D', primary: '#00C96B', 'accent-secondary': '#0B63C9' }
-const lightBlock = css.match(/:root\s*\{([^}]*)\}/)?.[1] || ''
-const darkBlock = css.match(/:root\[data-theme="dark"\]\s*\{([^}]*)\}/)?.[1] || ''
+const darkBlock = css.match(/:root\s*\{([^}]*)\}/)?.[1] || ''
+const lightBlock = css.match(/:root\[data-theme="light"\]\s*\{([^}]*)\}/)?.[1] || ''
 const light = { ...lightPalette, ...Object.fromEntries(Object.entries(derived).map(([name, weight]) => [name, mix(lightPalette.foreground, lightPalette.background, weight)])), 'primary-hover': mix(lightPalette.primary, lightPalette.background, .72), 'accent-foreground': mix(lightPalette.primary, lightPalette.foreground, .45) }
-test('Neon Light (default) and Neon Dark each author four palette colors, plus the white logo plate, and no pink', () => {
+test('Neon Dark (default) and Neon Light each author four palette colors, plus the white logo plate, and no pink', () => {
   for (const [name, value] of Object.entries(lightPalette)) assert.ok(lightBlock.includes(`--${name}: ${value};`), `light ${name}`)
-  for (const [name, weight] of Object.entries(derived)) assert.ok(lightBlock.includes(`--${name}: color-mix(in srgb, var(--foreground) ${weight * 100}%, var(--background));`), name)
+  for (const [name, weight] of Object.entries(derived)) assert.ok(darkBlock.includes(`--${name}: color-mix(in srgb, var(--foreground) ${weight * 100}%, var(--background));`), name)
   assert.ok(lightBlock.includes('--primary-hover: color-mix(in srgb, var(--primary) 72%, var(--background));'))
   assert.ok(lightBlock.includes('--accent-foreground: color-mix(in srgb, var(--primary) 45%, var(--foreground));'))
   assert.ok(lightBlock.includes('--on-primary: var(--foreground);'))
@@ -66,8 +66,8 @@ test('Text and button contrast meets 4.5:1 across official surfaces and states',
 test('Browser metadata follows the palette and favicon uses the personal pixel artwork', async () => {
   const html = await readFile(new URL('../index.html', import.meta.url), 'utf8')
   const icon = await readFile(new URL('../public/images/personal-images/pixel.png', import.meta.url))
-  assert.ok(html.includes(`name="theme-color" content="${lightPalette.background}"`))
-  assert.ok(html.includes(`.content = '${palette.background}'`), 'pre-paint script uses the Neon Dark background')
+  assert.ok(html.includes(`name="theme-color" content="${palette.background}"`))
+  assert.ok(html.includes(`.content = '${lightPalette.background}'`), 'pre-paint script uses the Neon Light background')
   assert.ok(html.includes('type="image/png" href="/images/personal-images/pixel.png?v=tom"'))
   assert.equal(icon.subarray(1, 4).toString(), 'PNG')
 })

@@ -46,9 +46,20 @@ async function textContrast(page) {
     return failures
   })
 }
-test('Neon Light is the default on every route, with accessible text, even when the OS prefers dark', async ({ page }) => {
-  await page.emulateMedia({ colorScheme: 'dark', reducedMotion: 'reduce' })
+test('Neon Dark is the default on every route, with accessible text, even when the OS prefers light', async ({ page }) => {
+  await page.emulateMedia({ colorScheme: 'light', reducedMotion: 'reduce' })
   for (const path of ['/', '/experience', '/projects', '/research', '/education', '/#contact', '/projects/aquaguard', '/projects/pothole-surface-reconstruction', '/projects/virtualdouble-ant', '/research/vietnamese-legal-rag']) {
+    await page.goto(path); await expect(page.locator('h1')).toHaveCount(1)
+    await page.locator('details').evaluateAll(nodes => nodes.forEach(el => el.open = true))
+    expect(await page.evaluate(() => getComputedStyle(document.documentElement).colorScheme)).toBe('dark')
+    expect(await page.evaluate(() => getComputedStyle(document.body).backgroundColor)).toBe('rgb(13, 13, 13)')
+    expect(await textContrast(page), path).toEqual([])
+  }
+})
+test('Neon Light keeps every route readable, including expanded content', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('tn-theme', 'light'))
+  await page.emulateMedia({ colorScheme: 'dark', reducedMotion: 'reduce' })
+  for (const path of ['/', '/experience', '/projects', '/research', '/education', '/#contact', '/projects/aquaguard', '/projects/virtualdouble-ant', '/research/vietnamese-legal-rag']) {
     await page.goto(path); await expect(page.locator('h1')).toHaveCount(1)
     await page.locator('details').evaluateAll(nodes => nodes.forEach(el => el.open = true))
     expect(await page.evaluate(() => getComputedStyle(document.documentElement).colorScheme)).toBe('light')
@@ -59,35 +70,24 @@ test('Neon Light is the default on every route, with accessible text, even when 
   await page.goto('/'); await expect(button).toHaveCSS('color', 'rgb(13, 13, 13)')
   await expect(button).toHaveCSS('background-color', 'rgb(0, 201, 107)')
 })
-test('Neon Dark keeps every route readable, including expanded content', async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem('tn-theme', 'dark'))
-  await page.emulateMedia({ colorScheme: 'light', reducedMotion: 'reduce' })
-  for (const path of ['/', '/experience', '/projects', '/research', '/education', '/#contact', '/projects/aquaguard', '/projects/virtualdouble-ant', '/research/vietnamese-legal-rag']) {
-    await page.goto(path); await expect(page.locator('h1')).toHaveCount(1)
-    await page.locator('details').evaluateAll(nodes => nodes.forEach(el => el.open = true))
-    expect(await page.evaluate(() => getComputedStyle(document.documentElement).colorScheme)).toBe('dark')
-    expect(await page.evaluate(() => getComputedStyle(document.body).backgroundColor)).toBe('rgb(13, 13, 13)')
-    expect(await textContrast(page), path).toEqual([])
-  }
-})
-test('The theme toggle switches between Neon Light and Neon Dark and remembers the choice', async ({ page }) => {
+test('The theme toggle switches between Neon Dark and Neon Light and remembers the choice', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/')
   const meta = page.locator('meta[name="theme-color"]')
-  await expect(meta).toHaveAttribute('content', '#F7F8F4')
-  await page.getByRole('button', { name: 'Switch to dark mode' }).click()
-  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
-  await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(13, 13, 13)')
-  await expect(meta).toHaveAttribute('content', '#0D0D0D')
-  await page.reload()
-  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
   await expect(meta).toHaveAttribute('content', '#0D0D0D')
   await page.getByRole('button', { name: 'Switch to light mode' }).click()
-  await expect(page.locator('html')).not.toHaveAttribute('data-theme', 'dark')
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'light')
   await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(247, 248, 244)')
-  await page.reload(); await expect(page.getByRole('button', { name: 'Switch to dark mode' })).toBeVisible()
+  await expect(meta).toHaveAttribute('content', '#F7F8F4')
+  await page.reload()
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'light')
+  await expect(meta).toHaveAttribute('content', '#F7F8F4')
+  await page.getByRole('button', { name: 'Switch to dark mode' }).click()
+  await expect(page.locator('html')).not.toHaveAttribute('data-theme', 'light')
+  await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(13, 13, 13)')
+  await page.reload(); await expect(page.getByRole('button', { name: 'Switch to light mode' })).toBeVisible()
   await page.setViewportSize({ width: 390, height: 844 })
-  await expect(page.getByRole('button', { name: 'Switch to dark mode' })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Switch to light mode' })).toBeVisible()
   await expect(page.getByRole('button', { name: 'Open navigation' })).toBeVisible()
 })
 test('Scrolling Home keeps one steady page background', async ({ page }) => {
@@ -95,12 +95,11 @@ test('Scrolling Home keeps one steady page background', async ({ page }) => {
   await page.goto('/')
   for (const id of ['work', 'testimonials', 'contact']) {
     await page.locator(`#${id}`).scrollIntoViewIfNeeded(); await page.waitForTimeout(150)
-    await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(247, 248, 244)')
+    await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(13, 13, 13)')
     await expect(page.locator('html')).not.toHaveAttribute('data-page-tone', /.+/)
   }
 })
 test('Neon Dark button, navigation, card and companion interactive states use semantic roles', async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem('tn-theme', 'dark'))
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/')
   const button = page.locator('.button-primary').first()

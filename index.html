@@ -2,10 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="theme-color" content="#F7F8F4" />
+    <meta name="theme-color" content="#0D0D0D" />
     <script>
-      // Apply a saved Neon Dark choice before first paint; Neon Light is the default.
-      try { if (localStorage.getItem('tn-theme') === 'dark') { document.documentElement.dataset.theme = 'dark'; document.querySelector('meta[name="theme-color"]').content = '#0D0D0D' } } catch (e) {}
+      // Apply a saved Neon Light choice before first paint; Neon Dark is the default.
+      try { if (localStorage.getItem('tn-theme') === 'light') { document.documentElement.dataset.theme = 'light'; document.querySelector('meta[name="theme-color"]').content = '#F7F8F4' } } catch (e) {}
     </script>
     <link rel="icon" type="image/png" href="/images/personal-images/pixel.png?v=tom" />
     <link rel="apple-touch-icon" href="/images/personal-images/pixel.png" />
