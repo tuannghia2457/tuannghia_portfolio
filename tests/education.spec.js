@@ -5,7 +5,7 @@ test('Academic achievements live under Education while Projects show only extern
   await expect(page).toHaveURL(/\/education$/)
   await expect(page.getByRole('navigation').getByRole('link', { name: 'Education' })).toHaveAttribute('aria-current', 'page')
   const education = page.locator('#education')
-  await expect(education.getByRole('heading', { name: 'From physics to artificial intelligence.' })).toBeVisible()
+  await expect(education.getByRole('heading', { level: 1, name: 'Education.' })).toBeVisible()
   // Chronological timeline: PTNK, then UTS with HCMUT shown as its transnational partner.
   await expect(education.locator('.education-milestone')).toHaveCount(2)
   await expect(education.locator('.education-milestone h3')).toHaveText([/High School for the Gifted/, 'University of Technology Sydney'])

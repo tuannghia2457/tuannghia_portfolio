@@ -3,7 +3,6 @@
 /* Hero-style page title: small kicker over the display headline, with room under the menu. */
 .education-intro { padding-block: clamp(96px, 11vw, 150px) 48px; }
 .education-intro h1 { max-width: 900px; margin: 18px 0 22px; font-family: var(--font-sans); font-size: var(--text-display); font-weight: var(--weight-black); line-height: var(--leading-display); letter-spacing: var(--tracking-display); }
-.education-intro h1 em { color: var(--muted-foreground); }
 .education-intro > p:last-child { max-width: 560px; color: var(--muted-foreground); font-size: var(--text-base); line-height: var(--leading-body); }
 
 .education-layout { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 32px; align-items: start; }

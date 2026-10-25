@@ -57,7 +57,7 @@ export function Home({ children }) { return <>
 export function ExperiencePage() { return <><PageIntro label="Experience / Company work" title="Experience">My roles, responsibilities, and technical contributions within the companies I’ve worked with.</PageIntro><Experience /><Companies /><ConnectCTA /></> }
 // Education carries its own hero-style title, so it skips the shared PageIntro.
 export function EducationPage() { return <><Education /><CourseCertificates /><ConnectCTA /></> }
-export function Projects() { return <><PageIntro label="Projects / Selected work" title="Systems for real problems">Computer vision research, human-centered AI, and products with practical impact. Open a project to explore my role, approach, and results.</PageIntro><section id="work" className="project-index section-pad"><ProjectCards /></section><section className="supporting-section section-pad"><details><summary>Awards & certificates</summary><Awards /><Evidence /></details></section><ConnectCTA /></> }
+export function Projects() { return <><PageIntro label="Projects / Selected work" title="Projects">Computer vision research, human-centered AI, and products with practical impact. Open a project to explore my role, approach, and results.</PageIntro><section id="work" className="project-index section-pad"><ProjectCards /></section><section className="supporting-section section-pad"><details><summary>Awards & certificates</summary><Awards /><Evidence /></details></section><ConnectCTA /></> }
 // Every project page shares one layout; a project without a photo shows a matching title panel instead.
 const projectImages = {
   aquaguard: { src: '/images/optimized/aquaguard-team.jpg', alt: 'AquaGuard team with their Engineering Projects in Community Service first-place award', caption: 'AquaGuard team / Engineering Projects in Community Service Season 8' },
@@ -99,7 +99,7 @@ export function ProjectDetail() {
     <div className="detail-navigation"><Link to="/projects" className="text-link"><ArrowLeft size={16} /> More projects</Link><Link to="/#contact" className="text-link">Discuss this work <ArrowUpRight size={16} /></Link></div>
   </article>
 }
-export function Research() { return <><PageIntro label="Research / Vision & language" title="Perception in the real world">I study how machines make sense of incomplete information, from locating drones without GPS to answering legal questions from verifiable sources.</PageIntro>
+export function Research() { return <><PageIntro label="Research / Vision & language" title="Research">I study how machines make sense of incomplete information, from locating drones without GPS to answering legal questions from verifiable sources.</PageIntro>
   <section id="research" className="research-page section-pad"><h2>Research interests</h2><div className="interest-list">{['Natural Language Processing', 'Computer Vision', 'Robotics', 'Artificial Intelligence'].map((topic, index) => <div key={topic}><span className="mono">0{index + 1}</span><h3>{topic}</h3></div>)}</div>
     <div className="compact-heading"><h2>Ongoing research</h2></div>
     <div className="research-cards">{research.map(item => <Link className="research-card" to={`/research/${item.slug}`} key={item.slug}>

@@ -79,6 +79,11 @@ test('Focused homepage, navigation, detail pages, and preserved information', as
   await page.locator('.research-card').first().click(); await expect(page).toHaveURL(/\/research\/vietnamese-legal-rag$/)
   await expect(page.getByRole('heading', { name: 'Research focus' })).toBeVisible()
   await page.goto('/missing'); await expect(page.locator('h1')).toContainText('off the path')
+  // Each top-level page's main heading is its navigation name.
+  for (const name of ['Experience', 'Projects', 'Research', 'Education']) {
+    await page.goto('/'); await page.getByRole('navigation').getByRole('link', { name, exact: true }).click()
+    await expect(page.locator('h1')).toHaveText(`${name}.`)
+  }
   expect(errors).toEqual([])
 })
 test('Responsive pages and accessible mobile navigation', async ({ page }) => {
