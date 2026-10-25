@@ -5,6 +5,10 @@ test('Contact links use the owner accounts and the highlighted CV stays honest',
   await expect(page.getByRole('link', { name: 'GitHub', exact: true })).toHaveAttribute('target', '_blank')
   await expect(page.getByRole('link', { name: 'LinkedIn', exact: true })).toHaveAttribute('href', 'https://www.linkedin.com/in/tuannghia0405')
   await expect(page.getByRole('link', { name: 'Facebook', exact: true })).toHaveAttribute('href', 'https://www.facebook.com/tuannghia2457/')
+  // Social profiles sit under the heading; email and phone stay in the copy column.
+  await expect(page.locator('.contact-heading .social-links a')).toHaveCount(3)
+  await expect(page.getByRole('link', { name: 'Call (+84) 937110405' })).toHaveAttribute('href', 'tel:+84937110405')
+  await expect(page.locator('.contact-methods')).toContainText('(+84) 937110405')
   await expect(page.getByRole('heading', { name: 'Curriculum Vitae' })).toBeVisible()
   await expect(page.locator('.contact-cv-card')).toContainText('CV coming soon')
   await expect(page.getByRole('link', { name: 'Request CV' })).toHaveAttribute('href', /^mailto:/)
