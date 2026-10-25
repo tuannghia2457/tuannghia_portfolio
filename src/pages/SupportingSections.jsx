@@ -59,9 +59,9 @@ function ContactCV() {
 }
 export function ContactInfo() { return (<section id="contact" className="contact-section section-pad" aria-labelledby="contact-title">
           <div className="section-kicker mono">05 / Contact</div><div className="contact-grid"><div className="contact-heading"><h2 id="contact-title">Let’s make<br /><em>something useful.</em></h2><div className="social-links">
-            <a href={profile.linkedinUrl} target="_blank" rel="noreferrer">LinkedIn <ExternalLink size={15} /></a>
-            {profile.facebookUrl ? <a href={profile.facebookUrl} target="_blank" rel="noreferrer">Facebook <ExternalLink size={15} /></a> : <span className="social-pending" title="Facebook link coming soon">Facebook <small>Coming soon</small></span>}
-            <a href={profile.githubUrl} target="_blank" rel="noreferrer">GitHub <ExternalLink size={15} /></a>
+            <a href={profile.linkedinUrl} target="_blank" rel="noreferrer">LinkedIn <ExternalLink size={17} /></a>
+            {profile.facebookUrl ? <a href={profile.facebookUrl} target="_blank" rel="noreferrer">Facebook <ExternalLink size={17} /></a> : <span className="social-pending" title="Facebook link coming soon">Facebook <small>Coming soon</small></span>}
+            <a href={profile.githubUrl} target="_blank" rel="noreferrer">GitHub <ExternalLink size={17} /></a>
           </div></div><div className="contact-copy"><p>Whether you want to talk about research, AI, robotics, product ideas, or just say hello — my inbox is open.</p><div className="contact-methods"><a className="email-link" href="mailto:trantuannghia2457@gmail.com">trantuannghia2457@gmail.com <ArrowUpRight size={20} /></a><a className="email-link phone-link" href={profile.phoneHref} aria-label={`Call ${profile.phone}`}><Phone size={18} aria-hidden="true" />{profile.phone}</a></div>
           <ContactCV /></div></div>
         </section>) }
