@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom'
-import { ArrowRight, ArrowUpRight, ArrowLeft, ArrowDown, Download, Mail, MapPin, GraduationCap, FlaskConical, Briefcase, Languages } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, ArrowLeft, ArrowDown, Download, Mail, MapPin, GraduationCap, FlaskConical, Rocket, Languages } from 'lucide-react'
 import HomePortrait from './HomePortrait'
 import Education from '../components/Education'
 import CourseCertificates from '../components/CourseCertificates'
@@ -24,13 +24,13 @@ export function ProjectCards() {
   })}</div>
 }
 function ConnectCTA() { return <section className="connect-cta section-pad"><div><p className="section-kicker mono">Research / Engineering / Collaboration</p><h2>Let’s build something useful.</h2></div><Link className="button button-primary" to="/#contact">Let’s talk <ArrowUpRight size={18} /></Link></section> }
-// Five highlights a visitor can read in seconds: where I am, study, research, work, and my English.
+// Five highlights a visitor can read in seconds: where I am, study, research, the job I'm aiming for, and my English.
 // Facts come from portfolio-data and research.js; each card is one label and one short value.
 const heroFacts = [
   { Icon: MapPin, label: 'Location', value: 'HCMC' },
   { Icon: GraduationCap, label: 'Education', value: 'UTS · HCMUT' },
   { Icon: FlaskConical, label: 'Research', value: 'CV & Robotics' },
-  { Icon: Briefcase, label: 'Experience', value: 'CV Intern' },
+  { Icon: Rocket, label: 'Dream job', value: 'AI Engineer' },
   { Icon: Languages, label: 'English', value: `IELTS ${ielts.overall}` },
 ]
 

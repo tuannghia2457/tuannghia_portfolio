@@ -20,7 +20,7 @@ test('Tom branding uses the preserved pixel asset and the focused hero keeps wor
   await expect(page.locator('.hero-statement')).toHaveText('AI Engineer')
   await expect(page.locator('.editorial-portrait img')).toHaveAttribute('src', '/images/optimized/portrait-cutout.webp')
   await expect(page.locator('.hero-facts > div')).toHaveCount(5)
-  await expect(page.locator('.hero-facts dt')).toHaveText(['Location', 'Education', 'Research', 'Experience', 'English'])
+  await expect(page.locator('.hero-facts dt')).toHaveText(['Location', 'Education', 'Research', 'Dream job', 'English'])
   await expect(page.locator('.hero-facts')).toContainText('CV & Robotics')
   await expect(page.locator('.hero-facts')).toContainText('IELTS 8.0')
   await expect(page.locator('.hero-terminal')).toHaveAttribute('aria-label', /whoami/)
