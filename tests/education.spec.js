@@ -68,7 +68,7 @@ test('Education milestones share hover styles and keep school achievements insid
     await expect(card.locator('.education-degree')).toBeVisible()
     await expect(card.locator('.school-details')).toBeHidden()
     await card.hover()
-    await expect(card).toHaveCSS('border-color', 'rgb(0, 255, 133)')
+    await expect(card).toHaveCSS('border-color', 'rgb(0, 201, 107)')
   }
   // Both school logos sit on identical plates.
   const plates = await page.locator('.school-identity .school-logo').evaluateAll(nodes => nodes.map(node => { const style = getComputedStyle(node); return [node.offsetWidth, node.offsetHeight, style.backgroundColor].join() }))

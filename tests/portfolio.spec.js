@@ -58,7 +58,7 @@ test('Focused homepage, navigation, detail pages, and preserved information', as
   await expect(page.locator('.curated-card')).toHaveCount(2)
   await expect(page.locator('#experience')).toHaveCount(0)
   await expect(page.locator('.site-header nav a')).toHaveCount(5)
-  expect(await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--background').trim())).toBe('#0D0D0D')
+  expect(await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--background').trim())).toBe('#F7F8F4')
   await page.locator('.curated-card').first().click()
   await expect(page).toHaveURL(/projects\/aquaguard/)
   await expect(page.getByRole('heading', { name: 'My contributions' })).toBeVisible()

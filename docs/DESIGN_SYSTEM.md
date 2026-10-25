@@ -1,6 +1,6 @@
-# Permanent design system: Neon Dark
+# Permanent design system: Neon Light (default) and Neon Dark
 
-Requested explicitly by Nghia on 23 October 2026, replacing Warm Ivory × Orange × Charcoal (12 October 2026). **Neon Dark is the default; Neon Light is an opt-in mode** added at Nghia's explicit request on 25 October 2026 (see below). Warm Ivory, Ember Dark and RawBlock are obsolete. This document and root `AGENTS.md` supersede all previous palette guidance.
+Requested explicitly by Nghia on 23 October 2026, replacing Warm Ivory × Orange × Charcoal (12 October 2026). On 25 October 2026 Nghia explicitly asked for a light counterpart and then made it the default: **Neon Light is the default; Neon Dark is opt-in** through the header toggle (see below). Warm Ivory, Ember Dark and RawBlock are obsolete. This document and root `AGENTS.md` supersede all previous palette guidance.
 
 ## Authority and enforcement
 
@@ -16,13 +16,13 @@ All authored color values live in [`src/theme.css`](../src/theme.css): four Neon
 | `--accent-secondary` | `#1E90FF` | Electric blue: focus ring, secondary accents |
 | `--primary-hover` | green 72% into white | Mint hover fill for green buttons only; hover borders and underlines use `--primary` |
 | `--surface` | white 5% into background | Cards, navigation, dialogs, popovers |
-| `--surface-alt` | white 9% into background | Secondary backgrounds, scroll tone, curtain |
+| `--surface-alt` | white 9% into background | Secondary backgrounds, curtain |
 | `--muted-foreground` | white 68% into background | Supporting copy and metadata |
 | `--border` | white 16% into background | Separators and outlines |
 
-## Neon Light (opt-in)
+## Neon Light (default)
 
-The header toggle sets `data-theme="light"` on `<html>`, saves the choice in `localStorage` under `tn-theme`, and updates `theme-color`; an inline script in `index.html` reapplies a saved choice before first paint. Only the `:root[data-theme="light"]` block in `src/theme.css` defines light values. Neutrals re-derive from the light background and foreground with the same mix weights.
+Every visit opens in Neon Light, regardless of the OS preference. The header toggle sets `data-theme="dark"` on `<html>` for Neon Dark, saves the choice in `localStorage` under `tn-theme`, and updates `theme-color`; an inline script in `index.html` reapplies a saved dark choice before first paint. `:root` in `src/theme.css` defines the light values and `:root[data-theme="dark"]` the dark values in the table above. Neutrals re-derive from the light background and foreground with the same mix weights.
 
 | Token | Light value | Role |
 | --- | --- | --- |
@@ -53,7 +53,7 @@ Normal text must meet 4.5:1; large text and meaningful non-text indicators requi
 
 Dark, futuristic and editorial. Preserve Space Grotesk headings, DM Mono labels, generous whitespace, subtle thin borders, existing responsive layouts and small corner radii. Neon accents stay deliberate: green for primary actions, accent text and hover, blue for focus and secondary accents. Preserve optional interactions and reduced-motion support.
 
-The Home scroll tone shift (`useScrollTone`, `--page-tone`) alternates `--background` and `--surface-alt` while `[data-tone="alt"]` sections cross the viewport middle. The Home hero layers a slowly drifting outlined name behind a background-removed grayscale portrait, with a typed terminal card and a stats strip counted from portfolio data; the name loop, cursor and typing stop under reduced motion. The route-change curtain (`PageTransition`) uses `--surface-alt` with white mono text and a thin `--primary` progress bar; under reduced motion it only fades and skips the decrypt.
+The Home page keeps one steady background while scrolling; the scroll tone shift was removed at Nghia's request on 25 October 2026. The Home hero layers a slowly drifting outlined name behind a background-removed grayscale portrait, with a typed terminal card and a stats strip counted from portfolio data; the name loop, cursor and typing stop under reduced motion. The route-change curtain (`PageTransition`) uses `--surface-alt` with white mono text and a thin `--primary` progress bar; under reduced motion it only fades and skips the decrypt.
 
 ## Static assets
 

@@ -10,7 +10,6 @@ import { research } from '../research'
 import { profile } from '../profile'
 import HeroNameBand from '../components/HeroNameBand'
 import HeroTerminal from '../components/HeroTerminal'
-import { useScrollTone } from '../lib/useScrollTone'
 
 function PageIntro({ label, title, children }) { return <header className="page-intro section-pad"><p className="section-kicker mono">{label}</p><h1>{title}<span className="period">.</span></h1><p className="page-description">{children}</p></header> }
 export function ProjectCards() {
@@ -34,7 +33,7 @@ const heroFacts = [
   { Icon: Languages, label: 'English', value: `IELTS ${ielts.overall}` },
 ]
 
-export function Home({ children }) { useScrollTone(); return <>
+export function Home({ children }) { return <>
   <section id="top" className="hero editorial-hero hero-stage section-pad" aria-labelledby="hero-title">
     <HeroNameBand />
     <HomePortrait />
@@ -53,7 +52,7 @@ export function Home({ children }) { useScrollTone(); return <>
     <dl className="hero-stats hero-facts">{heroFacts.map(({ Icon, label, value }) => <div key={label}><Icon className="hero-fact-icon" size={20} aria-hidden="true" /><dt className="mono">{label}</dt><dd>{value}</dd></div>)}</dl>
     <div className="editorial-hero-bottom"><a className="text-link mono" href="#work">Selected work <ArrowDown size={14} /></a><span className="mono">Perception / Robotics / Applied AI</span></div>
   </section>
-  <Background /><section id="work" className="home-work section-pad" data-tone="alt"><div className="compact-heading"><div><p className="section-kicker mono">02 / Selected projects</p><h2>From perception to impact.</h2></div><Link className="text-link" to="/projects">All projects <ArrowRight size={17} /></Link></div><ProjectCards /></section><Skills /><Testimonials /><ContactInfo />{children}
+  <Background /><section id="work" className="home-work section-pad"><div className="compact-heading"><div><p className="section-kicker mono">02 / Selected projects</p><h2>From perception to impact.</h2></div><Link className="text-link" to="/projects">All projects <ArrowRight size={17} /></Link></div><ProjectCards /></section><Skills /><Testimonials /><ContactInfo />{children}
 </> }
 export function ExperiencePage() { return <><PageIntro label="Experience / Company work" title="Experience">My roles, responsibilities, and technical contributions within the companies I’ve worked with.</PageIntro><Experience /><Companies /><ConnectCTA /></> }
 // Education carries its own hero-style title, so it skips the shared PageIntro.
