@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom'
-import { ArrowRight, ArrowUpRight, ArrowLeft, ArrowDown, Download, Mail, MapPin, House, GraduationCap, School, Languages } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, ArrowLeft, ArrowDown, Download, Mail, MapPin, GraduationCap, FlaskConical, Briefcase, Languages } from 'lucide-react'
 import HomePortrait from './HomePortrait'
 import Education from '../components/Education'
 import CourseCertificates from '../components/CourseCertificates'
@@ -24,15 +24,13 @@ export function ProjectCards() {
   })}</div>
 }
 function ConnectCTA() { return <section className="connect-cta section-pad"><div><p className="section-kicker mono">Research / Engineering / Collaboration</p><h2>Let’s build something useful.</h2></div><Link className="button button-primary" to="/#contact">Let’s talk <ArrowUpRight size={18} /></Link></section> }
-// Personal facts come from profile.js and portfolio-data, never typed in twice. Each card is one label and one value.
-const [birthCity] = profile.birthplace.split(', ')
-const [homeCity] = profile.location.split(', ')
+// Five highlights a visitor can read in seconds: where I am, study, research, work, and my English.
+// Facts come from portfolio-data and research.js; each card is one label and one short value.
 const heroFacts = [
-  { Icon: MapPin, label: 'Born in', value: birthCity },
-  { Icon: House, label: 'Based in', value: homeCity },
-  { Icon: GraduationCap, label: 'University', value: 'UTS · HCMUT' },
-  // PTNK (Phổ thông Năng khiếu) is the common name of the High School for the Gifted, VNU-HCM.
-  { Icon: School, label: 'High school', value: 'PTNK' },
+  { Icon: MapPin, label: 'Location', value: 'HCMC' },
+  { Icon: GraduationCap, label: 'Education', value: 'UTS · HCMUT' },
+  { Icon: FlaskConical, label: 'Research', value: 'CV & Robotics' },
+  { Icon: Briefcase, label: 'Experience', value: 'CV Intern' },
   { Icon: Languages, label: 'English', value: `IELTS ${ielts.overall}` },
 ]
 
