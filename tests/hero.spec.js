@@ -13,6 +13,10 @@ test('Tom branding uses the preserved pixel asset and the focused hero keeps wor
   const avatar = page.locator('.brand-avatar')
   await expect(avatar).toHaveAttribute('src', '/images/personal-images/pixel.png')
   expect(await avatar.evaluate(img => img.complete && img.naturalWidth > 0)).toBeTruthy()
+  // The white backdrop is cleared: corners are transparent while the figure stays opaque.
+  const alpha = await avatar.evaluate(img => { const c = document.createElement('canvas'); c.width = img.naturalWidth; c.height = img.naturalHeight; const g = c.getContext('2d'); g.drawImage(img, 0, 0)
+    const at = (x, y) => g.getImageData(x, y, 1, 1).data[3]; return { corners: [at(0, 0), at(c.width - 1, 0), at(0, c.height - 1), at(c.width - 1, c.height - 1)], face: at(c.width / 2, c.height * .4) } })
+  expect(alpha.corners).toEqual([0, 0, 0, 0]); expect(alpha.face).toBe(255)
   await expect(page.locator('h1')).toContainText('Tuan')
   await expect(page.locator('h1')).toContainText('Nghia')
   await expect(page.locator('link[rel="icon"]')).toHaveAttribute('href', '/images/personal-images/pixel.png?v=tom')

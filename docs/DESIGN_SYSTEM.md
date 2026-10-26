@@ -57,7 +57,7 @@ The Home page keeps one steady background while scrolling; the scroll tone shift
 
 ## Static assets
 
-`scripts/sync-theme-assets.mjs` synchronizes browser `theme-color` metadata from `src/theme.css`. `predev` and `prebuild` run it automatically. The favicon and header icon use Tom's unchanged childhood pixel artwork at `public/images/personal-images/pixel.png`. Photographs, pixel artwork, certificates, model files, camera footage, and vendored MediaPipe code are content, not theme sources.
+`scripts/sync-theme-assets.mjs` synchronizes browser `theme-color` metadata from `src/theme.css`. `predev` and `prebuild` run it automatically. The favicon and header icon use Tom's childhood pixel artwork at `public/images/personal-images/pixel.png`, with its white backdrop cleared to transparency (26 October 2026) and the figure unchanged. Photographs, pixel artwork, certificates, model files, camera footage, and vendored MediaPipe code are content, not theme sources.
 
 ## Validation and future additions
 
