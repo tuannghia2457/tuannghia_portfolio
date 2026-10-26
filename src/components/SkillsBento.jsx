@@ -20,7 +20,7 @@ function ToolChip({ name }) {
 }
 
 export default function SkillsBento() {
-  return <section className="skills-section skills-bento-section section-pad" aria-labelledby="skills-title">
+  return <section id="skills" className="skills-section skills-bento-section section-pad" aria-labelledby="skills-title">
     <p className="section-kicker mono">03 / Toolkit</p>
     <h2 id="skills-title">Tools I’ve put <em>to work.</em></h2>
     <div className="skills-bento">

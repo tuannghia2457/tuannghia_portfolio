@@ -10,6 +10,7 @@ import { research } from '../research'
 import { profile } from '../profile'
 import HeroNameBand from '../components/HeroNameBand'
 import HeroTerminal from '../components/HeroTerminal'
+import SectionRail from '../components/SectionRail'
 
 function PageIntro({ label, title, children }) { return <header className="page-intro section-pad"><p className="section-kicker mono">{label}</p><h1>{title}<span className="period">.</span></h1><p className="page-description">{children}</p></header> }
 export function ProjectCards() {
@@ -33,7 +34,13 @@ const heroFacts = [
   { Icon: Languages, label: 'English', value: `IELTS ${ielts.overall}` },
 ]
 
+const homeSections = [
+  { id: 'top', title: 'Intro' }, { id: 'about', title: 'Background' }, { id: 'work', title: 'Work' }, { id: 'skills', title: 'Toolkit' },
+  { id: 'testimonials', title: 'Testimonials' }, { id: 'contact', title: 'Contact' }, { id: 'smile', title: 'Smile demo' },
+]
+
 export function Home({ children }) { return <>
+  <SectionRail sections={homeSections} />
   <section id="top" className="hero editorial-hero hero-stage section-pad" aria-labelledby="hero-title">
     <HeroNameBand />
     <HomePortrait />

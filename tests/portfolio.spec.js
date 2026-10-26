@@ -28,14 +28,14 @@ test('Testimonials is visible before contact and waits for the owner’s real re
 
 test('Home holds personal content while Experience holds employment and legacy links redirect', async ({ page }) => {
   await page.goto('/')
-  await expect(page.getByRole('navigation').getByRole('link')).toHaveText(['Home', 'Experience', 'Projects', 'Research', 'Education'])
+  await expect(page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link')).toHaveText(['Home', 'Experience', 'Projects', 'Research', 'Education'])
   await expect(page.locator('#about')).toBeVisible()
   await expect(page.locator('.skills-section')).toBeVisible()
   await expect(page.locator('#contact')).toBeVisible()
   await expect(page.locator('#experience')).toHaveCount(0)
   await page.goto('/about')
   await expect(page).toHaveURL(/\/experience$/)
-  await expect(page.getByRole('navigation').getByRole('link', { name: 'Experience' })).toHaveAttribute('aria-current', 'page')
+  await expect(page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Experience' })).toHaveAttribute('aria-current', 'page')
   await expect(page.locator('#about, .skills-section, #contact, #testimonials')).toHaveCount(0)
   // Experience is a logo-free work timeline: an overview bar per role plus a dated list.
   await expect(page.locator('#experience .experience-company-logo, #experience img')).toHaveCount(0)
@@ -81,7 +81,7 @@ test('Focused homepage, navigation, detail pages, and preserved information', as
   await page.goto('/missing'); await expect(page.locator('h1')).toContainText('off the path')
   // Each top-level page's main heading is its navigation name.
   for (const name of ['Experience', 'Projects', 'Research', 'Education']) {
-    await page.goto('/'); await page.getByRole('navigation').getByRole('link', { name, exact: true }).click()
+    await page.goto('/'); await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name, exact: true }).click()
     await expect(page.locator('h1')).toHaveText(`${name}.`)
   }
   expect(errors).toEqual([])
@@ -98,7 +98,7 @@ test('Responsive pages and accessible mobile navigation', async ({ page }) => {
   }
   await page.goto('/')
   await page.getByRole('button', { name: 'Open navigation' }).click()
-  await page.getByRole('navigation').getByRole('link', { name: 'Experience' }).click()
+  await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Experience' }).click()
   await expect(page).toHaveURL(/experience/)
   await expect(page.getByRole('button', { name: 'Open navigation' })).toHaveAttribute('aria-expanded', 'false')
   await page.getByRole('button', { name: 'Open navigation' }).click(); await page.keyboard.press('Escape')

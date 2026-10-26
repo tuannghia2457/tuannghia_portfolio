@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test'
 test('Navigation hover and selected pages use the same underline without shifting text', async ({ page }) => {
   await page.goto('/')
   for (const name of ['Experience', 'Projects', 'Research']) {
-    const link = page.getByRole('navigation').getByRole('link', { name, exact: true })
+    const link = page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name, exact: true })
     await link.hover()
     await expect.poll(() => link.evaluate(el => getComputedStyle(el, '::after').opacity)).toBe('1')
     const preview = await link.evaluate(el => {

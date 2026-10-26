@@ -1,0 +1,15 @@
+import { test, expect } from '@playwright/test'
+test('Home section rail marks the current section, jumps to anchors and hides on phones', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 })
+  await page.goto('/')
+  const rail = page.getByRole('navigation', { name: 'On this page' })
+  await expect(rail.getByRole('link')).toHaveCount(7)
+  await expect(rail.locator('a[aria-current="location"]')).toHaveText('Intro')
+  await rail.getByRole('link', { name: 'Toolkit' }).click()
+  await expect(page).toHaveURL(/#skills$/)
+  await expect(rail.locator('a[aria-current="location"]')).toHaveText('Toolkit')
+  await page.evaluate(() => scrollTo({ top: document.documentElement.scrollHeight, behavior: 'instant' }))
+  await expect(rail.locator('a[aria-current="location"]')).toHaveText('Smile demo')
+  await page.setViewportSize({ width: 390, height: 800 })
+  await expect(rail).toBeHidden()
+})

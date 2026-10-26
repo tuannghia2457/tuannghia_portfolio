@@ -18,7 +18,7 @@ test('Real local model runs on a video stream and stops on navigation', async ({
   await expect(page.getByRole('button', { name: 'Stop camera', exact: true })).toBeVisible({ timeout: 30_000 })
   await expect(page.getByRole('status')).toContainText('hold a smile')
   await expect(page.locator('.smile-panel')).toHaveClass(/is-running/)
-  await page.getByRole('navigation').getByRole('link', { name: 'Projects' }).click()
+  await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Projects' }).click()
   expect(await page.evaluate(() => window.cameraFixture.getTracks().every(track => track.readyState === 'ended'))).toBeTruthy()
 })
 test('Sustained smile celebrates once, stops camera, and offers an email draft', async ({ page }) => {

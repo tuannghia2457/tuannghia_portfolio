@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test'
 test('Academic achievements live under Education while Projects show only external recognition', async ({ page }) => {
   await page.goto('/')
-  await page.getByRole('navigation').getByRole('link', { name: 'Education' }).click()
+  await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Education' }).click()
   await expect(page).toHaveURL(/\/education$/)
-  await expect(page.getByRole('navigation').getByRole('link', { name: 'Education' })).toHaveAttribute('aria-current', 'page')
+  await expect(page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Education' })).toHaveAttribute('aria-current', 'page')
   const education = page.locator('#education')
   await expect(education.getByRole('heading', { level: 1, name: 'Education.' })).toBeVisible()
   // Chronological timeline: PTNK, then UTS with HCMUT shown as its transnational partner.
@@ -54,7 +54,7 @@ test('Academic achievements live under Education while Projects show only extern
   await page.setViewportSize({ width: 320, height: 800 })
   await page.goto('/education')
   await page.getByRole('button', { name: 'Open navigation' }).click()
-  await expect(page.getByRole('navigation').getByRole('link', { name: 'Education' })).toBeVisible()
+  await expect(page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Education' })).toBeVisible()
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy()
 })
 test('Education milestones share hover styles and keep school achievements inside accessible disclosures', async ({ page }) => {
