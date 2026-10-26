@@ -12,7 +12,7 @@ import HeroNameBand from '../components/HeroNameBand'
 import HeroTerminal from '../components/HeroTerminal'
 import SectionRail from '../components/SectionRail'
 
-function PageIntro({ label, title, children }) { return <header className="page-intro section-pad"><p className="section-kicker mono">{label}</p><h1>{title}<span className="period">.</span></h1><p className="page-description">{children}</p></header> }
+function PageIntro({ label, title, children }) { return <header id="intro" className="page-intro section-pad"><p className="section-kicker mono">{label}</p><h1>{title}<span className="period">.</span></h1><p className="page-description">{children}</p></header> }
 export function ProjectCards() {
   return <div className="curated-projects">{projectOrder.map((slug, index) => {
     const detail = projectDetails[slug], project = projects.find(p => p.number === detail.number)
@@ -23,7 +23,7 @@ export function ProjectCards() {
     </Link>
   })}</div>
 }
-function ConnectCTA() { return <section className="connect-cta section-pad"><div><p className="section-kicker mono">Research / Engineering / Collaboration</p><h2>Let’s build something useful.</h2></div><Link className="button button-primary" to="/#contact">Let’s talk <ArrowUpRight size={18} /></Link></section> }
+function ConnectCTA() { return <section id="connect" className="connect-cta section-pad"><div><p className="section-kicker mono">Research / Engineering / Collaboration</p><h2>Let’s build something useful.</h2></div><Link className="button button-primary" to="/#contact">Let’s talk <ArrowUpRight size={18} /></Link></section> }
 // Five highlights a visitor can read in seconds: where I am, study, research, the job I'm aiming for, and my English.
 // Facts come from portfolio-data and research.js; each card is one label and one short value.
 const heroFacts = [
@@ -38,6 +38,12 @@ const homeSections = [
   { id: 'top', title: 'Intro' }, { id: 'about', title: 'Background' }, { id: 'work', title: 'Work' }, { id: 'skills', title: 'Toolkit' },
   { id: 'testimonials', title: 'Testimonials' }, { id: 'contact', title: 'Contact' }, { id: 'smile', title: 'Smile demo' },
 ]
+
+// Rails for the other top-level pages. Labels avoid names the main menu or page links already use.
+const experienceSections = [{ id: 'intro', title: 'Intro' }, { id: 'experience', title: 'Timeline' }, { id: 'company', title: 'Companies' }, { id: 'connect', title: 'Connect' }]
+const projectsSections = [{ id: 'intro', title: 'Intro' }, { id: 'work', title: 'Work' }, { id: 'recognition', title: 'Awards' }, { id: 'connect', title: 'Connect' }]
+const researchSections = [{ id: 'intro', title: 'Intro' }, { id: 'research', title: 'Interests' }, { id: 'ongoing-research', title: 'Ongoing' }, { id: 'publications', title: 'Publications' }, { id: 'connect', title: 'Connect' }]
+const educationSections = [{ id: 'education', title: 'Schools' }, { id: 'certificates', title: 'Courses' }, { id: 'connect', title: 'Connect' }]
 
 export function Home({ children }) { return <>
   <SectionRail sections={homeSections} />
@@ -61,10 +67,10 @@ export function Home({ children }) { return <>
   </section>
   <Background /><section id="work" className="home-work section-pad"><div className="compact-heading"><div><p className="section-kicker mono">02 / Selected projects</p><h2>From perception to impact.</h2></div><Link className="text-link" to="/projects">All projects <ArrowRight size={17} /></Link></div><ProjectCards /></section><Skills /><Testimonials /><ContactInfo />{children}
 </> }
-export function ExperiencePage() { return <><PageIntro label="Experience / Company work" title="Experience">My roles, responsibilities, and technical contributions within the companies I’ve worked with.</PageIntro><Experience /><Companies /><ConnectCTA /></> }
+export function ExperiencePage() { return <><SectionRail sections={experienceSections} /><PageIntro label="Experience / Company work" title="Experience">My roles, responsibilities, and technical contributions within the companies I’ve worked with.</PageIntro><Experience /><Companies /><ConnectCTA /></> }
 // Education carries its own hero-style title, so it skips the shared PageIntro.
-export function EducationPage() { return <><Education /><CourseCertificates /><ConnectCTA /></> }
-export function Projects() { return <><PageIntro label="Projects / Selected work" title="Projects">Computer vision research, human-centered AI, and products with practical impact. Open a project to explore my role, approach, and results.</PageIntro><section id="work" className="project-index section-pad"><ProjectCards /></section><section className="supporting-section section-pad"><details><summary>Awards & certificates</summary><Awards /><Evidence /></details></section><ConnectCTA /></> }
+export function EducationPage() { return <><SectionRail sections={educationSections} /><Education /><CourseCertificates /><ConnectCTA /></> }
+export function Projects() { return <><SectionRail sections={projectsSections} /><PageIntro label="Projects / Selected work" title="Projects">Computer vision research, human-centered AI, and products with practical impact. Open a project to explore my role, approach, and results.</PageIntro><section id="work" className="project-index section-pad"><ProjectCards /></section><section id="recognition" className="supporting-section section-pad"><details><summary>Awards & certificates</summary><Awards /><Evidence /></details></section><ConnectCTA /></> }
 // Every project page shares one layout; a project without a photo shows a matching title panel instead.
 const projectImages = {
   aquaguard: { src: '/images/optimized/aquaguard-team.jpg', alt: 'AquaGuard team with their Engineering Projects in Community Service first-place award', caption: 'AquaGuard team / Engineering Projects in Community Service Season 8' },
@@ -106,16 +112,16 @@ export function ProjectDetail() {
     <div className="detail-navigation"><Link to="/projects" className="text-link"><ArrowLeft size={16} /> More projects</Link><Link to="/#contact" className="text-link">Discuss this work <ArrowUpRight size={16} /></Link></div>
   </article>
 }
-export function Research() { return <><PageIntro label="Research / Vision & language" title="Research">I study how machines make sense of incomplete information, from locating drones without GPS to answering legal questions from verifiable sources.</PageIntro>
+export function Research() { return <><SectionRail sections={researchSections} /><PageIntro label="Research / Vision & language" title="Research">I study how machines make sense of incomplete information, from locating drones without GPS to answering legal questions from verifiable sources.</PageIntro>
   <section id="research" className="research-page section-pad"><h2>Research interests</h2><div className="interest-list">{['Natural Language Processing', 'Computer Vision', 'Robotics', 'Artificial Intelligence'].map((topic, index) => <div key={topic}><span className="mono">0{index + 1}</span><h3>{topic}</h3></div>)}</div>
-    <div className="compact-heading"><h2>Ongoing research</h2></div>
+    <div id="ongoing-research" className="compact-heading"><h2>Ongoing research</h2></div>
     <div className="research-cards">{research.map(item => <Link className="research-card" to={`/research/${item.slug}`} key={item.slug}>
       <div className="research-card-topline"><span className="mono">{item.lab}</span><span className="research-stage mono">{item.stage}</span></div>
       <h3>{item.title}</h3><p>{item.summary}</p>
       <div className="tag-list">{item.fields.map(field => <span className="tag mono" key={field}>{field}</span>)}</div>
       <span className="card-read">Read the research <ArrowRight size={16} /></span>
     </Link>)}</div>
-    <div className="compact-heading"><h2>Publications & presentations</h2></div><article className="publication"><span className="section-kicker mono">Conference presentation / Current Topics in Mathematics and Industrial Applications 2026</span><h3>Pothole Surface Reconstruction</h3><p>Geometry-informed reconstruction with RGB cameras, sparse 2D LiDAR, depth functions, and monotonic neural networks.</p><p className="publication-note">Presented at Current Topics in Mathematics and Industrial Applications 2026. A paper link and publication citation are not currently listed in this portfolio.</p><Link className="text-link" to="/experience#ivs-pothole-milestone">Explore the research <ArrowUpRight size={16} /></Link></article>
+    <div id="publications" className="compact-heading"><h2>Publications & presentations</h2></div><article className="publication"><span className="section-kicker mono">Conference presentation / Current Topics in Mathematics and Industrial Applications 2026</span><h3>Pothole Surface Reconstruction</h3><p>Geometry-informed reconstruction with RGB cameras, sparse 2D LiDAR, depth functions, and monotonic neural networks.</p><p className="publication-note">Presented at Current Topics in Mathematics and Industrial Applications 2026. A paper link and publication citation are not currently listed in this portfolio.</p><Link className="text-link" to="/experience#ivs-pothole-milestone">Explore the research <ArrowUpRight size={16} /></Link></article>
   </section><ConnectCTA /></> }
 // Research detail pages share the project page layout: title, key facts, focus areas, and a goal/status panel.
 export function ResearchDetail() {
