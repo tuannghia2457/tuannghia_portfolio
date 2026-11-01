@@ -8,6 +8,9 @@ create table if not exists public.smiles (
   score real not null check (score between 0 and 1)
 );
 alter table public.smiles enable row level security;
+-- Explicit grants, so this works even when new tables aren't exposed to the Data API automatically.
+grant insert on public.smiles to anon, authenticated;
+grant select, delete on public.smiles to authenticated;
 
 create or replace function public.is_smile_owner() returns boolean
 language sql stable as $$ select coalesce(auth.jwt() ->> 'email', '') = 'trantuannghia2457@gmail.com' $$;
