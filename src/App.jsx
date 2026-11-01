@@ -8,6 +8,7 @@ import { profile } from './profile'
 import { Home, ExperiencePage, Projects, ProjectDetail, Research, ResearchDetail, EducationPage, NotFound } from './pages/PortfolioPages'
 
 const SmileDemo = lazy(() => import('./components/SmileDemo'))
+const AdminPage = lazy(() => import('./pages/AdminPage'))
 // Redirect sources share their target's key so a redirect never plays a second curtain.
 const transitionKeys = { '/about': '/experience', '/contact': '/', '/projects/pothole-surface-reconstruction': '/experience' }
 const transitionKey = pathname => transitionKeys[pathname] || pathname
@@ -62,6 +63,7 @@ function Shell() {
       <Route path="/research" element={<Research />} /><Route path="/research/:slug" element={<ResearchDetail />} />
       <Route path="/education" element={<EducationPage />} />
       <Route path="/contact" element={<Navigate to="/#contact" replace />} />
+      <Route path="/admin" element={<Suspense fallback={<div className="section-pad" role="status">Loading…</div>}><AdminPage /></Suspense>} />
       <Route path="*" element={<NotFound />} />
     </Routes></PageTransition></AnimatePresence></main>
     <footer className="site-footer section-pad"><span className="mono">{profile.displayName} © 2026</span><span className="mono">Built with curiosity / Ho Chi Minh City</span><a href="#main-content" className="back-top">Back to top <ArrowUpRight size={15} /></a></footer>

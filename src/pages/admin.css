@@ -1,0 +1,15 @@
+.admin-page { padding-block: clamp(54px, 7vw, 90px) 100px; }
+.admin-page h1 { font-size: var(--text-3xl); margin: 16px 0 32px; }
+.admin-note { color: var(--muted-foreground); font-size: var(--text-sm); line-height: var(--leading-body); margin-bottom: 24px; }
+.admin-login { display: grid; gap: 18px; max-width: 360px; margin-bottom: 24px; }
+.admin-login label { display: grid; gap: 8px; font-size: var(--text-sm); }
+.admin-login input { min-height: 44px; padding: 10px 12px; border: var(--line); border-radius: var(--radius); background: var(--surface); color: var(--foreground); }
+.admin-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-bottom: 24px; }
+.admin-toolbar .mono { color: var(--muted-foreground); margin-right: auto; }
+.admin-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; padding: 0; list-style: none; }
+.admin-grid li { border: var(--line); background: var(--surface); }
+.admin-grid img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.admin-meta { display: flex; align-items: center; gap: 12px; padding: 12px; font-size: var(--text-xs); }
+.admin-meta .mono { color: var(--accent-foreground); }
+.admin-delete { display: inline-grid; place-items: center; width: 44px; height: 44px; margin-left: auto; border: var(--line); border-radius: var(--radius); background: var(--background); color: var(--foreground); cursor: pointer; }
+.admin-delete:hover { border-color: var(--primary); color: var(--accent-foreground); }

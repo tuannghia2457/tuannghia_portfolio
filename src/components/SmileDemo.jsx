@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { ArrowUpRight, Camera, CameraOff, Smile } from 'lucide-react'
 import { collaborationEmail, smileScore, SMILE_HOLD_MS, SMILE_THRESHOLD } from '../lib/smile'
+import { captureFrame, saveSmile, smileStorageEnabled } from '../lib/smile-store'
 import './smile-demo.css'
 
 const initialMessage = 'A small experiment in computer vision. A friendly way to say hello.'
@@ -8,6 +9,9 @@ export default function SmileDemo() {
   const [phase, setPhase] = useState('idle'), [message, setMessage] = useState(initialMessage)
   const videoRef = useRef(null), session = useRef(0), stream = useRef(null), detector = useRef(null)
   const loop = useRef(0), timeout = useRef(0), active = useRef(false)
+  // Saving a photo is opt-in per visit; the ref lets the detection loop read the latest choice.
+  const [keepPhoto, setKeepPhoto] = useState(false), keepPhotoRef = useRef(false)
+  const [saved, setSaved] = useState(''), attempt = useRef(0)
   const release = useCallback(() => {
     active.current = false
     session.current += 1
@@ -32,7 +36,8 @@ export default function SmileDemo() {
 
   async function start() {
     release()
-    const token = session.current
+    setSaved('')
+    const token = session.current, run = ++attempt.current
     active.current = true
     setPhase('loading'); setMessage('Allow camera access to begin. Microphone access isn’t needed.')
     try {
@@ -68,10 +73,18 @@ export default function SmileDemo() {
             const result = model.detectForVideo(video, now)
             const hasFace = result.faceLandmarks.length > 0
             if (hasFace !== faceVisible) { faceVisible = hasFace; setMessage(hasFace ? 'Look toward the camera and hold a smile for a moment.' : 'No face in view yet. Try facing the camera in good light.') }
-            if (hasFace && smileScore(result.faceBlendshapes[0]?.categories) >= SMILE_THRESHOLD) {
+            const score = hasFace ? smileScore(result.faceBlendshapes[0]?.categories) : 0
+            if (score >= SMILE_THRESHOLD) {
               smilingSince ??= now
               if (now - smilingSince >= SMILE_HOLD_MS) {
+                // Capture before release() detaches the stream from the video element.
+                const photo = keepPhotoRef.current && smileStorageEnabled ? captureFrame(video) : null
                 release(); setPhase('success'); setMessage('That’s a great start. Let’s make something useful together!')
+                if (photo) {
+                  setSaved('saving')
+                  const report = state => { if (attempt.current === run) setSaved(state) }
+                  saveSmile(photo, score).then(() => report('saved'), () => report('failed'))
+                }
                 return
               }
             } else smilingSince = null
@@ -98,8 +111,10 @@ export default function SmileDemo() {
       <div className="smile-controls"><p role="status" aria-live="polite">{message}</p>
         {phase === 'success' && <a className="button button-primary" href={collaborationEmail}>Let’s Connect <ArrowUpRight size={18} /></a>}
         {busy ? <button className="button button-light" onClick={() => stop()}><CameraOff size={17} />{phase === 'loading' ? 'Cancel & stop camera' : 'Stop camera'}</button> : <button className={`button ${phase === 'success' ? 'button-light' : 'button-primary'}`} onClick={start}><Camera size={17} />{phase === 'success' ? 'Try again' : phase === 'error' ? 'Retry webcam' : 'Enable webcam'}</button>}
+        {saved && <p className="smile-saved mono" role="status">{saved === 'saving' ? 'Saving your smile photo…' : saved === 'saved' ? 'Your smile photo was sent to Tuan Nghia.' : 'Your smile photo couldn’t be saved. Nothing was kept.'}</p>}
         <a className="text-link" href={collaborationEmail} onClick={() => stop()}>Skip webcam & contact me directly <ArrowUpRight size={16} /></a>
-        <p className="camera-privacy">Camera frames stay in your browser. Nothing is recorded or uploaded. The camera stops when you finish, leave, or switch tabs.</p><p className="camera-privacy">Contact links open an email draft for you to review and send.</p>
+        {smileStorageEnabled && <label className="smile-consent"><input type="checkbox" checked={keepPhoto} disabled={busy} onChange={event => { setKeepPhoto(event.target.checked); keepPhotoRef.current = event.target.checked }} />Save one photo of my smile for Tuan Nghia</label>}
+        <p className="camera-privacy">{smileStorageEnabled ? 'Camera frames stay in your browser. Only if you tick the box above, one photo is taken when you smile and stored privately with the time, for Tuan Nghia to see. Otherwise nothing is recorded or uploaded.' : 'Camera frames stay in your browser. Nothing is recorded or uploaded.'} The camera stops when you finish, leave, or switch tabs.</p><p className="camera-privacy">Contact links open an email draft for you to review and send.</p>
       </div>
     </div>
   </section>

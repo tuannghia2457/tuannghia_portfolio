@@ -41,9 +41,16 @@ Read [AGENTS.md](AGENTS.md) and [docs/DESIGN_SYSTEM.md](docs/DESIGN_SYSTEM.md). 
 
 ## Privacy and camera behavior
 
-The detector loads only after the visitor enables the webcam and grants permission. Camera frames stay in the browser. The camera stops on completion, cancellation, leaving the page, switching tabs, or after a minute of detection. Direct contact is always available. Email links open pre-filled drafts; they do not send anything automatically.
+The detector loads only after the visitor enables the webcam and grants permission. Camera frames stay in the browser. The one exception is opt-in: when smile storage is configured, the visitor can tick “Save one photo of my smile for Tuan Nghia” before starting, and one mirrored JPEG is uploaded with its time and smile score at the moment the smile is detected. The box is unticked by default and hidden when storage isn't configured. The camera stops on completion, cancellation, leaving the page, switching tabs, or after a minute of detection. Direct contact is always available. Email links open pre-filled drafts; they do not send anything automatically.
 
 See [restructure decisions and validation](docs/curated-restructure.md), and [original design research](docs/design-research.md).
+
+## Smile photo storage (optional)
+
+1. Create a Supabase project and run [supabase/schema.sql](supabase/schema.sql) in its SQL editor. It creates the `smiles` table and a private `smiles` bucket: visitors can only add photos; only the owner email can view or delete them.
+2. In Authentication → Users, add a user for the owner email with a password, and turn off public sign-ups.
+3. Copy `.env.example` to `.env` (locally) and set the same two variables in Vercel → Settings → Environment Variables: `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` (Project Settings → API). Rebuild or redeploy.
+4. Open `/admin`, sign in, and view or delete saved smiles. The page isn't linked from the navigation.
 
 ## Deployment
 

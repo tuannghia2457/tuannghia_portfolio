@@ -42,3 +42,12 @@ test('Sustained smile celebrates once, stops camera, and offers an email draft',
   expect(await page.evaluate(() => window.cameraFixture.getTracks().every(track => track.readyState === 'ended'))).toBeTruthy()
   await page.screenshot({ path: 'test-results/smile-success.png', fullPage: true })
 })
+test('Without storage settings, no photo option appears and the admin page explains setup', async ({ page }) => {
+  await page.goto('/#contact')
+  await expect(page.getByRole('button', { name: 'Enable webcam' })).toBeVisible()
+  await expect(page.getByRole('checkbox', { name: /Save one photo/ })).toHaveCount(0)
+  await expect(page.getByText('Nothing is recorded or uploaded.')).toBeVisible()
+  await page.goto('/admin')
+  await expect(page.getByRole('heading', { name: 'Saved smiles.' })).toBeVisible()
+  await expect(page.getByText('Smile storage isn’t configured.')).toBeVisible()
+})
