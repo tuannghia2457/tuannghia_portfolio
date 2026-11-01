@@ -52,6 +52,16 @@ See [restructure decisions and validation](docs/curated-restructure.md), and [or
 3. Copy `.env.example` to `.env` (locally) and set the same two variables in Vercel → Settings → Environment Variables: `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` (Project Settings → API). Rebuild or redeploy.
 4. Open `/admin`, sign in, and view or delete saved smiles. The page isn't linked from the navigation.
 
+### Email notifications (optional)
+
+Get an email at the owner address each time a photo is saved:
+
+1. Create a free account at [resend.com](https://resend.com) using the owner email, and copy an API key (`re_…`). With Resend's default `onboarding@resend.dev` sender you can email your own account address without verifying a domain.
+2. In the Supabase SQL editor, store the key once: `select vault.create_secret('re_your_key', 'resend_api_key');`
+3. Run [supabase/notify.sql](supabase/notify.sql). It enables `pg_net` and adds a trigger on `smiles` that emails the owner (time and smile score) on every new photo. The key is read from Vault, never stored in the function.
+
+Nothing in the browser changes; notifications are entirely server-side. To stop them, run `drop trigger on_smile_insert on public.smiles;`.
+
 ## Deployment
 
 Serve `dist` over HTTPS. Configure the host to fall back to `index.html` for client-side routes such as `/experience` and `/projects/aquaguard`; existing static assets should be served normally. Vite dev/preview handle route fallbacks locally.
