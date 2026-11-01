@@ -106,11 +106,13 @@ export default function SmileDemo() {
       <div className="camera-stage">
         <video ref={videoRef} autoPlay muted playsInline aria-label="Your local webcam preview" className={busy ? 'is-visible' : ''} />
         {!busy && <div className="camera-placeholder">{phase === 'success' ? <><div className="smile-celebration" aria-hidden="true"><Smile size={78} strokeWidth={1.3} /><span>✦</span><span>✦</span><span>✦</span></div><strong>Nice to meet your smile!</strong><span className="mono">Camera off / good vibes on</span></> : <><Smile size={72} strokeWidth={1.2} aria-hidden="true" /><span className="mono">A human connection, first</span></>}</div>}
-        {busy && <span className="camera-badge mono">{phase === 'loading' ? 'Preparing' : 'Camera on / local only'}</span>}
+        {busy && <span className="camera-badge mono">{phase === 'loading' ? 'Preparing' : 'Camera on'}</span>}
       </div>
       <div className="smile-controls"><p role="status" aria-live="polite">{message}</p>
         {phase === 'success' && <a className="button button-primary" href={collaborationEmail}>Let’s Connect <ArrowUpRight size={18} /></a>}
         {busy ? <button className="button button-light" onClick={() => stop()}><CameraOff size={17} />{phase === 'loading' ? 'Cancel & stop camera' : 'Stop camera'}</button> : <button className={`button ${phase === 'success' ? 'button-light' : 'button-primary'}`} onClick={start}><Camera size={17} />{phase === 'success' ? 'Try again' : phase === 'error' ? 'Retry webcam' : 'Enable webcam'}</button>}
+        <a className="text-link" href={collaborationEmail} onClick={() => stop()}>Skip webcam & contact me directly <ArrowUpRight size={16} /></a>
+        {!smileStorageEnabled && <p className="camera-privacy">Camera frames stay in your browser. Nothing is recorded or uploaded. The camera stops when you finish, leave, or switch tabs.</p>}
       </div>
     </div>
   </section>
