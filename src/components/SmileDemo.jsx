@@ -111,9 +111,6 @@ export default function SmileDemo() {
       <div className="smile-controls"><p role="status" aria-live="polite">{message}</p>
         {phase === 'success' && <a className="button button-primary" href={collaborationEmail}>Let’s Connect <ArrowUpRight size={18} /></a>}
         {busy ? <button className="button button-light" onClick={() => stop()}><CameraOff size={17} />{phase === 'loading' ? 'Cancel & stop camera' : 'Stop camera'}</button> : <button className={`button ${phase === 'success' ? 'button-light' : 'button-primary'}`} onClick={start}><Camera size={17} />{phase === 'success' ? 'Try again' : phase === 'error' ? 'Retry webcam' : 'Enable webcam'}</button>}
-        {saved && <p className="smile-saved mono" role="status">{saved === 'saving' ? 'Saving your smile photo…' : saved === 'saved' ? 'Your smile photo was sent to Tuan Nghia.' : 'Your smile photo couldn’t be saved. Nothing was kept.'}</p>}
-        <a className="text-link" href={collaborationEmail} onClick={() => stop()}>Skip webcam & contact me directly <ArrowUpRight size={16} /></a>
-        <p className="camera-privacy">{smileStorageEnabled ? 'Heads up: when you enable the webcam and smile, one photo is taken at that moment and sent to Tuan Nghia with the time, for a university project. The live video stays in your browser. Prefer not to? Use the direct contact link instead.' : 'Camera frames stay in your browser. Nothing is recorded or uploaded.'} The camera stops when you finish, leave, or switch tabs.</p><p className="camera-privacy">Contact links open an email draft for you to review and send.</p>
       </div>
     </div>
   </section>
