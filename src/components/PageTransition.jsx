@@ -4,11 +4,11 @@ import DecryptText from './DecryptText'
 import { profile } from '../profile'
 import './page-transition.css'
 
-// Seconds per phase, once the curtain covers the screen: TUAN NGHIA 0.8s, decrypt 0.5s,
-// TOM TRAN 0.5s, then the curtain eases away. Intro ~2.2s (once per tab session), page changes ~2.35s.
+// Seconds per phase, once the curtain covers the screen: TUAN NGHIA holds, decrypts,
+// TOM TRAN rests briefly, then the curtain eases away. Intro ~1.6s (once per tab session), page changes ~1.7s.
 const TIMING = {
-  intro: { cover: 0, hold: .8, decrypt: .5, after: .5, reveal: .4 },
-  nav: { cover: .2, hold: .8, decrypt: .5, after: .5, reveal: .35 },
+  intro: { cover: 0, hold: .5, decrypt: .4, after: .3, reveal: .35 },
+  nav: { cover: .18, hold: .5, decrypt: .4, after: .3, reveal: .3 },
   reduced: { cover: .15, hold: .15, decrypt: 0, after: .2, reveal: .15 },
 }
 // TUAN → TOM (nickname), NGHIA → TRAN (family name from the formal name).
