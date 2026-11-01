@@ -41,7 +41,7 @@ Read [AGENTS.md](AGENTS.md) and [docs/DESIGN_SYSTEM.md](docs/DESIGN_SYSTEM.md). 
 
 ## Privacy and camera behavior
 
-The detector loads only after the visitor enables the webcam and grants permission. Camera frames stay in the browser. The one exception is opt-in: when smile storage is configured, the visitor can tick “Save one photo of my smile for Tuan Nghia” before starting, and one mirrored JPEG is uploaded with its time and smile score at the moment the smile is detected. The box is unticked by default and hidden when storage isn't configured. The camera stops on completion, cancellation, leaving the page, switching tabs, or after a minute of detection. Direct contact is always available. Email links open pre-filled drafts; they do not send anything automatically.
+The detector loads only after the visitor enables the webcam and grants permission. The live video stays in the browser. The one exception is the smile photo: when smile storage is configured (a university project with testers who consented in advance), a notice above the webcam button tells the visitor that enabling the camera and smiling will take one photo and send it to Tuan Nghia with its time and score, and that photo (a mirrored JPEG) is uploaded automatically at the moment the smile is detected. When storage isn't configured, nothing is uploaded. The camera stops on completion, cancellation, leaving the page, switching tabs, or after a minute of detection. Direct contact is always available for anyone who prefers not to use the camera. Email links open pre-filled drafts; they do not send anything automatically.
 
 See [restructure decisions and validation](docs/curated-restructure.md), and [original design research](docs/design-research.md).
 
