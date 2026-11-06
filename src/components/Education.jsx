@@ -47,7 +47,7 @@ export default function Education() { return <section id="education" className="
   <header className="education-intro">
     <p className="section-kicker mono">Education / Academic journey</p>
     <h1 id="education-title">Education<span className="period">.</span></h1>
-    <p>My education brings together analytical foundations, AI studies, and an international learning environment.</p>
+    <p>An advanced physics program in high school, then an AI degree run jointly by a Vietnamese and an Australian university.</p>
   </header>
   <div className="education-layout">
     <ol className="education-timeline">{milestones.map(school => <RevealItem as="li" key={school.id} className={`education-milestone${school.current ? ' is-current' : ''}`}>

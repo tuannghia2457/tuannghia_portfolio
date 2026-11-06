@@ -3,7 +3,7 @@ import { courseCertificates } from '../portfolio-data'
 import './course-certificates.css'
 
 export default function CourseCertificates() { return <section id="certificates" className="course-certificates section-pad" aria-labelledby="course-certificates-title">
-  <div className="course-certificates-heading"><p className="section-kicker mono">Continuing education</p><h2 id="course-certificates-title">Online course certificates<span className="period">.</span></h2><p>Courses I’ve completed to deepen my understanding of AI and applied technologies.</p></div>
+  <div className="course-certificates-heading"><p className="section-kicker mono">Continuing education</p><h2 id="course-certificates-title">Online course certificates<span className="period">.</span></h2><p>Short courses I’ve completed on AI and machine learning.</p></div>
   <div className="course-certificate-grid">{courseCertificates.map(certificate => <article className="course-certificate-card" key={certificate.id}>
     <div className="course-certificate-topline"><span className="course-certificate-icon" aria-hidden="true"><FileBadge size={25} strokeWidth={1.5} /></span><span className="mono">Issued {certificate.issued}</span></div>
     <h3>{certificate.title}</h3><p className="course-certificate-issuer">{certificate.issuer}</p>

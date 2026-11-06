@@ -4,7 +4,7 @@ import { collaborationEmail, smileScore, SMILE_HOLD_MS, SMILE_THRESHOLD } from '
 import { captureFrame, saveSmile, smileStorageEnabled } from '../lib/smile-store'
 import './smile-demo.css'
 
-const initialMessage = 'A small experiment in computer vision. A friendly way to say hello.'
+const initialMessage = 'A small computer vision experiment: smile at the camera to say hello.'
 export default function SmileDemo() {
   const [phase, setPhase] = useState('idle'), [message, setMessage] = useState(initialMessage)
   const videoRef = useRef(null), session = useRef(0), stream = useRef(null), detector = useRef(null)
@@ -79,7 +79,7 @@ export default function SmileDemo() {
               if (now - smilingSince >= SMILE_HOLD_MS) {
                 // Capture before release() detaches the stream from the video element.
                 const photo = smileStorageEnabled ? captureFrame(video) : null
-                release(); setPhase('success'); setMessage('That’s a great start. Let’s make something useful together!')
+                release(); setPhase('success'); setMessage('Smile detected. Thanks for saying hello!')
                 if (photo) {
                   setSaved('saving')
                   const report = state => { if (attempt.current === run) setSaved(state) }
@@ -105,7 +105,7 @@ export default function SmileDemo() {
     <div className={`smile-panel is-${phase}`}>
       <div className="camera-stage">
         <video ref={videoRef} autoPlay muted playsInline aria-label="Your local webcam preview" className={busy ? 'is-visible' : ''} />
-        {!busy && <div className="camera-placeholder">{phase === 'success' ? <><div className="smile-celebration" aria-hidden="true"><Smile size={78} strokeWidth={1.3} /><span>✦</span><span>✦</span><span>✦</span></div><strong>Nice to meet your smile!</strong><span className="mono">Camera off / good vibes on</span></> : <><Smile size={72} strokeWidth={1.2} aria-hidden="true" /><span className="mono">A human connection, first</span></>}</div>}
+        {!busy && <div className="camera-placeholder">{phase === 'success' ? <><div className="smile-celebration" aria-hidden="true"><Smile size={78} strokeWidth={1.3} /><span>✦</span><span>✦</span><span>✦</span></div><strong>Nice to meet your smile!</strong><span className="mono">Camera off / good vibes on</span></> : <><Smile size={72} strokeWidth={1.2} aria-hidden="true" /><span className="mono">Camera off until you start</span></>}</div>}
         {busy && <span className="camera-badge mono">{phase === 'loading' ? 'Preparing' : 'Camera on'}</span>}
       </div>
       <div className="smile-controls"><p role="status" aria-live="polite">{message}</p>

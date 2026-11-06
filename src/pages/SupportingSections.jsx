@@ -9,15 +9,15 @@ import { Link } from 'react-router-dom'
 export function Background() { return (<section id="about" className="about-section section-pad" aria-labelledby="about-title">
           <div className="section-kicker mono">01 / Background</div>
           <div className="about-grid">
-            <div><h2 id="about-title">Technical<br /><em>by nature.</em><br />Human by choice.</h2></div>
-            <div className="about-copy"><p>I’m Tuan Nghia, an AI student at UTS through the HCMUT–UTS program and a computer vision intern at IVS, working on robotics.</p><p>I co-founded Odylytics and help build AquaGuard, a flood-response platform in Vietnam. Across research, product and teaching, I want technology that is technically strong and genuinely useful to people.</p></div>
+            <div><h2 id="about-title">Studying AI,<br /><em>building with it.</em></h2></div>
+            <div className="about-copy"><p>I’m Tuan Nghia, an AI student at UTS through the HCMUT–UTS program and a computer vision intern at IVS, working on robotics.</p><p>I co-founded Odylytics and help build AquaGuard, a flood-response platform in Vietnam. In research, product work and teaching alike, what I care about is whether the thing I made helps the people using it.</p></div>
           </div>
         </section>) }
 
 export function Experience() { return (<section id="experience" className="experience-section section-pad" aria-labelledby="experience-title">
           <div className="section-heading experience-heading">
             <div className="section-kicker mono">01 / Timeline</div>
-            <h2 id="experience-title">Where I’ve<br /><em>been building.</em></h2>
+            <h2 id="experience-title">Where I’ve<br /><em>worked.</em></h2>
           </div>
           <ExperienceTimeline items={experience} />
         </section>) }
@@ -28,14 +28,14 @@ export function Testimonials() {
   const published = testimonials.filter(item => item.published)
   return <section id="testimonials" className="testimonials-section section-pad" aria-labelledby="testimonials-title">
     <p className="section-kicker mono">04 / Testimonials</p>
-    <div className="testimonials-heading"><h2 id="testimonials-title">Words from collaborators.</h2><p>Perspectives from the people I’ve worked with.</p></div>
-    {published.length ? <div className="testimonials-grid">{published.map(item => <figure className="testimonial-card" key={item.name + item.organization}><blockquote>{item.quote}</blockquote><figcaption><strong>{item.name}</strong><span>{item.organization}</span></figcaption></figure>)}</div> : <div className="testimonials-pending"><span className="testimonial-pending-mark" aria-hidden="true">“</span><div><h3>Recommendations coming soon.</h3><p>This space is reserved for collaborators’ recommendations, with their names and roles.</p></div></div>}
+    <div className="testimonials-heading"><h2 id="testimonials-title">Words from collaborators.</h2><p>What people I’ve worked with say about me.</p></div>
+    {published.length ? <div className="testimonials-grid">{published.map(item => <figure className="testimonial-card" key={item.name + item.organization}><blockquote>{item.quote}</blockquote><figcaption><strong>{item.name}</strong><span>{item.organization}</span></figcaption></figure>)}</div> : <div className="testimonials-pending"><span className="testimonial-pending-mark" aria-hidden="true">“</span><div><h3>Recommendations coming soon.</h3><p>I’m collecting recommendations from people I’ve worked with. They’ll appear here with each person’s name and role.</p></div></div>}
   </section>
 }
 
 // Compact certificate list: a small preview or PDF badge, the certificate type and event, and one link.
 export function Evidence() { return (<section id="evidence" className="evidence-section section-pad" aria-labelledby="evidence-title">
-          <div className="evidence-header"><h2 id="evidence-title">Certificates</h2><p>Proof behind the project and competition milestones.</p></div>
+          <div className="evidence-header"><h2 id="evidence-title">Certificates</h2><p>Certificates from the competitions listed above.</p></div>
           <ul className="evidence-grid">
             {evidence.map((item) => (
               <li className="evidence-card" key={`${item.title}-${item.type}`}>
@@ -53,16 +53,16 @@ export function Evidence() { return (<section id="evidence" className="evidence-
 function ContactCV() {
   return <article className="contact-cv-card" aria-labelledby="contact-cv-title">
     <div className="contact-cv-heading"><span className="contact-cv-icon" aria-hidden="true"><FileText size={26} strokeWidth={1.5} /></span><div><p className="mono">Professional profile</p><h3 id="contact-cv-title">Curriculum Vitae</h3></div></div>
-    <p className="contact-cv-description">My experience, research, and technical work — in one place.</p>
-    <div className="contact-cv-footer">{profile.resumeUrl ? <><span className="contact-cv-status mono">Ready to explore</span><a className="button button-primary" href={profile.resumeUrl} download>Download CV <Download size={16} /></a></> : <><span className="contact-cv-status mono">CV coming soon</span><a className="button button-primary" href="mailto:trantuannghia2457@gmail.com?subject=CV%20request&body=Hi%20Tuan%20Nghia%2C%0A%0ACould%20you%20share%20your%20CV%3F">Request CV <Mail size={16} /></a></>}</div>
+    <p className="contact-cv-description">A summary of my experience, research and projects.</p>
+    <div className="contact-cv-footer">{profile.resumeUrl ? <><span className="contact-cv-status mono">Available</span><a className="button button-primary" href={profile.resumeUrl} download>Download CV <Download size={16} /></a></> : <><span className="contact-cv-status mono">CV coming soon</span><a className="button button-primary" href="mailto:trantuannghia2457@gmail.com?subject=CV%20request&body=Hi%20Tuan%20Nghia%2C%0A%0ACould%20you%20share%20your%20CV%3F">Request CV <Mail size={16} /></a></>}</div>
   </article>
 }
 export function ContactInfo() { return (<section id="contact" className="contact-section section-pad" aria-labelledby="contact-title">
-          <div className="section-kicker mono">05 / Contact</div><div className="contact-grid"><div className="contact-heading"><h2 id="contact-title">Let’s make<br /><em>something useful.</em></h2><div className="social-links">
+          <div className="section-kicker mono">05 / Contact</div><div className="contact-grid"><div className="contact-heading"><h2 id="contact-title">Get in<br /><em>touch.</em></h2><div className="social-links">
             <a href={profile.linkedinUrl} target="_blank" rel="noreferrer">LinkedIn <ExternalLink size={17} /></a>
             {profile.facebookUrl ? <a href={profile.facebookUrl} target="_blank" rel="noreferrer">Facebook <ExternalLink size={17} /></a> : <span className="social-pending" title="Facebook link coming soon">Facebook <small>Coming soon</small></span>}
             <a href={profile.githubUrl} target="_blank" rel="noreferrer">GitHub <ExternalLink size={17} /></a>
-          </div></div><div className="contact-copy"><p>Whether you want to talk about research, AI, robotics, product ideas, or just say hello — my inbox is open.</p><div className="contact-methods"><a className="email-link" href="mailto:trantuannghia2457@gmail.com">trantuannghia2457@gmail.com <ArrowUpRight size={20} /></a><a className="email-link phone-link" href={profile.phoneHref} aria-label={`Call ${profile.phone}`}><Phone size={18} aria-hidden="true" />{profile.phone}</a></div>
+          </div></div><div className="contact-copy"><p>Email me about research, AI, robotics or a product idea, or just to say hello.</p><div className="contact-methods"><a className="email-link" href="mailto:trantuannghia2457@gmail.com">trantuannghia2457@gmail.com <ArrowUpRight size={20} /></a><a className="email-link phone-link" href={profile.phoneHref} aria-label={`Call ${profile.phone}`}><Phone size={18} aria-hidden="true" />{profile.phone}</a></div>
           <ContactCV /></div></div>
         </section>) }
 

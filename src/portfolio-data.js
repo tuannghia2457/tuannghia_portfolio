@@ -5,11 +5,11 @@ export const projects = [
     number: '01',
     title: 'AquaGuard',
     type: 'Flood-response platform',
-    description: 'A cross-platform system for real-time alerts, safety guidance, and crowdsourced rescue coordination during floods.',
+    description: 'A web and iOS platform that sends flood alerts, gives safety guidance and lets people coordinate rescues during floods.',
     role: 'Co-Founder & Product Manager',
     year: '2025 — Now',
     tags: ['PRODUCT', 'IOS', 'WEB', 'DISASTER RESPONSE'],
-    result: '1st Place — OISP Presentation Contest 2025 · First Runner-Up — Bach Khoa Innovation 2026',
+    result: '1st Place, OISP Presentation Contest 2025 · First Runner-Up, Bach Khoa Innovation 2026',
     link: 'https://aquaguard.vn/',
     featured: true,
   },
@@ -18,11 +18,11 @@ export const projects = [
     number: '03',
     title: 'VirtualDouble / ANT',
     type: 'Human-centered AI',
-    description: 'An AI focus companion and cognitive body doubler designed to support neurodivergent users during deep work.',
+    description: 'An AI focus companion that acts as a body double for neurodivergent people during deep work.',
     role: 'Backend & AI Developer',
     year: '2026',
     tags: ['BACKEND', 'MEDIAPIPE', 'ON-DEVICE AI', 'ADAPTIVE UX'],
-    result: 'Finalist — Accessibility Design Competition Hackathon 2026',
+    result: 'Finalist, Accessibility Design Competition Hackathon 2026',
     link: '#contact',
     featured: false,
   },
@@ -37,21 +37,21 @@ export const experience = [
     logo: '/images/company-logos/ivs.png',
     responsibilities: [
       {
-        "text": "Developing a GNSS-denied UAV localization system using computer vision, canopy segmentation, Voronoi diagrams, and geometric matching.",
+        "text": "Building a GNSS-denied UAV localization system from canopy segmentation, Voronoi diagrams and geometric matching.",
         "highlights": [
           "GNSS-denied UAV localization",
           "geometric matching"
         ]
       },
       {
-        "text": "Implementing perception-based path planning and graph construction for autonomous robot navigation in limited-visibility environments.",
+        "text": "Working on perception-based path planning and graph construction so robots can navigate on their own where visibility is poor.",
         "highlights": [
           "perception-based path planning",
           "graph construction"
         ]
       },
       {
-        "text": "Developing and testing pothole detection and autonomous navigation using LiDAR, ROS, Gazebo, and JetTank.",
+        "text": "Building and testing pothole detection and autonomous navigation with LiDAR, ROS, Gazebo, and JetTank.",
         "highlights": [
           "pothole detection",
           "LiDAR, ROS, Gazebo, and JetTank"
@@ -68,14 +68,14 @@ export const experience = [
     logo: '/images/company-logos/bsec_ielts.jpg',
     responsibilities: [
       {
-        "text": "Co-developed an IELTS assessment platform using Proqyz, HTML, and CSS for 200+ active students per month.",
+        "text": "Co-built an IELTS assessment platform on Proqyz, HTML and CSS, used by 200+ active students per month.",
         "highlights": [
           "IELTS assessment platform",
           "200+ active students per month"
         ]
       },
       {
-        "text": "Developed a Playwright automation tool for IELTS content uploads, making the deployment process 3× faster.",
+        "text": "Wrote a Playwright automation tool for IELTS content uploads, which made publishing new tests 3× faster.",
         "highlights": [
           "Playwright automation tool",
           "3× faster"
@@ -115,7 +115,7 @@ export const experience = [
         ]
       },
       {
-        "text": "Supported automation for footwear quality inspection.",
+        "text": "Helped with automation for footwear quality inspection.",
         "highlights": [
           "automation",
           "footwear quality inspection"
@@ -200,7 +200,7 @@ export const education = [
     id: 'uts', institution: 'University of Technology Sydney', logo: '/images/schools/uts.png',
     degree: 'Bachelor’s degree in Artificial Intelligence', program: 'Ho Chi Minh City University of Technology–University of Technology Sydney Transnational Education Program',
     period: 'Sep 2025 — Expected May 2028', grade: '6.9 / 7.0',
-    summary: 'Studying Artificial Intelligence through the Ho Chi Minh City University of Technology–University of Technology Sydney program, with an academic foundation in programming and AI.',
+    summary: 'I study Artificial Intelligence in the Ho Chi Minh City University of Technology–University of Technology Sydney program. So far my courses have centered on programming and AI.',
     activities: ['Class Representative'], skills: ['Python', 'Java'],
     achievements: [
       { title: academicRecognition.title, href: academicRecognition.certificate, linkLabel: 'View Dean’s List certificate' },
@@ -212,7 +212,7 @@ export const education = [
     id: 'gifted', institution: 'High School for the Gifted, Vietnam National University Ho Chi Minh City', logo: '/images/schools/gifted.jpg',
     degree: 'High School Diploma', program: 'Advanced Physics Program',
     period: 'Aug 2022 — Jun 2025', grade: '9.6 / 10',
-    summary: 'An advanced physics background that shaped my approach to analytical thinking and technical problem-solving.',
+    summary: 'Three years in the advanced physics program taught me to take technical problems apart step by step.',
     activities: [], skills: ['Physics', 'Event Management'],
     achievements: [],
   },
@@ -221,7 +221,7 @@ export const education = [
     id: 'hcmut', institution: 'Ho Chi Minh City University of Technology', shortName: 'HCMUT', partnerOf: 'uts', url: 'https://hcmut.edu.vn', logo: '/images/schools/hcmut.jpg',
     degree: 'International Transnational Bachelor of Engineering Program with the University of Technology Sydney',
     program: 'Ho Chi Minh City University of Technology–University of Technology Sydney transnational partnership', period: null, grade: null,
-    summary: 'My transnational education connects learning at Ho Chi Minh City University of Technology with the University of Technology Sydney within a shared international program.',
+    summary: 'The degree is a transnational program run jointly by Ho Chi Minh City University of Technology and the University of Technology Sydney.',
     activities: [], skills: [],
     achievements: [],
   },
