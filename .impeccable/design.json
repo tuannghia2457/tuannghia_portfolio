@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-06T00:00:00Z",
+  "title": "Design System: Tuan Nghia Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "night-black": { "role": "neutral", "displayName": "Night Black", "canonical": "#0D0D0D", "tonalRamp": ["#000000", "#0D0D0D", "#1A1A1A", "#2E2E2E", "#4A4A4A", "#6E6E6E", "#A6A6A6", "#E0E0E0"] },
+      "paper-white": { "role": "neutral", "displayName": "Paper White", "canonical": "#FFFFFF", "tonalRamp": ["#262626", "#4D4D4D", "#737373", "#999999", "#BFBFBF", "#D9D9D9", "#F2F2F2", "#FFFFFF"] },
+      "signal-green": { "role": "primary", "displayName": "Signal Green", "canonical": "#00FF85", "tonalRamp": ["#003D20", "#006634", "#008F49", "#00B85E", "#00E077", "#00FF85", "#80FFC2", "#CCFFE7"] },
+      "electric-blue": { "role": "secondary", "displayName": "Electric Blue", "canonical": "#1E90FF", "tonalRamp": ["#05264A", "#0B3E78", "#0B63C9", "#1478E6", "#1E90FF", "#5CADFF", "#9ECDFF", "#DCEDFF"] },
+      "mint-hover": { "role": "primary", "displayName": "Mint Hover", "canonical": "color-mix(in srgb, #00FF85 72%, #FFFFFF)" },
+      "surface": { "role": "neutral", "displayName": "Surface", "canonical": "color-mix(in srgb, #FFFFFF 5%, #0D0D0D)" },
+      "surface-alt": { "role": "neutral", "displayName": "Surface Alt", "canonical": "color-mix(in srgb, #FFFFFF 9%, #0D0D0D)" },
+      "muted-ink": { "role": "neutral", "displayName": "Muted Ink", "canonical": "color-mix(in srgb, #FFFFFF 68%, #0D0D0D)" },
+      "hairline": { "role": "neutral", "displayName": "Hairline", "canonical": "color-mix(in srgb, #FFFFFF 16%, #0D0D0D)" },
+      "light-paper": { "role": "neutral", "displayName": "Light Paper (Neon Light)", "canonical": "#F7F8F4" },
+      "light-green": { "role": "primary", "displayName": "Light Green (Neon Light fills)", "canonical": "#00C96B" },
+      "light-blue": { "role": "secondary", "displayName": "Light Blue (Neon Light focus)", "canonical": "#0B63C9" },
+      "light-accent-text": { "role": "primary", "displayName": "Deep Green (Neon Light accent text)", "canonical": "color-mix(in srgb, #00C96B 45%, #0D0D0D)" },
+      "logo-plate": { "role": "neutral", "displayName": "Logo Plate", "canonical": "#FFFFFF" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero name and page titles, ending in a green period." },
+      "headline": { "displayName": "Headline", "purpose": "Section headings; split headings put the second phrase in muted ink." },
+      "title": { "displayName": "Title", "purpose": "Card and item titles." },
+      "body": { "displayName": "Body", "purpose": "Paragraphs, capped near 65ch." },
+      "label": { "displayName": "Label", "purpose": "Section kickers, tags, metadata and dates." },
+      "code": { "displayName": "Code", "purpose": "Terminal card and real code only." }
+    },
+    "shadows": [
+      { "name": "overlay", "value": "0 8px 28px var(--shadow-color)", "purpose": "Navigation menu, popovers and dialogs." },
+      { "name": "button-lift", "value": "0 3px 8px var(--shadow-color)", "purpose": "Primary buttons on hover, with a 2px upward move." },
+      { "name": "resting-layer", "value": "0 2px 10px var(--shadow-color)", "purpose": "Cards and panels at rest. Confirmed direction, not yet applied in CSS." }
+    ],
+    "motion": [
+      { "name": "duration-fast", "value": "150ms", "purpose": "Hover color, border and underline changes." },
+      { "name": "duration-default", "value": "240ms", "purpose": "Card lifts and panel transitions." }
+    ],
+    "breakpoints": [
+      { "name": "xs", "value": "360px" },
+      { "name": "sm", "value": "600px" },
+      { "name": "md", "value": "850px" },
+      { "name": "lg", "value": "900px" },
+      { "name": "xl", "value": "1100px" },
+      { "name": "wide", "value": "1600px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main action: signal green fill, near-black label, mint on hover.",
+      "html": "<a class=\"ds-btn ds-btn-primary\" href=\"#\">Explore My Work <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 20px; min-height: 48px; padding: 13px 18px; border: 1px solid var(--border); border-radius: var(--radius, 6px); font-family: var(--font-sans); font-size: 0.875rem; font-weight: 600; letter-spacing: 0.01em; text-decoration: none; transition: background 150ms, border-color 150ms, transform 150ms, box-shadow 150ms; } .ds-btn-primary { background: var(--primary); border-color: var(--primary); color: var(--on-primary); } .ds-btn-primary:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 3px 8px var(--shadow-color); } .ds-btn-primary:active { transform: none; } .ds-btn:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 5px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Second action beside a primary: surface fill, green border on hover.",
+      "html": "<a class=\"ds-btn2\" href=\"#\">Request Resume</a>",
+      "css": ".ds-btn2 { display: inline-flex; align-items: center; min-height: 48px; padding: 13px 18px; border: 1px solid var(--border); border-radius: var(--radius, 6px); background: var(--surface); color: var(--foreground); font-family: var(--font-sans); font-size: 0.875rem; font-weight: 600; text-decoration: none; transition: border-color 150ms, transform 150ms; } .ds-btn2:hover { border-color: var(--primary); transform: translateY(-2px); } .ds-btn2:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 5px; }"
+    },
+    {
+      "name": "Tag",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "Static technology or field label.",
+      "html": "<span class=\"ds-tag\">Computer vision</span>",
+      "css": ".ds-tag { display: inline-block; padding: 5px 8px; border: 1px solid var(--border); border-radius: 3px; color: var(--muted-foreground); font-family: var(--font-sans); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.01em; }"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Linked project summary with a kicker, title, summary and tags; lifts and turns green on hover.",
+      "html": "<a class=\"ds-card\" href=\"#\"><span class=\"ds-card-kicker\">01 / Flood-response platform</span><h3>AquaGuard</h3><p>A flood-response platform with real-time alerts, safety guidance and crowdsourced rescue coordination.</p><span class=\"ds-card-tag\">Web</span></a>",
+      "css": ".ds-card { display: flex; flex-direction: column; gap: 14px; max-width: 360px; padding: 26px; border: 1px solid var(--border); background: var(--surface); color: var(--foreground); text-decoration: none; box-shadow: 0 2px 10px var(--shadow-color); transition: border-color 180ms, transform 180ms; } .ds-card:hover { border-color: var(--primary); transform: translateY(-4px); } .ds-card:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 5px; } .ds-card h3 { margin: 20px 0 0; font-size: 1.5rem; font-weight: 600; letter-spacing: -0.015em; } .ds-card p { margin: 0; color: var(--muted-foreground); font-size: 0.875rem; line-height: 1.7; } .ds-card-kicker { color: var(--muted-foreground); font-size: 0.75rem; font-weight: 500; } .ds-card-tag { align-self: flex-start; padding: 5px 8px; border: 1px solid var(--border); border-radius: 3px; color: var(--muted-foreground); font-size: 0.75rem; }"
+    },
+    {
+      "name": "Navigation Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Header link: muted at rest, accent green with a fading 2px underline on hover and on the current page.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Home</a><a href=\"#\" aria-current=\"page\">Projects</a><a href=\"#\">Research</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 24px; } .ds-nav a { position: relative; display: inline-flex; align-items: center; min-height: 44px; color: var(--muted-foreground); font-family: var(--font-sans); font-size: 0.875rem; font-weight: 500; text-decoration: none; } .ds-nav a::after { content: ''; position: absolute; left: 0; right: 0; bottom: 3px; height: 2px; background: var(--primary); opacity: 0; transition: opacity 150ms; } .ds-nav a:hover, .ds-nav a[aria-current] { color: var(--accent-foreground); } .ds-nav a:hover::after, .ds-nav a[aria-current]::after { opacity: 1; } .ds-nav a:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 5px; }"
+    },
+    {
+      "name": "Hero Terminal",
+      "kind": "custom",
+      "description": "Signature terminal card that types the owner's whoami and current roles.",
+      "html": "<div class=\"ds-term\"><div class=\"ds-term-bar\"><i></i><i></i><i></i><span>shell — zsh</span></div><p class=\"ds-cmd\">$ whoami</p><p>&gt; Tuan Nghia 2007</p><p class=\"ds-cmd\">$ cat currently.log</p><p>&gt; Engineering Intern @ IVS</p></div>",
+      "css": ".ds-term { max-width: 320px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); font-family: var(--font-mono); font-size: 0.8125rem; line-height: 1.6; box-shadow: 0 8px 28px var(--shadow-color); } .ds-term-bar { display: flex; align-items: center; gap: 6px; padding: 8px 12px; border-bottom: 1px solid var(--border); color: var(--muted-foreground); font-size: 0.75rem; } .ds-term-bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--border); } .ds-term-bar span { margin-left: 8px; } .ds-term p { margin: 0; padding: 2px 12px; color: var(--muted-foreground); } .ds-term p.ds-cmd { color: var(--accent-foreground); } .ds-term p:last-child { padding-bottom: 12px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "A Person's Workbench at Night",
+    "overview": "The site is a dark, editorial workspace that belongs to one person. Near-black pages, white type and thin hairlines keep it calm. Neon green is the light on the desk: it marks actions, accent words and hover states, and almost nothing else. The details are an engineer's (numbered section labels, a typing terminal card, a section rail), but the voice and the imagery are human: a real portrait, a childhood pixel avatar, plain first-person copy and a smile demo that says hello.\n\nThe system is not being reinvented. Its palette, fonts and layouts are fixed by AGENTS.md and src/theme.css, and new work should feel like the same person made it. \"More human\" means warmer content and gentler moments inside this frame (photos, stories, who the work helped), never a new color or a softer theme.\n\nControls are precise and quiet. Surfaces separate by tone and hairlines, and cards and panels sit on a soft shadow so the page reads in layers.",
+    "keyCharacteristics": [
+      "Neon Dark by default; Neon Light only through the header toggle.",
+      "One sans family for everything readable; mono only where text is literally code.",
+      "Green used sparingly as the signal; blue reserved for focus.",
+      "Thin 1px hairlines, small 6px corners, generous whitespace.",
+      "Real photos and the pixel avatar carry the personality; decoration does not.",
+      "Every animation has a reduced-motion fallback."
+    ],
+    "rules": [
+      { "name": "The Single Source Rule", "body": "Every color value is authored once in src/theme.css. Components use semantic variables only: no hex, no fallbacks, no new colors. A theme change needs Nghia's explicit request.", "section": "colors" },
+      { "name": "The Signal Rule", "body": "Green marks what you can act on or what matters most in a block. If a screen is mostly green, it has lost its signal.", "section": "colors" },
+      { "name": "The Retired Colors Rule", "body": "Pink #FF0099, Warm Ivory, Ember Dark and RawBlock are gone and stay gone.", "section": "colors" },
+      { "name": "The Two Fonts Rule", "body": "Be Vietnam Pro for everything a person reads; JetBrains Mono only for things that are code. Tags and labels are not code. (The .mono class name is historical; it now renders the sans.)", "section": "typography" },
+      { "name": "The Green Period Rule", "body": "Page titles and key headings end in a period colored with the accent.", "section": "typography" },
+      { "name": "The Layered Sheets Rule", "body": "Cards and panels sit on the resting shadow; hover adds lift and a green border, never a glow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use the semantic variables from src/theme.css for every color, in both modes.",
+      "Do keep green for actions, accent text and hover, and blue for focus.",
+      "Do check text contrast at 4.5:1 and indicators at 3:1 in Neon Dark and Neon Light.",
+      "Do bring personality through real content: photos, the pixel avatar, stories about who the work helped, plain first-person copy.",
+      "Do give every motion a reduced-motion fallback."
+    ],
+    "donts": [
+      "Don't add, change or hardcode colors, or bring back pink, Warm Ivory, Ember Dark or RawBlock.",
+      "Don't switch themes from the OS preference or per page; Neon Dark opens every visit.",
+      "Don't use JetBrains Mono for tags, labels or decorative numbers.",
+      "Don't put white labels on green or mint fills.",
+      "Don't add glows, gradients or decorative illustrations to make the site feel friendlier.",
+      "Don't restore the Home scroll color shift or Mini Nghia without Nghia asking."
+    ]
+  }
+}
