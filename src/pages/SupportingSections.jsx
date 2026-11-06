@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { ArrowUpRight, ExternalLink, FileText, Download, Mail, Phone } from 'lucide-react'
 import { experience, awards, evidence, testimonials } from '../portfolio-data'
 import { profile } from '../profile'
@@ -9,7 +10,8 @@ import { Link } from 'react-router-dom'
 export function Background() { return (<section id="about" className="about-section section-pad" aria-labelledby="about-title">
           <div className="section-kicker mono">01 / Background</div>
           <div className="about-grid">
-            <div><h2 id="about-title">Studying AI,<br /><em>building with it.</em></h2></div>
+            <div><h2 id="about-title">Studying AI,<br /><em>building with it.</em></h2>
+              <figure className="about-photo"><img src="/images/optimized/aquaguard-team.jpg" alt="The AquaGuard team holding their first-place award from Engineering Projects in Community Service Season 8" width="960" height="640" loading="lazy" decoding="async" /><figcaption>The AquaGuard team, the day we took first place at Engineering Projects in Community Service Season 8.</figcaption></figure></div>
             <div className="about-copy"><p>I’m Tuan Nghia, an AI student at UTS through the HCMUT–UTS program and a computer vision intern at IVS, working on robotics.</p><p>I co-founded Odylytics and help build AquaGuard, a flood-response platform in Vietnam. In research, product work and teaching alike, what I care about is whether the thing I made helps the people using it.</p></div>
           </div>
         </section>) }
@@ -50,6 +52,17 @@ export function Evidence() { return (<section id="evidence" className="evidence-
           </ul>
         </section>) }
 
+// Nghia's own clock, so a visitor knows whether it's a good moment to expect a reply.
+function LocalTime() {
+  const [now, setNow] = useState(() => new Date())
+  useEffect(() => { const timer = setInterval(() => setNow(new Date()), 30_000); return () => clearInterval(timer) }, [])
+  const options = { timeZone: 'Asia/Ho_Chi_Minh' }
+  const time = now.toLocaleTimeString('en-US', { ...options, hour: 'numeric', minute: '2-digit' })
+  const hour = Number(now.toLocaleString('en-US', { ...options, hour: 'numeric', hourCycle: 'h23' }))
+  const late = hour >= 23 || hour < 7
+  return <p className="contact-local-time"><span className="status-dot" aria-hidden="true" />It’s {time} here in Ho Chi Minh City{late ? ', so I’ll probably reply in the morning.' : '.'}</p>
+}
+
 function ContactCV() {
   return <article className="contact-cv-card" aria-labelledby="contact-cv-title">
     <div className="contact-cv-heading"><span className="contact-cv-icon" aria-hidden="true"><FileText size={26} strokeWidth={1.5} /></span><div><p className="mono">Professional profile</p><h3 id="contact-cv-title">Curriculum Vitae</h3></div></div>
@@ -62,7 +75,7 @@ export function ContactInfo() { return (<section id="contact" className="contact
             <a href={profile.linkedinUrl} target="_blank" rel="noreferrer">LinkedIn <ExternalLink size={17} /></a>
             {profile.facebookUrl ? <a href={profile.facebookUrl} target="_blank" rel="noreferrer">Facebook <ExternalLink size={17} /></a> : <span className="social-pending" title="Facebook link coming soon">Facebook <small>Coming soon</small></span>}
             <a href={profile.githubUrl} target="_blank" rel="noreferrer">GitHub <ExternalLink size={17} /></a>
-          </div></div><div className="contact-copy"><p>Email me about research, AI, robotics or a product idea, or just to say hello.</p><div className="contact-methods"><a className="email-link" href="mailto:trantuannghia2457@gmail.com">trantuannghia2457@gmail.com <ArrowUpRight size={20} /></a><a className="email-link phone-link" href={profile.phoneHref} aria-label={`Call ${profile.phone}`}><Phone size={18} aria-hidden="true" />{profile.phone}</a></div>
+          </div><LocalTime /></div><div className="contact-copy"><p>Email me about research, AI, robotics or a product idea, or just to say hello.</p><div className="contact-methods"><a className="email-link" href="mailto:trantuannghia2457@gmail.com">trantuannghia2457@gmail.com <ArrowUpRight size={20} /></a><a className="email-link phone-link" href={profile.phoneHref} aria-label={`Call ${profile.phone}`}><Phone size={18} aria-hidden="true" />{profile.phone}</a></div>
           <ContactCV /></div></div>
         </section>) }
 
