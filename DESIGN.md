@@ -175,7 +175,7 @@ Surfaces layer by tone first: the page is night black, cards and navigation are 
 ### Shadow Vocabulary
 - **Overlay** (`box-shadow: 0 8px 28px var(--shadow-color)`, token `--shadow-overlay`): navigation menu, popovers, dialogs.
 - **Button lift** (`box-shadow: 0 3px 8px var(--shadow-color)`): primary buttons on hover, with a 2px upward move.
-- **Resting layer** (`box-shadow: 0 2px 10px var(--shadow-color)`): cards and panels at rest. Confirmed direction on 6 November 2026; not yet applied in the CSS.
+- **Resting layer** (`box-shadow: 0 2px 10px var(--shadow-color)`), token `--shadow-rest`: cards and panels at rest.
 
 `--shadow-color` derives from the background (70% night black in Neon Dark, 14% ink in Neon Light), so shadows never introduce a color.
 
