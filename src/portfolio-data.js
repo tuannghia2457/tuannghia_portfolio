@@ -75,7 +75,7 @@ export const experience = [
         ]
       },
       {
-        "text": "Wrote a Playwright automation tool for IELTS content uploads, which made publishing new tests 3× faster.",
+        "text": "Wrote a Playwright automation tool for IELTS content uploads, which made deployment 3× faster.",
         "highlights": [
           "Playwright automation tool",
           "3× faster"

@@ -18,7 +18,7 @@ export const projectDetails = {
   },
   'virtualdouble-ant': {
     number: '03', summary: 'A focus companion that works as a virtual body double for neurodivergent people during deep work.',
-    contributions: ['Worked as the Backend & AI Developer.', 'Worked on the body-doubling features for neurodivergent users.', 'Used MediaPipe and on-device AI so the experience adapts to the person using it.'],
+    contributions: ['Worked as a Backend & AI Developer.', 'Worked on the body-doubling features for neurodivergent users.', 'Used MediaPipe and on-device AI so the experience adapts to the person using it.'],
     technical: 'The companion is designed around neurodivergent users doing deep work. It runs MediaPipe and on-device AI, has a backend behind it, and adapts to the user.',
     technologies: ['Backend systems', 'MediaPipe', 'On-device AI', 'Adaptive UX'],
     result: 'Finalist at the Accessibility Design Competition Hackathon 2026.', status: 'Hackathon finalist · Human-centered AI',
